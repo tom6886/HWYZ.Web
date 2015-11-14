@@ -1,0 +1,132 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>
+Demo V1.03
+</title>
+<script type="text/javascript" language="javascript">
+function UpdateTooltip(){};
+function OnShapeClick(){};
+</script>
+
+<script src="gif_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+	if(parent.isUpLevel)
+	{
+		location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+	}
+</script>
+
+
+
+<script type="text/jscript" language="jscript">
+
+var pageID = 28;
+
+var isUpLevel = parent.isUpLevel;
+var OnShapeClick = null;
+if (!parent.isMac)
+{
+	OnShapeClick = parent.OnShapeClick;
+}
+
+var OnShapeKey = parent.OnShapeKey;
+var UpdateTooltip = parent.UpdateTooltip;
+var clickMenu = parent.clickMenu;
+var toggleMenuDiv = parent.toggleMenuDiv;
+var toggleMenuLink = parent.toggleMenuLink;
+var GoToPage = parent.GoToPage;
+
+
+if (parent.isUpLevel)
+{
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			var fileEntry = parent.g_FileList[parent.g_CurPageIndex];
+			var fileToLoad = fileToLoad = fileEntry.PriImage;
+			if (fileEntry.SecImage.length > 0)
+			{
+				fileToLoad = fileEntry.SecImage;
+			}
+
+			location.replace(fileToLoad);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+
+	var viewMgr = new parent.CViewMgr();
+	parent.viewMgr = viewMgr;
+
+	viewMgr.SupportsDetails = true;
+	viewMgr.SupportsSearch = true;
+
+	viewMgr.put_Location = ViewMgrSetRasterLocation;
+	viewMgr.visBBoxLeft = 4.055118;
+	viewMgr.visBBoxRight = 8.537806;
+	viewMgr.visBBoxBottom = 2.362205;
+	viewMgr.visBBoxTop = 7.401575;
+	viewMgr.highlightDiv = null;
+}
+
+function load ()
+{
+	if(isUpLevel)
+	{
+		arrowdiv.innerHTML = '<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>';
+
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.CurPageUpdate (pageIndex);
+	}
+}
+
+function unload()
+{
+	if(isUpLevel)
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+}
+
+window.onload = load;
+window.onunload = unload;
+document.onclick = clickMenu;
+
+</script>
+</head>
+
+<body class="pageView" bgcolor="#FFFFFF">
+
+<div id=arrowdiv style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+<DIV id=RasterDiv>
+
+
+<center>
+  <IMG id="ConvertedImage" SRC="gif_26.gif" ALT="系统管理-用户管理-详细" name=RasterImage BORDER="0" USEMAP="#visImageMap">
+</center>
+
+<MAP NAME="visImageMap">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="302,333,114,333,114,439,302,439,302,333" onmouseover="UpdateTooltip(this,28,54)" onfocus="UpdateTooltip(this,28,54)" onclick="return OnShapeClick(28,54);" onkeyup="OnShapeKey(28,54);">
+  <AREA shape="POLYGON" tabindex="1" ALT="返回" origTitle="返回" TITLE="返回" HREF="gif_25.htm" target="frmDrawing" COORDS="274,43,267,43,263,43,263,43,263,43,263,43,262,43,262,43,262,43,262,43,262,43,261,43,261,44,261,44,261,44,261,44,261,44,261,45,261,45,261,45,261,45,261,61,261,62,261,62,261,62,261,62,261,63,261,63,261,63,261,63,261,63,262,64,262,64,262,64,262,64,262,64,263,64,263,64,263,64,263,64,316,64,317,64,317,64,317,64,317,64,318,64,318,64,318,64,318,64,319,63,319,63,319,63,319,63,319,63,319,62,319,62,319,62,319,62,319,61,319,45,319,45,319,45,319,45,319,44,319,44,319,44,319,44,319,44,319,43,318,43,318,43,318,43,318,43,317,43,317,43,317,43,317,43,316,43,306,43,306,41,274,41,274,43" onmouseover="UpdateTooltip(this,28,10)" onfocus="UpdateTooltip(this,28,10)" onclick="return OnShapeClick(28,10);" onkeyup="OnShapeKey(28,10);">
+  <AREA shape="POLYGON" tabindex="1" ALT="返回" origTitle="返回" TITLE="返回" HREF="gif_25.htm" target="frmDrawing" COORDS="306,43,316,43,317,43,317,44,317,44,317,44,317,44,318,44,318,44,318,44,318,44,318,44,318,45,318,45,318,45,318,45,318,45,318,61,318,62,318,62,318,62,318,62,318,62,318,63,318,63,318,63,318,63,317,63,317,63,317,63,317,63,317,63,316,63,263,63,263,63,263,63,263,63,263,63,262,63,262,63,262,63,262,63,262,63,262,62,262,62,262,62,262,62,261,62,261,61,261,45,261,45,262,45,262,45,262,45,262,44,262,44,262,44,262,44,262,44,262,44,263,44,263,44,263,44,263,43,263,43,267,43,274,43,274,63,306,63,306,43" onmouseover="UpdateTooltip(this,28,10)" onfocus="UpdateTooltip(this,28,10)" onclick="return OnShapeClick(28,10);" onkeyup="OnShapeKey(28,10);">
+</MAP>
+
+
+
+</DIV>
+
+</body>
+</html>
+

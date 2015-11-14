@@ -1,0 +1,110 @@
+﻿using HWYZ.Context;
+using HWYZ.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using Utils;
+using Webdiyer.WebControls.Mvc;
+
+namespace HWYZ.Controllers
+{
+    public class UsersController : Controller
+    {
+        public ActionResult Index(string name, int pi = 1)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Expression<Func<Guser, bool>> where = PredicateExtensions.True<Guser>();
+
+                if (!string.IsNullOrEmpty(name)) { where = where.And(q => q.DisplayName.Contains(name) || q.CardNumber.Contains(name)); }
+
+                PagedList<Guser> cards = db.Guser.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+
+                if (null == cards)
+                    cards = new PagedList<Guser>(new List<Guser>(), 10, 0);
+
+                if (Request.IsAjaxRequest())
+                    return PartialView("List", cards);
+
+                return View(cards);
+            }
+        }
+
+        [HttpPost]
+        public object queryDialog(string userId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    Guser user = db.Guser.Where(q => q.ID.Equals(userId)).FirstOrDefault();
+
+                    if (user == null) { return Json(new { code = -1, msg = "找不到指定用户" }); }
+
+                    ViewBag.user = user;
+
+                    return PartialView("Edit");
+                }
+
+                return PartialView("Add");
+            }
+        }
+
+        [HttpPost]
+        public JsonResult editUser(Guser user)
+        {
+            using (DBContext db = new DBContext())
+            {
+                //判断编号是否重复
+                Guser sameAccount = db.Guser.Where(q => q.Account.Equals(user.Account) && !q.ID.Equals(user.ID)).FirstOrDefault();
+
+                if (sameAccount != null) { return Json(new { code = -1, msg = "用户编号已被注册" }); }
+
+                Guser oldUser = db.Guser.Where(q => q.ID.Equals(user.ID)).FirstOrDefault();
+
+                if (oldUser == null)
+                {
+                    user.CreatorID = UserContext.user.ID;
+                    user.Creator = UserContext.user.DisplayName;
+                    user.Name = user.DisplayName;
+                    user.PassWord = StringUtil.Md5Encrypt("111111");
+                    user.Status = Status.enable;
+
+                    db.Guser.Add(user);
+                }
+                else
+                {
+                    oldUser.ModifyTime = DateTime.Now;
+                    oldUser.Name = user.DisplayName;
+                    oldUser.Sex = user.Sex;
+                    oldUser.Status = user.Status;
+
+                    db.Entry(oldUser).State = EntityState.Modified;
+                }
+                db.SaveChanges();
+            }
+
+            return Json(new { code = 1, msg = "保存成功" });
+        }
+
+        [HttpPost]
+        public JsonResult deleteUser(string userId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Guser user = db.Guser.Where(q => q.ID.Equals(userId)).FirstOrDefault();
+
+                if (user == null) { return Json(new { code = -1, msg = "您要删除的用户不存在" }); }
+
+                db.Guser.Remove(user);
+
+                db.SaveChanges();
+
+                return Json(new { code = 1, msg = "删除成功" });
+            }
+        }
+    }
+}

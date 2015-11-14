@@ -1,0 +1,265 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" 
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>Demo V1.03</title>
+<style type="text/css">
+	 v\:* { behavior: url(#default#VML); }
+</style>
+
+<script src="vml_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+
+	var pageID = 7;
+	var viewMgr = null;
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+	function getPNZ()
+	{
+		var rawHTML = VMLDiv.innerHTML;
+		var strReturn = ""
+		
+		strReturn = rawHTML.slice( rawHTML.indexOf( '<v:group' ), rawHTML.indexOf( "</v:shape>" ) );
+		strReturn += "</v:shape></v:group>\n";
+				
+		return strReturn;
+	}
+	
+	function load()
+	{
+		viewMgr = new parent.CViewMgr("ConvertedImage", "arrowDiv");
+
+		viewMgr.put_Location = ViewMgrSetVMLLocation;
+
+
+		viewMgr.visBBoxLeft = 0.236220;
+		viewMgr.visBBoxRight = 11.456743;
+		viewMgr.visBBoxBottom = 0.295276;
+		viewMgr.visBBoxTop = 7.972441;
+
+		viewMgr.Zoom = VMLZoomChange;
+		viewMgr.setView= VMLSetView;
+
+		viewMgr.SupportsDetails = true;
+		viewMgr.SupportsSearch = true;
+
+		parent.viewMgr = viewMgr;
+
+		fit();
+	}
+
+	function unload()
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+
+	function fit()
+	{
+		if(parent.frmToolbar)
+		{
+			if (parent.g_WidgetsLoaded)
+			{
+				var zoom100 = parent.frmToolbar.document.all('a100');
+				if (zoom100)
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					zoom100.click();
+				}
+				else
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					viewMgr.Zoom(100);
+				}
+			}
+			else
+			{
+				window.setTimeout("fit()", 500);
+			}
+		}	
+		else
+		{
+			parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+			viewMgr.Zoom(100);
+		}
+	}
+
+	function PostZoomProcessing (newZoomLevel)
+	{
+		parent.viewMgr.PostZoomProcessing = null;
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.viewMgr.getPNZ = getPNZ;
+		parent.CurPageUpdate (pageIndex);
+	}
+
+
+	
+	var isUpLevel = parent.isUpLevel;
+	var OnShapeClick = parent.OnShapeClick;
+	var OnShapeKey = parent.OnShapeKey;
+	var UpdateTooltip = parent.UpdateTooltip;
+	var clickMenu = parent.clickMenu;
+	var toggleMenuDiv = parent.toggleMenuDiv;
+	var toggleMenuLink = parent.toggleMenuLink;
+	var GoToPage = parent.GoToPage;
+
+	window.onload = load;
+	window.onunload = unload;
+	document.onclick = clickMenu;
+
+
+
+
+</script>
+
+</head>
+
+<body style="MARGIN:10px" onresize="VMLOnResize();" onscroll="VMLOnScroll();">
+
+<div id="arrowdiv" style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+
+
+
+<div id="VMLDiv" >
+
+
+<v:group  id="ConvertedImage" style="width:5.846180in;height:4.000000in;position:absolute;visibility=hidden;" coordSize="2923,2000" coordOrigin="-1000,-1000" >
+
+<v:shapetype 
+  id="VISSHAPE"
+  target="_parent"
+  coordsize="2923,2000"
+  coordorigin="-1000,-1000"
+  stroked="f"
+  strokecolor="red"
+  filled="t"
+>
+<v:fill opacity="0.0"/>
+</v:shapetype>
+
+
+<v:shape style="top:-1000.0;left:-1000.0;width:2923.1;height:2000.0;position:absolute" coordSize="2923,2000" coordOrigin="-1000,-1000" >
+<v:imagedata src="vml_7.emz"/>
+</v:shape>
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -357,-608 l -970,-608 l -970,976 l -357,976 l -357,-608xe" onmouseover="UpdateTooltip(this,7,12)" onclick="OnShapeClick(7,12)" onfocus="UpdateTooltip(this,7,12);" onkeyup="OnShapeKey(7,12)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="门店授权" origTitle="门店授权"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,-497 l -785,-439 l -611,-439 l -611,-497 l -785,-497x m -858,-472 l -858,-476 l -862,-476 l -863,-476 l -863,-476 l -873,-476 l -876,-476 l -876,-476 l -876,-476 l -881,-476 l -881,-471 l -881,-458 l -881,-453 l -876,-453 l -863,-453 l -858,-453 l -858,-458 l -858,-458 l -858,-458 l -858,-471 l -858,-471 l -858,-472xe" onmouseover="UpdateTooltip(this,7,24)" onclick="OnShapeClick(7,24)" onfocus="UpdateTooltip(this,7,24);" onkeyup="OnShapeKey(7,24)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="门店授权" origTitle="门店授权"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,-465 l -869,-465 l -869,-518 l -869,-518 l -879,-518 l -879,-465 l -839,-455xe" onmouseover="UpdateTooltip(this,7,24)" onclick="OnShapeClick(7,24)" onfocus="UpdateTooltip(this,7,24);" onkeyup="OnShapeKey(7,24)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="采购订单" origTitle="采购订单"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,-344 l -785,-286 l -611,-286 l -611,-344 l -785,-344x m -858,-319 l -858,-323 l -862,-323 l -863,-323 l -863,-323 l -873,-323 l -876,-323 l -876,-323 l -876,-323 l -881,-323 l -881,-318 l -881,-305 l -881,-300 l -876,-300 l -863,-300 l -858,-300 l -858,-305 l -858,-305 l -858,-305 l -858,-318 l -858,-318 l -858,-319xe" onmouseover="UpdateTooltip(this,7,40)" onclick="OnShapeClick(7,40)" onfocus="UpdateTooltip(this,7,40);" onkeyup="OnShapeKey(7,40)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="采购订单" origTitle="采购订单"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,-312 l -869,-312 l -869,-365 l -869,-365 l -879,-365 l -879,-312 l -839,-302xe" onmouseover="UpdateTooltip(this,7,40)" onclick="OnShapeClick(7,40)" onfocus="UpdateTooltip(this,7,40);" onkeyup="OnShapeKey(7,40)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="订单查询" origTitle="订单查询"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,-278 l -785,-219 l -611,-219 l -611,-278 l -785,-278x m -858,-252 l -858,-257 l -862,-257 l -863,-257 l -863,-257 l -873,-257 l -876,-257 l -876,-257 l -876,-257 l -881,-257 l -881,-252 l -881,-239 l -881,-234 l -876,-234 l -863,-234 l -858,-234 l -858,-238 l -858,-238 l -858,-239 l -858,-252 l -858,-252 l -858,-252xe" onmouseover="UpdateTooltip(this,7,48)" onclick="OnShapeClick(7,48)" onfocus="UpdateTooltip(this,7,48);" onkeyup="OnShapeKey(7,48)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="订单查询" origTitle="订单查询"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,-245 l -869,-245 l -869,-299 l -869,-299 l -879,-299 l -879,-245 l -839,-235xe" onmouseover="UpdateTooltip(this,7,48)" onclick="OnShapeClick(7,48)" onfocus="UpdateTooltip(this,7,48);" onkeyup="OnShapeKey(7,48)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品维护" origTitle="商品维护"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,-158 l -804,-99 l -630,-99 l -630,-158 l -804,-158x m -877,-132 l -877,-137 l -882,-137 l -882,-137 l -882,-137 l -892,-137 l -895,-137 l -895,-137 l -896,-137 l -900,-137 l -900,-132 l -900,-119 l -900,-114 l -895,-114 l -882,-114 l -877,-114 l -877,-118 l -877,-118 l -877,-119 l -877,-132 l -877,-132 l -877,-132xe" onmouseover="UpdateTooltip(this,7,64)" onclick="OnShapeClick(7,64)" onfocus="UpdateTooltip(this,7,64);" onkeyup="OnShapeKey(7,64)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品维护" origTitle="商品维护"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,-125 l -889,-125 l -889,-179 l -889,-179 l -899,-179 l -899,-125 l -858,-115xe" onmouseover="UpdateTooltip(this,7,64)" onclick="OnShapeClick(7,64)" onfocus="UpdateTooltip(this,7,64);" onkeyup="OnShapeKey(7,64)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品配送" origTitle="商品配送"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,-91 l -804,-33 l -630,-33 l -630,-91 l -804,-91x m -877,-66 l -877,-70 l -882,-70 l -882,-70 l -882,-70 l -892,-70 l -895,-70 l -895,-70 l -896,-70 l -900,-70 l -900,-65 l -900,-52 l -900,-47 l -895,-47 l -882,-47 l -877,-47 l -877,-52 l -877,-52 l -877,-52 l -877,-65 l -877,-65 l -877,-66xe" onmouseover="UpdateTooltip(this,7,72)" onclick="OnShapeClick(7,72)" onfocus="UpdateTooltip(this,7,72);" onkeyup="OnShapeKey(7,72)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品配送" origTitle="商品配送"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,-59 l -889,-59 l -889,-112 l -889,-112 l -899,-112 l -899,-59 l -858,-49xe" onmouseover="UpdateTooltip(this,7,72)" onclick="OnShapeClick(7,72)" onfocus="UpdateTooltip(this,7,72);" onkeyup="OnShapeKey(7,72)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="送餐员" origTitle="送餐员"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,65 l -785,123 l -655,123 l -655,65 l -785,65x m -858,90 l -858,86 l -862,86 l -863,86 l -863,86 l -873,86 l -876,86 l -876,86 l -876,86 l -881,86 l -881,91 l -881,103 l -881,109 l -876,109 l -863,109 l -858,109 l -858,104 l -858,104 l -858,103 l -858,91 l -858,90 l -858,90xe" onmouseover="UpdateTooltip(this,7,88)" onclick="OnShapeClick(7,88)" onfocus="UpdateTooltip(this,7,88);" onkeyup="OnShapeKey(7,88)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="送餐员" origTitle="送餐员"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,97 l -869,97 l -869,43 l -869,43 l -879,43 l -879,97 l -839,107xe" onmouseover="UpdateTooltip(this,7,88)" onclick="OnShapeClick(7,88)" onfocus="UpdateTooltip(this,7,88);" onkeyup="OnShapeKey(7,88)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="送餐地址" origTitle="送餐地址"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,131 l -785,189 l -611,189 l -611,131 l -785,131x m -858,156 l -858,152 l -862,152 l -863,152 l -863,152 l -873,152 l -876,152 l -876,152 l -876,152 l -881,152 l -881,157 l -881,170 l -881,175 l -876,175 l -863,175 l -858,175 l -858,170 l -858,170 l -858,170 l -858,157 l -858,157 l -858,156xe" onmouseover="UpdateTooltip(this,7,96)" onclick="OnShapeClick(7,96)" onfocus="UpdateTooltip(this,7,96);" onkeyup="OnShapeKey(7,96)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="送餐地址" origTitle="送餐地址"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,163 l -869,163 l -869,110 l -869,110 l -879,110 l -879,163 l -839,173xe" onmouseover="UpdateTooltip(this,7,96)" onclick="OnShapeClick(7,96)" onfocus="UpdateTooltip(this,7,96);" onkeyup="OnShapeKey(7,96)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品配送报表" origTitle="商品配送报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,269 l -785,327 l -524,327 l -524,269 l -785,269x m -858,294 l -858,290 l -862,290 l -863,290 l -863,290 l -873,290 l -876,290 l -876,290 l -876,290 l -881,290 l -881,295 l -881,308 l -881,313 l -876,313 l -863,313 l -858,313 l -858,308 l -858,308 l -858,308 l -858,295 l -858,295 l -858,294xe" onmouseover="UpdateTooltip(this,7,112)" onclick="OnShapeClick(7,112)" onfocus="UpdateTooltip(this,7,112);" onkeyup="OnShapeKey(7,112)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="商品配送报表" origTitle="商品配送报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,301 l -869,301 l -869,248 l -869,248 l -879,248 l -879,301 l -839,311xe" onmouseover="UpdateTooltip(this,7,112)" onclick="OnShapeClick(7,112)" onfocus="UpdateTooltip(this,7,112);" onkeyup="OnShapeKey(7,112)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="畅销商品报表" origTitle="畅销商品报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,335 l -785,394 l -524,394 l -524,335 l -785,335x m -858,361 l -858,356 l -862,356 l -863,356 l -863,356 l -873,356 l -876,356 l -876,356 l -876,356 l -881,356 l -881,361 l -881,374 l -881,379 l -876,379 l -863,379 l -858,379 l -858,375 l -858,374 l -858,374 l -858,361 l -858,361 l -858,361xe" onmouseover="UpdateTooltip(this,7,120)" onclick="OnShapeClick(7,120)" onfocus="UpdateTooltip(this,7,120);" onkeyup="OnShapeKey(7,120)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="畅销商品报表" origTitle="畅销商品报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,368 l -869,368 l -869,314 l -869,314 l -879,314 l -879,368 l -839,378xe" onmouseover="UpdateTooltip(this,7,120)" onclick="OnShapeClick(7,120)" onfocus="UpdateTooltip(this,7,120);" onkeyup="OnShapeKey(7,120)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="营业经营报表" origTitle="营业经营报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,402 l -785,460 l -524,460 l -524,402 l -785,402x m -858,427 l -858,423 l -862,423 l -863,423 l -863,423 l -873,423 l -876,423 l -876,423 l -876,423 l -881,423 l -881,428 l -881,441 l -881,446 l -876,446 l -863,446 l -858,446 l -858,441 l -858,441 l -858,441 l -858,428 l -858,427 l -858,427xe" onmouseover="UpdateTooltip(this,7,128)" onclick="OnShapeClick(7,128)" onfocus="UpdateTooltip(this,7,128);" onkeyup="OnShapeKey(7,128)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="营业经营报表" origTitle="营业经营报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,434 l -869,434 l -869,381 l -869,381 l -879,381 l -879,434 l -839,444xe" onmouseover="UpdateTooltip(this,7,128)" onclick="OnShapeClick(7,128)" onfocus="UpdateTooltip(this,7,128);" onkeyup="OnShapeKey(7,128)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="营业结算报表" origTitle="营业结算报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -785,468 l -785,526 l -524,526 l -524,468 l -785,468x m -858,494 l -858,489 l -862,489 l -863,489 l -863,489 l -873,489 l -876,489 l -876,489 l -876,489 l -881,489 l -881,494 l -881,507 l -881,512 l -876,512 l -863,512 l -858,512 l -858,508 l -858,507 l -858,507 l -858,494 l -858,494 l -858,494xe" onmouseover="UpdateTooltip(this,7,136)" onclick="OnShapeClick(7,136)" onfocus="UpdateTooltip(this,7,136);" onkeyup="OnShapeKey(7,136)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="营业结算报表" origTitle="营业结算报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,501 l -869,501 l -869,447 l -869,447 l -879,447 l -879,501 l -839,511xe" onmouseover="UpdateTooltip(this,7,136)" onclick="OnShapeClick(7,136)" onfocus="UpdateTooltip(this,7,136);" onkeyup="OnShapeKey(7,136)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="APP会员报表" origTitle="APP会员报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -720,534 l -785,534 l -785,593 l -720,593 l -546,593 l -546,534 l -720,534x m -858,560 l -858,555 l -862,555 l -863,555 l -863,555 l -873,555 l -876,555 l -876,555 l -876,555 l -881,555 l -881,561 l -881,573 l -881,578 l -876,578 l -863,578 l -858,578 l -858,574 l -858,574 l -858,573 l -858,561 l -858,560 l -858,560xe" onmouseover="UpdateTooltip(this,7,144)" onclick="OnShapeClick(7,144)" onfocus="UpdateTooltip(this,7,144);" onkeyup="OnShapeKey(7,144)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="APP会员报表" origTitle="APP会员报表"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -839,567 l -869,567 l -869,513 l -869,513 l -879,513 l -879,567 l -839,577xe" onmouseover="UpdateTooltip(this,7,144)" onclick="OnShapeClick(7,144)" onfocus="UpdateTooltip(this,7,144);" onkeyup="OnShapeKey(7,144)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="角色权限" origTitle="角色权限"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,662 l -804,721 l -630,721 l -630,662 l -804,662x m -877,688 l -877,683 l -882,683 l -882,683 l -882,683 l -892,683 l -895,683 l -895,683 l -896,683 l -900,683 l -900,688 l -900,701 l -900,706 l -895,706 l -882,706 l -877,706 l -877,702 l -877,701 l -877,701 l -877,688 l -877,688 l -877,688xe" onmouseover="UpdateTooltip(this,7,160)" onclick="OnShapeClick(7,160)" onfocus="UpdateTooltip(this,7,160);" onkeyup="OnShapeKey(7,160)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="角色权限" origTitle="角色权限"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,695 l -889,695 l -889,638 l -889,638 l -899,638 l -899,695 l -858,705xe" onmouseover="UpdateTooltip(this,7,160)" onclick="OnShapeClick(7,160)" onfocus="UpdateTooltip(this,7,160);" onkeyup="OnShapeKey(7,160)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="用户管理" origTitle="用户管理"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,713 l -804,772 l -630,772 l -630,713 l -804,713x m -877,739 l -877,734 l -882,734 l -882,734 l -882,734 l -892,734 l -895,734 l -895,734 l -896,734 l -900,734 l -900,739 l -900,752 l -900,757 l -895,757 l -882,757 l -877,757 l -877,753 l -877,752 l -877,752 l -877,739 l -877,739 l -877,739xe" onmouseover="UpdateTooltip(this,7,168)" onclick="OnShapeClick(7,168)" onfocus="UpdateTooltip(this,7,168);" onkeyup="OnShapeKey(7,168)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="用户管理" origTitle="用户管理"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,746 l -889,746 l -889,707 l -889,707 l -899,707 l -899,746 l -858,756xe" onmouseover="UpdateTooltip(this,7,168)" onclick="OnShapeClick(7,168)" onfocus="UpdateTooltip(this,7,168);" onkeyup="OnShapeKey(7,168)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="密码更改" origTitle="密码更改"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,769 l -804,828 l -630,828 l -630,769 l -804,769x m -877,795 l -877,790 l -882,790 l -882,790 l -882,790 l -892,790 l -895,790 l -895,790 l -896,790 l -900,790 l -900,795 l -900,808 l -900,813 l -895,813 l -882,813 l -877,813 l -877,809 l -877,809 l -877,808 l -877,795 l -877,795 l -877,795xe" onmouseover="UpdateTooltip(this,7,176)" onclick="OnShapeClick(7,176)" onfocus="UpdateTooltip(this,7,176);" onkeyup="OnShapeKey(7,176)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="密码更改" origTitle="密码更改"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,802 l -889,802 l -889,758 l -889,758 l -899,758 l -899,802 l -858,812xe" onmouseover="UpdateTooltip(this,7,176)" onclick="OnShapeClick(7,176)" onfocus="UpdateTooltip(this,7,176);" onkeyup="OnShapeKey(7,176)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -306,-64 l -306,3 l -306,70 l -306,137 l -306,204 l -306,271 l -306,339 l -306,406 l -306,473 l -306,540 l -177,540 l -177,473 l -177,406 l -177,339 l -177,271 l -177,204 l -177,137 l -177,70 l -177,3 l -177,-64 l -177,-131 l -306,-131 l -306,-64xe" onmouseover="UpdateTooltip(this,7,213)" onclick="OnShapeClick(7,213)" onfocus="UpdateTooltip(this,7,213);" onkeyup="OnShapeKey(7,213)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -178,-64 l -178,3 l -178,70 l -178,137 l -178,204 l -178,271 l -178,339 l -178,406 l -178,473 l -178,540 l 30,540 l 30,473 l 30,406 l 30,339 l 30,271 l 30,204 l 30,137 l 30,70 l 30,3 l 30,-64 l 30,-131 l -178,-131 l -178,-64xe" onmouseover="UpdateTooltip(this,7,234)" onclick="OnShapeClick(7,234)" onfocus="UpdateTooltip(this,7,234);" onkeyup="OnShapeKey(7,234)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 17,-64 l 17,3 l 17,70 l 17,137 l 17,204 l 17,271 l 17,339 l 17,406 l 17,473 l 17,540 l 242,540 l 242,473 l 242,406 l 242,339 l 242,271 l 242,204 l 242,137 l 242,70 l 242,3 l 242,-64 l 242,-131 l 17,-131 l 17,-64xe" onmouseover="UpdateTooltip(this,7,255)" onclick="OnShapeClick(7,255)" onfocus="UpdateTooltip(this,7,255);" onkeyup="OnShapeKey(7,255)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 1530,-64 l 1530,3 l 1530,70 l 1530,137 l 1530,204 l 1530,271 l 1530,339 l 1530,406 l 1530,473 l 1530,540 l 1830,540 l 1830,473 l 1830,406 l 1830,339 l 1830,271 l 1830,204 l 1830,137 l 1830,70 l 1830,3 l 1830,-64 l 1830,-131 l 1530,-131 l 1530,-64xe" onmouseover="UpdateTooltip(this,7,297)" onclick="OnShapeClick(7,297)" onfocus="UpdateTooltip(this,7,297);" onkeyup="OnShapeKey(7,297)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="添加" origTitle="添加"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 1841,-222 l 1883,-222 l 1884,-222 l 1884,-222 l 1885,-222 l 1885,-222 l 1886,-221 l 1886,-221 l 1887,-221 l 1887,-220 l 1887,-220 l 1888,-220 l 1888,-219 l 1888,-219 l 1888,-218 l 1888,-218 l 1888,-217 l 1888,-174 l 1888,-173 l 1888,-173 l 1888,-172 l 1888,-172 l 1888,-171 l 1887,-171 l 1887,-170 l 1887,-170 l 1886,-170 l 1886,-169 l 1885,-169 l 1885,-169 l 1884,-169 l 1884,-169 l 1883,-169 l 1712,-169 l 1711,-169 l 1711,-169 l 1710,-169 l 1710,-169 l 1709,-169 l 1709,-170 l 1708,-170 l 1708,-170 l 1708,-171 l 1707,-171 l 1707,-172 l 1707,-172 l 1707,-173 l 1707,-173 l 1707,-174 l 1707,-217 l 1707,-218 l 1707,-218 l 1707,-219 l 1707,-219 l 1707,-220 l 1708,-220 l 1708,-220 l 1708,-221 l 1709,-221 l 1709,-221 l 1710,-222 l 1710,-222 l 1711,-222 l 1711,-222 l 1712,-222 l 1722,-222 l 1754,-222 l 1754,-169 l 1841,-169 l 1841,-222x m 1754,-225 l 1722,-225 l 1712,-225 l 1711,-225 l 1711,-225 l 1710,-224 l 1709,-224 l 1709,-224 l 1708,-224 l 1708,-223 l 1707,-223 l 1706,-222 l 1706,-222 l 1706,-221 l 1705,-221 l 1705,-220 l 1705,-220 l 1704,-219 l 1704,-218 l 1704,-218 l 1704,-217 l 1704,-174 l 1704,-173 l 1704,-172 l 1704,-172 l 1705,-171 l 1705,-170 l 1705,-170 l 1706,-169 l 1706,-169 l 1706,-168 l 1707,-168 l 1708,-167 l 1708,-167 l 1709,-167 l 1709,-166 l 1710,-166 l 1711,-166 l 1711,-166 l 1712,-166 l 1883,-166 l 1884,-166 l 1885,-166 l 1885,-166 l 1886,-166 l 1886,-167 l 1887,-167 l 1888,-167 l 1888,-168 l 1889,-168 l 1889,-169 l 1890,-169 l 1890,-170 l 1890,-170 l 1890,-171 l 1891,-172 l 1891,-172 l 1891,-173 l 1891,-174 l 1891,-217 l 1891,-218 l 1891,-218 l 1891,-219 l 1890,-220 l 1890,-220 l 1890,-221 l 1890,-221 l 1889,-222 l 1889,-222 l 1888,-223 l 1888,-223 l 1887,-224 l 1886,-224 l 1886,-224 l 1885,-224 l 1885,-225 l 1884,-225 l 1883,-225 l 1841,-225 l 1841,-228 l 1754,-228 l 1754,-225xe" onmouseover="UpdateTooltip(this,7,318)" onclick="OnShapeClick(7,318)" onfocus="UpdateTooltip(this,7,318);" onkeyup="OnShapeKey(7,318)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 242,-64 l 242,3 l 242,70 l 242,137 l 242,204 l 242,271 l 242,339 l 242,406 l 242,473 l 242,540 l 411,540 l 411,473 l 411,406 l 411,339 l 411,271 l 411,204 l 411,137 l 411,70 l 411,3 l 411,-64 l 411,-131 l 242,-131 l 242,-64xe" onmouseover="UpdateTooltip(this,7,324)" onclick="OnShapeClick(7,324)" onfocus="UpdateTooltip(this,7,324);" onkeyup="OnShapeKey(7,324)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 411,-64 l 411,3 l 411,70 l 411,137 l 411,204 l 411,271 l 411,339 l 411,406 l 411,473 l 411,540 l 539,540 l 539,473 l 539,406 l 539,339 l 539,271 l 539,204 l 539,137 l 539,70 l 539,3 l 539,-64 l 539,-131 l 411,-131 l 411,-64xe" onmouseover="UpdateTooltip(this,7,345)" onclick="OnShapeClick(7,345)" onfocus="UpdateTooltip(this,7,345);" onkeyup="OnShapeKey(7,345)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 750,-64 l 750,3 l 750,70 l 750,137 l 750,204 l 750,271 l 750,339 l 750,406 l 750,473 l 750,540 l 878,540 l 878,473 l 878,406 l 878,339 l 878,271 l 878,204 l 878,137 l 878,70 l 878,3 l 878,-64 l 878,-131 l 750,-131 l 750,-64xe" onmouseover="UpdateTooltip(this,7,396)" onclick="OnShapeClick(7,396)" onfocus="UpdateTooltip(this,7,396);" onkeyup="OnShapeKey(7,396)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 1589,82 l 1676,82 l 1677,82 l 1677,82 l 1678,81 l 1679,81 l 1679,81 l 1680,81 l 1681,80 l 1681,80 l 1682,79 l 1682,79 l 1682,78 l 1683,78 l 1683,77 l 1683,77 l 1684,76 l 1684,75 l 1684,75 l 1684,74 l 1684,-74 l 1684,-75 l 1684,-75 l 1684,-76 l 1683,-77 l 1683,-77 l 1683,-78 l 1682,-78 l 1682,-79 l 1682,-79 l 1681,-80 l 1681,-80 l 1680,-81 l 1679,-81 l 1679,-81 l 1678,-81 l 1677,-82 l 1677,-82 l 1676,-82 l 1589,-82 l 1588,-82 l 1588,-82 l 1587,-81 l 1587,-81 l 1586,-81 l 1585,-81 l 1585,-80 l 1584,-80 l 1584,-79 l 1583,-79 l 1583,-78 l 1583,-78 l 1582,-77 l 1582,-77 l 1582,-76 l 1582,-75 l 1582,-75 l 1581,-74 l 1581,74 l 1582,75 l 1582,75 l 1582,76 l 1582,77 l 1582,77 l 1583,78 l 1583,78 l 1583,79 l 1584,79 l 1584,80 l 1585,80 l 1585,81 l 1586,81 l 1587,81 l 1587,81 l 1588,82 l 1588,82 l 1589,82xe" onmouseover="UpdateTooltip(this,7,425)" onclick="OnShapeClick(7,425)" onfocus="UpdateTooltip(this,7,425);" onkeyup="OnShapeKey(7,425)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 541,-64 l 541,3 l 541,70 l 541,137 l 541,204 l 541,271 l 541,339 l 541,406 l 541,473 l 541,540 l 750,540 l 750,473 l 750,406 l 750,339 l 750,271 l 750,204 l 750,137 l 750,70 l 750,3 l 750,-64 l 750,-131 l 541,-131 l 541,-64xe" onmouseover="UpdateTooltip(this,7,276)" onclick="OnShapeClick(7,276)" onfocus="UpdateTooltip(this,7,276);" onkeyup="OnShapeKey(7,276)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 878,-64 l 878,3 l 878,70 l 878,137 l 878,204 l 878,271 l 878,339 l 878,406 l 878,473 l 878,540 l 1083,540 l 1083,473 l 1083,406 l 1083,339 l 1083,271 l 1083,204 l 1083,137 l 1083,70 l 1083,3 l 1083,-64 l 1083,-131 l 878,-131 l 878,-64xe" onmouseover="UpdateTooltip(this,7,366)" onclick="OnShapeClick(7,366)" onfocus="UpdateTooltip(this,7,366);" onkeyup="OnShapeKey(7,366)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 1083,-64 l 1083,3 l 1083,70 l 1083,137 l 1083,204 l 1083,271 l 1083,339 l 1083,406 l 1083,473 l 1083,540 l 1292,540 l 1292,473 l 1292,406 l 1292,339 l 1292,271 l 1292,204 l 1292,137 l 1292,70 l 1292,3 l 1292,-64 l 1292,-131 l 1083,-131 l 1083,-64xe" onmouseover="UpdateTooltip(this,7,393)" onclick="OnShapeClick(7,393)" onfocus="UpdateTooltip(this,7,393);" onkeyup="OnShapeKey(7,393)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m 1291,-64 l 1291,3 l 1291,70 l 1291,137 l 1291,204 l 1291,271 l 1291,339 l 1291,406 l 1291,473 l 1291,540 l 1551,540 l 1551,473 l 1551,406 l 1551,339 l 1551,271 l 1551,204 l 1551,137 l 1551,70 l 1551,3 l 1551,-64 l 1551,-131 l 1291,-131 l 1291,-64xe" onmouseover="UpdateTooltip(this,7,441)" onclick="OnShapeClick(7,441)" onfocus="UpdateTooltip(this,7,441);" onkeyup="OnShapeKey(7,441)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="参数设置" origTitle="参数设置"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -804,826 l -804,884 l -630,884 l -630,826 l -804,826x m -877,851 l -877,847 l -882,847 l -882,847 l -882,847 l -892,847 l -895,847 l -895,847 l -896,847 l -900,847 l -900,852 l -900,864 l -900,870 l -895,870 l -882,870 l -877,870 l -877,865 l -877,865 l -877,864 l -877,852 l -877,851 l -877,851xe" onmouseover="UpdateTooltip(this,7,462)" onclick="OnShapeClick(7,462)" onfocus="UpdateTooltip(this,7,462);" onkeyup="OnShapeKey(7,462)"/> 
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="参数设置" origTitle="参数设置"  style="top:-1000;left:-1000;width:2923;height:2000;position:absolute" path=" m -858,858 l -889,858 l -889,815 l -889,815 l -899,815 l -899,858 l -858,868xe" onmouseover="UpdateTooltip(this,7,462)" onclick="OnShapeClick(7,462)" onfocus="UpdateTooltip(this,7,462);" onkeyup="OnShapeKey(7,462)"/> 
+
+</v:group>
+
+
+
+</div>
+
+
+
+</body>
+</html>
+

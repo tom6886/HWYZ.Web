@@ -1,0 +1,79 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@model PagedList<Guser>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>用户编号</td>
+                <td>用户姓名</td>
+                <td>身份证号</td>
+                <td>性别</td>
+                <td>联系方式</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Guser item in Model)
+                {
+                <tr>
+                    <td>@item.Account</td>
+                    <td>@item.DisplayName</td>
+                    <td>@item.CardNumber</td>
+                    @if (@item.Sex == Sex.male)
+                    {
+                        <td>男</td>
+                    }
+                    else
+                    {
+                        <td>女</td>
+                    }
+                    <td>@item.Tel</td>
+                    @if (@item.Status == Status.enable)
+                    {
+                        <td>启用</td>
+                    }
+                    else
+                    {
+                        <td>未启用</td>
+                    }
+                    <td data-id="@item.ID">
+                        <a href="javascript:void(0)" class="editUser" data-toggle="modal" data-target="#dlg_edit">编辑</a>
+                        |
+                        <a href="javascript:void(0)" class="delUser">删除</a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-right" style="padding: 10px 15px;">
+    @if (Model != null && Model.Count > 0)
+    {
+        @Ajax.Pager(Model, new PagerOptions { CssClass = "table-page", PageIndexParameterName = "pi", CurrentPagerItemWrapperFormatString = "<span class=\"active\">{0}</span>", NumericPagerItemWrapperFormatString = "<span>{0}</span>", FirstPageText = "首页&nbsp;&nbsp;", PrevPageText = "前一页", NextPageText = "下一页", LastPageText = "&nbsp;&nbsp;尾页" }, new MvcAjaxOptions { UpdateTargetId = "container", HttpMethod = "Post", DataFormId = "form_query" })
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".delUser").click(function () {
+            if (!confirm("您确定要删除此用户？")) { return false; }
+
+            var _this = $(this);
+
+            $.post("users/deleteUser", { userId: _this.parent().data('id') }, function (r) {
+                alert(r.msg);
+
+                if (r.code < 0) {
+                    return false;
+                }
+
+                $("#form_query").submit();
+            });
+        });
+    });
+</script>

@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisioDocument>
+	<DocumentProperties>
+		<Title></Title>
+		<HyperlinkBase href=""></HyperlinkBase>
+	</DocumentProperties>
+	<Pages>
+		<Page ID="9" Name="Index" NameU="Index">
+			<Shapes>
+				<Shape ID="3" UniqueID="{097AD0FD-5740-4683-A532-4C90E2A05E9B}" Name="Sheet.3" NameU="Sheet.3">
+					<XForm>
+						<PinX Unit="MM">4.089566929133858</PinX>
+						<PinY Unit="MM">5.270669291338582</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="1" UniqueID="{E6744949-47CC-4A7D-BDC8-1B5DAFB4C4FD}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">3.929680664916885</PinX>
+						<PinY Unit="MM">5.825612947887860</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{67AEEA7F-0700-49BA-AFDB-0264D7A7C197}" Name="Sheet.2" NameU="Sheet.2">
+					<Text>进入...</Text>
+					<XForm>
+						<PinX Unit="MM">5.118110236220472</PinX>
+						<PinY Unit="MM">3.838582677165354</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-选择驿站</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="0" Name="首页-选择驿站" NameU="Page-1">
+			<Layer IX="0">
+				<Name>流程图</Name>
+				<NameUniv>Flowchart</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" UniqueID="{F00379FE-501D-45E1-9C13-ED10A163A310}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">5.846456692913386</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="3" UniqueID="{3E8A4F54-8E9E-41A7-BD21-4207DB49FB1F}" Name="Sheet.3" NameU="Sheet.3">
+					<Text>徽味驿站</Text>
+					<XForm>
+						<PinX Unit="MM">4.497375328083989</PinX>
+						<PinY Unit="MM">2.922572178477690</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{6922BB3B-D1BA-4197-816B-3E9611B597A7}" Name="Sheet.2" NameU="Sheet.2">
+					<Text>徽味驿站</Text>
+					<XForm>
+						<PinX Unit="MM">6.072178477690288</PinX>
+						<PinY Unit="MM">5.284776902887138</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="4" UniqueID="{DF9694D2-A37B-4857-992C-0986AC8BE088}" Name="Sheet.4" NameU="Sheet.4">
+					<Text>徽味驿站</Text>
+					<XForm>
+						<PinX Unit="MM">4.921259842519684</PinX>
+						<PinY Unit="MM">6.889763779527559</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="5" UniqueID="{738E742C-F15D-44D0-94D8-3591A9F02D8F}" Name="Sheet.5" NameU="Sheet.5">
+					<Text>徽味驿站</Text>
+					<XForm>
+						<PinX Unit="MM">2.528871391076116</PinX>
+						<PinY Unit="MM">7.450131233595800</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="6" UniqueID="{680178AE-24E6-42EC-8E28-5928A10C9CA0}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">2.519685039370079</PinX>
+						<PinY Unit="MM">6.948818897637795</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-菜单</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="8" UniqueID="{E629B062-47F7-4E6F-9C54-97A8DD0D8791}" Name="批注" NameU="Annotation" Master="8">
+					<Text>自动显示客户所在城市地图所有驿站</Text>
+					<XForm>
+						<PinX Unit="MM">2.834645669291338</PinX>
+						<PinY Unit="MM">5.629921259842520</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="4" Name="首页-菜单" NameU="首页-我的驿站">
+			<Shapes>
+				<Shape ID="1" UniqueID="{385CE4FA-B376-4722-8A94-EFB18518A9AD}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">5.846456692913386</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{FC04A7D9-CFC6-4DC6-9C04-E46DD41A3EFD}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.536745406824147</PinX>
+						<PinY Unit="MM">1.988188976377953</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-购物车</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="3" UniqueID="{44F504F8-65FC-48D9-A933-C9B5D931D85B}" Name="选择框.3" NameU="Selection box.3" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.678477690288713</PinX>
+						<PinY Unit="MM">1.968503937007874</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-我的</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="4" UniqueID="{9C5C974F-C79E-437E-9B4B-B59D07757B19}" Name="选择框.4" NameU="Selection box.4" Master="0">
+					<XForm>
+						<PinX Unit="MM">5.938320209973752</PinX>
+						<PinY Unit="MM">1.968503937007874</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="5" UniqueID="{8A5EE59B-8E48-4B3C-A850-F11C831C426D}" Name="面板" NameU="Panel" Master="5">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">8.070866141732282</PinY>
+					</XForm>
+					<Prop ID="1" Name="Inset" NameU="Inset">
+						<Value Unit="STR">凸起</Value>
+						<Label>面板类型</Label>
+					</Prop>
+					<Prop ID="2" Name="Background" NameU="Background">
+						<Value Unit="STR">灰色</Value>
+						<Label>背景色</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="9" UniqueID="{67A29ED5-DD99-4C4F-A450-8B7A76655E21}" Name="Sheet.9" NameU="Sheet.9">
+					<Text>菜品/酒水/特产...</Text>
+					<XForm>
+						<PinX Unit="MM">3.346456692913385</PinX>
+						<PinY Unit="MM">8.070866141732283</PinY>
+					</XForm>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="5" Name="首页-购物车" NameU="首页-购物车">
+			<Layer IX="0">
+				<Name>流程图</Name>
+				<NameUniv>Flowchart</NameUniv>
+				<Visible>1</Visible>
+			</Layer>
+			<Shapes>
+				<Shape ID="1" UniqueID="{B376F1BE-ABC8-412C-A33D-9BDE47CCFC5B}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">5.846456692913386</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{011E1441-7474-490A-8AC2-3B82058EDDA3}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.602362204724409</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-购物车</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="3" UniqueID="{0154C028-A774-46B4-AD5E-95342762870E}" Name="选择框.3" NameU="Selection box.3" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.842519685039370</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-我的</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="4" UniqueID="{2EA6C5DD-BE6E-4142-B65D-5A50F802CB64}" Name="选择框.4" NameU="Selection box.4" Master="0">
+					<XForm>
+						<PinX Unit="MM">6.259842519685040</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="5" UniqueID="{44064AE0-1F52-47F3-963B-890C6F85461F}" Name="选择框.5" NameU="Selection box.5" Master="0">
+					<XForm>
+						<PinX Unit="MM">2.047244094488189</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-菜单</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="9" UniqueID="{70140BF1-09EB-4B08-A322-2E807385A7C5}" Name="面板" NameU="Panel" Master="5">
+					<XForm>
+						<PinX Unit="MM">4.074803149606298</PinX>
+						<PinY Unit="MM">4.232283464566929</PinY>
+					</XForm>
+					<Prop ID="1" Name="Inset" NameU="Inset">
+						<Value Unit="STR">凸起</Value>
+						<Label>面板类型</Label>
+					</Prop>
+					<Prop ID="2" Name="Background" NameU="Background">
+						<Value Unit="STR">灰色</Value>
+						<Label>背景色</Label>
+					</Prop>
+				</Shape>
+				<Shape ID="6" UniqueID="{E15FF6C5-BB6B-443F-833B-A6E34E4C91F7}" Name="文本框(单行)" NameU="Text box (single-line)" Master="4">
+					<Text>请输入手机号码</Text>
+					<XForm>
+						<PinX Unit="MM">1.377952755905512</PinX>
+						<PinY Unit="MM">4.330708661417322</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="13" UniqueID="{59F6C4A3-86B2-469C-A5DC-D441AC276F7D}" Name="文本框(单行).13" NameU="Text box (single-line).13" Master="4">
+					<Text>请输入手机短信验证码</Text>
+					<XForm>
+						<PinX Unit="MM">1.377952755905512</PinX>
+						<PinY Unit="MM">4.094488188976378</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="16" UniqueID="{736FC064-1007-49AB-93DA-921EE69CA14C}" Name="命令按钮" NameU="Command button" Master="6">
+					<Text>获取验证码</Text>
+					<XForm>
+						<PinX Unit="MM">6.263904868280656</PinX>
+						<PinY Unit="MM">4.330708661417322</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="22" UniqueID="{1E030345-AD8B-4252-9C3F-1883C89DCB4A}" Name="Sheet.22" NameU="Sheet.22">
+					<Text>我有账户，直接登录</Text>
+					<XForm>
+						<PinX Unit="MM">5.767716535433070</PinX>
+						<PinY Unit="MM">3.779527559055118</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>登录</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="23" UniqueID="{B9695C87-3AE8-40C2-9744-1C43C92B1ACA}" Name="批注" NameU="Annotation" Master="8">
+					<Text>如果已经登录则不需要显示</Text>
+					<XForm>
+						<PinX Unit="MM">2.952755905511811</PinX>
+						<PinY Unit="MM">5.433070866141732</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+				<Shape ID="26" UniqueID="{C4E99887-BF6A-4BE2-9526-D7939DE91337}" Name="单选按钮" NameU="Radio button" Master="10">
+					<Text>支付宝</Text>
+					<XForm>
+						<PinX Unit="MM">3.307086614173228</PinX>
+						<PinY Unit="MM">3.410433070866142</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="31" UniqueID="{BDFED77A-DB8D-458A-A318-292231C9A38E}" Name="单选按钮.31" NameU="Radio button.31" Master="10">
+					<Text>微信支付</Text>
+					<XForm>
+						<PinX Unit="MM">3.297778613242434</PinX>
+						<PinY Unit="MM">3.056102362204725</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="36" UniqueID="{C8117E3F-A125-483B-9263-C51DDC5EEFEC}" Name="单选按钮.36" NameU="Radio button.36" Master="10">
+					<Text>现金</Text>
+					<XForm>
+						<PinX Unit="MM">3.307086614173228</PinX>
+						<PinY Unit="MM">2.741141732283465</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="41" UniqueID="{5DBB0758-1047-429E-8C48-F3FF0CB677E9}" Name="选择框.41" NameU="Selection box.41" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.031496062992126</PinX>
+						<PinY Unit="MM">3.070866141732284</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="42" UniqueID="{B53C5D73-E92A-4680-9401-4B1FBDD561AC}" Name="批注.42" NameU="Annotation.42" Master="8">
+					<Text>调用第三方支付接口</Text>
+					<XForm>
+						<PinX Unit="MM">5.629921259842520</PinX>
+						<PinY Unit="MM">5.118110236220472</PinY>
+					</XForm>
+					<LayerMem>
+						<LayerMember>0</LayerMember>
+					</LayerMem>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="10" Name="登录" NameU="登录页面">
+			<Shapes>
+				<Shape ID="1" UniqueID="{4A00D96B-6490-4A8D-AA11-A09F07BAC143}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.121555118110236</PinX>
+						<PinY Unit="MM">5.868602362204725</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{47C1B60C-8DD1-40A8-BC7D-3A66DE03E04A}" Name="Sheet.2" NameU="Sheet.2">
+					<Text>登 录</Text>
+					<XForm>
+						<PinX Unit="MM">3.964074803149607</PinX>
+						<PinY Unit="MM">9.431594488188974</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="3" UniqueID="{30B58F37-8BEC-4567-87F4-91EF4E9B150A}" Name="Sheet.3" NameU="Sheet.3">
+					<Text>注册</Text>
+					<XForm>
+						<PinX Unit="MM">6.444389763779528</PinX>
+						<PinY Unit="MM">9.411909448818896</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="4" UniqueID="{F301C07B-2054-4C26-8E0B-F0F675E2BB2B}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.121555118110236</PinX>
+						<PinY Unit="MM">7.305610236220472</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="5" UniqueID="{EDD118B3-BE3A-49BE-AA26-C50A4D87BB8E}" Name="选择框.5" NameU="Selection box.5" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.121555118110236</PinX>
+						<PinY Unit="MM">6.360728346456693</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="6" UniqueID="{9472C8FB-A342-4FD2-838D-ABC968370E4C}" Name="Sheet.6" NameU="Sheet.6">
+					<Text>输入手机号</Text>
+					<XForm>
+						<PinX Unit="MM">2.920767716535433</PinX>
+						<PinY Unit="MM">7.640255905511811</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="7" UniqueID="{AFD5B794-AAC9-437E-85A1-D072FD551611}" Name="Sheet.7" NameU="Sheet.7">
+					<Text>输入手机获取到的验证码</Text>
+					<XForm>
+						<PinX Unit="MM">2.901082677165355</PinX>
+						<PinY Unit="MM">6.656003937007874</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="8" UniqueID="{DE3CA57C-96A4-4AF9-9265-6510D0A2A29B}" Name="命令按钮" NameU="Command button" Master="6">
+					<Text>获取验证码</Text>
+					<XForm>
+						<PinX Unit="MM">6.284885139783672</PinX>
+						<PinY Unit="MM">6.651082677165355</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="14" UniqueID="{16C6E347-3C29-4487-8F1B-361E8EDDD06E}" Name="选项卡控件(主体)" NameU="Tab control (body)" Master="7">
+					<XForm>
+						<PinX Unit="MM">4.121555118110236</PinX>
+						<PinY Unit="MM">5.809547244094489</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-选择驿站</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="20" UniqueID="{9A9D75E3-6F9F-4590-BC2F-08805E40B4FF}" Name="Sheet.20" NameU="Sheet.20">
+					<Text>登录</Text>
+					<XForm>
+						<PinX Unit="MM">3.924704724409449</PinX>
+						<PinY Unit="MM">5.789862204724409</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-选择驿站</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="21" UniqueID="{13E20F1D-0556-451A-832A-B3E8F3B28D6E}" Name="Sheet.21" NameU="Sheet.21">
+					<XForm>
+						<PinX Unit="MM">4.037921041119860</PinX>
+						<PinY Unit="MM">3.773721074005382</PinY>
+					</XForm>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="6" Name="首页-我的" NameU="首页-我的">
+			<Shapes>
+				<Shape ID="1" UniqueID="{58F3218B-9C0A-43DC-A7A5-FD24706E72D0}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">5.846456692913386</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{92F2E84E-1417-4511-B94B-79C81AF6BE76}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.410433070866142</PinX>
+						<PinY Unit="MM">2.115540244969378</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-购物车</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="3" UniqueID="{DA3EB9C0-6472-44AD-9427-268FDA5A2E83}" Name="选择框.3" NameU="Selection box.3" Master="0">
+					<XForm>
+						<PinX Unit="MM">5.182086614173228</PinX>
+						<PinY Unit="MM">2.115540244969378</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-我的</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="4" UniqueID="{D807581B-4EED-47A2-899E-0255FE2C18D1}" Name="选择框.4" NameU="Selection box.4" Master="0">
+					<XForm>
+						<PinX Unit="MM">6.240157480314961</PinX>
+						<PinY Unit="MM">2.115540244969378</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="5" UniqueID="{04217408-C20E-43EA-A489-5C8DFDF6EA77}" Name="选择框.5" NameU="Selection box.5" Master="0">
+					<XForm>
+						<PinX Unit="MM">2.027559055118110</PinX>
+						<PinY Unit="MM">2.076170166229221</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-菜单</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="7" Name="首页-帮助中心" NameU="首页-帮助中心">
+			<Shapes>
+				<Shape ID="1" UniqueID="{01164DF8-99CB-4745-BBBA-3A6B0D95C730}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.133858267716535</PinX>
+						<PinY Unit="MM">5.846456692913385</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{9E114CE1-042F-42F1-8446-DFA2941267B6}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.425196850393701</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-购物车</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="3" UniqueID="{9AF58697-7379-42CB-B748-C4C658AD81EA}" Name="选择框.3" NameU="Selection box.3" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.803149606299213</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-我的</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="4" UniqueID="{A2B244AF-1C11-4D57-BD54-C4E95073ECF8}" Name="选择框.4" NameU="Selection box.4" Master="0">
+					<XForm>
+						<PinX Unit="MM">6.299212598425197</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="5" UniqueID="{88E539A1-6620-455D-BEDE-085DE4EB732D}" Name="选择框.5" NameU="Selection box.5" Master="0">
+					<XForm>
+						<PinX Unit="MM">1.929133858267716</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-菜单</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="6" UniqueID="{DBCE2770-4CFA-4B1E-898F-D9D7A41E8E63}" Name="选择框.6" NameU="Selection box.6" Master="0">
+					<XForm>
+						<PinX Unit="MM">2.867454068241469</PinX>
+						<PinY Unit="MM">8.090551181102363</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心-如何订餐</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+			</Shapes>
+		</Page>
+		<Page ID="8" Name="首页-帮助中心-如何订餐" NameU="首页-帮助中心-如何订餐">
+			<Shapes>
+				<Shape ID="1" UniqueID="{FFFCF221-9F31-4DC5-8082-5AA32EF5D079}" Name="Sheet.1" NameU="Sheet.1">
+					<XForm>
+						<PinX Unit="MM">4.121555118110237</PinX>
+						<PinY Unit="MM">5.868602362204724</PinY>
+					</XForm>
+				</Shape>
+				<Shape ID="2" UniqueID="{F836A852-C946-4EA5-8B95-A06EB94E3E8E}" Name="选择框" NameU="Selection box" Master="0">
+					<XForm>
+						<PinX Unit="MM">3.464566929133858</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-购物车</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="3" UniqueID="{D493D26D-A64C-4DB2-A8B6-D773FC2144C3}" Name="选择框.3" NameU="Selection box.3" Master="0">
+					<XForm>
+						<PinX Unit="MM">4.778543307086614</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-我的</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="4" UniqueID="{21791247-1428-4630-B97B-A77FE0CFE7AC}" Name="选择框.4" NameU="Selection box.4" Master="0">
+					<XForm>
+						<PinX Unit="MM">6.299212598425197</PinX>
+						<PinY Unit="MM">2.086614173228346</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-帮助中心</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+				<Shape ID="5" UniqueID="{FF95C04A-5E3E-45E7-8458-12DF825967FB}" Name="选择框.5" NameU="Selection box.5" Master="0">
+					<XForm>
+						<PinX Unit="MM">1.983267716535433</PinX>
+						<PinY Unit="MM">2.047244094488189</PinY>
+					</XForm>
+					<Scratch>
+						<B>
+							<SolutionXML>
+								<HLURL:Hyperlinks xmlns:HLURL="urn:schemas-microsoft-com:office:visio:dghlinkext">
+									<HLURL:Hyperlink ID="1">
+										<HLURL:Description></HLURL:Description>
+										<HLURL:Address></HLURL:Address>
+										<HLURL:SubAddress>首页-菜单</HLURL:SubAddress>
+										<HLURL:ExtraInfo></HLURL:ExtraInfo>
+										<HLURL:Default>0</HLURL:Default>
+										<HLURL:NewWindow>0</HLURL:NewWindow>
+									</HLURL:Hyperlink>
+								</HLURL:Hyperlinks>
+							</SolutionXML>
+						</B>
+					</Scratch>
+				</Shape>
+			</Shapes>
+		</Page>
+	</Pages>
+</VisioDocument>

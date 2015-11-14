@@ -1,0 +1,187 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>
+Demo V1.03
+</title>
+<script type="text/javascript" language="javascript">
+function UpdateTooltip(){};
+function OnShapeClick(){};
+</script>
+
+<script src="gif_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+	if(parent.isUpLevel)
+	{
+		location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+	}
+</script>
+
+
+
+<script type="text/jscript" language="jscript">
+
+var pageID = 32;
+
+var isUpLevel = parent.isUpLevel;
+var OnShapeClick = null;
+if (!parent.isMac)
+{
+	OnShapeClick = parent.OnShapeClick;
+}
+
+var OnShapeKey = parent.OnShapeKey;
+var UpdateTooltip = parent.UpdateTooltip;
+var clickMenu = parent.clickMenu;
+var toggleMenuDiv = parent.toggleMenuDiv;
+var toggleMenuLink = parent.toggleMenuLink;
+var GoToPage = parent.GoToPage;
+
+
+if (parent.isUpLevel)
+{
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			var fileEntry = parent.g_FileList[parent.g_CurPageIndex];
+			var fileToLoad = fileToLoad = fileEntry.PriImage;
+			if (fileEntry.SecImage.length > 0)
+			{
+				fileToLoad = fileEntry.SecImage;
+			}
+
+			location.replace(fileToLoad);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+
+	var viewMgr = new parent.CViewMgr();
+	parent.viewMgr = viewMgr;
+
+	viewMgr.SupportsDetails = true;
+	viewMgr.SupportsSearch = true;
+
+	viewMgr.put_Location = ViewMgrSetRasterLocation;
+	viewMgr.visBBoxLeft = 0.224409;
+	viewMgr.visBBoxRight = 11.444932;
+	viewMgr.visBBoxBottom = 0.298609;
+	viewMgr.visBBoxTop = 7.975774;
+	viewMgr.highlightDiv = null;
+}
+
+function load ()
+{
+	if(isUpLevel)
+	{
+		arrowdiv.innerHTML = '<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>';
+
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.CurPageUpdate (pageIndex);
+	}
+}
+
+function unload()
+{
+	if(isUpLevel)
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+}
+
+window.onload = load;
+window.onunload = unload;
+document.onclick = clickMenu;
+
+</script>
+</head>
+
+<body class="pageView" bgcolor="#FFFFFF">
+
+<div id=arrowdiv style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+<DIV id=RasterDiv>
+
+
+<center>
+  <IMG id="ConvertedImage" SRC="gif_30.gif" ALT="消息推送" name=RasterImage BORDER="0" USEMAP="#visImageMap">
+</center>
+
+<MAP NAME="visImageMap">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="719,190,263,190,263,288,719,288,719,190" onmouseover="UpdateTooltip(this,32,382)" onfocus="UpdateTooltip(this,32,382)" onclick="return OnShapeClick(32,382);" onkeyup="OnShapeKey(32,382);">
+  <AREA shape="POLYGON" tabindex="1" ALT="历史发送消息" origTitle="历史发送消息" TITLE="历史发送消息" HREF="gif_13.htm" target="frmDrawing" COORDS="308,340,315,340,315,353,316,353,316,340,316,340,316,340,316,340,316,340,316,339,315,339,315,339,315,339,315,339,315,339,315,339,315,339,314,338,314,338,314,338,314,338,314,338,314,338,241,338,241,338,241,338,241,338,241,338,240,338,240,339,240,339,240,339,240,339,240,339,240,339,239,339,239,339,239,340,239,340,239,340,239,340,239,340,239,353,240,353,240,340,248,340,248,353,308,353,308,340" onmouseover="UpdateTooltip(this,32,302)" onfocus="UpdateTooltip(this,32,302)" onclick="return OnShapeClick(32,302);" onkeyup="OnShapeKey(32,302);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="594,414,580,414,580,427,580,439,580,452,580,465,580,477,580,490,580,503,651,503,651,490,651,477,651,465,651,452,651,439,651,427,651,414,637,414,637,412,594,412,594,414" onmouseover="UpdateTooltip(this,32,411)" onfocus="UpdateTooltip(this,32,411)" onclick="return OnShapeClick(32,411);" onkeyup="OnShapeKey(32,411);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="668,414,649,414,649,427,649,439,649,452,649,465,649,477,649,490,649,503,719,503,719,490,719,477,719,465,719,452,719,439,719,427,719,414,701,414,701,412,668,412,668,414" onmouseover="UpdateTooltip(this,32,390)" onfocus="UpdateTooltip(this,32,390)" onclick="return OnShapeClick(32,390);" onkeyup="OnShapeKey(32,390);">
+  <AREA shape="POLYGON" tabindex="1" ALT="参数设置" origTitle="参数设置" TITLE="参数设置" HREF="gif_28.htm" target="frmDrawing" COORDS="38,509,29,509,29,497,28,497,28,509,38,510" onmouseover="UpdateTooltip(this,32,353)" onfocus="UpdateTooltip(this,32,353)" onclick="return OnShapeClick(32,353);" onkeyup="OnShapeKey(32,353);">
+  <AREA shape="POLYGON" tabindex="1" ALT="参数设置" origTitle="参数设置" TITLE="参数设置" HREF="gif_28.htm" target="frmDrawing" COORDS="33,507,33,506,31,506,31,506,31,506,28,506,28,506,28,506,28,506,26,506,26,507,26,511,26,512,28,512,31,512,33,512,33,511,33,511,33,511,33,507,33,507,33,507" onmouseover="UpdateTooltip(this,32,353)" onfocus="UpdateTooltip(this,32,353)" onclick="return OnShapeClick(32,353);" onkeyup="OnShapeKey(32,353);">
+  <AREA shape="POLYGON" tabindex="1" ALT="参数设置" origTitle="参数设置" TITLE="参数设置" HREF="gif_28.htm" target="frmDrawing" COORDS="53,500,53,516,100,516,100,500,53,500" onmouseover="UpdateTooltip(this,32,353)" onfocus="UpdateTooltip(this,32,353)" onclick="return OnShapeClick(32,353);" onkeyup="OnShapeKey(32,353);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE="" HREF="gif_18.htm" target="frmDrawing" COORDS="734,414,716,414,716,427,716,439,716,452,716,464,716,477,716,490,716,502,773,502,773,490,773,477,773,464,773,452,773,439,773,427,773,414,756,414,756,412,734,412,734,414" onmouseover="UpdateTooltip(this,32,332)" onfocus="UpdateTooltip(this,32,332)" onclick="return OnShapeClick(32,332);" onkeyup="OnShapeKey(32,332);">
+  <AREA shape="POLYGON" tabindex="1" ALT="发送消息" origTitle="发送消息" TITLE="发送消息" HREF="gif_13.htm" target="frmDrawing" COORDS="234,340,238,340,238,340,238,340,238,340,238,340,238,341,239,341,239,341,239,341,239,341,239,341,239,341,239,341,239,341,239,342,239,342,239,352,240,352,240,342,240,342,240,341,240,341,240,341,240,341,240,341,239,341,239,340,239,340,239,340,239,340,239,340,239,340,238,340,238,340,238,340,238,340,238,340,234,340,234,340,194,340,194,340,189,340,189,340,188,340,188,340,188,340,188,340,188,340,188,340,187,340,187,340,187,340,187,341,187,341,187,341,187,341,187,341,187,341,187,342,187,342,187,352,187,352,187,342,187,342,187,341,187,341,187,341,188,341,188,341,188,341,188,341,188,341,188,341,188,340,188,340,188,340,189,340,189,340,194,340,194,353,234,353,234,340" onmouseover="UpdateTooltip(this,32,325)" onfocus="UpdateTooltip(this,32,325)" onclick="return OnShapeClick(32,325);" onkeyup="OnShapeKey(32,325);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="488,414,419,414,419,427,419,439,419,452,419,465,419,477,419,490,419,503,579,503,579,490,579,477,579,465,579,452,579,439,579,427,579,414,510,414,510,412,488,412,488,414" onmouseover="UpdateTooltip(this,32,252)" onfocus="UpdateTooltip(this,32,252)" onclick="return OnShapeClick(32,252);" onkeyup="OnShapeKey(32,252);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="311,414,224,414,224,427,224,439,224,452,224,465,224,477,224,490,224,503,311,503,311,503,333,503,333,503,419,503,419,490,419,477,419,465,419,452,419,439,419,427,419,414,333,414,333,412,311,412,311,414" onmouseover="UpdateTooltip(this,32,231)" onfocus="UpdateTooltip(this,32,231)" onclick="return OnShapeClick(32,231);" onkeyup="OnShapeKey(32,231);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="196,414,189,414,189,427,189,439,189,452,189,465,189,477,189,490,189,503,225,503,225,490,225,477,225,465,225,452,225,439,225,427,225,414,218,414,218,412,196,412,196,414" onmouseover="UpdateTooltip(this,32,210)" onfocus="UpdateTooltip(this,32,210)" onclick="return OnShapeClick(32,210);" onkeyup="OnShapeKey(32,210);">
+  <AREA shape="POLYGON" tabindex="1" ALT="密码更改" origTitle="密码更改" TITLE="密码更改" HREF="gif_27.htm" target="frmDrawing" COORDS="38,493,29,493,29,482,28,482,28,493,38,494" onmouseover="UpdateTooltip(this,32,176)" onfocus="UpdateTooltip(this,32,176)" onclick="return OnShapeClick(32,176);" onkeyup="OnShapeKey(32,176);">
+  <AREA shape="POLYGON" tabindex="1" ALT="密码更改" origTitle="密码更改" TITLE="密码更改" HREF="gif_27.htm" target="frmDrawing" COORDS="33,492,33,490,31,490,31,490,31,490,28,490,28,490,28,490,28,490,26,490,26,492,26,495,26,497,28,497,31,497,33,497,33,495,33,495,33,495,33,492,33,492,33,492" onmouseover="UpdateTooltip(this,32,176)" onfocus="UpdateTooltip(this,32,176)" onclick="return OnShapeClick(32,176);" onkeyup="OnShapeKey(32,176);">
+  <AREA shape="POLYGON" tabindex="1" ALT="密码更改" origTitle="密码更改" TITLE="密码更改" HREF="gif_27.htm" target="frmDrawing" COORDS="53,485,53,501,100,501,100,485,53,485" onmouseover="UpdateTooltip(this,32,176)" onfocus="UpdateTooltip(this,32,176)" onclick="return OnShapeClick(32,176);" onkeyup="OnShapeKey(32,176);">
+  <AREA shape="POLYGON" tabindex="1" ALT="用户管理" origTitle="用户管理" TITLE="用户管理" HREF="gif_25.htm" target="frmDrawing" COORDS="38,478,29,478,29,468,28,468,28,478,38,479" onmouseover="UpdateTooltip(this,32,168)" onfocus="UpdateTooltip(this,32,168)" onclick="return OnShapeClick(32,168);" onkeyup="OnShapeKey(32,168);">
+  <AREA shape="POLYGON" tabindex="1" ALT="用户管理" origTitle="用户管理" TITLE="用户管理" HREF="gif_25.htm" target="frmDrawing" COORDS="33,476,33,475,31,475,31,475,31,475,28,475,28,475,28,475,28,475,26,475,26,476,26,480,26,481,28,481,31,481,33,481,33,480,33,480,33,480,33,476,33,476,33,476" onmouseover="UpdateTooltip(this,32,168)" onfocus="UpdateTooltip(this,32,168)" onclick="return OnShapeClick(32,168);" onkeyup="OnShapeKey(32,168);">
+  <AREA shape="POLYGON" tabindex="1" ALT="用户管理" origTitle="用户管理" TITLE="用户管理" HREF="gif_25.htm" target="frmDrawing" COORDS="53,469,53,485,100,485,100,469,53,469" onmouseover="UpdateTooltip(this,32,168)" onfocus="UpdateTooltip(this,32,168)" onclick="return OnShapeClick(32,168);" onkeyup="OnShapeKey(32,168);">
+  <AREA shape="POLYGON" tabindex="1" ALT="角色权限" origTitle="角色权限" TITLE="角色权限" HREF="gif_23.htm" target="frmDrawing" COORDS="38,464,29,464,29,449,28,449,28,464,38,465" onmouseover="UpdateTooltip(this,32,160)" onfocus="UpdateTooltip(this,32,160)" onclick="return OnShapeClick(32,160);" onkeyup="OnShapeKey(32,160);">
+  <AREA shape="POLYGON" tabindex="1" ALT="角色权限" origTitle="角色权限" TITLE="角色权限" HREF="gif_23.htm" target="frmDrawing" COORDS="33,462,33,461,31,461,31,461,31,461,28,461,28,461,28,461,28,461,26,461,26,462,26,466,26,467,28,467,31,467,33,467,33,466,33,466,33,466,33,462,33,462,33,462" onmouseover="UpdateTooltip(this,32,160)" onfocus="UpdateTooltip(this,32,160)" onclick="return OnShapeClick(32,160);" onkeyup="OnShapeKey(32,160);">
+  <AREA shape="POLYGON" tabindex="1" ALT="角色权限" origTitle="角色权限" TITLE="角色权限" HREF="gif_23.htm" target="frmDrawing" COORDS="53,455,53,471,100,471,100,455,53,455" onmouseover="UpdateTooltip(this,32,160)" onfocus="UpdateTooltip(this,32,160)" onclick="return OnShapeClick(32,160);" onkeyup="OnShapeKey(32,160);">
+  <AREA shape="POLYGON" tabindex="1" ALT="APP会员报表" origTitle="APP会员报表" TITLE="APP会员报表" HREF="gif_21.htm" target="frmDrawing" COORDS="43,429,35,429,35,414,34,414,34,429,43,430" onmouseover="UpdateTooltip(this,32,144)" onfocus="UpdateTooltip(this,32,144)" onclick="return OnShapeClick(32,144);" onkeyup="OnShapeKey(32,144);">
+  <AREA shape="POLYGON" tabindex="1" ALT="APP会员报表" origTitle="APP会员报表" TITLE="APP会员报表" HREF="gif_21.htm" target="frmDrawing" COORDS="38,427,38,426,37,426,37,426,36,426,34,426,33,426,33,426,33,426,32,426,32,427,32,431,32,432,33,432,36,432,38,432,38,431,38,431,38,431,38,427,38,427,38,427" onmouseover="UpdateTooltip(this,32,144)" onfocus="UpdateTooltip(this,32,144)" onclick="return OnShapeClick(32,144);" onkeyup="OnShapeKey(32,144);">
+  <AREA shape="POLYGON" tabindex="1" ALT="APP会员报表" origTitle="APP会员报表" TITLE="APP会员报表" HREF="gif_21.htm" target="frmDrawing" COORDS="76,420,58,420,58,436,76,436,124,436,124,420,76,420" onmouseover="UpdateTooltip(this,32,144)" onfocus="UpdateTooltip(this,32,144)" onclick="return OnShapeClick(32,144);" onkeyup="OnShapeKey(32,144);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业结算报表" origTitle="营业结算报表" TITLE="营业结算报表" HREF="gif_19.htm" target="frmDrawing" COORDS="43,411,35,411,35,396,34,396,34,411,43,412" onmouseover="UpdateTooltip(this,32,136)" onfocus="UpdateTooltip(this,32,136)" onclick="return OnShapeClick(32,136);" onkeyup="OnShapeKey(32,136);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业结算报表" origTitle="营业结算报表" TITLE="营业结算报表" HREF="gif_19.htm" target="frmDrawing" COORDS="38,409,38,408,37,408,37,408,36,408,34,408,33,408,33,408,33,408,32,408,32,409,32,412,32,414,33,414,36,414,38,414,38,413,38,413,38,412,38,409,38,409,38,409" onmouseover="UpdateTooltip(this,32,136)" onfocus="UpdateTooltip(this,32,136)" onclick="return OnShapeClick(32,136);" onkeyup="OnShapeKey(32,136);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业结算报表" origTitle="营业结算报表" TITLE="营业结算报表" HREF="gif_19.htm" target="frmDrawing" COORDS="58,402,58,418,129,418,129,402,58,402" onmouseover="UpdateTooltip(this,32,136)" onfocus="UpdateTooltip(this,32,136)" onclick="return OnShapeClick(32,136);" onkeyup="OnShapeKey(32,136);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业经营报表" origTitle="营业经营报表" TITLE="营业经营报表" HREF="gif_17.htm" target="frmDrawing" COORDS="43,392,35,392,35,378,34,378,34,392,43,393" onmouseover="UpdateTooltip(this,32,128)" onfocus="UpdateTooltip(this,32,128)" onclick="return OnShapeClick(32,128);" onkeyup="OnShapeKey(32,128);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业经营报表" origTitle="营业经营报表" TITLE="营业经营报表" HREF="gif_17.htm" target="frmDrawing" COORDS="38,391,38,389,37,389,37,389,36,389,34,389,33,389,33,389,33,389,32,389,32,391,32,394,32,396,33,396,36,396,38,396,38,394,38,394,38,394,38,391,38,391,38,391" onmouseover="UpdateTooltip(this,32,128)" onfocus="UpdateTooltip(this,32,128)" onclick="return OnShapeClick(32,128);" onkeyup="OnShapeKey(32,128);">
+  <AREA shape="POLYGON" tabindex="1" ALT="营业经营报表" origTitle="营业经营报表" TITLE="营业经营报表" HREF="gif_17.htm" target="frmDrawing" COORDS="58,384,58,400,129,400,129,384,58,384" onmouseover="UpdateTooltip(this,32,128)" onfocus="UpdateTooltip(this,32,128)" onclick="return OnShapeClick(32,128);" onkeyup="OnShapeKey(32,128);">
+  <AREA shape="POLYGON" tabindex="1" ALT="畅销商品报表" origTitle="畅销商品报表" TITLE="畅销商品报表" HREF="gif_15.htm" target="frmDrawing" COORDS="43,374,35,374,35,360,34,360,34,374,43,375" onmouseover="UpdateTooltip(this,32,120)" onfocus="UpdateTooltip(this,32,120)" onclick="return OnShapeClick(32,120);" onkeyup="OnShapeKey(32,120);">
+  <AREA shape="POLYGON" tabindex="1" ALT="畅销商品报表" origTitle="畅销商品报表" TITLE="畅销商品报表" HREF="gif_15.htm" target="frmDrawing" COORDS="38,372,38,371,37,371,37,371,36,371,34,371,33,371,33,371,33,371,32,371,32,372,32,376,32,377,33,377,36,377,38,377,38,376,38,376,38,376,38,372,38,372,38,372" onmouseover="UpdateTooltip(this,32,120)" onfocus="UpdateTooltip(this,32,120)" onclick="return OnShapeClick(32,120);" onkeyup="OnShapeKey(32,120);">
+  <AREA shape="POLYGON" tabindex="1" ALT="畅销商品报表" origTitle="畅销商品报表" TITLE="畅销商品报表" HREF="gif_15.htm" target="frmDrawing" COORDS="58,365,58,381,129,381,129,365,58,365" onmouseover="UpdateTooltip(this,32,120)" onfocus="UpdateTooltip(this,32,120)" onclick="return OnShapeClick(32,120);" onkeyup="OnShapeKey(32,120);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送报表" origTitle="商品配送报表" TITLE="商品配送报表" HREF="gif_13.htm" target="frmDrawing" COORDS="43,356,35,356,35,341,34,341,34,356,43,357" onmouseover="UpdateTooltip(this,32,112)" onfocus="UpdateTooltip(this,32,112)" onclick="return OnShapeClick(32,112);" onkeyup="OnShapeKey(32,112);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送报表" origTitle="商品配送报表" TITLE="商品配送报表" HREF="gif_13.htm" target="frmDrawing" COORDS="38,354,38,353,37,353,37,353,36,353,34,353,33,353,33,353,33,353,32,353,32,354,32,358,32,359,33,359,36,359,38,359,38,358,38,358,38,358,38,354,38,354,38,354" onmouseover="UpdateTooltip(this,32,112)" onfocus="UpdateTooltip(this,32,112)" onclick="return OnShapeClick(32,112);" onkeyup="OnShapeKey(32,112);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送报表" origTitle="商品配送报表" TITLE="商品配送报表" HREF="gif_13.htm" target="frmDrawing" COORDS="58,347,58,363,129,363,129,347,58,347" onmouseover="UpdateTooltip(this,32,112)" onfocus="UpdateTooltip(this,32,112)" onclick="return OnShapeClick(32,112);" onkeyup="OnShapeKey(32,112);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐地址" origTitle="送餐地址" TITLE="送餐地址" HREF="gif_12.htm" target="frmDrawing" COORDS="43,318,35,318,35,303,34,303,34,318,43,319" onmouseover="UpdateTooltip(this,32,96)" onfocus="UpdateTooltip(this,32,96)" onclick="return OnShapeClick(32,96);" onkeyup="OnShapeKey(32,96);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐地址" origTitle="送餐地址" TITLE="送餐地址" HREF="gif_12.htm" target="frmDrawing" COORDS="38,316,38,315,37,315,37,315,36,315,34,315,33,315,33,315,33,315,32,315,32,316,32,320,32,321,33,321,36,321,38,321,38,320,38,320,38,320,38,316,38,316,38,316" onmouseover="UpdateTooltip(this,32,96)" onfocus="UpdateTooltip(this,32,96)" onclick="return OnShapeClick(32,96);" onkeyup="OnShapeKey(32,96);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐地址" origTitle="送餐地址" TITLE="送餐地址" HREF="gif_12.htm" target="frmDrawing" COORDS="58,309,58,325,106,325,106,309,58,309" onmouseover="UpdateTooltip(this,32,96)" onfocus="UpdateTooltip(this,32,96)" onclick="return OnShapeClick(32,96);" onkeyup="OnShapeKey(32,96);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐员" origTitle="送餐员" TITLE="送餐员" HREF="gif_11.htm" target="frmDrawing" COORDS="43,300,35,300,35,285,34,285,34,300,43,301" onmouseover="UpdateTooltip(this,32,88)" onfocus="UpdateTooltip(this,32,88)" onclick="return OnShapeClick(32,88);" onkeyup="OnShapeKey(32,88);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐员" origTitle="送餐员" TITLE="送餐员" HREF="gif_11.htm" target="frmDrawing" COORDS="38,298,38,297,37,297,37,297,36,297,34,297,33,297,33,297,33,297,32,297,32,298,32,302,32,303,33,303,36,303,38,303,38,302,38,302,38,302,38,298,38,298,38,298" onmouseover="UpdateTooltip(this,32,88)" onfocus="UpdateTooltip(this,32,88)" onclick="return OnShapeClick(32,88);" onkeyup="OnShapeKey(32,88);">
+  <AREA shape="POLYGON" tabindex="1" ALT="送餐员" origTitle="送餐员" TITLE="送餐员" HREF="gif_11.htm" target="frmDrawing" COORDS="58,291,58,307,94,307,94,291,58,291" onmouseover="UpdateTooltip(this,32,88)" onfocus="UpdateTooltip(this,32,88)" onclick="return OnShapeClick(32,88);" onkeyup="OnShapeKey(32,88);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送" origTitle="商品配送" TITLE="商品配送" HREF="gif_9.htm" target="frmDrawing" COORDS="38,257,29,257,29,242,28,242,28,257,38,258" onmouseover="UpdateTooltip(this,32,72)" onfocus="UpdateTooltip(this,32,72)" onclick="return OnShapeClick(32,72);" onkeyup="OnShapeKey(32,72);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送" origTitle="商品配送" TITLE="商品配送" HREF="gif_9.htm" target="frmDrawing" COORDS="33,255,33,254,31,254,31,254,31,254,28,254,28,254,28,254,28,254,26,254,26,255,26,259,26,260,28,260,31,260,33,260,33,259,33,259,33,259,33,255,33,255,33,255" onmouseover="UpdateTooltip(this,32,72)" onfocus="UpdateTooltip(this,32,72)" onclick="return OnShapeClick(32,72);" onkeyup="OnShapeKey(32,72);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品配送" origTitle="商品配送" TITLE="商品配送" HREF="gif_9.htm" target="frmDrawing" COORDS="53,248,53,264,100,264,100,248,53,248" onmouseover="UpdateTooltip(this,32,72)" onfocus="UpdateTooltip(this,32,72)" onclick="return OnShapeClick(32,72);" onkeyup="OnShapeKey(32,72);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品维护" origTitle="商品维护" TITLE="商品维护" HREF="gif_7.htm" target="frmDrawing" COORDS="38,239,29,239,29,224,28,224,28,239,38,240" onmouseover="UpdateTooltip(this,32,64)" onfocus="UpdateTooltip(this,32,64)" onclick="return OnShapeClick(32,64);" onkeyup="OnShapeKey(32,64);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品维护" origTitle="商品维护" TITLE="商品维护" HREF="gif_7.htm" target="frmDrawing" COORDS="33,237,33,236,31,236,31,236,31,236,28,236,28,236,28,236,28,236,26,236,26,237,26,241,26,242,28,242,31,242,33,242,33,241,33,241,33,241,33,237,33,237,33,237" onmouseover="UpdateTooltip(this,32,64)" onfocus="UpdateTooltip(this,32,64)" onclick="return OnShapeClick(32,64);" onkeyup="OnShapeKey(32,64);">
+  <AREA shape="POLYGON" tabindex="1" ALT="商品维护" origTitle="商品维护" TITLE="商品维护" HREF="gif_7.htm" target="frmDrawing" COORDS="53,230,53,246,100,246,100,230,53,230" onmouseover="UpdateTooltip(this,32,64)" onfocus="UpdateTooltip(this,32,64)" onclick="return OnShapeClick(32,64);" onkeyup="OnShapeKey(32,64);">
+  <AREA shape="POLYGON" tabindex="1" ALT="订单查询" origTitle="订单查询" TITLE="订单查询" HREF="gif_6.htm" target="frmDrawing" COORDS="43,206,35,206,35,191,34,191,34,206,43,207" onmouseover="UpdateTooltip(this,32,48)" onfocus="UpdateTooltip(this,32,48)" onclick="return OnShapeClick(32,48);" onkeyup="OnShapeKey(32,48);">
+  <AREA shape="POLYGON" tabindex="1" ALT="订单查询" origTitle="订单查询" TITLE="订单查询" HREF="gif_6.htm" target="frmDrawing" COORDS="38,204,38,203,37,203,37,203,36,203,34,203,33,203,33,203,33,203,32,203,32,204,32,208,32,209,33,209,36,209,38,209,38,208,38,208,38,208,38,204,38,204,38,204" onmouseover="UpdateTooltip(this,32,48)" onfocus="UpdateTooltip(this,32,48)" onclick="return OnShapeClick(32,48);" onkeyup="OnShapeKey(32,48);">
+  <AREA shape="POLYGON" tabindex="1" ALT="订单查询" origTitle="订单查询" TITLE="订单查询" HREF="gif_6.htm" target="frmDrawing" COORDS="58,197,58,213,106,213,106,197,58,197" onmouseover="UpdateTooltip(this,32,48)" onfocus="UpdateTooltip(this,32,48)" onclick="return OnShapeClick(32,48);" onkeyup="OnShapeKey(32,48);">
+  <AREA shape="POLYGON" tabindex="1" ALT="采购订单" origTitle="采购订单" TITLE="采购订单" HREF="gif_4.htm" target="frmDrawing" COORDS="43,188,35,188,35,173,34,173,34,188,43,189" onmouseover="UpdateTooltip(this,32,40)" onfocus="UpdateTooltip(this,32,40)" onclick="return OnShapeClick(32,40);" onkeyup="OnShapeKey(32,40);">
+  <AREA shape="POLYGON" tabindex="1" ALT="采购订单" origTitle="采购订单" TITLE="采购订单" HREF="gif_4.htm" target="frmDrawing" COORDS="38,186,38,185,37,185,37,185,36,185,34,185,33,185,33,185,33,185,32,185,32,186,32,189,32,191,33,191,36,191,38,191,38,190,38,190,38,189,38,186,38,186,38,186" onmouseover="UpdateTooltip(this,32,40)" onfocus="UpdateTooltip(this,32,40)" onclick="return OnShapeClick(32,40);" onkeyup="OnShapeKey(32,40);">
+  <AREA shape="POLYGON" tabindex="1" ALT="采购订单" origTitle="采购订单" TITLE="采购订单" HREF="gif_4.htm" target="frmDrawing" COORDS="58,179,58,195,106,195,106,179,58,179" onmouseover="UpdateTooltip(this,32,40)" onfocus="UpdateTooltip(this,32,40)" onclick="return OnShapeClick(32,40);" onkeyup="OnShapeKey(32,40);">
+  <AREA shape="POLYGON" tabindex="1" ALT="门店授权" origTitle="门店授权" TITLE="门店授权" HREF="gif_2.htm" target="frmDrawing" COORDS="43,146,35,146,35,131,34,131,34,146,43,147" onmouseover="UpdateTooltip(this,32,24)" onfocus="UpdateTooltip(this,32,24)" onclick="return OnShapeClick(32,24);" onkeyup="OnShapeKey(32,24);">
+  <AREA shape="POLYGON" tabindex="1" ALT="门店授权" origTitle="门店授权" TITLE="门店授权" HREF="gif_2.htm" target="frmDrawing" COORDS="38,144,38,142,37,142,37,142,36,142,34,142,33,142,33,142,33,142,32,142,32,144,32,147,32,149,33,149,36,149,38,149,38,148,38,147,38,147,38,144,38,144,38,144" onmouseover="UpdateTooltip(this,32,24)" onfocus="UpdateTooltip(this,32,24)" onclick="return OnShapeClick(32,24);" onkeyup="OnShapeKey(32,24);">
+  <AREA shape="POLYGON" tabindex="1" ALT="门店授权" origTitle="门店授权" TITLE="门店授权" HREF="gif_2.htm" target="frmDrawing" COORDS="58,137,58,153,106,153,106,137,58,137" onmouseover="UpdateTooltip(this,32,24)" onfocus="UpdateTooltip(this,32,24)" onclick="return OnShapeClick(32,24);" onkeyup="OnShapeKey(32,24);">
+  <AREA shape="POLYGON" tabindex="1" ALT="" origTitle="" TITLE=""  target="_top" COORDS="175,106,7,106,7,541,175,541,175,106" onmouseover="UpdateTooltip(this,32,12)" onfocus="UpdateTooltip(this,32,12)" onclick="return OnShapeClick(32,12);" onkeyup="OnShapeKey(32,12);">
+</MAP>
+
+
+
+</DIV>
+
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@model PagedList<Guser>
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+        {
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入姓名或身份证号" aria-describedby="basic-addon2">
+                <span class="input-group-addon" id="basic-addon2">查询</span>
+            </div>
+        }
+    </div>
+    <div class="col-md-7">
+        <button class="btn btn-info" id="addUser" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
+    </div>
+</div>
+<div class="row">
+    <div id="container">
+        @Html.Partial("List", Model)
+    </div>
+</div>
+<div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+</div>
+
+@{Html.RegisterMvcPagerScriptResource();}
+@Scripts.Render("~/Scripts/Page/users.js")

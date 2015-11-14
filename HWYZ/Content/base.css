@@ -1,0 +1,108 @@
+﻿/*========================Setting============================*/
+body { font-size: 14px; font-family: "微软雅黑",Arial, Helvetica, sans-serif; /*background-color: #343c4f;*/ padding: 0px; margin: 0px; color: #333; background-color: #fff; }
+
+label { vertical-align: middle; }
+
+.pure-form select { font-size: 12px; }
+
+a { color: #428BCA; outline: none; background: none; text-decoration: none; }
+
+a:hover { color: #2A6496; text-decoration: underline; }
+
+a:focus { color: #2A6496; text-decoration: underline; }
+
+* { margin: 0px; padding: 0px; }
+
+img { border: none; }
+
+.FontEn { font-family: Arial, Helvetica, sans-serif; }
+
+.clearboth { clear: both; height: 8px; }
+
+em { color: #ff6a00; font-style: normal; }
+
+.HeadBox { width: 480px; height: 78px; padding-left: 20px; }
+
+.login-bg { background-position: top; }
+
+#container { margin: 25px 10px 0px 15px; }
+
+/*alert notice css*/
+.ui-pnotify.stack-bar-top { font-size: 14px; position: fixed!important; _position: absolute; left: 35%; height: 50px; }
+
+.ui-pnotify .ui-pnotify-shadow { height: auto; background-color: #FFFFFF; }
+
+
+/*=======================Login=============================*/
+.bodyheader { background-color: #4f9fcf; }
+
+.bodyheader h3 { color: #FFFFFF; float: right; }
+
+.loginlogo { margin-top: 30%; float: right; }
+
+/*========================BottomStyle=======================*/
+.FootBox { border-top: 1px solid #ccc; background-color: #fff; position: fixed; width: 100%; _position: absolute; _bottom: expression(eval(document.body.<span style="color: #FF0000;">scrollTop</span>)); z-index: 1024; right: 0; bottom: 0; }
+
+.FootContent { width: 100%; margin: 0px auto; text-align: center; padding-top: 5px; line-height: 33px; color: #666; font-size: .8em; }
+
+.FootContent b { color: #ffb367; font-weight: 100; }
+
+.FootContent a { color: #cccccc; text-decoration: none; }
+
+.FootContent a:hover { color: #ff6a00; text-decoration: none; }
+
+
+/*=======================Main=================================*/
+
+.main-nav { margin-left: 1px; }
+
+.main-nav.nav-tabs.nav-stacked > li { }
+
+.main-nav.nav-tabs.nav-stacked > li > a { padding: 10px 8px; font-size: 12px; font-weight: 600; color: #428bca; background: #E9E9E9; background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#E9E9E9)); background: -webkit-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%); background: -o-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%); background: -ms-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%); background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')"; border: 1px solid #D5D5D5; border-radius: 4px; }
+
+.main-nav.nav-tabs.nav-stacked > li > a > span { color: #428bca; }
+
+.main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover { color: #FFF; background: #428bca; background: -moz-linear-gradient(top, #428bca 0%, #3C4049 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4A515B), color-stop(100%,#3C4049)); background: -webkit-linear-gradient(top, #428bca 0%,#428bca 100%); background: -o-linear-gradient(top, #4A515B 0%,#3C4049 100%); background: -ms-linear-gradient(top, #4A515B 0%,#3C4049 100%); background: linear-gradient(top, #4A515B 0%,#3C4049 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4A515B', endColorstr='#3C4049')"; border-color: #428bca; }
+
+#main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover > span { color: #FFF; }
+
+.main-nav.nav-tabs.nav-stacked > li { margin-bottom: 4px; }
+
+.nav-header.collapsed > span.glyphicon-chevron-toggle:before { content: "\e114"; }
+
+.nav-header > span.glyphicon-chevron-toggle:before { content: "\e113"; }
+
+footer.duomi-page-footer { background-color: white; }
+
+footer.duomi-page-footer .beta-message { color: #a4a4a4; }
+
+footer.duomi-page-footer .beta-message a { color: #53a2e4; }
+
+footer.duomi-page-footer .list-inline a, footer.authenticated-footer .list-inline li { color: #a4a4a4; padding-bottom: 30px; }
+
+footer.duomi-page-footer { background-color: white; }
+
+footer.duomi-page-footer .beta-message { color: #a4a4a4; }
+
+footer.duomi-page-footer .beta-message a { color: #53a2e4; }
+
+footer.duomi-page-footer .list-inline a, footer.authenticated-footer .list-inline li { color: #a4a4a4; padding-bottom: 30px; }
+
+/*********************************************自定义部分*********************************************/
+.secondmenu a { font-size: 12px; color: #428BCA; text-align: center; border-radius: 4px; }
+
+.secondmenu > li > a:hover { background-color: #428bca; border-color: #428bca; color: #fff; }
+
+.secondmenu li.active { background-color: #428bca; border-color: #428bca; border-radius: 4px; }
+
+.secondmenu li.active > a { color: #ffffff; }
+
+.navbar-static-top { background-color: #428BCA; margin-bottom: 5px; }
+
+.navbar-brand { background: url(../Images/logo-mini.jpg) no-repeat 10px 8px; display: inline-block; vertical-align: middle; padding-left: 50px; color: #fff; }
+
+.navbar-brand:hover { color: #fff; }
+
+.collapse.glyphicon-chevron-toggle, .glyphicon-chevron-toggle:before { content: "\e113"; }
+
+.collapsed.glyphicon-chevron-toggle:before { content: "\e114"; }

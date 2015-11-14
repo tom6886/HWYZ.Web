@@ -1,0 +1,177 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" 
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"/>
+<link rel="stylesheet" type="text/css" href="visio.css"/>
+<title>Demo V1.03</title>
+<style type="text/css">
+	 v\:* { behavior: url(#default#VML); }
+</style>
+
+<script src="vml_1.js" type="text/jscript" language="jscript"></script>
+
+<script type="text/jscript" language="jscript">
+
+	var pageID = 21;
+	var viewMgr = null;
+
+	if (parent.g_FirstPageToLoad != null && parent.g_FirstPageToLoad.length > 0)
+	{
+		if (parent.g_FileList[parent.g_CurPageIndex].PageID != pageID)
+		{
+			location.replace(parent.g_FileList[parent.g_CurPageIndex].PriImage);
+		}
+
+		parent.g_FirstPageToLoad = null;
+	}
+
+	function getPNZ()
+	{
+		var rawHTML = VMLDiv.innerHTML;
+		var strReturn = ""
+		
+		strReturn = rawHTML.slice( rawHTML.indexOf( '<v:group' ), rawHTML.indexOf( "</v:shape>" ) );
+		strReturn += "</v:shape></v:group>\n";
+				
+		return strReturn;
+	}
+	
+	function load()
+	{
+		viewMgr = new parent.CViewMgr("ConvertedImage", "arrowDiv");
+
+		viewMgr.put_Location = ViewMgrSetVMLLocation;
+
+
+		viewMgr.visBBoxLeft = 3.931102;
+		viewMgr.visBBoxRight = 7.761861;
+		viewMgr.visBBoxBottom = 1.496063;
+		viewMgr.visBBoxTop = 6.584646;
+
+		viewMgr.Zoom = VMLZoomChange;
+		viewMgr.setView= VMLSetView;
+
+		viewMgr.SupportsDetails = true;
+		viewMgr.SupportsSearch = true;
+
+		parent.viewMgr = viewMgr;
+
+		fit();
+	}
+
+	function unload()
+	{
+		viewMgr = null;
+		parent.viewMgr = null;
+	}
+
+	function fit()
+	{
+		if(parent.frmToolbar)
+		{
+			if (parent.g_WidgetsLoaded)
+			{
+				var zoom100 = parent.frmToolbar.document.all('a100');
+				if (zoom100)
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					zoom100.click();
+				}
+				else
+				{
+					parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+					viewMgr.Zoom(100);
+				}
+			}
+			else
+			{
+				window.setTimeout("fit()", 500);
+			}
+		}	
+		else
+		{
+			parent.viewMgr.PostZoomProcessing = PostZoomProcessing;
+			viewMgr.Zoom(100);
+		}
+	}
+
+	function PostZoomProcessing (newZoomLevel)
+	{
+		parent.viewMgr.PostZoomProcessing = null;
+		var pageIndex = parent.PageIndexFromID (pageID);
+		parent.viewMgr.getPNZ = getPNZ;
+		parent.CurPageUpdate (pageIndex);
+	}
+
+
+	
+	var isUpLevel = parent.isUpLevel;
+	var OnShapeClick = parent.OnShapeClick;
+	var OnShapeKey = parent.OnShapeKey;
+	var UpdateTooltip = parent.UpdateTooltip;
+	var clickMenu = parent.clickMenu;
+	var toggleMenuDiv = parent.toggleMenuDiv;
+	var toggleMenuLink = parent.toggleMenuLink;
+	var GoToPage = parent.GoToPage;
+
+	window.onload = load;
+	window.onunload = unload;
+	document.onclick = clickMenu;
+
+
+
+
+</script>
+
+</head>
+
+<body style="MARGIN:10px" onresize="VMLOnResize();" onscroll="VMLOnScroll();">
+
+<div id="arrowdiv" style="position:absolute;top:0;left:0;visibility:hidden;z-index:5">
+<img id="arrowgif" alt="显示所选形状的位置" src="arrow.gif"/>
+</div>
+
+<div id="menu1" onclick="clickMenu()" class="hlMenu">
+</div>
+
+
+
+
+<div id="VMLDiv" >
+
+
+<v:group  id="ConvertedImage" style="width:3.011258in;height:4.000000in;position:absolute;visibility=hidden;" coordSize="1506,2000" coordOrigin="-1000,-1000" >
+
+<v:shapetype 
+  id="VISSHAPE"
+  target="_parent"
+  coordsize="1506,2000"
+  coordorigin="-1000,-1000"
+  stroked="f"
+  strokecolor="red"
+  filled="t"
+>
+<v:fill opacity="0.0"/>
+</v:shapetype>
+
+
+<v:shape style="top:-1000.0;left:-1000.0;width:1505.6;height:2000.0;position:absolute" coordSize="1506,2000" coordOrigin="-1000,-1000" >
+<v:imagedata src="vml_8.emz"/>
+</v:shape>
+
+<v:shape type="#VISSHAPE"  origHref="" style="cursor: pointer;" tabindex="1" title="返回" origTitle="返回"  style="top:-1000;left:-1000;width:1506;height:2000;position:absolute" path=" m 310,-813 l 353,-813 l 354,-813 l 355,-813 l 355,-813 l 356,-813 l 357,-812 l 358,-812 l 358,-811 l 359,-811 l 359,-810 l 360,-809 l 360,-809 l 360,-808 l 361,-807 l 361,-806 l 361,-805 l 361,-740 l 361,-739 l 361,-739 l 360,-738 l 360,-737 l 360,-736 l 359,-736 l 359,-735 l 358,-734 l 358,-734 l 357,-733 l 356,-733 l 355,-733 l 355,-733 l 354,-732 l 353,-732 l 137,-732 l 136,-732 l 135,-733 l 135,-733 l 134,-733 l 133,-733 l 133,-734 l 132,-734 l 131,-735 l 131,-736 l 130,-736 l 130,-737 l 130,-738 l 130,-739 l 129,-739 l 129,-740 l 129,-805 l 129,-806 l 130,-807 l 130,-808 l 130,-809 l 130,-809 l 131,-810 l 131,-811 l 132,-811 l 133,-812 l 133,-812 l 134,-813 l 135,-813 l 135,-813 l 136,-813 l 137,-813 l 152,-813 l 180,-813 l 180,-734 l 310,-734 l 310,-813x m 180,-817 l 152,-817 l 137,-817 l 136,-817 l 135,-817 l 134,-817 l 133,-816 l 132,-816 l 131,-815 l 130,-815 l 130,-814 l 129,-814 l 128,-813 l 128,-812 l 127,-811 l 127,-810 l 126,-809 l 126,-808 l 126,-808 l 126,-807 l 126,-805 l 126,-740 l 126,-739 l 126,-738 l 126,-737 l 126,-736 l 127,-735 l 127,-734 l 128,-734 l 128,-733 l 129,-732 l 130,-731 l 130,-731 l 131,-730 l 132,-730 l 133,-729 l 134,-729 l 135,-729 l 136,-729 l 137,-729 l 353,-729 l 354,-729 l 355,-729 l 356,-729 l 357,-729 l 358,-730 l 359,-730 l 360,-731 l 360,-731 l 361,-732 l 362,-733 l 362,-734 l 363,-734 l 363,-735 l 364,-736 l 364,-737 l 364,-738 l 365,-739 l 365,-740 l 365,-805 l 365,-807 l 364,-808 l 364,-808 l 364,-809 l 363,-810 l 363,-811 l 362,-812 l 362,-813 l 361,-814 l 360,-814 l 360,-815 l 359,-815 l 358,-816 l 357,-816 l 356,-817 l 355,-817 l 354,-817 l 353,-817 l 310,-817 l 310,-822 l 180,-822 l 180,-817xe" onmouseover="UpdateTooltip(this,21,200)" onclick="OnShapeClick(21,200)" onfocus="UpdateTooltip(this,21,200);" onkeyup="OnShapeKey(21,200)"/> 
+
+<v:shape type="#VISSHAPE"   tabindex="1" title="" origTitle=""  style="top:-1000;left:-1000;width:1506;height:2000;position:absolute" path=" m 252,71 l -470,71 l -470,394 l 252,394 l 252,71xe" onmouseover="UpdateTooltip(this,21,48)" onclick="OnShapeClick(21,48)" onfocus="UpdateTooltip(this,21,48);" onkeyup="OnShapeKey(21,48)"/> 
+
+</v:group>
+
+
+
+</div>
+
+
+
+</body>
+</html>
+

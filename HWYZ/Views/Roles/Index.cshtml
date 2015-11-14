@@ -1,0 +1,51 @@
+﻿@using HWYZ.Models;
+
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-info" id="addUser" type="button" data-toggle="modal" data-target="#dlg_edit">添加</button>
+    </div>
+</div>
+<div class="row">
+    <div id="container">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <td>角色名称</td>
+                        <td>状态</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (GuserRole item in Model)
+                        {
+                        <tr>
+                            <td>@item.RoleName</td>
+                            @if (@item.Status == Status.enable)
+                            {
+                                <td>启用</td>
+                            }
+                            else
+                            {
+                                <td>未启用</td>
+                            }
+
+                            <td data-id="@item.ID">
+                                <a href="javascript:void(0)" class="setRole" data-toggle="modal" data-target="#dlg_edit">设置权限</a>
+                                |
+                                <a href="javascript:void(0)" class="delRole">删除</a>
+                            </td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+</div>
+@Styles.Render("~/Content/zTreeStyle.css")
+@Scripts.Render("~/Scripts/Page/roles.js")
+@Scripts.Render("~/Scripts/jquery.ztree.core-3.5.min.js")
