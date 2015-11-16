@@ -48,7 +48,7 @@ namespace HWYZ.Controllers
             {
                 string _pass = StringUtil.Md5Encrypt(pwd);
 
-                Guser user = db.Guser.Where(q => q.Account.Equals(account) && q.PassWord.Equals(_pass)).FirstOrDefault();
+                Guser user = db.Guser.Include("Role").Where(q => q.Account.Equals(account) && q.PassWord.Equals(_pass)).FirstOrDefault();
 
                 if (user == null) { return Json(new { code = -1, msg = "用户名或密码错误" }); }
 

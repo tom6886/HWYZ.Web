@@ -17,6 +17,9 @@ namespace HWYZ.Models
         [XmlAttribute("url")]
         public string Url { get; set; }
 
+        [XmlAttribute("authVal")]
+        public string AuthVal { get; set; }
+
         [XmlElement("Menu")]
         public List<Menu> SubMenu { get; set; }
     }

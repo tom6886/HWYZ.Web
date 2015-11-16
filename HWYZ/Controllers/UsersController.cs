@@ -38,6 +38,8 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
+                ViewBag.roles = db.GuserRole.Select(q => new SelectListItem { Text = q.RoleName, Value = q.ID }).ToList();
+
                 if (!string.IsNullOrEmpty(userId))
                 {
                     Guser user = db.Guser.Where(q => q.ID.Equals(userId)).FirstOrDefault();
@@ -79,6 +81,7 @@ namespace HWYZ.Controllers
                 {
                     oldUser.ModifyTime = DateTime.Now;
                     oldUser.Name = user.DisplayName;
+                    oldUser.RoleId = user.RoleId;
                     oldUser.Sex = user.Sex;
                     oldUser.Status = user.Status;
 

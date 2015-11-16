@@ -20,6 +20,9 @@ $(function () {
         var _form = $("form", modal);
 
         _form.ajaxForm({
+            beforeSubmit: function () {
+                return _form.valid();
+            },
             success: function (r) {
                 alert(r.msg);
 
@@ -41,6 +44,7 @@ $(function () {
             }
         });
 
+        $('select[name=RoleId]', _form).val($("#RoleId", _form).val());
         $('select[name=Sex]', _form).val($("#Sex", _form).val());
         $('select[name=Status]', _form).val($("#Status", _form).val());
 

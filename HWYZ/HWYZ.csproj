@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201511140429250_Modify.Designer.cs">
       <DependentUpon>201511140429250_Modify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511160523293_Modify1.cs" />
+    <Compile Include="Migrations\201511160523293_Modify1.Designer.cs">
+      <DependentUpon>201511160523293_Modify1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -299,6 +303,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.ztree.core-3.5.min.js" />
+    <Content Include="Scripts\jquery.ztree.excheck-3.5.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
@@ -360,6 +365,8 @@
     </Content>
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Add.cshtml" />
+    <Content Include="Views\Roles\List.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +377,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511140429250_Modify.resx">
       <DependentUpon>201511140429250_Modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511160523293_Modify1.resx">
+      <DependentUpon>201511160523293_Modify1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

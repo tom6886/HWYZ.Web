@@ -26,20 +26,24 @@
                 <ul id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
                     @using HWYZ.Context;
                     @using HWYZ.Models;
+                    @{int roleVal = Convert.ToInt16(UserContext.user.Role.RoleVal);}
 
                     @foreach (Menu menu in MenuContext.menus)
                     {
-                        if (menu.SubMenu.Count == 0)
+
+                        if ((Convert.ToInt16(menu.AuthVal) & roleVal) > 0)
                         {
+                            if (menu.SubMenu.Count == 0)
+                            {
                         <li>
                             <a href="@menu.Url">
                                 <i class="glyphicon @menu.Icon"></i>
                                 @menu.Title
                             </a>
                         </li>
-                        }
-                        else
-                        {
+                            }
+                            else
+                            {
                         <li>
                             <a href="#@menu.ID" class="nav-header collapsed" data-toggle="collapse">
                                 <i class="glyphicon @menu.Icon"></i>
@@ -49,10 +53,14 @@
                             <ul id="@menu.ID" class="nav nav-list secondmenu collapse" style="height: 0px;">
                                 @foreach (Menu sub in @menu.SubMenu)
                                 {
+                                    if ((Convert.ToInt16(sub.AuthVal) & roleVal) > 0)
+                                    {
                                     <li><a href="@sub.Url"><i class="glyphicon @sub.Icon"></i>&nbsp;@sub.Title</a></li>
+                                    }
                                 }
                             </ul>
                         </li>
+                            }
                         }
                     }
                 </ul>

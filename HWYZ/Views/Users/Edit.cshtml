@@ -20,6 +20,16 @@
                     <input type="text" class="form-control" name="CardNumber" value="@ViewBag.user.CardNumber"/>
                 </div>
                 <div class="form-group">
+                    <label for="Role" class="control-label">用户角色:</label>
+                    <select name="RoleId" class="form-control">
+                        @foreach (SelectListItem item in ViewBag.roles)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                    <input type="hidden" id="RoleId" value="@ViewBag.user.RoleId"/>
+                </div>
+                <div class="form-group">
                     <label for="Sex" class="control-label">性别:</label>
                     <select name="Sex" class="form-control">
                         <option value="male">男</option>
