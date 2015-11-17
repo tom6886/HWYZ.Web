@@ -1,13 +1,13 @@
 ﻿@using Webdiyer.WebControls.Mvc;
 @using HWYZ.Models;
-@model PagedList<Guser>
+@model PagedList<Store>
 
 <div class="row">
     <div class="col-md-4">
         @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
         {
             <div class="input-group">
-                <input type="text" class="form-control" name="key" placeholder="请输入姓名或身份证号" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" name="key" placeholder="请输入门店名称或编号" aria-describedby="basic-addon2">
                 <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
             </div>
         }
@@ -25,4 +25,4 @@
 </div>
 
 @{Html.RegisterMvcPagerScriptResource();}
-@Scripts.Render("~/Scripts/Page/users.js")
+@Scripts.Render("~/Scripts/Page/store.js")

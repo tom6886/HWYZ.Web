@@ -11,15 +11,15 @@ using Webdiyer.WebControls.Mvc;
 
 namespace HWYZ.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
-        public ActionResult Index(string name, int pi = 1)
+        public ActionResult Index(string key, int pi = 1)
         {
             using (DBContext db = new DBContext())
             {
                 Expression<Func<Guser, bool>> where = PredicateExtensions.True<Guser>();
 
-                if (!string.IsNullOrEmpty(name)) { where = where.And(q => q.DisplayName.Contains(name) || q.CardNumber.Contains(name)); }
+                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.DisplayName.Contains(key) || q.CardNumber.Contains(key)); }
 
                 PagedList<Guser> cards = db.Guser.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 

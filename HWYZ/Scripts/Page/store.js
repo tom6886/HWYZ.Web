@@ -1,10 +1,10 @@
 ﻿;
 $(function () {
 
-    var users = {};
+    var store = {};
 
-    users.openDialog = function (modal, userId) {
-        $.post("users/queryDialog", { userId: userId }, function (r) {
+    store.openDialog = function (modal, storeId) {
+        $.post("store/queryDialog", { storeId: storeId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -12,11 +12,11 @@ $(function () {
 
             modal.html(r);
 
-            users.bindDialog(modal);
+            store.bindDialog(modal);
         });
     };
 
-    users.bindDialog = function (modal) {
+    store.bindDialog = function (modal) {
         var _form = $("form", modal);
 
         _form.ajaxForm({
@@ -53,10 +53,10 @@ $(function () {
         });
     }
 
-    users.initPage = function () {
+    store.initPage = function () {
         $("#dlg_edit").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            users.openDialog($(this), button.parent().data('id'));
+            store.openDialog($(this), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
         });

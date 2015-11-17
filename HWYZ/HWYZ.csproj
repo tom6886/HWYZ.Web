@@ -181,17 +181,16 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\StoreGrantController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511140429250_Modify.cs" />
-    <Compile Include="Migrations\201511140429250_Modify.Designer.cs">
-      <DependentUpon>201511140429250_Modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511160523293_Modify1.cs" />
-    <Compile Include="Migrations\201511160523293_Modify1.Designer.cs">
-      <DependentUpon>201511160523293_Modify1.cs</DependentUpon>
+    <Compile Include="Migrations\201511170650305_Modify.cs" />
+    <Compile Include="Migrations\201511170650305_Modify.Designer.cs">
+      <DependentUpon>201511170650305_Modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -202,6 +201,7 @@
     <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="Models\GuserRole.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +313,7 @@
     <Content Include="Scripts\jquery.pnotify.js" />
     <Content Include="Scripts\Page\password.js" />
     <Content Include="Scripts\Page\roles.js" />
+    <Content Include="Scripts\Page\store.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -339,15 +340,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -367,6 +359,8 @@
     <Content Include="Views\Roles\Add.cshtml" />
     <Content Include="Views\Roles\List.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\StoreGrant\Index.cshtml" />
+    <Content Include="Views\StoreGrant\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,11 +369,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511140429250_Modify.resx">
-      <DependentUpon>201511140429250_Modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511160523293_Modify1.resx">
-      <DependentUpon>201511160523293_Modify1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511170650305_Modify.resx">
+      <DependentUpon>201511170650305_Modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

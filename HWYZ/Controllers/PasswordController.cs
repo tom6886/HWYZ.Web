@@ -1,4 +1,5 @@
 ﻿using HWYZ.Context;
+using HWYZ.Filters;
 using HWYZ.Models;
 using System.Data.Entity;
 using System.Web.Mvc;
@@ -6,7 +7,7 @@ using Utils;
 
 namespace HWYZ.Controllers
 {
-    public class PasswordController : Controller
+    public class PasswordController : BaseController
     {
         public ActionResult Index()
         {

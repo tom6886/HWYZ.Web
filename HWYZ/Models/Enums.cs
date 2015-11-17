@@ -17,4 +17,10 @@ namespace HWYZ.Models
         enable = 1,
         disable = 0
     }
+
+    public enum StoreType
+    {
+        PSZ = 1,
+        JMD = 0
+    }
 }

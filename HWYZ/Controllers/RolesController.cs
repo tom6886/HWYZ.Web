@@ -13,7 +13,7 @@ using Webdiyer.WebControls.Mvc;
 
 namespace HWYZ.Controllers
 {
-    public class RolesController : Controller
+    public class RolesController : BaseController
     {
         public ActionResult Index()
         {
@@ -81,7 +81,7 @@ namespace HWYZ.Controllers
                     name = item.Title,
                     authVal = item.AuthVal,
                     open = true,
-                    @checked = (role != null && ((Convert.ToInt16(role.RoleVal) & Convert.ToInt16(item.AuthVal)) > 0))
+                    @checked = (role != null && ((Convert.ToInt16(role.RoleVal) & item.AuthVal) > 0))
                 });
 
                 if (item.SubMenu.Count > 0) { addNodes(zNodes, item.SubMenu, item.ID, role); }
@@ -135,7 +135,11 @@ namespace HWYZ.Controllers
             {
                 GuserRole role = db.GuserRole.Where(q => q.ID.Equals(roleId)).FirstOrDefault();
 
-                if (role == null) { return Json(new { code = -1, msg = "您要删除的用户不存在" }); }
+                if (role == null) { return Json(new { code = -1, msg = "您要删除的角色不存在" }); }
+
+                List<Guser> users = db.Guser.Where(q => q.RoleId.Equals(roleId)).ToList();
+
+                if (users.Count > 0) { return Json(new { code = -2, msg = "该角色下已有用户，不能删除" }); }
 
                 db.GuserRole.Remove(role);
 
