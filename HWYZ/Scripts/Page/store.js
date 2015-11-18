@@ -4,7 +4,7 @@ $(function () {
     var store = {};
 
     store.openDialog = function (modal, storeId) {
-        $.post("store/queryDialog", { storeId: storeId }, function (r) {
+        $.post("storegrant/queryDialog", { storeId: storeId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -33,22 +33,57 @@ $(function () {
             }
         }).validate({
             rules: {
-                Account: "required",
-                Name: "required",
-                CardNumber: "required"
+                StoreCode: "required",
+                StoreName: "required",
+                Address: "required",
+                Lng: {
+                    required: true,
+                    number: true,
+                    lng: true
+                },
+                Lat: {
+                    required: true,
+                    number: true,
+                    lat: true
+                }
             },
             messages: {
-                Account: "用户编号是必填项",
-                Name: "用户姓名是必填项",
-                CardNumber: "身份证号是必填项"
+                StoreCode: "门店编号是必填项",
+                StoreName: "门店名是必填项",
+                Address: "地址是必填项",
+                Lng: {
+                    required: "经度是必填项",
+                    number: "经度只能输入数字"
+                },
+                Lat: {
+                    required: "纬度是必填项",
+                    number: "纬度只能输入数字"
+                }
             }
         });
 
-        $('select[name=RoleId]', _form).val($("#RoleId", _form).val());
-        $('select[name=Sex]', _form).val($("#Sex", _form).val());
+        $("._select", _form).select_2();
+
+        $('select[name=StoreType]', _form).val($("#StoreType", _form).val());
+        $('select[name=Discount]', _form).val(Number($("#Discount", _form).val()));
         $('select[name=Status]', _form).val($("#Status", _form).val());
 
         $(".save", modal).click(function () {
+
+            var isNull = false;
+
+            $("input._select", _form).each(function (i, v) {
+                if (!$(v).val()) {
+                    var html = '<label generated="true" class="error">{0}是必选项</label>';
+
+                    $(v).after(html.format($(v).siblings("span").text()));
+
+                    isNull = true;
+                }
+            });
+
+            if (isNull) { return false; }
+
             _form.submit();
         });
     }

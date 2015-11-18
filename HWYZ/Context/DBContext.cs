@@ -17,5 +17,7 @@ namespace HWYZ.Context
         public DbSet<GuserRole> GuserRole { get; set; }
 
         public DbSet<Store> Store { get; set; }
+
+        public DbSet<Area> Area { get; set; }
     }
 }

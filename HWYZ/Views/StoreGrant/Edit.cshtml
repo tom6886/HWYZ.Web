@@ -1,0 +1,138 @@
+﻿<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">编辑门店</h4>
+        </div>
+        <div class="modal-body">
+            <form id="form_edit" action="storegrant/editStore" method="post">
+                <input type="hidden" name="ID" value="@ViewBag.store.ID" />
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">门店编号</span>
+                        <span class="form-control">@ViewBag.store.StoreCode</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">门店名</span>
+                        <input type="text" class="form-control" name="StoreName" value="@ViewBag.store.StoreName" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">省</span>
+                            <input type="hidden" data-select="p" name="Province" class="_select" style="width: 100%;" value="@ViewBag.store.Province" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">市</span>
+                            <input type="hidden" data-select="ci" name="City" class="_select" style="width: 100%;" value="@ViewBag.store.City" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">县</span>
+                            <input type="hidden" data-select="co" name="Country" class="_select" style="width: 100%;" value="@ViewBag.store.Country" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">门店地址</span>
+                        <input type="text" class="form-control" name="Address" value="@ViewBag.store.Address"  />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">经度</span>
+                            <input type="text" class="form-control" name="Lng" value="@ViewBag.store.Lng" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">纬度</span>
+                            <input type="text" class="form-control" name="Lat" value="@ViewBag.store.Lat" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">推荐人</span>
+                        <span class="form-control">@ViewBag.store.Recommender</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">负责人</span>
+                        <input type="text" class="form-control" name="Presider" value="@ViewBag.store.Presider" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">联系电话</span>
+                        <input type="text" class="form-control" name="Tel" value="@ViewBag.store.Tel" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">支付宝账号</span>
+                        <input type="text" class="form-control" name="Alipay" value="@ViewBag.store.Alipay" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">微信账号</span>
+                        <input type="text" class="form-control" name="WeiXin" value="@ViewBag.store.WeiXin" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">银行账号</span>
+                        <input type="text" class="form-control" name="Bank" value="@ViewBag.store.Bank" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">门店类型</span>
+                            <select name="StoreType" class="form-control">
+                                <option value="JMD">加盟店</option>
+                                <option value="PSZ">配送站</option>
+                            </select>
+                            <input type="hidden" id="StoreType" value="@ViewBag.store.StoreType"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">折扣系数</span>
+                            <select name="Discount" class="form-control">
+                                <option>1</option>
+                                <option>0.9</option>
+                                <option>0.8</option>
+                                <option>0.7</option>
+                                <option>0.6</option>
+                            </select>
+                            <input type="hidden" id="Discount" value="@ViewBag.store.Discount"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Status" class="control-label">状态:</label>
+                    <select name="Status" class="form-control">
+                        <option value="enable">启用</option>
+                        <option value="disable">不启用</option>
+                    </select>
+                    <input type="hidden" id="Status" value="@ViewBag.store.Status"/>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary save">保存</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+    </div>
+</div>

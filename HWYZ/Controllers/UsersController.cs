@@ -80,6 +80,7 @@ namespace HWYZ.Controllers
                 else
                 {
                     oldUser.ModifyTime = DateTime.Now;
+                    oldUser.CardNumber = user.CardNumber;
                     oldUser.Name = user.DisplayName;
                     oldUser.RoleId = user.RoleId;
                     oldUser.Sex = user.Sex;

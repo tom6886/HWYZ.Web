@@ -183,14 +183,15 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\StoreGrantController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511170650305_Modify.cs" />
-    <Compile Include="Migrations\201511170650305_Modify.Designer.cs">
-      <DependentUpon>201511170650305_Modify.cs</DependentUpon>
+    <Compile Include="Migrations\201511180137380_modify.cs" />
+    <Compile Include="Migrations\201511180137380_modify.Designer.cs">
+      <DependentUpon>201511180137380_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Models\GuserRole.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,7 +240,6 @@
     <Content Include="Content\images\zTreeStandard.gif" />
     <Content Include="Content\images\zTreeStandard.png" />
     <Content Include="Content\jquery-ui.css" />
-    <Content Include="Content\select2.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -314,7 +315,12 @@
     <Content Include="Scripts\Page\password.js" />
     <Content Include="Scripts\Page\roles.js" />
     <Content Include="Scripts\Page\store.js" />
-    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select.js" />
+    <Content Include="Scripts\select2\select2-spinner.gif" />
+    <Content Include="Scripts\select2\select2.css" />
+    <Content Include="Scripts\select2\select2.min.js" />
+    <Content Include="Scripts\select2\select2.png" />
+    <Content Include="Scripts\select2\select2x2.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -361,6 +367,8 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\StoreGrant\Index.cshtml" />
     <Content Include="Views\StoreGrant\List.cshtml" />
+    <Content Include="Views\StoreGrant\Add.cshtml" />
+    <Content Include="Views\StoreGrant\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,8 +377,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511170650305_Modify.resx">
-      <DependentUpon>201511170650305_Modify.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511180137380_modify.resx">
+      <DependentUpon>201511180137380_modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

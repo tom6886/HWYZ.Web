@@ -69,6 +69,21 @@ $(function () {
             type: type || 'info'
         });
     };
+
+    jQuery.validator.addMethod("cardnum", function (value, element) {
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        return this.optional(element) || (reg.test(value));
+    }, "请正确填写身份证号");
+
+    jQuery.validator.addMethod("lng", function (value, element) {
+        var lngRe = /^[-]?(\d|([1-9]\d)|(1[0-7]\d)|(180))(\.\d*)?$/g;
+        return this.optional(element) || (lngRe.test(value));
+    }, "请正确填写经度");
+
+    jQuery.validator.addMethod("lat", function (value, element) {
+        var latRe = /^[-]?(\d|([1-8]\d)|(90))(\.\d*)?$/g;
+        return this.optional(element) || (latRe.test(value));
+    }, "请正确填写纬度");
 });
 
 //字符串format

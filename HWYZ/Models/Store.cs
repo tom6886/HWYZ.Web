@@ -1,13 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Utils;
 
 namespace HWYZ.Models
 {
     [Table("Store")]
     public class Store : BaseObj
     {
+        [NotMapped, Display(Name = "门店名"), MaxLength(100)]
+        public string Name
+        {
+            set
+            {
+                this.StoreName = value;
+                this.PinYin = Pinyin.GetPinyin(value);
+                this.PinYin1 = Pinyin.GetInitials(value);
+            }
+        }
+
         [Display(Name = "门店名"), MaxLength(0x40), Required]
         public string StoreName { get; set; }
+
+        [Display(Name = "门店名全拼"), MaxLength(100)]
+        public string PinYin { get; set; }
+
+        [Display(Name = "门店名首字母"), MaxLength(100)]
+        public string PinYin1 { get; set; }
 
         [Display(Name = "门店编号"), MaxLength(0x40), Required]
         public string StoreCode { get; set; }
@@ -19,7 +37,7 @@ namespace HWYZ.Models
         public string City { get; set; }
 
         [Display(Name = "县"), MaxLength(0x40), Required]
-        public string County { get; set; }
+        public string Country { get; set; }
 
         [Display(Name = "地址"), MaxLength(100), Required]
         public string Address { get; set; }
@@ -43,7 +61,7 @@ namespace HWYZ.Models
         public StoreType StoreType { get; set; }
 
         [Display(Name = "折扣系数"), Required]
-        public int Discount { get; set; }
+        public decimal Discount { get; set; }
 
         [Display(Name = "支付宝账号"), MaxLength(100)]
         public string Alipay { get; set; }

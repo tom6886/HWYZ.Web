@@ -24,7 +24,7 @@
                 <tr>
                     <td>@item.StoreName</td>
                     <td>@item.StoreCode</td>
-                    <td>@item.Province @item.City @item.County</td>
+                    <td>@item.Province @item.City @item.Country</td>
                     <td>@item.Address</td>
                     @if (@item.StoreType == StoreType.JMD)
                     {
@@ -69,7 +69,7 @@
 
             var _this = $(this);
 
-            $.post("storegrant/deleteStore", { userId: _this.parent().data('id') }, function (r) {
+            $.post("storegrant/deleteStore", { storeId: _this.parent().data('id') }, function (r) {
                 alert(r.msg);
 
                 if (r.code < 0) {

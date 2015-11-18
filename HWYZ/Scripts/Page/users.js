@@ -35,12 +35,12 @@ $(function () {
             rules: {
                 Account: "required",
                 Name: "required",
-                CardNumber: "required"
+                CardNumber: { required: true, cardnum: true }
             },
             messages: {
                 Account: "用户编号是必填项",
                 Name: "用户姓名是必填项",
-                CardNumber: "身份证号是必填项"
+                CardNumber: { required: "身份证号是必填项" }
             }
         });
 
