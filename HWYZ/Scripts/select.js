@@ -33,7 +33,7 @@
                         return { results: data.results, more: (page * data.pageSize) < data.total };
                     }
                 }, id: function (data) {
-                    return data.name;
+                    return data[obj.dataParam];
                 }, formatResult: function (data) {
                     return '<span class="select2-match" class="selector_subject_options" ></span>' + data.name;
                 }, formatSelection: function (data) {
@@ -50,7 +50,7 @@
 
     var fc = {
         p: function (e) {
-            area.province = priv.select({ elem: e, placeholder: "选择省", url: "getArea?levelType=1" });
+            area.province = priv.select({ elem: e, placeholder: "选择省", url: "getArea?levelType=1", dataParam: "name" });
 
             area.province.on('change', function (e) {
                 if (area.city) {
@@ -64,7 +64,7 @@
         },
         ci: function (e) {
             area.city = priv.select({
-                elem: e, placeholder: "选择市", url: "getArea?levelType=2", addQuery: function (query) {
+                elem: e, placeholder: "选择市", url: "getArea?levelType=2", dataParam: "name", addQuery: function (query) {
                     if (area.province) {
                         var i = area.province.select2('data');
                         if (i) { query.pId = i.id; };
@@ -80,13 +80,16 @@
         },
         co: function (e) {
             area.country = priv.select({
-                elem: e, placeholder: "选择县", url: "getArea?levelType=3", addQuery: function (query) {
+                elem: e, placeholder: "选择县", url: "getArea?levelType=3", dataParam: "name", addQuery: function (query) {
                     if (area.city) {
                         var i = area.city.select2('data');
                         if (i) { query.pId = i.id; };
                     }
                 }
             });
+        },
+        s: function (e) {
+            priv.select({ elem: e, placeholder: "选择门店", url: "getStore", dataParam: "id" });
         }
     }
 

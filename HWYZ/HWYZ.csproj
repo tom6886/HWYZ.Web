@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201511180137380_modify.Designer.cs">
       <DependentUpon>201511180137380_modify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511180618231_modify1.cs" />
+    <Compile Include="Migrations\201511180618231_modify1.Designer.cs">
+      <DependentUpon>201511180618231_modify1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -379,6 +383,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511180137380_modify.resx">
       <DependentUpon>201511180137380_modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511180618231_modify1.resx">
+      <DependentUpon>201511180618231_modify1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

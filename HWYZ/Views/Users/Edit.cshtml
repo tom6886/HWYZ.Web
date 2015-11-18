@@ -29,6 +29,17 @@
                     </select>
                     <input type="hidden" id="RoleId" value="@ViewBag.user.RoleId"/>
                 </div>
+                @if (HWYZ.Context.UserContext.user.Store == null)
+                {
+                    <div class="form-group">
+                        <label for="StoreId" class="control-label">所属门店:</label>
+                        <input type="hidden" data-select="s" name="StoreId" class="_select" style="width: 100%;" data-value="@ViewBag.storeName" data-id="@ViewBag.user.StoreId"/>
+                    </div>
+                }
+                else
+                {
+                    <input type="hidden" name="StoreId" value="@HWYZ.Context.UserContext.user.StoreId" />
+                }
                 <div class="form-group">
                     <label for="Sex" class="control-label">性别:</label>
                     <select name="Sex" class="form-control">

@@ -11,6 +11,7 @@ namespace HWYZ.Controllers
 {
     public class CommonController : Controller
     {
+        [HttpGet]
         public JsonResult getArea(string levelType, string pId, string key, int page = 1)
         {
             using (DBContext db = new DBContext())
@@ -33,6 +34,30 @@ namespace HWYZ.Controllers
                 }
 
                 int total = db.Area.Where(where.Compile()).Count();
+
+                return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult getStore(string key, int page = 1)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Expression<Func<Store, bool>> where = PredicateExtensions.True<Store>();
+
+                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
+
+                ArrayList results = new ArrayList();
+
+                List<Store> list = db.Store.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+
+                foreach (var item in list)
+                {
+                    results.Add(new { id = item.ID, name = item.StoreName });
+                }
+
+                int total = db.Store.Where(where.Compile()).Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }

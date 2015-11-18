@@ -17,11 +17,15 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Guser, bool>> where = PredicateExtensions.True<Guser>();
+                var query = db.Guser.AsQueryable();
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.DisplayName.Contains(key) || q.CardNumber.Contains(key)); }
+                string storeId = UserContext.user.StoreId;
 
-                PagedList<Guser> cards = db.Guser.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                if (!string.IsNullOrEmpty(storeId)) { query = query.Where(q => q.StoreId.Equals(storeId)); }
+
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.DisplayName.Contains(key) || q.CardNumber.Contains(key)); }
+
+                PagedList<Guser> cards = query.OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Guser>(new List<Guser>(), 10, 0);
@@ -42,11 +46,13 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(userId))
                 {
-                    Guser user = db.Guser.Where(q => q.ID.Equals(userId)).FirstOrDefault();
+                    Guser user = db.Guser.Include("Store").Where(q => q.ID.Equals(userId)).FirstOrDefault();
 
                     if (user == null) { return Json(new { code = -1, msg = "找不到指定用户" }); }
 
                     ViewBag.user = user;
+
+                    ViewBag.storeName = user.Store == null ? null : user.Store.StoreName;
 
                     return PartialView("Edit");
                 }
@@ -83,6 +89,7 @@ namespace HWYZ.Controllers
                     oldUser.CardNumber = user.CardNumber;
                     oldUser.Name = user.DisplayName;
                     oldUser.RoleId = user.RoleId;
+                    oldUser.StoreId = user.StoreId;
                     oldUser.Sex = user.Sex;
                     oldUser.Status = user.Status;
 

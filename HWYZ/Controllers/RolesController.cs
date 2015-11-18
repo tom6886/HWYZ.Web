@@ -115,6 +115,10 @@ namespace HWYZ.Controllers
                 }
                 else
                 {
+                    List<Guser> users = db.Guser.Where(q => q.RoleId.Equals(role.ID)).ToList();
+
+                    if (users.Count > 0 && role.Status == Status.disable) { return Json(new { code = -3, msg = "不能禁用已有用户的角色" }); }
+
                     oldRole.ModifyTime = DateTime.Now;
                     oldRole.RoleName = role.RoleName;
                     oldRole.RoleVal = role.RoleVal;

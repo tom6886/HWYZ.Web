@@ -34,7 +34,7 @@ namespace HWYZ.Filters
             if (menu != null && (menu.AuthVal & Convert.ToInt16(UserContext.user.Role.RoleVal)) == 0)
             {
                 //页面跳转到 登录页面
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 return;
             }
 

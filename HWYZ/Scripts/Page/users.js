@@ -44,6 +44,8 @@ $(function () {
             }
         });
 
+        $("._select").select_2();
+
         $('select[name=RoleId]', _form).val($("#RoleId", _form).val());
         $('select[name=Sex]', _form).val($("#Sex", _form).val());
         $('select[name=Status]', _form).val($("#Status", _form).val());
