@@ -91,6 +91,7 @@ namespace HWYZ.Controllers
                     oldUser.RoleId = user.RoleId;
                     oldUser.StoreId = user.StoreId;
                     oldUser.Sex = user.Sex;
+                    oldUser.Tel = user.Tel;
                     oldUser.Status = user.Status;
 
                     db.Entry(oldUser).State = EntityState.Modified;

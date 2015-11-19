@@ -184,6 +184,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\StoreGrantController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\StoreInfoController.cs" />
+    <Compile Include="Controllers\ProductSetController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,6 +199,14 @@
     <Compile Include="Migrations\201511180618231_modify1.Designer.cs">
       <DependentUpon>201511180618231_modify1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511181442190_modify2.cs" />
+    <Compile Include="Migrations\201511181442190_modify2.Designer.cs">
+      <DependentUpon>201511181442190_modify2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511190747414_modify3.cs" />
+    <Compile Include="Migrations\201511190747414_modify3.Designer.cs">
+      <DependentUpon>201511190747414_modify3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -208,6 +218,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +288,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Scripts\webuploader\Uploader.swf" />
+    <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -319,12 +332,14 @@
     <Content Include="Scripts\Page\password.js" />
     <Content Include="Scripts\Page\roles.js" />
     <Content Include="Scripts\Page\store.js" />
+    <Content Include="Scripts\Page\product.js" />
     <Content Include="Scripts\select.js" />
     <Content Include="Scripts\select2\select2-spinner.gif" />
     <Content Include="Scripts\select2\select2.css" />
     <Content Include="Scripts\select2\select2.min.js" />
     <Content Include="Scripts\select2\select2.png" />
     <Content Include="Scripts\select2\select2x2.png" />
+    <Content Include="Scripts\webuploader\webuploader.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -373,6 +388,10 @@
     <Content Include="Views\StoreGrant\List.cshtml" />
     <Content Include="Views\StoreGrant\Add.cshtml" />
     <Content Include="Views\StoreGrant\Edit.cshtml" />
+    <Content Include="Views\StoreInfo\Index.cshtml" />
+    <Content Include="Views\ProductSet\Index.cshtml" />
+    <Content Include="Views\ProductSet\List.cshtml" />
+    <Content Include="Views\ProductSet\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +405,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511180618231_modify1.resx">
       <DependentUpon>201511180618231_modify1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511181442190_modify2.resx">
+      <DependentUpon>201511181442190_modify2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511190747414_modify3.resx">
+      <DependentUpon>201511190747414_modify3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

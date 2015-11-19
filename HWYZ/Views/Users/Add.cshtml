@@ -7,31 +7,41 @@
         <div class="modal-body">
             <form id="form_edit" action="users/editUser" method="post">
                 <div class="form-group">
-                    <label for="Account" class="control-label">用户编号:</label>
-                    <input type="text" class="form-control" name="Account" />
+                    <div class="input-group">
+                        <span class="input-group-addon">用户编号</span>
+                        <input type="text" class="form-control" name="Account" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="DisplayName" class="control-label">用户姓名:</label>
-                    <input type="text" class="form-control" name="DisplayName" />
+                    <div class="input-group">
+                        <span class="input-group-addon">用户姓名</span>
+                        <input type="text" class="form-control" name="DisplayName" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="CardNumber" class="control-label">身份证号:</label>
-                    <input type="text" class="form-control" name="CardNumber" />
+                    <div class="input-group">
+                        <span class="input-group-addon">身份证号</span>
+                        <input type="text" class="form-control" name="CardNumber" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="Role" class="control-label">用户角色:</label>
-                    <select name="RoleId" class="form-control">
-                        @foreach (SelectListItem item in ViewBag.roles)
-                        {
-                            <option value="@item.Value">@item.Text</option>
-                        }
-                    </select>
+                    <div class="input-group">
+                        <span class="input-group-addon">用户角色</span>
+                        <select name="RoleId" class="form-control">
+                            @foreach (SelectListItem item in ViewBag.roles)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
                 </div>
                 @if (HWYZ.Context.UserContext.user.Store == null)
                 {
                     <div class="form-group">
-                        <label for="StoreId" class="control-label">所属门店:</label>
-                        <input type="hidden" data-select="s" name="StoreId" class="_select" style="width: 100%;" />
+                        <div class="input-group">
+                            <span class="input-group-addon">所属门店</span>
+                            <input type="hidden" data-select="s" name="StoreId" class="_select" style="width: 100%;" />
+                        </div>
                     </div>
                 }
                 else
@@ -39,19 +49,25 @@
                     <input type="hidden" name="StoreId" value="@HWYZ.Context.UserContext.user.StoreId" />
                 }
                 <div class="form-group">
-                    <label for="Sex" class="control-label">性别:</label>
-                    <select name="Sex" class="form-control">
-                        <option value="male">男</option>
-                        <option value="female">女</option>
-                    </select>
+                    <div class="input-group">
+                        <span class="input-group-addon">性别</span>
+                        <select name="Sex" class="form-control">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="Tel" class="control-label">联系电话:</label>
-                    <input type="text" class="form-control" name="Tel" />
+                    <div class="input-group">
+                        <span class="input-group-addon">联系电话</span>
+                        <input type="text" class="form-control" name="Tel" />
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="Remark" class="control-label">备注:</label>
-                    <input type="text" class="form-control" name="Remark" />
+                    <div class="input-group">
+                        <span class="input-group-addon">备注</span>
+                        <input type="text" class="form-control" name="Remark" />
+                    </div>
                 </div>
             </form>
         </div>

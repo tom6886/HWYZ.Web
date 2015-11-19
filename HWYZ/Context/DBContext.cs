@@ -19,5 +19,7 @@ namespace HWYZ.Context
         public DbSet<Store> Store { get; set; }
 
         public DbSet<Area> Area { get; set; }
+
+        public DbSet<Product> Product { get; set; }
     }
 }

@@ -1,0 +1,16 @@
+﻿<div class="jumbotron">
+    @{var store = HWYZ.Context.UserContext.user.Store;}
+    @if (store == null)
+    {
+        <h3>您没有所属门店</h3>
+    }
+    else
+    {
+        <h2>@store.StoreName</h2>
+        <p>门店编号：@store.StoreCode</p>
+        <p>所属地市：@store.Province @store.City @store.Country</p>
+        <p>地址：@store.Address</p>
+        <p>负责人：@store.Presider</p>
+        <p>联系电话：@store.Tel</p>
+    }
+</div>
