@@ -32,11 +32,11 @@
                     }
                     @if (@item.Status == Status.enable)
                     {
-                        <td>启用</td>
+                        <td>在市</td>
                     }
                     else
                     {
-                        <td>未启用</td>
+                        <td>停市</td>
                     }
                     <td data-id="@item.ID">
                         <a href="javascript:void(0)" class="editProduct" data-toggle="modal" data-target="#dlg_edit">编辑</a>
@@ -59,7 +59,7 @@
 <script type="text/javascript">
     $(function () {
         $(".delProduct").click(function () {
-            if (!confirm("您确定要删除此门店？")) { return false; }
+            if (!confirm("您确定要删除此商品？")) { return false; }
 
             var _this = $(this);
 

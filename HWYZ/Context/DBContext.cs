@@ -21,5 +21,7 @@ namespace HWYZ.Context
         public DbSet<Area> Area { get; set; }
 
         public DbSet<Product> Product { get; set; }
+
+        public DbSet<Doc> Doc { get; set; }
     }
 }

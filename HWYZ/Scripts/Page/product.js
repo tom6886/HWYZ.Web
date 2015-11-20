@@ -3,8 +3,8 @@ $(function () {
 
     var product = {};
 
-    product.openDialog = function (modal, userId) {
-        $.post("productset/queryDialog", { userId: userId }, function (r) {
+    product.openDialog = function (modal, productId) {
+        $.post("productset/queryDialog", { productId: productId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -36,17 +36,18 @@ $(function () {
             }
         }).validate({
             rules: {
-                Account: "required",
-                Name: "required",
-                CardNumber: { required: true, cardnum: true }
+                ProductCode: "required",
+                ProductName: "required",
+                Price: { required: true, number: true }
             },
             messages: {
-                Account: "用户编号是必填项",
-                Name: "用户姓名是必填项",
-                CardNumber: { required: "身份证号是必填项" }
+                ProductCode: "商品编号是必填项",
+                ProductName: "商品名称是必填项",
+                Price: { required: "价格是必填项" }
             }
         });
 
+        $('select[name=AllowReturn]', _form).val($("#AllowReturn", _form).val());
         $('select[name=Status]', _form).val($("#Status", _form).val());
 
         $(".save", modal).click(function () {
@@ -65,7 +66,7 @@ $(function () {
             swf: '~/Script/webuploader/Uploader.swf',
 
             // 文件接收服务端。
-            server: '/productset/savePicture',
+            server: '/image/savePicture',
 
             // 选择文件的按钮。可选。
             // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -85,8 +86,8 @@ $(function () {
                 return false;
             }
 
-            $("#viewpic").attr("src", r.src);
-            $("#ImagePath").val(r.src);
+            $("#viewpic").attr("src", "/Image/getInitial?docId={0}".format(r.docId));
+            $("#DocId").val(r.docId);
         });
     }
 

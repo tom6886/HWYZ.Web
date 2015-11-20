@@ -9,28 +9,29 @@
         </div>
         <div class="modal-body">
             <form id="form_edit" action="productset/editProduct" method="post">
+                <input type="hidden" name="ID" value="@ViewBag.product.ID" />
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">商品编号</span>
-                        <input type="text" class="form-control" name="ProductCode" />
+                        <input type="text" class="form-control" name="ProductCode"  value="@ViewBag.product.ProductCode"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">商品名称</span>
-                        <input type="text" class="form-control" name="ProductName" />
+                        <input type="text" class="form-control" name="ProductName"  value="@ViewBag.product.ProductName"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">条形码</span>
-                        <input type="text" class="form-control" name="BarCode" />
+                        <input type="text" class="form-control" name="BarCode"  value="@ViewBag.product.BarCode"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">价格</span>
-                        <input type="text" class="form-control" name="Price" />
+                        <input type="text" class="form-control" name="Price"  value="@ViewBag.product.Price"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,12 +41,23 @@
                             <option value="1">允许</option>
                             <option value="0">不允许</option>
                         </select>
+                        <input type="hidden" id="AllowReturn" value="@Convert.ToInt16(ViewBag.product.AllowReturn)"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">状态</span>
+                        <select name="Status" class="form-control">
+                            <option value="enable">在市</option>
+                            <option value="disable">停市</option>
+                        </select>
+                        <input type="hidden" id="Status" value="@ViewBag.product.Status"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">备注</span>
-                        <input type="text" class="form-control" name="Remark" />
+                        <input type="text" class="form-control" name="Remark"  value="@ViewBag.product.Remark"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -54,8 +66,15 @@
                     </div>
                 </div>
                 <div class="form-group" style="text-align: center;">
-                    <img src="~/Images/nopic.jpg" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
-                    <input type="hidden" name="DocId" id="DocId" />
+                    @if (string.IsNullOrEmpty(@ViewBag.product.DocId))
+                    {
+                        <img src="~/Images/nopic.jpg" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="/image/getInitial?docId=@ViewBag.product.DocId" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
+                    }
+                    <input type="hidden" name="DocId" id="DocId"  value="@ViewBag.product.DocId"/>
                 </div>
                 <div id="filePicker" style="margin-left: 42%">选择文件</div>
             </form>

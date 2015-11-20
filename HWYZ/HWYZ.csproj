@@ -186,10 +186,19 @@
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\StoreInfoController.cs" />
     <Compile Include="Controllers\ProductSetController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511200320143_modify.cs" />
+    <Compile Include="Migrations\201511200320143_modify.Designer.cs">
+      <DependentUpon>201511200320143_modify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511200656482_modify1.cs" />
+    <Compile Include="Migrations\201511200656482_modify1.Designer.cs">
+      <DependentUpon>201511200656482_modify1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -203,6 +212,7 @@
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Doc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -377,12 +387,21 @@
     <Content Include="Views\ProductSet\Index.cshtml" />
     <Content Include="Views\ProductSet\List.cshtml" />
     <Content Include="Views\ProductSet\Add.cshtml" />
+    <Content Include="Views\ProductSet\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511200320143_modify.resx">
+      <DependentUpon>201511200320143_modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511200656482_modify1.resx">
+      <DependentUpon>201511200656482_modify1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

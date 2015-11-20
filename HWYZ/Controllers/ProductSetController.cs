@@ -2,12 +2,10 @@
 using HWYZ.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
-using Utils;
 using Webdiyer.WebControls.Mvc;
 
 namespace HWYZ.Controllers
@@ -54,32 +52,71 @@ namespace HWYZ.Controllers
             }
         }
 
-        public JsonResult savePicture()
+        [HttpPost]
+        public JsonResult editProduct(Product product)
         {
-            try
+            using (DBContext db = new DBContext())
             {
-                string storeId = UserContext.user.StoreId;
+                //判断编号是否重复
+                Product sameCode = db.Product.Where(q => q.ProductCode.Equals(product.ProductCode) && !q.ID.Equals(product.ID)).FirstOrDefault();
 
-                string path = string.Format(@"{0}\Upload\{1}\", Server.MapPath("/"), storeId);
+                if (sameCode != null) { return Json(new { code = -1, msg = "商品编号已被注册" }); }
 
-                if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+                if (!string.IsNullOrEmpty(UserContext.user.StoreId) && string.IsNullOrEmpty(product.StoreId)) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
 
-                HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
+                Product oldProduct = db.Product.Where(q => q.ID.Equals(product.ID)).FirstOrDefault();
 
-                var suffix = files[0].ContentType.Split('/');
-                //获取文件格式
-                var _suffix = suffix[1];
+                if (oldProduct == null)
+                {
+                    product.CreatorID = UserContext.user.ID;
+                    product.Creator = UserContext.user.DisplayName;
+                    product.Name = product.ProductName;
+                    product.Status = Status.enable;
 
-                //随机生成文件名
-                string fileName = string.Format("{0}.{1}", StringUtil.UniqueID(), _suffix);
+                    db.Product.Add(product);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(oldProduct.DocId) && !oldProduct.DocId.Equals(product.DocId))
+                    {
+                        Doc.delete(oldProduct.DocId);
+                    }
 
-                files[0].SaveAs(string.Format("{0}{1}", path, fileName));
+                    oldProduct.ModifyTime = DateTime.Now;
+                    oldProduct.Name = product.ProductName;
+                    oldProduct.Price = product.Price;
+                    oldProduct.AllowReturn = product.AllowReturn;
+                    oldProduct.Remark = product.Remark;
+                    oldProduct.DocId = product.DocId;
+                    oldProduct.Status = product.Status;
 
-                return Json(new { code = 1, src = string.Format("/Upload{0}/{1}", string.IsNullOrEmpty(storeId) ? "" : "/" + storeId, fileName) });
+                    db.Entry(oldProduct).State = EntityState.Modified;
+                }
+                db.SaveChanges();
             }
-            catch (Exception e)
+
+            return Json(new { code = 1, msg = "保存成功" });
+        }
+
+        [HttpPost]
+        public JsonResult deleteProduct(string productId)
+        {
+            using (DBContext db = new DBContext())
             {
-                return Json(new { code = -1, msg = string.Format("文件上传失败，请联系管理员，失败原因：{0}", e.Message) });
+                Product product = db.Product.Where(q => q.ID.Equals(productId)).FirstOrDefault();
+
+                if (product == null) { return Json(new { code = -1, msg = "您要删除的用户不存在" }); }
+
+                if (!string.IsNullOrEmpty(product.DocId))
+                {
+                    Doc.delete(product.DocId);
+                }
+
+                db.Product.Remove(product);
+
+                db.SaveChanges();
+
+                return Json(new { code = 1, msg = "删除成功" });
             }
         }
     }

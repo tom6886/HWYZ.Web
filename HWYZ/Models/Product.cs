@@ -1,13 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Utils;
 
 namespace HWYZ.Models
 {
     [Table("Product")]
     public class Product : BaseObj
     {
+        [NotMapped, Display(Name = "产品名"), MaxLength(100)]
+        public string Name
+        {
+            set
+            {
+                this.ProductName = value;
+                this.PinYin = Pinyin.GetPinyin(value);
+                this.PinYin1 = Pinyin.GetInitials(value);
+            }
+        }
+
         [Display(Name = "产品名"), MaxLength(0x40), Required]
         public string ProductName { get; set; }
+
+        [Display(Name = "产品名全拼"), MaxLength(100)]
+        public string PinYin { get; set; }
+
+        [Display(Name = "产品名首字母"), MaxLength(100)]
+        public string PinYin1 { get; set; }
 
         [Display(Name = "产品编码"), MaxLength(0x40), Required]
         public string ProductCode { get; set; }
@@ -24,8 +42,8 @@ namespace HWYZ.Models
         [Display(Name = "备注"), MaxLength(200)]
         public string Remark { get; set; }
 
-        [Display(Name = "图片")]
-        public string ImagePath { get; set; }
+        [Display(Name = "图片id")]
+        public string DocId { get; set; }
 
         [Display(Name = "商品所属门店ID")]
         public string StoreId { get; set; }
