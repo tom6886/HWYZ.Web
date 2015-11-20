@@ -1,4 +1,7 @@
-﻿<div class="modal-dialog" role="document">
+﻿<style>
+    .webuploader-container div:first-child { width: 86px; height: 40px; }
+</style>
+<div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -48,8 +51,12 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">图片</span>
-                        <button type="button" class="btn btn-info">选择文件</button>
                     </div>
+                </div>
+                <div id="filePicker">选择文件</div>
+                <div class="form-group" style="text-align: center;">
+                    <img src="~/Images/nopic.jpg" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
+                    <input type="hidden" name="ImagePath" id="ImagePath"/>
                 </div>
             </form>
         </div>

@@ -2,9 +2,12 @@
 using HWYZ.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Web;
 using System.Web.Mvc;
+using Utils;
 using Webdiyer.WebControls.Mvc;
 
 namespace HWYZ.Controllers
@@ -48,6 +51,35 @@ namespace HWYZ.Controllers
                 }
 
                 return PartialView("Add");
+            }
+        }
+
+        public JsonResult savePicture()
+        {
+            try
+            {
+                string storeId = UserContext.user.StoreId;
+
+                string path = string.Format(@"{0}\Upload\{1}\", Server.MapPath("/"), storeId);
+
+                if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
+
+                HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
+
+                var suffix = files[0].ContentType.Split('/');
+                //获取文件格式
+                var _suffix = suffix[1];
+
+                //随机生成文件名
+                string fileName = string.Format("{0}.{1}", StringUtil.UniqueID(), _suffix);
+
+                files[0].SaveAs(string.Format("{0}{1}", path, fileName));
+
+                return Json(new { code = 1, src = string.Format("/Upload{0}/{1}", string.IsNullOrEmpty(storeId) ? "" : "/" + storeId, fileName) });
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = -1, msg = string.Format("文件上传失败，请联系管理员，失败原因：{0}", e.Message) });
             }
         }
     }

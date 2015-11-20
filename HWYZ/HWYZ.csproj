@@ -191,22 +191,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511180137380_modify.cs" />
-    <Compile Include="Migrations\201511180137380_modify.Designer.cs">
-      <DependentUpon>201511180137380_modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511180618231_modify1.cs" />
-    <Compile Include="Migrations\201511180618231_modify1.Designer.cs">
-      <DependentUpon>201511180618231_modify1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511181442190_modify2.cs" />
-    <Compile Include="Migrations\201511181442190_modify2.Designer.cs">
-      <DependentUpon>201511181442190_modify2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511190747414_modify3.cs" />
-    <Compile Include="Migrations\201511190747414_modify3.Designer.cs">
-      <DependentUpon>201511190747414_modify3.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -288,6 +272,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Images\nopic.jpg" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -398,20 +383,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511180137380_modify.resx">
-      <DependentUpon>201511180137380_modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511180618231_modify1.resx">
-      <DependentUpon>201511180618231_modify1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511181442190_modify2.resx">
-      <DependentUpon>201511181442190_modify2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511190747414_modify3.resx">
-      <DependentUpon>201511190747414_modify3.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

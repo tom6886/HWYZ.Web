@@ -25,7 +25,7 @@ namespace HWYZ.Models
         public string Remark { get; set; }
 
         [Display(Name = "图片")]
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
         [Display(Name = "商品所属门店ID")]
         public string StoreId { get; set; }
