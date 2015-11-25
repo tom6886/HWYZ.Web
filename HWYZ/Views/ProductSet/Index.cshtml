@@ -2,27 +2,33 @@
 @using HWYZ.Models;
 @model PagedList<Product>
 
-<div class="row">
-    <div class="col-md-4">
-        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
-        {
-            <div class="input-group">
-                <input type="text" class="form-control" name="key" placeholder="请输入商品名称或编号" aria-describedby="basic-addon2">
-                <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+                {
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="key" placeholder="请输入商品名称或编号" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
+                    </div>
+                }
             </div>
-        }
-    </div>
-    <div class="col-md-7">
-        <button class="btn btn-info" id="addUser" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
-    </div>
-</div>
-<div class="row">
-    <div id="container">
-        @Html.Partial("List", Model)
-    </div>
-</div>
+            <div class="col-md-7">
+                <button class="btn btn-info" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
+            </div>
+        </div>
+        <div class="row">
+            <div id="container">
+                @Html.Partial("List", Model)
+            </div>
+        </div>
 
-<div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        </div>
+        <div class="modal fade" id="dlg_view" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        </div>
+    </div>
 </div>
 
 @{Html.RegisterMvcPagerScriptResource();}

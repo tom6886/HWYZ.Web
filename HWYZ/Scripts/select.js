@@ -90,6 +90,9 @@
         },
         s: function (e) {
             priv.select({ elem: e, placeholder: "选择门店", url: "getStore", dataParam: "id" });
+        },
+        pr: function (e) {
+            priv.select({ elem: e, placeholder: "选择商品", url: "getProduct", dataParam: "name" });
         }
     }
 

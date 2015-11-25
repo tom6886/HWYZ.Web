@@ -1,13 +1,17 @@
-﻿<div class="row">
-    <div class="col-md-12">
-        <button class="btn btn-info" id="addUser" type="button" data-toggle="modal" data-target="#dlg_edit">添加</button>
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-info" type="button" data-toggle="modal" data-target="#dlg_edit">添加</button>
+            </div>
+        </div>
+        <div class="row">
+            <div id="container">
+            </div>
+        </div>
+        <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        </div>
     </div>
-</div>
-<div class="row">
-    <div id="container">
-    </div>
-</div>
-<div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 </div>
 @Styles.Render("~/Content/zTreeStyle.css")
 @Scripts.Render("~/Scripts/Page/roles.js")

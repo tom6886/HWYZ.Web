@@ -26,7 +26,7 @@
                 <ul id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
                     @using HWYZ.Context;
                     @using HWYZ.Models;
-                    @{int roleVal = Convert.ToInt16(UserContext.user.Role.RoleVal);}
+                    @{int roleVal = Convert.ToInt32(UserContext.user.Role.RoleVal);}
 
                     @foreach (Menu menu in MenuContext.menus)
                     {

@@ -1,6 +1,8 @@
 ﻿@using Webdiyer.WebControls.Mvc;
 @using HWYZ.Models;
-@model PagedList<Store>
+@using HWYZ.Context;
+@model PagedList<Order>
+
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -9,13 +11,16 @@
                 @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
                 {
                     <div class="input-group">
-                        <input type="text" class="form-control" name="key" placeholder="请输入门店名称或编号" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control" name="key" placeholder="请输入订单编号" aria-describedby="basic-addon2">
                         <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
                     </div>
                 }
             </div>
             <div class="col-md-7">
-                <button class="btn btn-info" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
+                @if (UserContext.user.Store != null)
+                {
+                    <a class="btn btn-info" style="float: right;" target="_blank" href="orderset/addOrder">添加</a>
+                }
             </div>
         </div>
         <div class="row">
@@ -23,13 +28,7 @@
                 @Html.Partial("List", Model)
             </div>
         </div>
-        <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        </div>
     </div>
 </div>
 
 @{Html.RegisterMvcPagerScriptResource();}
-@Scripts.Render("~/Scripts/Page/store.js")
-@Styles.Render("~/Scripts/select2/select2.css")
-@Scripts.Render("~/Scripts/select2/select2.min.js")
-@Scripts.Render("~/Scripts/select.js")

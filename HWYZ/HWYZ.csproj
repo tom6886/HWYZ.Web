@@ -187,18 +187,30 @@
     <Compile Include="Controllers\StoreInfoController.cs" />
     <Compile Include="Controllers\ProductSetController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\OrderSetController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
+    <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Filters\StoreAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511200320143_modify.cs" />
-    <Compile Include="Migrations\201511200320143_modify.Designer.cs">
-      <DependentUpon>201511200320143_modify.cs</DependentUpon>
+    <Compile Include="Migrations\201511250635174_modify.cs" />
+    <Compile Include="Migrations\201511250635174_modify.Designer.cs">
+      <DependentUpon>201511250635174_modify.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511200656482_modify1.cs" />
-    <Compile Include="Migrations\201511200656482_modify1.Designer.cs">
-      <DependentUpon>201511200656482_modify1.cs</DependentUpon>
+    <Compile Include="Migrations\201511250655002_modify1.cs" />
+    <Compile Include="Migrations\201511250655002_modify1.Designer.cs">
+      <DependentUpon>201511250655002_modify1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511250709145_modify2.cs" />
+    <Compile Include="Migrations\201511250709145_modify2.Designer.cs">
+      <DependentUpon>201511250709145_modify2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511250812579_modify3.cs" />
+    <Compile Include="Migrations\201511250812579_modify3.Designer.cs">
+      <DependentUpon>201511250812579_modify3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -213,6 +225,8 @@
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Doc.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +297,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Images\nopic.jpg" />
+    <Content Include="Scripts\Page\order.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -388,6 +403,13 @@
     <Content Include="Views\ProductSet\List.cshtml" />
     <Content Include="Views\ProductSet\Add.cshtml" />
     <Content Include="Views\ProductSet\Edit.cshtml" />
+    <Content Include="Views\OrderSet\Index.cshtml" />
+    <Content Include="Views\OrderSet\List.cshtml" />
+    <Content Include="Views\OrderDetail\Index.cshtml" />
+    <Content Include="Views\OrderDetail\List.cshtml" />
+    <Content Include="Views\Shared\_OrderLayout.cshtml" />
+    <Content Include="Views\OrderDetail\Add.cshtml" />
+    <Content Include="Views\ProductSet\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -396,11 +418,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511200320143_modify.resx">
-      <DependentUpon>201511200320143_modify.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511250635174_modify.resx">
+      <DependentUpon>201511250635174_modify.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511200656482_modify1.resx">
-      <DependentUpon>201511200656482_modify1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511250655002_modify1.resx">
+      <DependentUpon>201511250655002_modify1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511250709145_modify2.resx">
+      <DependentUpon>201511250709145_modify2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511250812579_modify3.resx">
+      <DependentUpon>201511250812579_modify3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

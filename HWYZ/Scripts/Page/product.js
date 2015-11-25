@@ -3,6 +3,17 @@ $(function () {
 
     var product = {};
 
+    product.openViewDialog = function (modal, productId) {
+        $.post("productset/queryViewDialog", { productId: productId }, function (r) {
+            if (r.code < 0) {
+                alert(r.msg);
+                return false;
+            }
+
+            modal.html(r);
+        });
+    };
+
     product.openDialog = function (modal, productId) {
         $.post("productset/queryDialog", { productId: productId }, function (r) {
             if (r.code < 0) {
@@ -95,6 +106,13 @@ $(function () {
         $("#dlg_edit").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             product.openDialog($(this), button.parent().data('id'));
+        }).on('hidden.bs.modal', function () {
+            $(".modal-dialog", $(this)).remove();
+        });
+
+        $("#dlg_view").on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            product.openViewDialog($(this), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
         });

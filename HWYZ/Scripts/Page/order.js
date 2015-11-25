@@ -1,10 +1,10 @@
 ﻿;
 $(function () {
 
-    var store = {};
+    var order = {};
 
-    store.openDialog = function (modal, storeId) {
-        $.post("storegrant/queryDialog", { storeId: storeId }, function (r) {
+    order.openDialog = function (modal, storeId) {
+        $.post("orderdetail/queryDialog", { storeId: storeId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -12,11 +12,11 @@ $(function () {
 
             modal.html(r);
 
-            store.bindDialog(modal);
+            order.bindDialog(modal);
         });
     };
 
-    store.bindDialog = function (modal) {
+    order.bindDialog = function (modal) {
         var _form = $("form", modal);
 
         _form.ajaxForm({
@@ -33,44 +33,43 @@ $(function () {
             }
         }).validate({
             rules: {
-                StoreCode: "required",
-                StoreName: "required",
-                Address: "required",
-                Presider: "required",
-                Tel: "required",
-                Lng: {
+                OrderNumber: {
                     required: true,
-                    number: true,
-                    lng: true
-                },
-                Lat: {
-                    required: true,
-                    number: true,
-                    lat: true
+                    digits: true
                 }
             },
             messages: {
-                StoreCode: "门店编号是必填项",
-                StoreName: "门店名是必填项",
-                Address: "地址是必填项",
-                Presider: "负责人是必填项",
-                Tel: "联系电话是必填项",
-                Lng: {
-                    required: "经度是必填项",
-                    number: "经度只能输入数字"
-                },
-                Lat: {
-                    required: "纬度是必填项",
-                    number: "纬度只能输入数字"
+                OrderNumber: {
+                    required: "发货数量是必填项",
+                    digits: "请输入整数"
                 }
             }
         });
 
-        $("._select", _form).select_2();
+        var product = $("._select", _form).select_2();
 
-        $('select[name=StoreType]', _form).val($("#StoreType", _form).val());
-        $('select[name=Discount]', _form).val(Number($("#Discount", _form).val()));
-        $('select[name=Status]', _form).val($("#Status", _form).val());
+        product.on('change', function (e) {
+
+            var data = product.select2("data");
+
+            if (data == null) { return false; }
+
+            $("input[name=ProductId]", _form).val(data.id);
+
+            $("input[name=ProductName]", _form).val(data.name);
+
+            $("input[name=ProductCode]", _form).val(data.code);
+
+            $("input[name=Price]", _form).val(data.price);
+        });
+
+        $("input[name=OrderNumber]", _form).on('input propertychange', function () {
+            var data = product.select2("data");
+
+            if (data == null) { return false; }
+
+            $("#pay", _form).val(data.price * $(this).val());
+        });
 
         $(".save", modal).click(function () {
 
@@ -96,10 +95,10 @@ $(function () {
         });
     }
 
-    store.initPage = function () {
+    order.initPage = function () {
         $("#dlg_edit").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            store.openDialog($(this), button.parent().data('id'));
+            order.openDialog($(this), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
         });

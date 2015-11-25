@@ -23,4 +23,12 @@ namespace HWYZ.Models
         PSZ = 1,
         JMD = 0
     }
+
+    public enum OrderStatus
+    {
+        BeforeSubmit = 0,
+        BeforeSend = 1,
+        Sended = 2,
+        Reject = 3
+    }
 }

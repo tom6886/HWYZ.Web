@@ -57,15 +57,19 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                //判断编号是否重复
-                Store sameCode = db.Store.Where(q => q.StoreCode.Equals(store.StoreCode) && !q.ID.Equals(store.ID)).FirstOrDefault();
+                //判断店名是否重复
+                Store sameName = db.Store.Where(q => q.StoreName.Equals(store.StoreName) && !q.ID.Equals(store.ID)).FirstOrDefault();
 
-                if (sameCode != null) { return Json(new { code = -1, msg = "门店编号已被注册" }); }
+                if (sameName != null) { return Json(new { code = -1, msg = "门店名称已被注册" }); }
 
                 Store oldStore = db.Store.Where(q => q.ID.Equals(store.ID)).FirstOrDefault();
 
                 if (oldStore == null)
                 {
+                    //生成流水号
+                    int code = db.Store.Count() == 0 ? 80000 : Convert.ToInt32(db.Store.Max(q => q.StoreCode)) + 1;
+
+                    store.StoreCode = code.ToString();
                     store.CreatorID = UserContext.user.ID;
                     store.Creator = UserContext.user.DisplayName;
                     store.Name = store.StoreName;
@@ -77,9 +81,6 @@ namespace HWYZ.Controllers
                 {
                     oldStore.ModifyTime = DateTime.Now;
                     oldStore.Name = store.StoreName;
-                    oldStore.Province = store.Province;
-                    oldStore.City = store.City;
-                    oldStore.Country = store.Country;
                     oldStore.Address = store.Address;
                     oldStore.Lng = store.Lng;
                     oldStore.Lat = store.Lat;

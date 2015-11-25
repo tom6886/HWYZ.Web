@@ -54,7 +54,7 @@ namespace HWYZ.Controllers
 
                 if (user.Status == Status.disable) { return Json(new { code = -2, msg = "此用户已禁用，请联系管理员" }); }
 
-                int roleVal = Convert.ToInt16(user.Role.RoleVal);
+                int roleVal = Convert.ToInt32(user.Role.RoleVal);
 
                 if (roleVal == 0) { return Json(new { code = -3, msg = "此用户角色未分配权限，请联系管理员" }); }
 

@@ -30,7 +30,7 @@ namespace HWYZ.Controllers
 
                 foreach (var item in list)
                 {
-                    results.Add(new { id = item.ID, name = item.Name });
+                    results.Add(new { id = item.ID, name = item.Name, code = item.CityCode });
                 }
 
                 int total = db.Area.Where(where.Compile()).Count();
@@ -58,6 +58,30 @@ namespace HWYZ.Controllers
                 }
 
                 int total = db.Store.Where(where.Compile()).Count();
+
+                return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public JsonResult getProduct(string key, int page = 1)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Expression<Func<Product, bool>> where = PredicateExtensions.True<Product>();
+
+                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
+
+                ArrayList results = new ArrayList();
+
+                List<Product> list = db.Product.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+
+                foreach (var item in list)
+                {
+                    results.Add(new { id = item.ID, name = item.ProductName, code = item.ProductCode, price = item.Price });
+                }
+
+                int total = db.Product.Where(where.Compile()).Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }

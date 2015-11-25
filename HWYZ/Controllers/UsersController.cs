@@ -78,7 +78,7 @@ namespace HWYZ.Controllers
                     user.CreatorID = UserContext.user.ID;
                     user.Creator = UserContext.user.DisplayName;
                     user.Name = user.DisplayName;
-                    user.PassWord = StringUtil.Md5Encrypt("111111");
+                    user.PassWord = StringUtil.Md5Encrypt("888");
                     user.Status = Status.enable;
 
                     db.Guser.Add(user);

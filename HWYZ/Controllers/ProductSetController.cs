@@ -20,6 +20,10 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
+                string storeId = UserContext.user.StoreId;
+
+                if (!string.IsNullOrEmpty(storeId)) { where = where.And(q => q.StoreId == null || q.StoreId.Equals(storeId)); }
+
                 PagedList<Product> cards = db.Product.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
@@ -29,6 +33,21 @@ namespace HWYZ.Controllers
                     return PartialView("List", cards);
 
                 return View(cards);
+            }
+        }
+
+        [HttpPost]
+        public object queryViewDialog(string productId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Product product = db.Product.Where(q => q.ID.Equals(productId)).FirstOrDefault();
+
+                if (product == null) { return Json(new { code = -1, msg = "找不到指定商品" }); }
+
+                ViewBag.product = product;
+
+                return PartialView("View");
             }
         }
 

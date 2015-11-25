@@ -1,0 +1,87 @@
+﻿<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">查看商品</h4>
+        </div>
+        <div class="modal-body">
+            <form id="form_edit" action="productset/editProduct" method="post">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">商品编号</span>
+                        <label class="form-control">@ViewBag.product.ProductCode</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">商品名称</span>
+                        <label class="form-control">@ViewBag.product.ProductName</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">条形码</span>
+                        <label class="form-control">@ViewBag.product.BarCode</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">价格</span>
+                        <label class="form-control">@ViewBag.product.Price</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">允许退换货</span>
+                        @if (ViewBag.product.AllowReturn)
+                        {
+                            <label class="form-control">允许</label>
+                        }
+                        else
+                        {
+                            <label class="form-control">不允许</label>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">状态</span>
+                        @if (ViewBag.product.Status == HWYZ.Models.Status.enable)
+                        {
+                            <label class="form-control">在市</label>
+                        }
+                        else
+                        {
+                            <label class="form-control">停市</label>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">备注</span>
+                        <label class="form-control">@ViewBag.product.Remark</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">图片</span>
+                    </div>
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    @if (string.IsNullOrEmpty(@ViewBag.product.DocId))
+                    {
+                        <img src="~/Images/nopic.jpg" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="/image/getInitial?docId=@ViewBag.product.DocId" width="180" height="320" alt="美食" id="viewpic" class="img-thumbnail" />
+                    }
+                    <input type="hidden" name="DocId" id="DocId"  value="@ViewBag.product.DocId"/>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        </div>
+    </div>
+</div>

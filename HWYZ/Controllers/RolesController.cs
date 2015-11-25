@@ -81,7 +81,7 @@ namespace HWYZ.Controllers
                     name = item.Title,
                     authVal = item.AuthVal,
                     open = true,
-                    @checked = (role != null && ((Convert.ToInt16(role.RoleVal) & item.AuthVal) > 0))
+                    @checked = (role != null && ((Convert.ToInt32(role.RoleVal) & item.AuthVal) > 0))
                 });
 
                 if (item.SubMenu.Count > 0) { addNodes(zNodes, item.SubMenu, item.ID, role); }

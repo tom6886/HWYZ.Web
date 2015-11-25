@@ -27,7 +27,7 @@ namespace HWYZ.Models
         [Display(Name = "门店名首字母"), MaxLength(100)]
         public string PinYin1 { get; set; }
 
-        [Display(Name = "门店编号"), MaxLength(0x40), Required]
+        [Display(Name = "门店编号"), MaxLength(5), Required]
         public string StoreCode { get; set; }
 
         [Display(Name = "省"), MaxLength(0x40), Required]
@@ -38,6 +38,9 @@ namespace HWYZ.Models
 
         [Display(Name = "县"), MaxLength(0x40), Required]
         public string Country { get; set; }
+
+        [Display(Name = "地区编号"), MaxLength(4), Required]
+        public string CityCode { get; set; }
 
         [Display(Name = "地址"), MaxLength(100), Required]
         public string Address { get; set; }

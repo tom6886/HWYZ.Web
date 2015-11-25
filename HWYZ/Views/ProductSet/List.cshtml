@@ -1,5 +1,6 @@
 ﻿@using Webdiyer.WebControls.Mvc;
 @using HWYZ.Models;
+@using HWYZ.Context;
 @model PagedList<Product>
 
 <div class="table-responsive">
@@ -39,7 +40,14 @@
                         <td>停市</td>
                     }
                     <td data-id="@item.ID">
-                        <a href="javascript:void(0)" class="editProduct" data-toggle="modal" data-target="#dlg_edit">编辑</a>
+                        @if (UserContext.user.StoreId == @item.StoreId)
+                        {
+                            <a href="javascript:void(0)" class="editProduct" data-toggle="modal" data-target="#dlg_edit">编辑</a>
+                        }
+                        else
+                        {
+                            <a href="javascript:void(0)" class="viewProduct" data-toggle="modal" data-target="#dlg_view">查看</a>
+                        }
                         |
                         <a href="javascript:void(0)" class="delProduct">删除</a>
                     </td>
