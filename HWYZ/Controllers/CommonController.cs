@@ -70,6 +70,8 @@ namespace HWYZ.Controllers
             {
                 Expression<Func<Product, bool>> where = PredicateExtensions.True<Product>();
 
+                where = where.And(q => q.StoreId == null && q.Status == Status.enable);
+
                 if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
                 ArrayList results = new ArrayList();

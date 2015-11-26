@@ -188,7 +188,8 @@
     <Compile Include="Controllers\ProductSetController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\OrderSetController.cs" />
-    <Compile Include="Controllers\OrderDetailController.cs" />
+    <Compile Include="Controllers\OrderEditController.cs" />
+    <Compile Include="Controllers\OrderViewController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
@@ -405,11 +406,14 @@
     <Content Include="Views\ProductSet\Edit.cshtml" />
     <Content Include="Views\OrderSet\Index.cshtml" />
     <Content Include="Views\OrderSet\List.cshtml" />
-    <Content Include="Views\OrderDetail\Index.cshtml" />
-    <Content Include="Views\OrderDetail\List.cshtml" />
+    <Content Include="Views\OrderEdit\Index.cshtml" />
+    <Content Include="Views\OrderEdit\List.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />
-    <Content Include="Views\OrderDetail\Add.cshtml" />
+    <Content Include="Views\OrderEdit\Add.cshtml" />
     <Content Include="Views\ProductSet\View.cshtml" />
+    <Content Include="Views\OrderEdit\Edit.cshtml" />
+    <Content Include="Views\OrderView\Index.cshtml" />
+    <Content Include="Views\OrderView\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using HWYZ.Context;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
 
 namespace HWYZ.Models
 {
@@ -50,5 +53,19 @@ namespace HWYZ.Models
         public string RejectReason { get; set; }
 
         public OrderStatus Status { get; set; }
+
+        public static void RefreshPayable(string id)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Order order = db.Order.Where(q => q.ID.Equals(id)).FirstOrDefault();
+
+                order.Payable = db.OrderItem.Where(q => q.OrderId.Equals(id)).Sum(q => q.Price * q.OrderNumber * q.Discount);
+
+                db.Entry(order).State = EntityState.Modified;
+
+                db.SaveChanges();
+            }
+        }
     }
 }

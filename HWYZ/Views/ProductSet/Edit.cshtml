@@ -38,10 +38,10 @@
                     <div class="input-group">
                         <span class="input-group-addon">允许退换货</span>
                         <select class="form-control" name="AllowReturn">
-                            <option value="1">允许</option>
-                            <option value="0">不允许</option>
+                            <option value="True">允许</option>
+                            <option value="False">不允许</option>
                         </select>
-                        <input type="hidden" id="AllowReturn" value="@Convert.ToInt16(ViewBag.product.AllowReturn)"/>
+                        <input type="hidden" id="AllowReturn" value="@ViewBag.product.AllowReturn.ToString()"/>
                     </div>
                 </div>
                 <div class="form-group">

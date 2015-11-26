@@ -58,9 +58,13 @@ namespace HWYZ.Controllers
                 }
                 else
                 {
-                    int num = Convert.ToInt16(code.Substring(start.Length));
+                    int num = Convert.ToInt16(code.Substring(start.Length)) + 1;
 
-                    code = start + num;
+                    if (num > 99) { return null; }
+
+                    string numStr = num > 9 ? num.ToString() : "0" + num;
+
+                    code = start + numStr;
                 }
 
                 Order order = new Order()
@@ -78,7 +82,26 @@ namespace HWYZ.Controllers
                 db.Order.Add(order);
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "OrderDetail", new { orderId = order.ID });
+                return RedirectToAction("Index", "OrderEdit", new { orderId = order.ID });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult delOrder(string orderId)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Order order = db.Order.Where(q => q.ID.Equals(orderId)).FirstOrDefault();
+
+                if (order == null) { return Json(new { code = -1, msg = "找不到对应订单" }); }
+
+                db.OrderItem.RemoveRange(db.OrderItem.Where(q => q.OrderId.Equals(orderId)));
+
+                db.Order.Remove(order);
+
+                db.SaveChanges();
+
+                return Json(new { code = 1, msg = "删除成功" });
             }
         }
     }

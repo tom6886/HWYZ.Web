@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "~/Views/Shared/_OrderLayout.cshtml";
+    ViewBag.Title = "订单详情";
+}
+
+@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@using HWYZ.Context;
+@model PagedList<OrderItem>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">订单号</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.OrderCode" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">采购单位</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.StoreName"/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">备注</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.StoreName"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">订单金额</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Payable" />
+                </div>
+            </div>
+            @if (ViewBag.order.Status == OrderStatus.Sended)
+            {
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">快递单号</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressCode"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">快递查询地址</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressUrl"/>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.order.Status == OrderStatus.Sended)
+        {
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">发货人姓名</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.DeliverName" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">发货人电话</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.DeliverTel"/>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+                    {
+                        <input type="hidden" name="orderId" value="@ViewBag.order.ID" />
+                        <div class="panel-body" id="container">
+                            @Html.Partial("List", Model)
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">负责人</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Creator" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">联系电话</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Tel"/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">下单时间</span>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.SubmitTime" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

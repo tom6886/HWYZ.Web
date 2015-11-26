@@ -16,15 +16,24 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Product, bool>> where = PredicateExtensions.True<Product>();
+                var query = db.Product.AsQueryable();
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
                 string storeId = UserContext.user.StoreId;
 
-                if (!string.IsNullOrEmpty(storeId)) { where = where.And(q => q.StoreId == null || q.StoreId.Equals(storeId)); }
+                if (string.IsNullOrEmpty(storeId))
+                {
+                    //管理员只维护并查看总店的商品
+                    query = query.Where(q => q.StoreId == null);
+                }
+                else
+                {
+                    //分店可以查看总店在市商品并维护自己添加的商品
+                    query = query.Where(q => ((q.StoreId == null && q.Status == Status.enable) || q.StoreId.Equals(storeId)));
+                }
 
-                PagedList<Product> cards = db.Product.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                PagedList<Product> cards = query.OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Product>(new List<Product>(), 10, 0);
@@ -81,8 +90,6 @@ namespace HWYZ.Controllers
 
                 if (sameCode != null) { return Json(new { code = -1, msg = "商品编号已被注册" }); }
 
-                if (!string.IsNullOrEmpty(UserContext.user.StoreId) && string.IsNullOrEmpty(product.StoreId)) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
-
                 Product oldProduct = db.Product.Where(q => q.ID.Equals(product.ID)).FirstOrDefault();
 
                 if (oldProduct == null)
@@ -91,11 +98,14 @@ namespace HWYZ.Controllers
                     product.Creator = UserContext.user.DisplayName;
                     product.Name = product.ProductName;
                     product.Status = Status.enable;
+                    product.StoreId = UserContext.user.StoreId;
 
                     db.Product.Add(product);
                 }
                 else
                 {
+                    if (UserContext.user.StoreId != oldProduct.StoreId) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
+
                     if (!string.IsNullOrEmpty(oldProduct.DocId) && !oldProduct.DocId.Equals(product.DocId))
                     {
                         Doc.delete(oldProduct.DocId);

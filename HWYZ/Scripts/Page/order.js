@@ -3,8 +3,10 @@ $(function () {
 
     var order = {};
 
-    order.openDialog = function (modal, storeId) {
-        $.post("orderdetail/queryDialog", { storeId: storeId }, function (r) {
+    order.openDialog = function (modal, orderId, itemId) {
+        if (!orderId) { alert("参数错误"); return false; }
+
+        $.post("orderedit/queryDialog", { orderId: orderId, itemId: itemId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -48,27 +50,25 @@ $(function () {
 
         var product = $("._select", _form).select_2();
 
-        product.on('change', function (e) {
+        if (product) {
+            product.on('change', function (e) {
 
-            var data = product.select2("data");
+                var data = product.select2("data");
 
-            if (data == null) { return false; }
+                if (data == null) { return false; }
 
-            $("input[name=ProductId]", _form).val(data.id);
+                $("input[name=ProductId]", _form).val(data.id);
 
-            $("input[name=ProductName]", _form).val(data.name);
+                $("input[name=ProductName]", _form).val(data.name);
 
-            $("input[name=ProductCode]", _form).val(data.code);
+                $("input[name=ProductCode]", _form).val(data.code);
 
-            $("input[name=Price]", _form).val(data.price);
-        });
+                $("input[name=Price]", _form).val(data.price);
+            });
+        }
 
         $("input[name=OrderNumber]", _form).on('input propertychange', function () {
-            var data = product.select2("data");
-
-            if (data == null) { return false; }
-
-            $("#pay", _form).val(data.price * $(this).val());
+            $("#pay", _form).val($("input[name=Price]").val() * $(this).val() * $("input[name=Discount]").val());
         });
 
         $(".save", modal).click(function () {
@@ -98,13 +98,17 @@ $(function () {
     order.initPage = function () {
         $("#dlg_edit").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            order.openDialog($(this), button.parent().data('id'));
+            order.openDialog($(this), $("input[name=orderId]").val(), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
         });
 
-        $("#basic-addon2").click(function () {
-            $("#form_query").submit();
+        $(".submit").click(function () {
+            if (!confirm("确认提交？提交后您将不能再对订单进行任何更改")) { return false; }
+
+            $.post("orderedit/submitOrder", { orderId: $("input[name=orderId]").val(), remark: $("input[name=remark]").val() }, function (r) {
+                alert(r.msg);
+            });
         });
     }();
 

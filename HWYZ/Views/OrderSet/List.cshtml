@@ -1,5 +1,6 @@
 ﻿@using Webdiyer.WebControls.Mvc;
 @using HWYZ.Models;
+@using HWYZ.Context;
 @model PagedList<Order>
 
 <div class="table-responsive">
@@ -7,10 +8,14 @@
         <thead>
             <tr>
                 <td>订单号</td>
-                <td>采购单位</td>
+                @if (UserContext.user.Store == null)
+                { 
+                    <td>采购单位</td>
+                }
                 <td>负责人</td>
                 <td>联系电话</td>
                 <td>下单时间</td>
+                <td>订单金额</td>
                 <td>订单状态</td>
                 <td>操作</td>
             </tr>
@@ -21,21 +26,29 @@
                 {
                 <tr>
                     <td>@item.OrderCode</td>
-                    <td>@item.StoreName</td>
+                    @if (UserContext.user.Store == null)
+                    { 
+                        <td>@item.StoreName</td>
+                    }
                     <td>@item.Creator</td>
                     <td>@item.Tel</td>
                     <td>@item.CreateTime</td>
+                    <td>@item.Payable</td>
                     @switch (@item.Status)
                     {
                         case OrderStatus.BeforeSubmit:<td>待提交</td>; break;
-                        case OrderStatus.BeforeSend:<td>带发货</td>; break;
+                        case OrderStatus.BeforeSend:<td>待发货</td>; break;
                         case OrderStatus.Sended:<td>已发货</td>; break;
                         case OrderStatus.Reject:<td>驳回</td>; break;
                     }
                     <td data-id="@item.ID">
-                        <a href="OrderDetail?orderId=@item.ID" target="_blank" class="editOrder">编辑</a>
-                        |
-                        <a href="javascript:void(0)" class="delOrder">删除</a>
+                        @if (@item.Status == OrderStatus.BeforeSubmit)
+                        {
+                            <a href="OrderEdit?orderId=@item.ID" target="_blank" class="editOrder">编辑</a>
+                            <span>|</span>
+                            <a href="javascript:void(0)" class="delOrder">删除</a>
+                        }
+                        <a href="OrderView?orderId=@item.ID" target="_blank" class="editOrder">查看</a>
                     </td>
                 </tr>
                 }
