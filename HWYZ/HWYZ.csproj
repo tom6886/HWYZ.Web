@@ -187,7 +187,7 @@
     <Compile Include="Controllers\StoreInfoController.cs" />
     <Compile Include="Controllers\ProductSetController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\OrderSetController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderEditController.cs" />
     <Compile Include="Controllers\OrderViewController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -298,6 +298,8 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Images\nopic.jpg" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\Page\order.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
@@ -404,8 +406,8 @@
     <Content Include="Views\ProductSet\List.cshtml" />
     <Content Include="Views\ProductSet\Add.cshtml" />
     <Content Include="Views\ProductSet\Edit.cshtml" />
-    <Content Include="Views\OrderSet\Index.cshtml" />
-    <Content Include="Views\OrderSet\List.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\List.cshtml" />
     <Content Include="Views\OrderEdit\Index.cshtml" />
     <Content Include="Views\OrderEdit\List.cshtml" />
     <Content Include="Views\Shared\_OrderLayout.cshtml" />

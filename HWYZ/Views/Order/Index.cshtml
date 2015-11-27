@@ -1,0 +1,110 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@using HWYZ.Context;
+@model PagedList<Order>
+@Styles.Render("~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css")
+@Styles.Render("~/Scripts/select2/select2.css")
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">订单编号</span>
+                        <input type="text" class="form-control" name="OrderCode" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyy/mm/dd">
+                        <span class="input-group-addon">下单时间起</span>
+                        <input class="form-control" size="16" name="StartDate" type="text" value="" readonly="readonly">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group date form_date" data-date="" data-date-format="yyyy/mm/dd">
+                        <span class="input-group-addon">下单时间止</span>
+                        <input class="form-control" size="16" name="EndDate" type="text" value="" readonly="readonly">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 15px;">
+                @if (UserContext.user.Store == null)
+                {
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">采购单位</span>
+                            <input type="hidden" data-select="s" class="_select" style="width: 100%;" name="StoreId" />
+                        </div>
+                    </div>
+                }
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">联系电话</span>
+                        <input type="text" class="form-control" name="Tel" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">订单状态</span>
+                        <select name="Status" class="form-control">
+                            <option value="">所有</option>
+                            <option value="BeforeSubmit">待提交</option>
+                            <option value="BeforeSend">待发货</option>
+                            <option value="Sended">已发货</option>
+                            <option value="Reject">驳回</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row" style="margin: 15px 0px 0 0;">
+            @if (UserContext.user.Store != null)
+            {
+                <a class="btn btn-info" style="float: right; margin-left: 20px;" target="_blank" href="order/addOrder">添加</a>
+            }
+            <a class="btn btn-info query" style="float: right;" href="javascript:void(0)">查询</a>
+        </div>
+        <div class="row">
+            <div id="container">
+                @Html.Partial("List", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+@{Html.RegisterMvcPagerScriptResource();}
+@Scripts.Render("~/Scripts/select2/select2.min.js")
+@Scripts.Render("~/Scripts/select.js")
+@Scripts.Render("~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js")
+<script type="text/javascript">
+    $(function () {
+        $("._select").select_2();
+
+        $('.form_date').datetimepicker({
+            language: 'fr',
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+
+        var date = new Date();
+        var start = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";
+
+        $("input[name=StartDate]").val(start);
+        $("input[name=EndDate]").val(date.toLocaleDateString());
+
+        $(".query").click(function () {
+            $("#form_query").submit();
+        });
+    });
+</script>
