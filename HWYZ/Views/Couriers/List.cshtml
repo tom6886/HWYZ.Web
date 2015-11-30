@@ -1,0 +1,89 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@using HWYZ.Context;
+@model PagedList<Courier>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>送餐员姓名</td>
+                <td>送餐员电话</td>
+                @if (UserContext.user.Store == null)
+                {
+                    <td>所属门店</td>
+                    <td>门店编号</td>
+                    <td>门店负责人</td>
+                    <td>门店电话</td>
+                }
+                <td>添加时间</td>
+                <td>状态</td>
+                @if (UserContext.user.Store != null)
+                {
+                    <td>操作</td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Courier item in Model)
+                {
+                <tr>
+                    <td>@item.CourierName</td>
+                    <td>@item.CourierTel</td>
+                    @if (UserContext.user.Store == null)
+                    {
+                        <td>@item.Store.StoreName</td>
+                        <td>@item.Store.StoreCode</td>
+                        <td>@item.Store.Presider</td>
+                        <td>@item.Store.Tel</td>
+                    }
+                    <td>@item.CreateTime</td>
+                    @if (@item.Status == Status.enable)
+                    {
+                        <td>在职</td>
+                    }
+                    else
+                    {
+                        <td>离职</td>
+                    }
+                    @if (UserContext.user.Store != null)
+                    {
+                        <td data-id="@item.ID">
+                            <a href="javascript:void(0)" class="editCourier" data-toggle="modal" data-target="#dlg_edit">编辑</a>
+                            |
+                        <a href="javascript:void(0)" class="delCourier">删除</a>
+                        </td>
+                    }
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-right" style="padding: 10px 15px;">
+    @if (Model != null && Model.Count > 0)
+    {
+        @Ajax.Pager(Model, new PagerOptions { CssClass = "table-page", PageIndexParameterName = "pi", CurrentPagerItemWrapperFormatString = "<span class=\"active\">{0}</span>", NumericPagerItemWrapperFormatString = "<span>{0}</span>", FirstPageText = "首页&nbsp;&nbsp;", PrevPageText = "前一页", NextPageText = "下一页", LastPageText = "&nbsp;&nbsp;尾页" }, new MvcAjaxOptions { UpdateTargetId = "container", HttpMethod = "Post", DataFormId = "form_query" })
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".delCourier").click(function () {
+            if (!confirm("您确定要删除此送餐员？")) { return false; }
+
+            var _this = $(this);
+
+            $.post("couriers/deleteCourier", { courierId: _this.parent().data('id') }, function (r) {
+                alert(r.msg);
+
+                if (r.code < 0) {
+                    return false;
+                }
+
+                $("#form_query").submit();
+            });
+        });
+    });
+</script>

@@ -192,6 +192,7 @@
     <Compile Include="Controllers\OrderViewController.cs" />
     <Compile Include="Controllers\ProductDeliveController.cs" />
     <Compile Include="Controllers\DeliveEditController.cs" />
+    <Compile Include="Controllers\CouriersController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
@@ -199,21 +200,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511250635174_modify.cs" />
-    <Compile Include="Migrations\201511250635174_modify.Designer.cs">
-      <DependentUpon>201511250635174_modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511250655002_modify1.cs" />
-    <Compile Include="Migrations\201511250655002_modify1.Designer.cs">
-      <DependentUpon>201511250655002_modify1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511250709145_modify2.cs" />
-    <Compile Include="Migrations\201511250709145_modify2.Designer.cs">
-      <DependentUpon>201511250709145_modify2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201511250812579_modify3.cs" />
-    <Compile Include="Migrations\201511250812579_modify3.Designer.cs">
-      <DependentUpon>201511250812579_modify3.cs</DependentUpon>
+    <Compile Include="Migrations\201511300155135_modify.cs" />
+    <Compile Include="Migrations\201511300155135_modify.Designer.cs">
+      <DependentUpon>201511300155135_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -230,6 +219,7 @@
     <Compile Include="Models\Doc.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\Courier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -304,6 +294,7 @@
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\Page\order.js" />
     <Content Include="Scripts\Page\delive.js" />
+    <Content Include="Scripts\Page\couriers.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -425,6 +416,10 @@
     <Content Include="Views\DeliveEdit\Edit.cshtml" />
     <Content Include="Views\DeliveEdit\Index.cshtml" />
     <Content Include="Views\DeliveEdit\List.cshtml" />
+    <Content Include="Views\Couriers\Add.cshtml" />
+    <Content Include="Views\Couriers\Edit.cshtml" />
+    <Content Include="Views\Couriers\Index.cshtml" />
+    <Content Include="Views\Couriers\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -433,17 +428,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511250635174_modify.resx">
-      <DependentUpon>201511250635174_modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511250655002_modify1.resx">
-      <DependentUpon>201511250655002_modify1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511250709145_modify2.resx">
-      <DependentUpon>201511250709145_modify2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201511250812579_modify3.resx">
-      <DependentUpon>201511250812579_modify3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511300155135_modify.resx">
+      <DependentUpon>201511300155135_modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

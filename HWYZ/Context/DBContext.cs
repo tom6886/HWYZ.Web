@@ -27,5 +27,7 @@ namespace HWYZ.Context
         public DbSet<Order> Order { get; set; }
 
         public DbSet<OrderItem> OrderItem { get; set; }
+
+        public DbSet<Courier> Courier { get; set; }
     }
 }

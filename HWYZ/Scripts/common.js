@@ -75,6 +75,11 @@ $(function () {
         return this.optional(element) || (reg.test(value));
     }, "请正确填写身份证号");
 
+    jQuery.validator.addMethod("phone", function (value, element) {
+        var reg = /(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+        return this.optional(element) || (reg.test(value));
+    }, "请正确填写手机号");
+
     jQuery.validator.addMethod("lng", function (value, element) {
         var lngRe = /^[-]?(\d|([1-9]\d)|(1[0-7]\d)|(180))(\.\d*)?$/g;
         return this.optional(element) || (lngRe.test(value));
