@@ -17,26 +17,40 @@ namespace HWYZ.Controllers
             HttpRequest request = System.Web.HttpContext.Current.Request;
             HttpCookie cookie = request.Cookies["session-cookie-name"];
 
-            if (cookie != null)
+            if (cookie == null) { return View(); }
+
+            string cookieAccountId = cookie["cookie-account-id-key"];
+
+            if (string.IsNullOrEmpty(cookieAccountId))
             {
-                string cookieAccountId = cookie["cookie-account-id-key"];
-                if (cookieAccountId != null)
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+
+                return View();
+            }
+
+            using (var db = new DBContext())
+            {
+                Guser user = db.Guser.Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
+
+                if (user == null || user.Status == Status.disable || Convert.ToInt32(user.Role.RoleVal) == 0)
                 {
-                    using (var db = new DBContext())
-                    {
-                        Guser user = db.Guser.Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
+                    cookie.Expires = DateTime.Now.AddDays(-1);
+                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
-                        UserContext.user = user;
-                    }
+                    return View();
                 }
-            }
 
-            if (UserContext.user != null)
-            {
-                Response.Redirect("~/Home");
-            }
+                UserContext.user = user;
 
-            return View();
+                List<Menu> menus = XmlHelper.XmlDeserializeFromFile<List<Menu>>(Server.MapPath("~/route.config"), Encoding.UTF8);
+
+                MenuContext.menus = menus;
+
+                string url = GetFirstMenu(menus, Convert.ToInt32(user.Role.RoleVal));
+
+                return RedirectToAction(url, "Index");
+            }
         }
 
         [HttpPost]
@@ -72,26 +86,35 @@ namespace HWYZ.Controllers
                     System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
                 }
 
-                foreach (Menu item in menus)
-                {
-                    if ((item.AuthVal & roleVal) == 0) { continue; }
-
-                    if (item.SubMenu.Count == 0) { returnUrl = item.ID; break; }
-
-                    foreach (Menu sub in item.SubMenu)
-                    {
-                        if ((sub.AuthVal & roleVal) > 0)
-                        {
-                            returnUrl = sub.ID;
-                            break;
-                        }
-                    }
-
-                    break;
-                }
+                returnUrl = GetFirstMenu(menus, roleVal);
             }
 
             return Json(new { code = 1, msg = "登录成功", url = returnUrl });
+        }
+
+        private string GetFirstMenu(List<Menu> menus, int roleVal)
+        {
+            string menuId = string.Empty;
+
+            foreach (Menu item in menus)
+            {
+                if ((item.AuthVal & roleVal) == 0) { continue; }
+
+                if (item.SubMenu.Count == 0) { menuId = item.ID; break; }
+
+                foreach (Menu sub in item.SubMenu)
+                {
+                    if ((sub.AuthVal & roleVal) > 0)
+                    {
+                        menuId = sub.ID;
+                        break;
+                    }
+                }
+
+                break;
+            }
+
+            return menuId;
         }
 
         public ActionResult LogOff()

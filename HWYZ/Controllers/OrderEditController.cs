@@ -108,7 +108,7 @@ namespace HWYZ.Controllers
                 db.SaveChanges();
             }
 
-            Order.RefreshPayable(item.OrderId);
+            Order.RefreshPay(item.OrderId);
 
             return Json(new { code = 1, msg = "保存成功" });
         }
@@ -131,7 +131,7 @@ namespace HWYZ.Controllers
                 db.SaveChanges();
             }
 
-            Order.RefreshPayable(orderId);
+            Order.RefreshPay(orderId);
 
             return Json(new { code = 1, msg = "删除成功" });
         }

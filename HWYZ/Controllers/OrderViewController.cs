@@ -31,5 +31,25 @@ namespace HWYZ.Controllers
                 return View(cards);
             }
         }
+
+        [HttpPost]
+        public JsonResult rejectOrder(string orderId, string reason)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Order order = db.Order.Where(q => q.ID.Equals(orderId)).FirstOrDefault();
+
+                if (order == null) { return Json(new { code = -1, msg = "找不到对应订单" }); }
+
+                if (order.Status != OrderStatus.BeforeSend) { return Json(new { code = -2, msg = "非待发货状态的订单不能驳回" }); }
+
+                order.RejectReason = reason;
+                order.Status = OrderStatus.Reject;
+
+                db.SaveChanges();
+            }
+
+            return Json(new { code = 1, msg = "已驳回订单，请及时通知分店" });
+        }
     }
 }

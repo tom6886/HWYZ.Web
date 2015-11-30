@@ -26,12 +26,29 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">备注</span>
-                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.StoreName"/>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Remark"/>
                 </div>
             </div>
         </div>
 
         <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">订单状态</span>
+                    @if (ViewBag.order.Status == OrderStatus.BeforeSend)
+                    {
+                        <input type="text" class="form-control" readonly="readonly" value="待发货" />
+                    }
+                    else if (ViewBag.order.Status == OrderStatus.Sended)
+                    {
+                        <input type="text" class="form-control" readonly="readonly" value="已发货" />
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" readonly="readonly" value="驳回" />
+                    }
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">订单金额</span>
@@ -40,6 +57,27 @@
             </div>
             @if (ViewBag.order.Status == OrderStatus.Sended)
             {
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">实付金额</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Paid"/>
+                    </div>
+                </div>
+            }
+            else if (ViewBag.order.Status == OrderStatus.Reject)
+            {
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">驳回原因</span>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.RejectReason"/>
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.order.Status == OrderStatus.Sended)
+        {
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">快递单号</span>
@@ -52,19 +90,15 @@
                         <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressUrl"/>
                     </div>
                 </div>
-            }
-        </div>
-
-        @if (ViewBag.order.Status == OrderStatus.Sended)
-        {
-            <div class="row" style="margin-top: 10px;">
-
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">发货人姓名</span>
                         <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.DeliverName" />
                     </div>
                 </div>
+            </div>
+            
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">发货人电话</span>
@@ -111,4 +145,39 @@
             </div>
         </div>
     </div>
+    @if (@ViewBag.order.Status == OrderStatus.BeforeSend && @UserContext.user.Store == null)
+    {
+        <div class="panel-footer row" style="text-align: right;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-default reject">驳回</button>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">驳回原因</span>
+                    <input type="text" class="form-control" name="reason" />
+                </div>
+            </div>
+        </div>
+    }
 </div>
+<script type="text/javascript">
+    $(function () {
+        $(".reject").click(function () {
+            var _orderId = $("input[name=orderId]").val(),
+                _reason = $("input[name=reason]").val();
+
+            if (!_reason) { alert("驳回原因必须填写"); return false; }
+
+            if (!confirm("确认驳回？驳回后订单将不能再进行任何更改")) { return false; }
+
+            $.post("orderview/rejectOrder", { orderId: _orderId, reason: _reason }, function (r) {
+                alert(r.msg);
+
+                if (r.code > 0) {
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>

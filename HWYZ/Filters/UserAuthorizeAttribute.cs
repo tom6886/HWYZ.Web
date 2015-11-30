@@ -14,6 +14,7 @@ namespace HWYZ.Filters
             //如果UserContext.user为null  或者 MenuContext.menus为 null
             if (UserContext.user == null || MenuContext.menus == null)
             {
+                if (filterContext.HttpContext.Request.IsAjaxRequest()) { return; }
                 //页面跳转到 登录页面
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 return;
@@ -33,6 +34,7 @@ namespace HWYZ.Filters
 
             if (menu != null && (menu.AuthVal & Convert.ToInt32(UserContext.user.Role.RoleVal)) == 0)
             {
+                if (filterContext.HttpContext.Request.IsAjaxRequest()) { return; }
                 //页面跳转到 登录页面
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
                 return;

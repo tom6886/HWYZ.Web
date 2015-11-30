@@ -25,7 +25,37 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">备注</span>
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" readonly="readonly"  value="@ViewBag.order.Remark"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">订单金额</span>
+                    <input type="text" class="form-control pay" readonly="readonly" value="@ViewBag.order.Payable" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">实付金额</span>
+                    <input type="text" class="form-control pay" name="Pay" value="@ViewBag.order.Paid"/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">快递单号</span>
+                    <input type="text" class="form-control" name="ExpressCode" value="@ViewBag.order.ExpressCode"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">快递查询地址</span>
+                    <input type="text" class="form-control" name="ExpressUrl" value="@ViewBag.order.ExpressUrl" />
                 </div>
             </div>
         </div>
@@ -34,9 +64,6 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#dlg_edit">添加</button>
-                    </div>
                     @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
                     {
                         <input type="hidden" name="orderId" value="@ViewBag.order.ID" />
@@ -65,23 +92,17 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">下单时间</span>
-                    <input type="text" class="form-control" readonly="readonly" placeholder="以提交时间为准" />
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.SubmitTime" />
                 </div>
             </div>
         </div>
     </div>
-    @if (@ViewBag.order.Status == OrderStatus.BeforeSubmit)
-    {
-        <div class="panel-footer" style="text-align: right;">
-            <button type="button" class="btn btn-default submit">提交</button>
-        </div>
-    }
+    <div class="panel-footer" style="text-align: right;">
+        <button type="button" class="btn btn-default send">发货</button>
+    </div>
 </div>
 <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 </div>
 
 @{Html.RegisterMvcPagerScriptResource();}
-@Scripts.Render("~/Scripts/Page/order.js")
-@Styles.Render("~/Scripts/select2/select2.css")
-@Scripts.Render("~/Scripts/select2/select2.min.js")
-@Scripts.Render("~/Scripts/select.js")
+@Scripts.Render("~/Scripts/Page/delive.js")

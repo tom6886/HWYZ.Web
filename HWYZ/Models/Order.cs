@@ -54,17 +54,22 @@ namespace HWYZ.Models
 
         public OrderStatus Status { get; set; }
 
-        public static void RefreshPayable(string id)
+        public static decimal RefreshPay(string id)
         {
             using (DBContext db = new DBContext())
             {
                 Order order = db.Order.Where(q => q.ID.Equals(id)).FirstOrDefault();
 
-                order.Payable = db.OrderItem.Where(q => q.OrderId.Equals(id)).Sum(q => q.Price * q.OrderNumber * q.Discount);
+                decimal pay = db.OrderItem.Where(q => q.OrderId.Equals(id)).Sum(q => q.Price * q.OrderNumber * q.Discount);
+
+                order.Payable = pay;
+                order.Paid = pay;
 
                 db.Entry(order).State = EntityState.Modified;
 
                 db.SaveChanges();
+
+                return pay;
             }
         }
     }

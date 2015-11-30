@@ -1,12 +1,12 @@
 ﻿;
 $(function () {
 
-    var order = {};
+    var delive = {};
 
-    order.openDialog = function (modal, orderId, itemId) {
-        if (!orderId) { alert("参数错误"); return false; }
+    delive.openDialog = function (modal, orderId, itemId) {
+        if (!(orderId && itemId)) { alert("参数错误"); return false; }
 
-        $.post("orderedit/queryDialog", { orderId: orderId, itemId: itemId }, function (r) {
+        $.post("deliveedit/queryDialog", { orderId: orderId, itemId: itemId }, function (r) {
             if (r.code < 0) {
                 alert(r.msg);
                 return false;
@@ -14,11 +14,11 @@ $(function () {
 
             modal.html(r);
 
-            order.bindDialog(modal);
+            delive.bindDialog(modal);
         });
     };
 
-    order.bindDialog = function (modal) {
+    delive.bindDialog = function (modal) {
         var _form = $("form", modal);
 
         _form.ajaxForm({
@@ -31,6 +31,7 @@ $(function () {
                 if (r.code > 0) {
                     modal.modal('hide');
                     $("#form_query").submit();
+                    $(".pay").val(r.pay);
                 }
             }
         }).validate({
@@ -48,24 +49,11 @@ $(function () {
             }
         });
 
-        var product = $("._select", _form).select_2();
+        $("select[name=Discount]", _form).val(Number($("#Discount", _form).val()));
 
-        if (product) {
-            product.on('change', function (e) {
-
-                var data = product.select2("data");
-
-                if (data == null) { return false; }
-
-                $("input[name=ProductId]", _form).val(data.id);
-
-                $("input[name=ProductName]", _form).val(data.name);
-
-                $("input[name=ProductCode]", _form).val(data.code);
-
-                $("input[name=Price]", _form).val(data.price);
-            });
-        }
+        $("select[name=Discount]", _form).change(function () {
+            $("#pay", _form).val($("input[name=Price]").val() * $(this).val() * $("input[name=OrderNumber]").val());
+        });
 
         $("input[name=OrderNumber]", _form).on('input propertychange', function () {
             $("#pay", _form).val($("input[name=Price]").val() * $(this).val() * $("input[name=Discount]").val());
@@ -76,21 +64,29 @@ $(function () {
         });
     }
 
-    order.initPage = function () {
+    delive.initPage = function () {
         $("#dlg_edit").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            order.openDialog($(this), $("input[name=orderId]").val(), button.parent().data('id'));
+            delive.openDialog($(this), $("input[name=orderId]").val(), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
         });
 
-        $(".submit").click(function () {
+        $(".send").click(function () {
             var _orderId = $("input[name=orderId]").val(),
-                _remark = $("input[name=remark]").val();
+                _pay = $("input[name=Pay]").val(),
+                _expressCode = $("input[name=ExpressCode]").val(),
+                _expressUrl = $("input[name=ExpressUrl]").val();
 
-            if (!confirm("确认提交？提交后您将不能再对订单进行任何更改")) { return false; }
+            if (!_pay) { alert("实际金额为必填项"); return false; }
 
-            $.post("orderedit/submitOrder", { orderId: _orderId, remark: _remark }, function (r) {
+            if (isNaN(_pay) || _pay <= 0) { alert("实际金额必须输入数字"); return false; }
+
+            if (!_expressCode) { alert("快递单号为必填项"); return false; }
+
+            if (!confirm("确认发货？发货后订单将不能再进行任何更改")) { return false; }
+
+            $.post("deliveedit/sendProduct", { orderId: _orderId, pay: _pay, expressCode: _expressCode, expressUrl: _expressUrl }, function (r) {
                 alert(r.msg);
 
                 if (r.code > 0) {
