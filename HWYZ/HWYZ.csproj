@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ProductDeliveController.cs" />
     <Compile Include="Controllers\DeliveEditController.cs" />
     <Compile Include="Controllers\CouriersController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
@@ -200,9 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511300155135_modify.cs" />
-    <Compile Include="Migrations\201511300155135_modify.Designer.cs">
-      <DependentUpon>201511300155135_modify.cs</DependentUpon>
+    <Compile Include="Migrations\201511300327075_modify.cs" />
+    <Compile Include="Migrations\201511300327075_modify.Designer.cs">
+      <DependentUpon>201511300327075_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Courier.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +422,8 @@
     <Content Include="Views\Couriers\Edit.cshtml" />
     <Content Include="Views\Couriers\Index.cshtml" />
     <Content Include="Views\Couriers\List.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Locations\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -428,8 +432,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511300155135_modify.resx">
-      <DependentUpon>201511300155135_modify.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201511300327075_modify.resx">
+      <DependentUpon>201511300327075_modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
