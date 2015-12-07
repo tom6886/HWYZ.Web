@@ -22,6 +22,8 @@ namespace HWYZ.Context
 
         public DbSet<Product> Product { get; set; }
 
+        public DbSet<StoreProduct> StoreProduct { get; set; }
+
         public DbSet<Doc> Doc { get; set; }
 
         public DbSet<Order> Order { get; set; }
@@ -31,5 +33,7 @@ namespace HWYZ.Context
         public DbSet<Courier> Courier { get; set; }
 
         public DbSet<Location> Location { get; set; }
+
+        public DbSet<Dictionary> Dictionary { get; set; }
     }
 }

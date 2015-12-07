@@ -93,6 +93,9 @@
         },
         pr: function (e) {
             priv.select({ elem: e, placeholder: "选择商品", url: "getProduct", dataParam: "name" });
+        },
+        spr: function (e) {
+            priv.select({ elem: e, placeholder: "选择商品", url: "getStoreProduct", dataParam: "name" });
         }
     }
 

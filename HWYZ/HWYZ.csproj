@@ -194,6 +194,9 @@
     <Compile Include="Controllers\DeliveEditController.cs" />
     <Compile Include="Controllers\CouriersController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\ReportOfSendController.cs" />
+    <Compile Include="Controllers\ProductNumberController.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
@@ -201,9 +204,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201511300327075_modify.cs" />
-    <Compile Include="Migrations\201511300327075_modify.Designer.cs">
-      <DependentUpon>201511300327075_modify.cs</DependentUpon>
+    <Compile Include="Migrations\201512070524160_modify.cs" />
+    <Compile Include="Migrations\201512070524160_modify.Designer.cs">
+      <DependentUpon>201512070524160_modify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512070934049_modify1.cs" />
+    <Compile Include="Migrations\201512070934049_modify1.Designer.cs">
+      <DependentUpon>201512070934049_modify1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -222,6 +229,8 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Courier.cs" />
     <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\StoreProduct.cs" />
+    <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +306,8 @@
     <Content Include="Scripts\Page\order.js" />
     <Content Include="Scripts\Page\delive.js" />
     <Content Include="Scripts\Page\couriers.js" />
+    <Content Include="Scripts\Page\number.js" />
+    <Content Include="Scripts\Page\dictionary.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -424,6 +435,19 @@
     <Content Include="Views\Couriers\List.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Locations\List.cshtml" />
+    <Content Include="Views\ReportOfSend\Index.cshtml" />
+    <Content Include="Views\ProductNumber\Index.cshtml" />
+    <Content Include="Views\ProductNumber\List.cshtml" />
+    <Content Include="Views\ProductNumber\Add.cshtml" />
+    <Content Include="Views\ProductNumber\Edit.cshtml" />
+    <Content Include="Views\Dictionary\Index.cshtml" />
+    <Content Include="Views\Dictionary\List.cshtml" />
+    <Content Include="Views\Dictionary\Add.cshtml" />
+    <Content Include="Views\Dictionary\Edit.cshtml" />
+    <Content Include="Views\Dictionary\Nodes.cshtml" />
+    <Content Include="Views\Dictionary\NodesList.cshtml" />
+    <Content Include="Views\Dictionary\NodeAdd.cshtml" />
+    <Content Include="Views\Dictionary\NodeEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -432,8 +456,11 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511300327075_modify.resx">
-      <DependentUpon>201511300327075_modify.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201512070524160_modify.resx">
+      <DependentUpon>201512070524160_modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512070934049_modify1.resx">
+      <DependentUpon>201512070934049_modify1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
