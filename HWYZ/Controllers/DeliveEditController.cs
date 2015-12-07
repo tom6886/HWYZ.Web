@@ -53,6 +53,8 @@ namespace HWYZ.Controllers
 
                 ViewBag.item = item;
 
+                ViewBag.discount = db.Dictionary.Where(q => q.ParentCode.Equals("discount")).OrderBy(q => q.SortOrder).ToList();
+
                 return PartialView("Edit");
             }
         }

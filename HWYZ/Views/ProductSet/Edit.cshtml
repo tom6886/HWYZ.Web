@@ -1,4 +1,6 @@
-﻿<style>
+﻿@using HWYZ.Models;
+
+<style>
     .webuploader-container div:first-child { width: 86px; height: 40px; }
 </style>
 <div class="modal-dialog" role="document">
@@ -32,6 +34,18 @@
                     <div class="input-group">
                         <span class="input-group-addon">价格</span>
                         <input type="text" class="form-control" name="Price"  value="@ViewBag.product.Price"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">商品类别</span>
+                        <select class="form-control" name="ProductType">
+                            @foreach (Dictionary dict in ViewBag.kinds)
+                            {
+                                <option value="@dict.Code">@dict.Name</option>
+                            }
+                        </select>
+                        <input type="hidden" id="ProductType" value="@ViewBag.product.ProductType"/>
                     </div>
                 </div>
                 <div class="form-group">

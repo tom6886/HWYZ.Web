@@ -65,6 +65,8 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
+                ViewBag.kinds = db.Dictionary.Where(q => q.ParentCode.Equals("kinds")).OrderBy(q => q.SortOrder).ToList();
+
                 if (!string.IsNullOrEmpty(productId))
                 {
                     Product product = db.Product.Where(q => q.ID.Equals(productId)).FirstOrDefault();
@@ -113,6 +115,7 @@ namespace HWYZ.Controllers
 
                     oldProduct.ModifyTime = DateTime.Now;
                     oldProduct.Name = product.ProductName;
+                    oldProduct.ProductType = product.ProductType;
                     oldProduct.Price = product.Price;
                     oldProduct.AllowReturn = product.AllowReturn;
                     oldProduct.Remark = product.Remark;

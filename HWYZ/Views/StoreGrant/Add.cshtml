@@ -1,4 +1,6 @@
-﻿<div class="modal-dialog" role="document">
+﻿@using HWYZ.Models;
+
+<div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -103,11 +105,10 @@
                         <div class="input-group">
                             <span class="input-group-addon">折扣系数</span>
                             <select name="Discount" class="form-control">
-                                <option>1</option>
-                                <option>0.9</option>
-                                <option>0.8</option>
-                                <option>0.7</option>
-                                <option>0.6</option>
+                                @foreach (Dictionary dict in ViewBag.discount)
+                                {
+                                    <option value="@dict.Code">@dict.Name</option>
+                                }
                             </select>
                         </div>
                     </div>

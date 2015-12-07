@@ -30,6 +30,9 @@ namespace HWYZ.Models
         [Display(Name = "产品编码"), MaxLength(0x40), Required]
         public string ProductCode { get; set; }
 
+        [Display(Name = "产品类别"), MaxLength(0x40)]
+        public string ProductType { get; set; }
+
         [Display(Name = "条形码"), MaxLength(0x40)]
         public string BarCode { get; set; }
 

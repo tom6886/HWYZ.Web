@@ -58,6 +58,7 @@ $(function () {
             }
         });
 
+        $('select[name=ProductType]', _form).val($("#ProductType", _form).val());
         $('select[name=AllowReturn]', _form).val($("#AllowReturn", _form).val());
         $('select[name=Status]', _form).val($("#Status", _form).val());
 

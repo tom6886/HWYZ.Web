@@ -37,6 +37,8 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
+                ViewBag.discount = db.Dictionary.Where(q => q.ParentCode.Equals("discount")).OrderBy(q => q.SortOrder).ToList();
+
                 if (!string.IsNullOrEmpty(storeId))
                 {
                     Store store = db.Store.Where(q => q.ID.Equals(storeId)).FirstOrDefault();
