@@ -204,24 +204,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512070524160_modify.cs" />
-    <Compile Include="Migrations\201512070524160_modify.Designer.cs">
-      <DependentUpon>201512070524160_modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512070934049_modify1.cs" />
-    <Compile Include="Migrations\201512070934049_modify1.Designer.cs">
-      <DependentUpon>201512070934049_modify1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512071346509_modify2.cs" />
-    <Compile Include="Migrations\201512071346509_modify2.Designer.cs">
-      <DependentUpon>201512071346509_modify2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Models\BaseObj.cs" />
     <Compile Include="Models\Guser.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\PageModels\PSMX.cs" />
     <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="Models\GuserRole.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -312,6 +301,7 @@
     <Content Include="Scripts\Page\couriers.js" />
     <Content Include="Scripts\Page\number.js" />
     <Content Include="Scripts\Page\dictionary.js" />
+    <Content Include="Scripts\Page\reportofsend.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -452,23 +442,13 @@
     <Content Include="Views\Dictionary\NodesList.cshtml" />
     <Content Include="Views\Dictionary\NodeAdd.cshtml" />
     <Content Include="Views\Dictionary\NodeEdit.cshtml" />
+    <Content Include="Views\ReportOfSend\ListOfDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512070524160_modify.resx">
-      <DependentUpon>201512070524160_modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512070934049_modify1.resx">
-      <DependentUpon>201512070934049_modify1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512071346509_modify2.resx">
-      <DependentUpon>201512071346509_modify2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

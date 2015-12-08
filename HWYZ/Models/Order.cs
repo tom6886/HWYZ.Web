@@ -60,7 +60,7 @@ namespace HWYZ.Models
             {
                 Order order = db.Order.Where(q => q.ID.Equals(id)).FirstOrDefault();
 
-                decimal pay = db.OrderItem.Where(q => q.OrderId.Equals(id)).Sum(q => q.Price * q.OrderNumber * q.Discount);
+                decimal pay = db.OrderItem.Where(q => q.OrderId.Equals(id)).Sum(q => q.Price * q.RealNumber * q.Discount);
 
                 order.Payable = pay;
                 order.Paid = pay;

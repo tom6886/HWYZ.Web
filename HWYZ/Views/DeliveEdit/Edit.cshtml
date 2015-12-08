@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">发货数量</span>
-                        <input type="text" name="OrderNumber" class="form-control"   value="@ViewBag.item.OrderNumber"/>
+                        <input type="text" name="RealNumber" class="form-control"   value="@ViewBag.item.RealNumber"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">金额</span>
-                        @{var pay = @ViewBag.item.Price * @ViewBag.item.OrderNumber * @ViewBag.item.Discount;}
+                        @{var pay = @ViewBag.item.Price * @ViewBag.item.RealNumber * @ViewBag.item.Discount;}
                         <input type="text" readonly="readonly" id="pay" class="form-control" value="@pay" />
                     </div>
                 </div>

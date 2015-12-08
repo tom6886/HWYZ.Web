@@ -21,10 +21,10 @@
                 <tr>
                     <td>@item.ProductCode</td>
                     <td>@item.ProductName</td>
-                    <td>@item.OrderNumber</td>
+                    <td>@item.RealNumber</td>
                     <td>@item.Price</td>
                     <td>@item.Discount</td>
-                    @{var pay = @item.Price * @item.OrderNumber * @item.Discount;}
+                    @{var pay = @item.Price * @item.RealNumber * @item.Discount;}
                     <td>@pay</td>
                 </tr>
                 }

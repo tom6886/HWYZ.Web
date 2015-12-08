@@ -1,0 +1,26 @@
+﻿@using HWYZ.Models;
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>分店</td>
+                <td>产品名称</td>
+                <td>产品编号</td>
+                <td>采购总数</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (PSMX item in ViewBag.list)
+                {
+                <tr>
+                    <td>@item.StoreName</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.ProductCode</td>
+                    <td>@item.ProductNumber</td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

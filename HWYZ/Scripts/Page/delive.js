@@ -52,7 +52,7 @@ $(function () {
         $("select[name=Discount]", _form).val(Number($("#Discount", _form).val()));
 
         $("select[name=Discount]", _form).change(function () {
-            $("#pay", _form).val($("input[name=Price]").val() * $(this).val() * $("input[name=OrderNumber]").val());
+            $("#pay", _form).val($("input[name=Price]").val() * $(this).val() * $("input[name=RealNumber]").val());
         });
 
         $("input[name=OrderNumber]", _form).on('input propertychange', function () {

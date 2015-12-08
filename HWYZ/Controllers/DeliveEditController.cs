@@ -81,7 +81,7 @@ namespace HWYZ.Controllers
                 }
 
                 oldItem.Discount = item.Discount;
-                oldItem.OrderNumber = item.OrderNumber;
+                oldItem.RealNumber = item.RealNumber;
 
                 db.Entry(oldItem).State = EntityState.Modified;
 

@@ -95,12 +95,14 @@ namespace HWYZ.Controllers
                     item.ProductCode = product.ProductCode;
                     item.ProductName = product.ProductName;
                     item.Price = product.Price;
+                    item.RealNumber = item.OrderNumber;
 
                     db.OrderItem.Add(item);
                 }
                 else
                 {
                     oldItem.OrderNumber = item.OrderNumber;
+                    oldItem.RealNumber = item.OrderNumber;
 
                     db.Entry(oldItem).State = EntityState.Modified;
                 }
