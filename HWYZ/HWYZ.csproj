@@ -46,12 +46,27 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MvcPager">
       <HintPath>..\packages\MvcPager.MVC4.CN.2.0.0.1\lib\MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -197,6 +212,7 @@
     <Compile Include="Controllers\ReportOfSendController.cs" />
     <Compile Include="Controllers\ProductNumberController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\ReportOfSellController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
@@ -211,6 +227,10 @@
     <Compile Include="Models\Guser.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\PageModels\PSMX.cs" />
+    <Compile Include="Models\PageModels\Pager.cs" />
+    <Compile Include="Models\PageModels\PSJE.cs" />
+    <Compile Include="Models\PageModels\CXSL.cs" />
+    <Compile Include="Models\PageModels\CXJE.cs" />
     <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="Models\GuserRole.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -296,12 +316,16 @@
     <Content Include="Images\nopic.jpg" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\highcharts\data.js" />
+    <Content Include="Scripts\highcharts\exporting.js" />
+    <Content Include="Scripts\highcharts\highcharts.js" />
     <Content Include="Scripts\Page\order.js" />
     <Content Include="Scripts\Page\delive.js" />
     <Content Include="Scripts\Page\couriers.js" />
     <Content Include="Scripts\Page\number.js" />
     <Content Include="Scripts\Page\dictionary.js" />
     <Content Include="Scripts\Page\reportofsend.js" />
+    <Content Include="Scripts\Page\reportofsell.js" />
     <Content Include="Scripts\webuploader\Uploader.swf" />
     <Content Include="Scripts\webuploader\webuploader.css" />
     <Content Include="Content\zTreeStyle.css" />
@@ -443,6 +467,11 @@
     <Content Include="Views\Dictionary\NodeAdd.cshtml" />
     <Content Include="Views\Dictionary\NodeEdit.cshtml" />
     <Content Include="Views\ReportOfSend\ListOfDetail.cshtml" />
+    <Content Include="Views\Shared\_pager.cshtml" />
+    <Content Include="Views\ReportOfSend\ListOfStore.cshtml" />
+    <Content Include="Views\ReportOfSell\Index.cshtml" />
+    <Content Include="Views\ReportOfSell\ListOfNumber.cshtml" />
+    <Content Include="Views\ReportOfSell\ListOfPay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

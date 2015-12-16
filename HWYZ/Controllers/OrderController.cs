@@ -2,6 +2,7 @@
 using HWYZ.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
@@ -15,43 +16,15 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Order, bool>> where = PredicateExtensions.True<Order>();
-
-                if (!string.IsNullOrEmpty(OrderCode)) { where = where.And(q => q.OrderCode.Contains(OrderCode)); }
-
-                if (!string.IsNullOrEmpty(Tel)) { where = where.And(q => q.Tel.Contains(Tel)); }
-
-                if (!string.IsNullOrEmpty(Status)) { where = where.And(q => q.Status.ToString().Equals(Status)); }
-
-                DateTime now = DateTime.Now;
-                //不选择开始日期默认为本月1号
-                DateTime start = string.IsNullOrEmpty(StartDate) ? DateTime.Parse(string.Format("{0}/{1}/{2}", now.Year.ToString(), now.Month.ToString(), "01")) : DateTime.Parse(StartDate);
-                DateTime end = string.IsNullOrEmpty(EndDate) ? now : DateTime.Parse(EndDate);
-
-                if (start > end)
-                {
-                    DateTime temp = DateTime.MinValue;
-                    temp = end;
-                    end = start;
-                    start = temp;
-                }
-
-                where = where.And(q => q.SubmitTime.CompareTo(start) > 0 && q.SubmitTime.CompareTo(end) < 0);
+                var query = db.Order.AsQueryable();
 
                 Guser user = UserContext.user;
 
-                if (user.Store == null)
-                {
-                    where = where.And(q => q.Status > 0);
+                StoreId = user.Store == null ? StoreId : user.StoreId;
 
-                    if (!string.IsNullOrEmpty(StoreId)) { where = where.And(q => q.StoreId.Contains(StoreId)); }
-                }
-                else
-                {
-                    where = where.And(q => q.StoreId.Equals(user.StoreId));
-                }
+                query = SetQuery(query, OrderCode, StoreId, Tel, StartDate, EndDate, Status);
 
-                PagedList<Order> cards = db.Order.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                PagedList<Order> cards = query.OrderByDescending(q => q.SubmitTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Order>(new List<Order>(), 10, 0);
@@ -61,6 +34,92 @@ namespace HWYZ.Controllers
 
                 return View(cards);
             }
+        }
+
+        public FileResult Export(string OrderCode, string StoreId, string Tel, string StartDate, string EndDate, string Status)
+        {
+            using (DBContext db = new DBContext())
+            {
+                var query = db.Order.AsQueryable();
+
+                Guser user = UserContext.user;
+
+                StoreId = user.Store == null ? StoreId : user.StoreId;
+
+                query = SetQuery(query, OrderCode, StoreId, Tel, StartDate, EndDate, Status);
+
+                //获取list数据
+                var list = query.OrderByDescending(q => q.SubmitTime).ToList();
+
+                //创建Excel文件的对象
+                NPOI.HSSF.UserModel.HSSFWorkbook book = new NPOI.HSSF.UserModel.HSSFWorkbook();
+                //添加一个sheet
+                NPOI.SS.UserModel.ISheet sheet1 = book.CreateSheet("Sheet1");
+
+                //给sheet1添加第一行的头部标题
+                NPOI.SS.UserModel.IRow row1 = sheet1.CreateRow(0);
+                row1.CreateCell(0).SetCellValue("订单号");
+                row1.CreateCell(1).SetCellValue("采购单位");
+                row1.CreateCell(2).SetCellValue("负责人");
+                row1.CreateCell(3).SetCellValue("联系电话");
+                row1.CreateCell(4).SetCellValue("下单时间");
+                row1.CreateCell(5).SetCellValue("订单金额");
+                row1.CreateCell(6).SetCellValue("订单状态");
+
+                string status = string.Empty;
+                //将数据逐步写入sheet1各个行
+                for (int i = 0; i < list.Count; i++)
+                {
+                    switch (list[i].Status)
+                    {
+                        case OrderStatus.BeforeSend: status = "待发货"; break;
+                        case OrderStatus.BeforeSubmit: status = "待提交"; break;
+                        case OrderStatus.Reject: status = "驳回"; break;
+                        case OrderStatus.Sended: status = "已发货"; break;
+                    }
+
+                    NPOI.SS.UserModel.IRow rowtemp = sheet1.CreateRow(i + 1);
+                    rowtemp.CreateCell(0).SetCellValue(list[i].OrderCode);
+                    rowtemp.CreateCell(1).SetCellValue(list[i].StoreName);
+                    rowtemp.CreateCell(2).SetCellValue(list[i].Creator);
+                    rowtemp.CreateCell(3).SetCellValue(list[i].Tel);
+                    rowtemp.CreateCell(4).SetCellValue(list[i].SubmitTime.ToString());
+                    rowtemp.CreateCell(5).SetCellValue(list[i].Paid.ToString());
+                    rowtemp.CreateCell(6).SetCellValue(status);
+                }
+
+                DateTime now = DateTime.Now;
+                // 写入到客户端 
+                return ExportExcel(book, now.ToString("yyMMddHHmmssfff"));
+            }
+        }
+
+        private IQueryable<Order> SetQuery(IQueryable<Order> query, string OrderCode, string StoreId, string Tel, string StartDate, string EndDate, string Status)
+        {
+            if (!string.IsNullOrEmpty(OrderCode)) { query = query.Where(q => q.OrderCode.Contains(OrderCode)); }
+
+            if (!string.IsNullOrEmpty(Tel)) { query = query.Where(q => q.Tel.Contains(Tel)); }
+
+            if (!string.IsNullOrEmpty(Status)) { query = query.Where(q => q.Status.ToString().Equals(Status)); }
+
+            DateTime now = DateTime.Now;
+            //不选择开始日期默认为本月1号
+            DateTime start = string.IsNullOrEmpty(StartDate) ? DateTime.Parse(string.Format("{0}/{1}/{2}", now.Year.ToString(), now.Month.ToString(), "01")) : DateTime.Parse(StartDate);
+            DateTime end = string.IsNullOrEmpty(EndDate) ? now : DateTime.Parse(EndDate).AddDays(1);
+
+            if (start > end)
+            {
+                DateTime temp = DateTime.MinValue;
+                temp = end;
+                end = start;
+                start = temp;
+            }
+
+            query = query.Where(q => q.SubmitTime.CompareTo(start) > 0 && q.SubmitTime.CompareTo(end) < 0);
+
+            if (!string.IsNullOrEmpty(StoreId)) { query = query.Where(q => q.StoreId.Equals(StoreId)); }
+
+            return query;
         }
 
         public ActionResult addOrder()

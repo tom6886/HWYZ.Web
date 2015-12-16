@@ -1,23 +1,20 @@
 ﻿@using HWYZ.Models;
-<div class="table-responsive">
+
+<div class="table-responsive" id="datatable">
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <td>分店</td>
-                <td>产品名称</td>
-                <td>产品编号</td>
-                <td>采购总数</td>
+                <td>商品名称</td>
+                <td>金额</td>
             </tr>
         </thead>
         <tbody>
             @{
-                foreach (PSMX item in ViewBag.list)
+                foreach (CXJE item in ViewBag.list)
                 {
                 <tr>
-                    <td>@item.StoreName</td>
                     <td>@item.ProductName</td>
-                    <td>@item.ProductCode</td>
-                    <td>@item.ProductNumber</td>
+                    <td>@item.ProductPay</td>
                 </tr>
                 }
             }
@@ -27,4 +24,7 @@
 
 <div class="text-right" style="padding: 10px 15px;">
     @Html.Partial("~/Views/Shared/_pager.cshtml")
+</div>
+
+<div id="chart">
 </div>

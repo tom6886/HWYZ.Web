@@ -1,6 +1,7 @@
 ﻿using HWYZ.Context;
 using HWYZ.Filters;
 using HWYZ.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -43,6 +44,7 @@ namespace HWYZ.Controllers
 
                 if (order.Status != OrderStatus.BeforeSend) { return Json(new { code = -2, msg = "非待发货状态的订单不能驳回" }); }
 
+                order.ModifyTime = DateTime.Now;
                 order.RejectReason = reason;
                 order.Status = OrderStatus.Reject;
 

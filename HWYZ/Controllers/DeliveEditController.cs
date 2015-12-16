@@ -108,6 +108,7 @@ namespace HWYZ.Controllers
 
                 Guser user = UserContext.user;
 
+                order.ModifyTime = DateTime.Now;
                 order.Paid = pay;
                 order.ExpressCode = expressCode;
                 order.ExpressUrl = expressUrl;

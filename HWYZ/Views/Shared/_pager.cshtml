@@ -1,0 +1,96 @@
+﻿@if (ViewBag.pager.PageCount > 1)
+{ 
+    <div class="table-page">
+
+        @if (ViewBag.pager.PageIndex == 1)
+        {
+            <span>首页&nbsp;&nbsp;</span>
+            <span>前一页</span>
+        }
+        else
+        {
+            <a href="javascript:void(0)" data-pageindex="1">首页&nbsp;&nbsp;</a>
+            <a href="javascript:void(0)" data-pageindex="@ViewBag.pager.PrevIndex">前一页</a>
+        }
+
+
+        @if (ViewBag.pager.PageCount < 10)
+        {
+            for (int i = 1, j = ViewBag.pager.PageCount; i <= j; i++)
+            {
+                if (i == ViewBag.pager.PageIndex)
+                {
+            <span class="active">@i</span>
+                }
+                else
+                {
+            <span><a data-pageindex="@i" href="javascript:void(0)">@i</a></span>
+                }
+            }
+        }
+        else
+        {
+            if (ViewBag.pager.PageIndex < 6)
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    if (i == ViewBag.pager.PageIndex)
+                    {
+            <span class="active">@i</span>
+                    }
+                    else
+                    {
+            <span><a data-pageindex="@i" href="javascript:void(0)">@i</a></span>
+                    }
+                }
+                
+            <span>...</span>
+            }
+            else if (ViewBag.pager.PageIndex - ViewBag.pager.PageIndex < 6)
+            {
+            <span>...</span>
+        
+                for (int i = ViewBag.pager.PageCount - 8, j = ViewBag.pager.PageCount; i <= j; i++)
+                {
+                    if (i == ViewBag.pager.PageIndex)
+                    {
+            <span class="active">@i</span>
+                    }
+                    else
+                    {
+            <span><a data-pageindex="@i" href="javascript:void(0)">@i</a></span>
+                    }
+                }
+            }
+            else
+            {
+            <span>...</span>
+            
+                for (int i = ViewBag.pager.PageIndex - 4, j = ViewBag.pager.PageIndex + 4; i < j; i++)
+                {
+                    if (i == ViewBag.pager.PageIndex)
+                    {
+            <span class="active">@i</span>
+                    }
+                    else
+                    {
+            <span><a data-pageindex="@i" href="javascript:void(0)">@i</a></span>
+                    }
+                }
+            
+            <span>...</span>
+            }
+        }
+
+        @if (ViewBag.pager.PageIndex == ViewBag.pager.PageCount)
+        {
+            <span>下一页</span>
+            <span>&nbsp;&nbsp;尾页</span>
+        }
+        else
+        {
+            <a data-pageindex="@ViewBag.pager.NextIndex" href="javascript:void(0)">下一页</a>
+            <a data-pageindex="@ViewBag.pager.PageCount" href="javascript:void(0)">&nbsp;&nbsp;尾页</a>
+        }
+    </div>
+}

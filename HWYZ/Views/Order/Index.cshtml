@@ -54,7 +54,10 @@
                         <span class="input-group-addon">订单状态</span>
                         <select name="Status" class="form-control">
                             <option value="">所有</option>
-                            <option value="BeforeSubmit">待提交</option>
+                            @if (UserContext.user.Store != null)
+                            { 
+                                <option value="BeforeSubmit">待提交</option>
+                            }
                             <option value="BeforeSend">待发货</option>
                             <option value="Sended">已发货</option>
                             <option value="Reject">驳回</option>
@@ -68,7 +71,8 @@
             {
                 <a class="btn btn-info" style="float: right; margin-left: 20px;" target="_blank" href="order/addOrder">添加</a>
             }
-            <a class="btn btn-info query" style="float: right;" href="javascript:void(0)">查询</a>
+            <a class="btn btn-info query" style="float: right; margin-left: 20px;" href="javascript:void(0)">查询</a>
+            <a class="btn btn-info export" style="float: right;" href="order/Export">导出</a>
         </div>
         <div class="row">
             <div id="container">
@@ -105,6 +109,10 @@
 
         $(".query").click(function () {
             $("#form_query").submit();
+        });
+
+        $(".export").click(function () {
+            $(this).attr('href', "order/Export?{0}".format($("#form_query").serialize()));
         });
     });
 </script>

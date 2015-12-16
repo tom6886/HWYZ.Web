@@ -31,7 +31,7 @@ namespace HWYZ.Controllers
 
             using (var db = new DBContext())
             {
-                Guser user = db.Guser.Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
+                Guser user = db.Guser.Include("Role").Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
 
                 if (user == null || user.Status == Status.disable || Convert.ToInt32(user.Role.RoleVal) == 0)
                 {
@@ -49,7 +49,7 @@ namespace HWYZ.Controllers
 
                 string url = GetFirstMenu(menus, Convert.ToInt32(user.Role.RoleVal));
 
-                return RedirectToAction(url, "Index");
+                return RedirectToAction("Index", url);
             }
         }
 

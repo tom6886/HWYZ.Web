@@ -1,33 +1,33 @@
 ﻿;
 $(function () {
 
-    var reportofsend = {};
+    var reportofsell = {};
 
-    reportofsend.detail = function (storeId, StartDate, EndDate, pi) {
-        $.post("reportofsend/ListOfDetail", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
+    reportofsell.number = function (ProductName, StartDate, EndDate, pi) {
+        $.post("reportofsell/ListOfNumber", { ProductName: ProductName, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
             $("#container").html(r);
 
             $(".table-page a").click(function () {
-                reportofsend.detail($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                reportofsell.number($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
                 return false;
             });
         });
     };
 
-    reportofsend.store = function (storeId, StartDate, EndDate, pi) {
-        $.post("reportofsend/ListOfStore", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
+    reportofsell.pay = function (ProductName, StartDate, EndDate, pi) {
+        $.post("reportofsell/ListOfPay", { ProductName: ProductName, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
             $("#container").html(r);
 
-            reportofsend.setChart();
+            reportofsell.setChart();
 
             $(".table-page a").click(function () {
-                reportofsend.store($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                reportofsell.pay($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
                 return false;
             });
         });
     };
 
-    reportofsend.setChart = function () {
+    reportofsell.setChart = function () {
         $('#chart').highcharts({
             data: {
                 table: 'datatable'
@@ -36,7 +36,7 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: '配送金额排名'
+                text: '畅销商品排名'
             },
             yAxis: {
                 allowDecimals: false,
@@ -53,7 +53,7 @@ $(function () {
         });
     }
 
-    reportofsend.initPage = function () {
+    reportofsell.initPage = function () {
 
         $("._select").select_2();
 
@@ -71,9 +71,9 @@ $(function () {
         $(".export").click(function () {
             var hashStr = location.hash.replace("#", "");
 
-            if (!hashStr) { hashStr = "detail"; }
+            if (!hashStr) { hashStr = "number"; }
 
-            $(this).attr('href', "reportofsend/Export{0}?storeId={1}&StartDate={2}&EndDate={3}".format(hashStr, $("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val()));
+            $(this).attr('href', "reportofsell/Export{0}?ProductName={1}&StartDate={2}&EndDate={3}".format(hashStr, $("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val()));
         });
 
         $(".query").click(function () {
@@ -84,17 +84,17 @@ $(function () {
         window.onhashchange = function () {
             var hashStr = location.hash.replace("#", "");
 
-            if (!hashStr) { hashStr = "detail"; }
+            if (!hashStr) { hashStr = "number"; }
 
             $(".panel .nav li").removeClass("active");
 
             $("." + hashStr).addClass("active");
 
-            var func = reportofsend[hashStr];
+            var func = reportofsell[hashStr];
 
             if (!func) { return false; }
 
-            func($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val());
+            func($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val());
         };
 
         onhashchange();
