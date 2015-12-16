@@ -46,10 +46,10 @@ namespace HWYZ.Models
         public string Address { get; set; }
 
         [Display(Name = "经度"), Required]
-        public decimal Lng { get; set; }
+        public string Lng { get; set; }
 
         [Display(Name = "纬度"), Required]
-        public decimal Lat { get; set; }
+        public string Lat { get; set; }
 
         [Display(Name = "推荐人"), MaxLength(100)]
         public string Recommender { get; set; }

@@ -6,11 +6,26 @@
     }
     else
     {
-        <h2>@store.StoreName</h2>
-        <p>门店编号：@store.StoreCode</p>
-        <p>所属地市：@store.Province @store.City @store.Country</p>
-        <p>地址：@store.Address</p>
-        <p>负责人：@store.Presider</p>
-        <p>联系电话：@store.Tel</p>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ulqLPebKpPEGLx5VEHYMGY6"></script>
+        <div id="map" style="width: 90%; height: 500px" data-lng="@store.Lng" data-lat="@store.Lat" data-title="@string.Format("{0}({1})", store.StoreName, store.StoreCode)" data-info="@string.Format("地址：{0}<br>负责人：{1}<br>联系电话：{2}", store.Address, store.Presider, store.Tel)"></div>
+    
+        <script type="text/javascript">
+            var _map = $("#map");
+            var map = new BMap.Map("map");
+            var point = new BMap.Point(_map.data("lng"), _map.data("lat"));
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            map.centerAndZoom(point, 50);
+            var opts = {
+                width: 200,     // 信息窗口宽度
+                height: 100,     // 信息窗口高度
+                title: _map.data("title") // 信息窗口标题
+            }
+            var infoWindow = new BMap.InfoWindow(_map.data("info"), opts);  // 创建信息窗口对象 
+
+            marker.addEventListener("click", function () {
+                map.openInfoWindow(infoWindow, point); //开启信息窗口
+            });
+        </script>
     }
 </div>
