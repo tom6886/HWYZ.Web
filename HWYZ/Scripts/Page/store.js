@@ -94,6 +94,53 @@ $(function () {
 
             _form.submit();
         });
+
+        $(".map", modal).click(function () {
+            var city = $("input[name=City]").val(), country = $("input[name=Country]").val();
+
+            if (!country) { alert("请先选择城市"); return false; }
+
+            store.resetMap(city);
+        });
+    }
+
+    store.resetMap = function (city) {
+
+        $("#dlg_map").modal("show");
+
+        $.post("storegrant/getMap", { city: city }, function (r) {
+
+            var list = JSON.parse(r),
+                opts = {
+                    width: 250,     // 信息窗口宽度
+                    height: 80,     // 信息窗口高度
+                    title: "分店地址" // 信息窗口标题
+                };;
+
+            for (var i = 0, length = list.length; i < length; i++) {
+
+                var marker = new BMap.Marker(new BMap.Point(list[i].Lng, list[i].Lat));  // 创建标注
+
+                var content = list[i].Address;
+
+                map.addOverlay(marker);               // 将标注添加到地图中
+
+                store.addClickHandler(content, marker, opts);
+            }
+
+            setTimeout(function () {
+                map.centerAndZoom(city, 13);
+            }, 100);
+        });
+    }
+
+    store.addClickHandler = function (content, marker, opts) {
+        marker.addEventListener("mouseover", function (e) {
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content, opts);  // 创建信息窗口对象 
+            map.openInfoWindow(infoWindow, point); //开启信息窗口
+        });
     }
 
     store.initPage = function () {

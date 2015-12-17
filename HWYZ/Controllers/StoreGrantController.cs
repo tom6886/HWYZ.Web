@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Webdiyer.WebControls.Mvc;
 
 namespace HWYZ.Controllers
@@ -51,6 +52,17 @@ namespace HWYZ.Controllers
                 }
 
                 return PartialView("Add");
+            }
+        }
+
+        [HttpPost]
+        public string getMap(string city)
+        {
+            using (DBContext db = new DBContext())
+            {
+                var list = db.Store.Where(q => q.City.Equals(city)).ToList();
+
+                return new JavaScriptSerializer().Serialize(list);  
             }
         }
 

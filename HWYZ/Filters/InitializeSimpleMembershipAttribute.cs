@@ -5,6 +5,8 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using HWYZ.Context;
+using HWYZ.Models;
+using Utils;
 
 namespace HWYZ.Filters
 {

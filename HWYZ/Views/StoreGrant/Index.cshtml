@@ -25,6 +25,29 @@
         </div>
         <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         </div>
+        <div class="modal fade" id="dlg_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="jumbotron">
+                <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ulqLPebKpPEGLx5VEHYMGY6"></script>
+                <div id="allmap" style="height: 600px; width: 100%;"></div>
+                <script type="text/javascript">
+                    // 百度地图API功能
+                    var map = new BMap.Map("allmap");
+
+                    var point = new BMap.Point(116.331398, 39.897445);
+
+                    map.centerAndZoom(point, 13);
+
+                    map.addEventListener("click", function (e) {
+                        if (!confirm("确定在此开设分店？")) { return false; }
+
+                        $("input[name=Lng]").val(e.point.lng);
+                        $("input[name=Lat]").val(e.point.lat);
+
+                        $("#dlg_map").modal("hide");
+                    });
+                </script>
+            </div>
+        </div>
     </div>
 </div>
 

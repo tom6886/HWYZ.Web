@@ -220,10 +220,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512160717569_modify.cs" />
-    <Compile Include="Migrations\201512160717569_modify.Designer.cs">
-      <DependentUpon>201512160717569_modify.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -344,6 +340,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Images\logo-mini.jpg" />
     <Content Include="log4net.config" />
+    <None Include="Properties\PublishProfiles\deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -482,11 +479,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512160717569_modify.resx">
-      <DependentUpon>201512160717569_modify.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

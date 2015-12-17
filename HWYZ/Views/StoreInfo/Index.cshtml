@@ -15,10 +15,11 @@
             var point = new BMap.Point(_map.data("lng"), _map.data("lat"));
             var marker = new BMap.Marker(point);  // 创建标注
             map.addOverlay(marker);              // 将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
             map.centerAndZoom(point, 50);
             var opts = {
-                width: 200,     // 信息窗口宽度
-                height: 100,     // 信息窗口高度
+                width: 300,     // 信息窗口宽度
+                height: 150,     // 信息窗口高度
                 title: _map.data("title") // 信息窗口标题
             }
             var infoWindow = new BMap.InfoWindow(_map.data("info"), opts);  // 创建信息窗口对象 
