@@ -3,25 +3,25 @@ $(function () {
 
     var reportofsend = {};
 
-    reportofsend.detail = function (storeId, StartDate, EndDate, pi) {
-        $.post("reportofsend/ListOfDetail", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
+    reportofsend.detail = function (storeId, StartDate, EndDate, storeType, pi) {
+        $.post("reportofsend/ListOfDetail", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, storeType: storeType, pi: pi }, function (r) {
             $("#container").html(r);
 
             $(".table-page a").click(function () {
-                reportofsend.detail($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                reportofsend.detail($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $(this).data("pageindex"));
                 return false;
             });
         });
     };
 
-    reportofsend.store = function (storeId, StartDate, EndDate, pi) {
-        $.post("reportofsend/ListOfStore", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
+    reportofsend.store = function (storeId, StartDate, EndDate, storeType, pi) {
+        $.post("reportofsend/ListOfStore", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, storeType: storeType, pi: pi }, function (r) {
             $("#container").html(r);
 
             reportofsend.setChart();
 
             $(".table-page a").click(function () {
-                reportofsend.store($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                reportofsend.store($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $(this).data("pageindex"));
                 return false;
             });
         });
@@ -58,7 +58,7 @@ $(function () {
         $("._select").select_2();
 
         $('.form_date').datetimepicker({
-            language: 'fr',
+            language: 'zh-CN',
             weekStart: 1,
             todayBtn: 1,
             autoclose: 1,
@@ -68,12 +68,18 @@ $(function () {
             forceParse: 0
         });
 
+        var date = new Date();
+        var start = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";
+
+        $("input[name=StartDate]").val(start);
+        $("input[name=EndDate]").val(date.toLocaleDateString());
+
         $(".export").click(function () {
             var hashStr = location.hash.replace("#", "");
 
             if (!hashStr) { hashStr = "detail"; }
 
-            $(this).attr('href', "reportofsend/Export{0}?storeId={1}&StartDate={2}&EndDate={3}".format(hashStr, $("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val()));
+            $(this).attr('href', "reportofsend/Export{0}?storeId={1}&StartDate={2}&EndDate={3}&storeType={4}".format(hashStr, $("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val()));
         });
 
         $(".query").click(function () {
@@ -94,7 +100,7 @@ $(function () {
 
             if (!func) { return false; }
 
-            func($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val());
+            func($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val());
         };
 
         onhashchange();

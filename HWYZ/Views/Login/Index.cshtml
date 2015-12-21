@@ -2,45 +2,11 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
     ViewBag.Title = "主页";
 }
-<div class="row">
-    <div class="col-md-4">
-        <img src="~/Images/logo.jpg" class="img-responsive loginlogo" alt="Responsive image" width="300" height="300">
-    </div>
-    <div class="col-md-8">
-        <form class="form-horizontal" style="margin-top: 18%;" id="form_login" action="login/signin" method="post">
-            <div class="form-group">
-                <h3>
-                    <label class="col-sm-2 control-label" for="ds_host">
-                        用户编号
-                    </label>
-                </h3>
-                <div class="col-sm-4">
-                    <input class="form-control" type="text" name="account" style="height: 42px;" />
-                </div>
-            </div>
-            <div class="form-group">
-                <h3>
-                    <label class="col-sm-2 control-label" for="ds_host">口   令</label>
-                </h3>
-                <div class="col-sm-4">
-                    <input class="form-control" name="pwd" type="password" style="height: 42px;" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-3">
-                    <div class="controls">
-                        <label class="checkbox">
-                            <input type="checkbox" name="remeberMe" value="1">
-                            下次自动登录
-                        </label>
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <button type="submit" class="btn btn-info btn-lg">登录</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+<h1>徽味驿站</h1>
+
+<form class="form" id="form_login" action="login/signin" method="post">
+    <input type="text" placeholder="用户编号" name="account">
+    <input type="password" placeholder="口令" name="pwd">
+    <button type="submit" id="login-button">登录</button>
+</form>
 @Scripts.Render("~/Scripts/Page/login.js")

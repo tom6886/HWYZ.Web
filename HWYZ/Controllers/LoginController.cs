@@ -31,7 +31,7 @@ namespace HWYZ.Controllers
 
             using (var db = new DBContext())
             {
-                Guser user = db.Guser.Include("Role").Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
+                Guser user = db.Guser.Include("Role").Include("Store").Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
 
                 if (user == null || user.Status == Status.disable || Convert.ToInt32(user.Role.RoleVal) == 0)
                 {
@@ -78,6 +78,8 @@ namespace HWYZ.Controllers
 
                 MenuContext.menus = menus;
 
+                //暂时设置为自动保存自动登录
+                remeberMe = "1";
                 if (!string.IsNullOrEmpty(remeberMe))
                 {
                     HttpCookie cookie = new HttpCookie("session-cookie-name");

@@ -1,4 +1,5 @@
 ﻿@using HWYZ.Models;
+@using HWYZ.Context;
 
 <style>
     .webuploader-container div:first-child { width: 86px; height: 40px; }
@@ -48,16 +49,19 @@
                         <input type="hidden" id="ProductType" value="@ViewBag.product.ProductType"/>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">允许退换货</span>
-                        <select class="form-control" name="AllowReturn">
-                            <option value="True">允许</option>
-                            <option value="False">不允许</option>
-                        </select>
-                        <input type="hidden" id="AllowReturn" value="@ViewBag.product.AllowReturn.ToString()"/>
+                @if (String.IsNullOrEmpty(UserContext.user.StoreId))
+                {
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">允许退换货</span>
+                            <select class="form-control" name="AllowReturn">
+                                <option value="True">允许</option>
+                                <option value="False">不允许</option>
+                            </select>
+                            <input type="hidden" id="AllowReturn" value="@ViewBag.product.AllowReturn.ToString()"/>
+                        </div>
                     </div>
-                </div>
+                }
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">状态</span>

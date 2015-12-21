@@ -75,6 +75,12 @@ namespace HWYZ.Models
         [Display(Name = "银行账号"), MaxLength(100)]
         public string Bank { get; set; }
 
+        [Display(Name = "开户行"), MaxLength(100)]
+        public string BankName { get; set; }
+
+        [Display(Name = "开户人"), MaxLength(100)]
+        public string BankAccount { get; set; }
+
         public Status Status { get; set; }
     }
 }

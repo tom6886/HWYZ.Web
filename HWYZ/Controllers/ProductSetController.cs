@@ -114,6 +114,7 @@ namespace HWYZ.Controllers
                     }
 
                     oldProduct.ModifyTime = DateTime.Now;
+                    oldProduct.ProductCode = product.ProductCode;
                     oldProduct.Name = product.ProductName;
                     oldProduct.ProductType = product.ProductType;
                     oldProduct.Price = product.Price;

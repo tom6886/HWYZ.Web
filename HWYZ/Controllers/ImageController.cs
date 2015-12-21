@@ -34,7 +34,7 @@ namespace HWYZ.Controllers
 
             string _fileName = isThumb ? string.Format("{0}.thumb", doc.Name) : doc.Name;
 
-            string _path = string.Format("{0}{1}.{2}", doc.DirPath, _fileName, doc.DocType);
+            string _path = string.Format(@"{0}Upload\{1}{2}.{3}", Server.MapPath("/"), doc.DirPath, _fileName, doc.DocType);
 
             if (!System.IO.File.Exists(_path)) { return null; }
 
@@ -61,7 +61,13 @@ namespace HWYZ.Controllers
                 //随机生成文件名
                 string fileName = StringUtil.UniqueID();
 
-                string path = string.Format(@"{0}\Upload\{1}\{2}\", Server.MapPath("/"), string.IsNullOrEmpty(storeId) ? "base" : storeId, fileName);
+                string basePath = string.Format(@"{0}Upload\", Server.MapPath("/"));
+
+                string detailPath = string.Format(@"{0}\{1}\", string.IsNullOrEmpty(storeId) ? "base" : storeId, fileName);
+
+                string path = string.Format("{0}{1}", basePath, detailPath);
+
+                //string path = string.Format(@"{0}\Upload\{1}\{2}\", Server.MapPath("/"), string.IsNullOrEmpty(storeId) ? "base" : storeId, fileName);
 
                 if (!Directory.Exists(path)) { Directory.CreateDirectory(path); }
 
@@ -77,7 +83,7 @@ namespace HWYZ.Controllers
 
                 GetPicThumbnail(fullPath, string.Format("{0}{1}.thumb.jpeg", path, fileName), 960, 480, 50);
 
-                Doc doc = Doc.save(fileName, _suffix, storeId, path);
+                Doc doc = Doc.save(fileName, _suffix, storeId, detailPath);
 
                 return Json(new { code = 1, docId = doc.ID });
             }

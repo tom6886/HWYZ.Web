@@ -24,7 +24,7 @@
             }
             var infoWindow = new BMap.InfoWindow(_map.data("info"), opts);  // 创建信息窗口对象 
 
-            marker.addEventListener("click", function () {
+            marker.addEventListener("mouseover", function () {
                 map.openInfoWindow(infoWindow, point); //开启信息窗口
             });
         </script>

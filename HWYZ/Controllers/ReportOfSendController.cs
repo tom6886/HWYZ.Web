@@ -13,7 +13,7 @@ namespace HWYZ.Controllers
             return View();
         }
 
-        public PartialViewResult ListOfDetail(string storeId, string StartDate, string EndDate, int pi = 1)
+        public PartialViewResult ListOfDetail(string storeId, string StartDate, string EndDate, string storeType, int pi = 1)
         {
             using (DBContext db = new DBContext())
             {
@@ -21,14 +21,20 @@ namespace HWYZ.Controllers
 
                 orderQuery = SetQuery(orderQuery, storeId, StartDate, EndDate);
 
+                var storeQuery = db.Store.AsQueryable();
+
+                if (!string.IsNullOrEmpty(storeType)) { StoreType type = (StoreType)Convert.ToInt16(storeType); storeQuery = storeQuery.Where(q => q.StoreType == type); }
+
                 ViewBag.list = (from q in db.OrderItem
                                 join o in orderQuery on q.OrderId equals o.ID
+                                join t in storeQuery on o.StoreId equals t.ID
                                 group q by new { o.StoreId, o.StoreName, q.ProductName, q.ProductCode } into s
                                 orderby new { s.Key.StoreName, s.Key.ProductName }
                                 select new PSMX() { StoreName = s.Key.StoreName, ProductName = s.Key.ProductName, ProductCode = s.Key.ProductCode, ProductNumber = s.Sum(p => p.RealNumber) }).Skip((pi - 1) * 10).Take(10).ToList();
 
                 double totalCount = (from q in db.OrderItem
                                      join o in orderQuery on q.OrderId equals o.ID
+                                     join t in storeQuery on o.StoreId equals t.ID
                                      group q by new { o.StoreId, o.StoreName, q.ProductName, q.ProductCode } into s
                                      select new { s.Key.StoreId, s.Key.ProductCode }).Count();
 
@@ -42,7 +48,7 @@ namespace HWYZ.Controllers
             }
         }
 
-        public FileResult ExportDetail(string storeId, string StartDate, string EndDate)
+        public FileResult ExportDetail(string storeId, string StartDate, string EndDate, string storeType)
         {
             using (DBContext db = new DBContext())
             {
@@ -50,8 +56,13 @@ namespace HWYZ.Controllers
 
                 orderQuery = SetQuery(orderQuery, storeId, StartDate, EndDate);
 
+                var storeQuery = db.Store.AsQueryable();
+
+                if (!string.IsNullOrEmpty(storeType)) { StoreType type = (StoreType)Convert.ToInt16(storeType); storeQuery = storeQuery.Where(q => q.StoreType == type); }
+
                 var list = (from q in db.OrderItem
                             join o in orderQuery on q.OrderId equals o.ID
+                            join t in storeQuery on o.StoreId equals t.ID
                             group q by new { o.StoreId, o.StoreName, q.ProductName, q.ProductCode } into s
                             orderby new { s.Key.StoreName, s.Key.ProductName }
                             select new PSMX() { StoreName = s.Key.StoreName, ProductName = s.Key.ProductName, ProductCode = s.Key.ProductCode, ProductNumber = s.Sum(p => p.RealNumber) }).ToList();
@@ -85,7 +96,7 @@ namespace HWYZ.Controllers
             }
         }
 
-        public PartialViewResult ListOfStore(string storeId, string StartDate, string EndDate, int pi = 1)
+        public PartialViewResult ListOfStore(string storeId, string StartDate, string EndDate, string storeType, int pi = 1)
         {
             using (DBContext db = new DBContext())
             {
@@ -93,7 +104,12 @@ namespace HWYZ.Controllers
 
                 orderQuery = SetQuery(orderQuery, storeId, StartDate, EndDate);
 
+                var storeQuery = db.Store.AsQueryable();
+
+                if (!string.IsNullOrEmpty(storeType)) { StoreType type = (StoreType)Convert.ToInt16(storeType); storeQuery = storeQuery.Where(q => q.StoreType == type); }
+
                 ViewBag.list = (from q in orderQuery
+                                join t in storeQuery on q.StoreId equals t.ID
                                 group q by new { q.StoreId, q.StoreName } into s
                                 select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => p.Paid) }).OrderByDescending(q => q.Pay).Skip((pi - 1) * 10).Take(10).ToList();
 
@@ -111,7 +127,7 @@ namespace HWYZ.Controllers
             }
         }
 
-        public FileResult ExportStore(string storeId, string StartDate, string EndDate)
+        public FileResult ExportStore(string storeId, string StartDate, string EndDate, string storeType)
         {
             using (DBContext db = new DBContext())
             {
@@ -119,7 +135,12 @@ namespace HWYZ.Controllers
 
                 orderQuery = SetQuery(orderQuery, storeId, StartDate, EndDate);
 
+                var storeQuery = db.Store.AsQueryable();
+
+                if (!string.IsNullOrEmpty(storeType)) { StoreType type = (StoreType)Convert.ToInt16(storeType); storeQuery = storeQuery.Where(q => q.StoreType == type); }
+
                 var list = (from q in orderQuery
+                            join t in storeQuery on q.StoreId equals t.ID
                             group q by new { q.StoreId, q.StoreName } into s
                             select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => p.Paid) }).OrderByDescending(q => q.Pay).ToList();
 
@@ -150,13 +171,22 @@ namespace HWYZ.Controllers
 
         private IQueryable<Order> SetQuery(IQueryable<Order> orderQuery, string storeId, string StartDate, string EndDate)
         {
-            orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended);
+            DateTime now = DateTime.Now;
+            //不选择开始日期默认为本月1号
+            DateTime start = string.IsNullOrEmpty(StartDate) ? DateTime.Parse(string.Format("{0}/{1}/{2}", now.Year.ToString(), now.Month.ToString(), "01")) : DateTime.Parse(StartDate);
+            DateTime end = string.IsNullOrEmpty(EndDate) ? now : DateTime.Parse(EndDate).AddDays(1);
+
+            if (start > end)
+            {
+                DateTime temp = DateTime.MinValue;
+                temp = end;
+                end = start;
+                start = temp;
+            }
+
+            orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended && q.ModifyTime.CompareTo(start) > 0 && q.ModifyTime.CompareTo(end) < 0);
 
             if (!string.IsNullOrEmpty(storeId)) { orderQuery = orderQuery.Where(q => q.StoreId.Equals(storeId)); }
-
-            if (!string.IsNullOrEmpty(StartDate)) { DateTime start = DateTime.Parse(StartDate); orderQuery = orderQuery.Where(q => q.ModifyTime >= start); }
-
-            if (!string.IsNullOrEmpty(EndDate)) { DateTime end = DateTime.Parse(EndDate); orderQuery = orderQuery.Where(q => q.ModifyTime <= end); }
 
             return orderQuery;
         }

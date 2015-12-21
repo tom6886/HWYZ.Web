@@ -10,7 +10,10 @@
                 <td>产品名称</td>
                 <td>产品编号</td>
                 <td>价格</td>
-                <td>允许退换</td>
+                @if (String.IsNullOrEmpty(UserContext.user.StoreId))
+                {
+                    <td>允许退换</td>
+                }
                 <td>状态</td>
                 <td>操作</td>
             </tr>
@@ -22,14 +25,17 @@
                 <tr>
                     <td>@item.ProductName</td>
                     <td>@item.ProductCode</td>
-                    <td>@item.Price</td>
-                    @if (@item.AllowReturn)
+                    <td>@item.Price 元</td>
+                    @if (String.IsNullOrEmpty(UserContext.user.StoreId))
                     {
+                        if (item.AllowReturn)
+                        {
                         <td>允许</td>
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         <td>不允许</td>
+                        }
                     }
                     @if (@item.Status == Status.enable)
                     {
@@ -37,7 +43,7 @@
                     }
                     else
                     {
-                        <td>停市</td>
+                        <td style="color: red;">停市</td>
                     }
                     <td data-id="@item.ID">
                         @if (UserContext.user.StoreId == @item.StoreId)

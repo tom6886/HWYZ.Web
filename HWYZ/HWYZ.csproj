@@ -220,6 +220,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512211401466_modify.cs" />
+    <Compile Include="Migrations\201512211401466_modify.Designer.cs">
+      <DependentUpon>201512211401466_modify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -280,6 +284,7 @@
     <Content Include="Content\images\zTreeStandard.gif" />
     <Content Include="Content\images\zTreeStandard.png" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -316,6 +321,7 @@
     <Content Include="Images\nopic.jpg" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\highcharts\data.js" />
     <Content Include="Scripts\highcharts\exporting.js" />
     <Content Include="Scripts\highcharts\highcharts.js" />
@@ -476,9 +482,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ReportOfManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512211401466_modify.resx">
+      <DependentUpon>201512211401466_modify.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

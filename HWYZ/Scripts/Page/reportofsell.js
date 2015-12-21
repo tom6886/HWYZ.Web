@@ -58,7 +58,7 @@ $(function () {
         $("._select").select_2();
 
         $('.form_date').datetimepicker({
-            language: 'fr',
+            language: 'zh-CN',
             weekStart: 1,
             todayBtn: 1,
             autoclose: 1,
@@ -67,6 +67,12 @@ $(function () {
             minView: 2,
             forceParse: 0
         });
+
+        var date = new Date();
+        var start = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";
+
+        $("input[name=StartDate]").val(start);
+        $("input[name=EndDate]").val(date.toLocaleDateString());
 
         $(".export").click(function () {
             var hashStr = location.hash.replace("#", "");

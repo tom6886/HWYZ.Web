@@ -62,7 +62,7 @@ namespace HWYZ.Controllers
             {
                 var list = db.Store.Where(q => q.City.Equals(city)).ToList();
 
-                return new JavaScriptSerializer().Serialize(list);  
+                return new JavaScriptSerializer().Serialize(list);
             }
         }
 
@@ -105,6 +105,8 @@ namespace HWYZ.Controllers
                     oldStore.Alipay = store.Alipay;
                     oldStore.WeiXin = store.WeiXin;
                     oldStore.Bank = store.Bank;
+                    oldStore.BankName = store.BankName;
+                    oldStore.BankAccount = store.BankAccount;
                     oldStore.Status = store.Status;
 
                     db.Entry(oldStore).State = EntityState.Modified;

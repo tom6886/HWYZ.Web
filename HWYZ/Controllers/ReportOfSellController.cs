@@ -13,6 +13,26 @@ namespace HWYZ.Controllers
             return View();
         }
 
+        private IQueryable<Order> GetOrderQuery(IQueryable<Order> orderQuery, string StartDate, string EndDate)
+        {
+            DateTime now = DateTime.Now;
+            //不选择开始日期默认为本月1号
+            DateTime start = string.IsNullOrEmpty(StartDate) ? DateTime.Parse(string.Format("{0}/{1}/{2}", now.Year.ToString(), now.Month.ToString(), "01")) : DateTime.Parse(StartDate);
+            DateTime end = string.IsNullOrEmpty(EndDate) ? now : DateTime.Parse(EndDate).AddDays(1);
+
+            if (start > end)
+            {
+                DateTime temp = DateTime.MinValue;
+                temp = end;
+                end = start;
+                start = temp;
+            }
+
+            orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended && q.ModifyTime.CompareTo(start) > 0 && q.ModifyTime.CompareTo(end) < 0);
+
+            return orderQuery;
+        }
+
         public PartialViewResult ListOfNumber(string ProductName, string StartDate, string EndDate, int pi = 1)
         {
             using (DBContext db = new DBContext())
@@ -21,13 +41,9 @@ namespace HWYZ.Controllers
 
                 var orderQuery = db.Order.AsQueryable();
 
-                orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended);
+                orderQuery = GetOrderQuery(orderQuery, StartDate, EndDate);
 
                 if (!string.IsNullOrEmpty(ProductName)) { itemQuery = itemQuery.Where(q => q.ProductName.Equals(ProductName)); }
-
-                if (!string.IsNullOrEmpty(StartDate)) { DateTime start = DateTime.Parse(StartDate); orderQuery = orderQuery.Where(q => q.ModifyTime >= start); }
-
-                if (!string.IsNullOrEmpty(EndDate)) { DateTime end = DateTime.Parse(EndDate); orderQuery = orderQuery.Where(q => q.ModifyTime <= end); }
 
                 ViewBag.list = (from q in itemQuery
                                 join o in orderQuery on q.OrderId equals o.ID
@@ -57,13 +73,9 @@ namespace HWYZ.Controllers
 
                 var orderQuery = db.Order.AsQueryable();
 
-                orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended);
+                orderQuery = GetOrderQuery(orderQuery, StartDate, EndDate);
 
                 if (!string.IsNullOrEmpty(ProductName)) { itemQuery = itemQuery.Where(q => q.ProductName.Equals(ProductName)); }
-
-                if (!string.IsNullOrEmpty(StartDate)) { DateTime start = DateTime.Parse(StartDate); orderQuery = orderQuery.Where(q => q.ModifyTime >= start); }
-
-                if (!string.IsNullOrEmpty(EndDate)) { DateTime end = DateTime.Parse(EndDate); orderQuery = orderQuery.Where(q => q.ModifyTime <= end); }
 
                 var list = (from q in itemQuery
                             join o in orderQuery on q.OrderId equals o.ID
@@ -105,13 +117,9 @@ namespace HWYZ.Controllers
 
                 var orderQuery = db.Order.AsQueryable();
 
-                orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended);
+                orderQuery = GetOrderQuery(orderQuery, StartDate, EndDate);
 
                 if (!string.IsNullOrEmpty(ProductName)) { itemQuery = itemQuery.Where(q => q.ProductName.Equals(ProductName)); }
-
-                if (!string.IsNullOrEmpty(StartDate)) { DateTime start = DateTime.Parse(StartDate); orderQuery = orderQuery.Where(q => q.ModifyTime >= start); }
-
-                if (!string.IsNullOrEmpty(EndDate)) { DateTime end = DateTime.Parse(EndDate); orderQuery = orderQuery.Where(q => q.ModifyTime <= end); }
 
                 ViewBag.list = (from q in itemQuery
                                 join o in orderQuery on q.OrderId equals o.ID
@@ -141,13 +149,9 @@ namespace HWYZ.Controllers
 
                 var orderQuery = db.Order.AsQueryable();
 
-                orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Sended);
+                orderQuery = GetOrderQuery(orderQuery, StartDate, EndDate);
 
                 if (!string.IsNullOrEmpty(ProductName)) { itemQuery = itemQuery.Where(q => q.ProductName.Equals(ProductName)); }
-
-                if (!string.IsNullOrEmpty(StartDate)) { DateTime start = DateTime.Parse(StartDate); orderQuery = orderQuery.Where(q => q.ModifyTime >= start); }
-
-                if (!string.IsNullOrEmpty(EndDate)) { DateTime end = DateTime.Parse(EndDate); orderQuery = orderQuery.Where(q => q.ModifyTime <= end); }
 
                 var list = (from q in itemQuery
                             join o in orderQuery on q.OrderId equals o.ID

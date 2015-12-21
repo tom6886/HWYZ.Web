@@ -43,10 +43,10 @@
                     <td>@item.Paid</td>
                     @switch (@item.Status)
                     {
-                        case OrderStatus.BeforeSubmit:<td>待提交</td>; break;
-                        case OrderStatus.BeforeSend:<td>待发货</td>; break;
-                        case OrderStatus.Sended:<td>已发货</td>; break;
-                        case OrderStatus.Reject:<td>驳回</td>; break;
+                        case OrderStatus.BeforeSubmit:<td style="color: #337ab7;">待提交</td>; break;
+                        case OrderStatus.BeforeSend:<td style="color: #f0ad4e;">待发货</td>; break;
+                        case OrderStatus.Sended:<td style="color: #5cb85c;">已发货</td>; break;
+                        case OrderStatus.Reject:<td style="color: #d9534f;">驳回</td>; break;
                     }
                     <td data-id="@item.ID">
                         @if (@item.Status == OrderStatus.BeforeSubmit)

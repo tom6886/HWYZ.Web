@@ -533,43 +533,43 @@
       <publishTime>11/05/2015 22:18:36</publishTime>
     </File>
     <File Include="Scripts/Page/couriers.js">
-      <publishTime>11/30/2015 10:41:07</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/delive.js">
-      <publishTime>12/08/2015 11:18:34</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/dictionary.js">
-      <publishTime>12/07/2015 17:44:10</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/login.js">
-      <publishTime>11/12/2015 13:48:42</publishTime>
+      <publishTime>12/18/2015 11:20:51</publishTime>
     </File>
     <File Include="Scripts/Page/number.js">
-      <publishTime>12/05/2015 11:49:58</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/order.js">
-      <publishTime>11/29/2015 00:26:50</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/password.js">
       <publishTime>11/12/2015 15:22:07</publishTime>
     </File>
     <File Include="Scripts/Page/product.js">
-      <publishTime>12/07/2015 22:00:52</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/reportofsell.js">
-      <publishTime>12/16/2015 14:06:45</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/reportofsend.js">
-      <publishTime>12/16/2015 11:14:13</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/roles.js">
-      <publishTime>11/16/2015 13:07:22</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/store.js">
-      <publishTime>12/17/2015 00:37:27</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/Page/users.js">
-      <publishTime>11/18/2015 14:30:20</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Scripts/select.js">
       <publishTime>12/05/2015 11:59:14</publishTime>
@@ -602,31 +602,31 @@
       <publishTime>11/11/2015 09:35:13</publishTime>
     </File>
     <File Include="Views/Couriers/Add.cshtml">
-      <publishTime>11/30/2015 10:34:13</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Couriers/Edit.cshtml">
-      <publishTime>11/30/2015 10:42:48</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Couriers/Index.cshtml">
       <publishTime>11/30/2015 10:28:16</publishTime>
     </File>
     <File Include="Views/Couriers/List.cshtml">
-      <publishTime>11/30/2015 10:43:56</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/DeliveEdit/Edit.cshtml">
-      <publishTime>12/08/2015 11:08:42</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/DeliveEdit/Index.cshtml">
       <publishTime>11/29/2015 00:10:05</publishTime>
     </File>
     <File Include="Views/DeliveEdit/List.cshtml">
-      <publishTime>12/08/2015 11:15:23</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/Dictionary/Add.cshtml">
-      <publishTime>12/07/2015 15:15:22</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Dictionary/Edit.cshtml">
-      <publishTime>12/07/2015 15:23:25</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Dictionary/Index.cshtml">
       <publishTime>12/07/2015 16:47:40</publishTime>
@@ -635,10 +635,10 @@
       <publishTime>12/07/2015 16:57:38</publishTime>
     </File>
     <File Include="Views/Dictionary/NodeAdd.cshtml">
-      <publishTime>12/07/2015 17:31:50</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Dictionary/NodeEdit.cshtml">
-      <publishTime>12/07/2015 17:44:32</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Dictionary/Nodes.cshtml">
       <publishTime>12/07/2015 21:44:48</publishTime>
@@ -656,34 +656,34 @@
       <publishTime>11/30/2015 11:39:41</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>11/12/2015 13:48:48</publishTime>
+      <publishTime>12/18/2015 11:56:11</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>12/16/2015 00:27:51</publishTime>
     </File>
     <File Include="Views/Order/List.cshtml">
-      <publishTime>12/15/2015 23:07:24</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/OrderEdit/Add.cshtml">
-      <publishTime>11/26/2015 22:27:17</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/OrderEdit/Edit.cshtml">
-      <publishTime>12/05/2015 12:03:26</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/OrderEdit/Index.cshtml">
       <publishTime>12/08/2015 11:28:06</publishTime>
     </File>
     <File Include="Views/OrderEdit/List.cshtml">
-      <publishTime>12/07/2015 15:31:45</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/OrderView/Index.cshtml">
-      <publishTime>12/15/2015 22:12:02</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/OrderView/List.cshtml">
       <publishTime>12/08/2015 11:11:12</publishTime>
     </File>
     <File Include="Views/Password/Index.cshtml">
-      <publishTime>11/24/2015 14:35:50</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ProductDelive/Index.cshtml">
       <publishTime>11/28/2015 21:31:41</publishTime>
@@ -692,31 +692,31 @@
       <publishTime>11/28/2015 23:08:20</publishTime>
     </File>
     <File Include="Views/ProductNumber/Add.cshtml">
-      <publishTime>12/05/2015 11:55:58</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ProductNumber/Edit.cshtml">
-      <publishTime>12/05/2015 12:03:20</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ProductNumber/Index.cshtml">
       <publishTime>12/05/2015 11:43:49</publishTime>
     </File>
     <File Include="Views/ProductNumber/List.cshtml">
-      <publishTime>12/05/2015 12:08:10</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/ProductSet/Add.cshtml">
-      <publishTime>12/07/2015 21:57:03</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ProductSet/Edit.cshtml">
-      <publishTime>12/07/2015 22:00:30</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ProductSet/Index.cshtml">
       <publishTime>11/25/2015 16:21:23</publishTime>
     </File>
     <File Include="Views/ProductSet/List.cshtml">
-      <publishTime>11/26/2015 11:26:21</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/ProductSet/View.cshtml">
-      <publishTime>12/07/2015 22:02:17</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/ReportOfSell/Index.cshtml">
       <publishTime>12/16/2015 11:22:44</publishTime>
@@ -737,10 +737,10 @@
       <publishTime>12/11/2015 16:24:13</publishTime>
     </File>
     <File Include="Views/Roles/Add.cshtml">
-      <publishTime>11/16/2015 11:10:57</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Roles/Edit.cshtml">
-      <publishTime>11/16/2015 11:51:37</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/Roles/Index.cshtml">
       <publishTime>11/24/2015 14:34:36</publishTime>
@@ -767,31 +767,31 @@
       <publishTime>12/11/2015 13:59:25</publishTime>
     </File>
     <File Include="Views/StoreGrant/Add.cshtml">
-      <publishTime>12/16/2015 21:45:52</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/StoreGrant/Edit.cshtml">
-      <publishTime>12/17/2015 00:10:40</publishTime>
+      <publishTime>12/18/2015 11:55:48</publishTime>
     </File>
     <File Include="Views/StoreGrant/Index.cshtml">
-      <publishTime>12/17/2015 00:39:54</publishTime>
+      <publishTime>12/17/2015 16:28:09</publishTime>
     </File>
     <File Include="Views/StoreGrant/List.cshtml">
-      <publishTime>11/18/2015 10:43:32</publishTime>
+      <publishTime>12/18/2015 11:56:05</publishTime>
     </File>
     <File Include="Views/StoreInfo/Index.cshtml">
-      <publishTime>12/16/2015 16:41:12</publishTime>
+      <publishTime>12/17/2015 17:01:10</publishTime>
     </File>
     <File Include="Views/Users/Add.cshtml">
-      <publishTime>11/19/2015 16:51:30</publishTime>
+      <publishTime>12/18/2015 11:55:49</publishTime>
     </File>
     <File Include="Views/Users/Edit.cshtml">
-      <publishTime>11/19/2015 16:51:21</publishTime>
+      <publishTime>12/18/2015 11:55:49</publishTime>
     </File>
     <File Include="Views/Users/Index.cshtml">
       <publishTime>12/07/2015 16:24:03</publishTime>
     </File>
     <File Include="Views/Users/List.cshtml">
-      <publishTime>11/12/2015 10:29:04</publishTime>
+      <publishTime>12/18/2015 11:56:06</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/05/2015 22:18:28</publishTime>
@@ -800,7 +800,7 @@
       <publishTime>11/05/2015 22:18:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/17/2015 14:37:54</publishTime>
+      <publishTime>12/18/2015 11:56:20</publishTime>
     </File>
   </ItemGroup>
 </Project>

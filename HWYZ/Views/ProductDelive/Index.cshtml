@@ -60,12 +60,13 @@
 @Scripts.Render("~/Scripts/select2/select2.min.js")
 @Scripts.Render("~/Scripts/select.js")
 @Scripts.Render("~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js")
+@Scripts.Render("~/Scripts/datetimepicker/bootstrap-datetimepicker.zh-CN.js")
 <script type="text/javascript">
     $(function () {
         $("._select").select_2();
 
         $('.form_date').datetimepicker({
-            language: 'fr',
+            language: 'zh-CN',
             weekStart: 1,
             todayBtn: 1,
             autoclose: 1,

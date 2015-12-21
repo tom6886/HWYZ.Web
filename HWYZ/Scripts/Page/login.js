@@ -5,26 +5,33 @@ $(function () {
 
     _form.ajaxForm({
         dataType: 'json',
-        beforeSubmit: function () {
-            return _form.valid();
-        },
         success: function (r) {
-            alert(r.msg);
-
-            if (r.code > 0) {
-                location.href = r.url;
+            if (r.code < 0) {
+                $('form').fadeIn(500);
+                $('.wrapper').removeClass('form-success');
+                alert(r.msg);
+                return false;
             }
-        }
-    }).validate({
-        rules: {
-            account: "required",
-            pwd: "required"
-        },
-        messages: {
-            account: "请输入用户编号",
-            pwd: "请输入口令"
+
+            location.href = r.url;
         }
     });
 
+    $("#login-button").click(function () {
+        if (!$("input[name=account]").val()) {
+            alert("请输入用户编号");
+            return false;
+        }
 
+        if (!$("input[name=pwd]").val()) {
+            alert("请输入口令");
+            return false;
+        }
+
+        event.preventDefault();
+        $('form').fadeOut(500);
+        $('.wrapper').addClass('form-success');
+
+        _form.submit();
+    });
 });
