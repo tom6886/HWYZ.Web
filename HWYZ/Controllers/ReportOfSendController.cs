@@ -75,8 +75,8 @@ namespace HWYZ.Controllers
                 //给sheet1添加第一行的头部标题
                 NPOI.SS.UserModel.IRow row1 = sheet1.CreateRow(0);
                 row1.CreateCell(0).SetCellValue("分店");
-                row1.CreateCell(1).SetCellValue("产品名称");
-                row1.CreateCell(2).SetCellValue("产品编号");
+                row1.CreateCell(1).SetCellValue("商品名称");
+                row1.CreateCell(2).SetCellValue("商品编号");
                 row1.CreateCell(3).SetCellValue("采购总数");
 
                 string status = string.Empty;

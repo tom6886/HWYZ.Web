@@ -7,8 +7,15 @@ $(function () {
         $.post("reportofsend/ListOfDetail", { storeId: storeId, StartDate: StartDate, EndDate: EndDate, storeType: storeType, pi: pi }, function (r) {
             $("#container").html(r);
 
-            $(".table-page a").click(function () {
+            $(".pagination a").click(function () {
                 reportofsend.detail($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $(this).data("pageindex"));
+                return false;
+            });
+
+            $("#goToBtn").click(function () {
+                if (Number($("#pageIndexBox").val()) > Number($("#pageCount").val())) { alert("页索引超出范围"); return false; }
+
+                reportofsend.detail($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $("#pageIndexBox").val());
                 return false;
             });
         });
@@ -20,8 +27,15 @@ $(function () {
 
             reportofsend.setChart();
 
-            $(".table-page a").click(function () {
+            $(".pagination a").click(function () {
                 reportofsend.store($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $(this).data("pageindex"));
+                return false;
+            });
+
+            $("#goToBtn").click(function () {
+                if (Number($("#pageIndexBox").val()) > Number($("#pageCount").val())) { alert("页索引超出范围"); return false; }
+
+                reportofsend.store($("input[name=StoreId]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("select[name=StoreType]").val(), $("#pageIndexBox").val());
                 return false;
             });
         });
@@ -70,9 +84,10 @@ $(function () {
 
         var date = new Date();
         var start = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";
+        var end = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
         $("input[name=StartDate]").val(start);
-        $("input[name=EndDate]").val(date.toLocaleDateString());
+        $("input[name=EndDate]").val(end);
 
         $(".export").click(function () {
             var hashStr = location.hash.replace("#", "");

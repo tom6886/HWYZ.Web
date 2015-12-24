@@ -25,7 +25,7 @@ em { color: #ff6a00; font-style: normal; }
 
 .login-bg { background-position: top; }
 
-#container { margin: 25px 10px 0px 15px; }
+/*#container { margin: 25px 10px 0px 15px; }*/
 
 /*alert notice css*/
 .ui-pnotify.stack-bar-top { font-size: 14px; position: fixed!important; _position: absolute; left: 35%; height: 50px; }

@@ -65,7 +65,7 @@ namespace HWYZ.Controllers
                 //判断是否已存在相同商品
                 StoreProduct sameProduct = db.StoreProduct.Where(q => q.ProductID.Equals(product.ProductID) && q.StoreID.Equals(user.StoreId) && !q.ID.Equals(product.ID)).FirstOrDefault();
 
-                if (sameProduct != null) { return Json(new { code = -1, msg = "已存在相同产品" }); }
+                if (sameProduct != null) { return Json(new { code = -1, msg = "已存在相同商品" }); }
 
                 StoreProduct oldOne = db.StoreProduct.Where(q => q.ID.Equals(product.ID)).FirstOrDefault();
 

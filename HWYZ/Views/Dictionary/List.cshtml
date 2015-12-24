@@ -3,7 +3,7 @@
 @model PagedList<Dictionary>
 
 <div class="table-responsive">
-    <table class="table table-hover table-bordered">
+    <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
                 <td>参数名称</td>
@@ -30,9 +30,30 @@
     </table>
 </div>
 
-<div class="text-right" style="padding: 10px 15px;">
-    @if (Model != null && Model.Count > 0)
-    {
-        @Ajax.Pager(Model, new PagerOptions { CssClass = "table-page", PageIndexParameterName = "pi", CurrentPagerItemWrapperFormatString = "<span class=\"active\">{0}</span>", NumericPagerItemWrapperFormatString = "<span>{0}</span>", FirstPageText = "首页&nbsp;&nbsp;", PrevPageText = "前一页", NextPageText = "下一页", LastPageText = "&nbsp;&nbsp;尾页" }, new MvcAjaxOptions { UpdateTargetId = "container", HttpMethod = "Post", DataFormId = "form_query" })
-    }
-</div>
+@if (Model != null && Model.TotalPageCount > 1)
+{
+    <div style="height: 80px">
+        <div style="float: left;">
+            @Ajax.Pager(Model, new PagerOptions
+       {
+           CssClass = "pagination",
+           ContainerTagName = "ul",
+           PageIndexParameterName = "pi",
+           CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",
+           DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+           PagerItemTemplate = "<li>{0}</li>",
+           PageIndexBoxId = "pageIndexBox",
+           GoToButtonId = "goToBtn"
+       }, new MvcAjaxOptions { UpdateTargetId = "unseen", HttpMethod = "Post", DataFormId = "form_query" })
+        </div>
+        <div class="input-group" style="width: 260px;">
+            <div class="input-group" style="margin: 20px;">
+                <span class="input-group-addon">转到第</span>
+                <input type="text" id="pageIndexBox" class="form-control input-sm" />
+                <span class="input-group-addon">页</span>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary btn-sm" id="goToBtn">跳转</button></span>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>徽味驿站云平台</title>
+    <link href="~/Images/logo.jpg" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="navbar navbar-duomi navbar-static-top" role="navigation" style="min-height: 100px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="height: 90px; padding-left: 100px;" href="#" id="logo">徽味驿站云平台<br />
+                    <br />
+                    HUIWEI YIZHAN CLOUD PLATFORM
+                </a>
+            </div>
+
+            <div class="btn-group" style="float: right; margin: 50px 10px 0 0;">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    欢迎您，@UserContext.user.DisplayName <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="Login/LogOff">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" style="padding-left: 0;">
+                <ul id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
+                    @using HWYZ.Context;
+                    @using HWYZ.Models;
+                    @{int roleVal = Convert.ToInt32(UserContext.user.Role.RoleVal);}
+
+                    @foreach (Menu menu in MenuContext.menus)
+                    {
+
+                        if ((menu.AuthVal & roleVal) > 0)
+                        {
+                            if (menu.SubMenu.Count == 0)
+                            {
+                        <li>
+                            <a href="@menu.Url">
+                                <i class="glyphicon @menu.Icon"></i>
+                                @menu.Title
+                            </a>
+                        </li>
+                            }
+                            else
+                            {
+                        <li>
+                            <a href="#@menu.ID" class="nav-header collapsed" data-toggle="collapse">
+                                <i class="glyphicon @menu.Icon"></i>
+                                @menu.Title
+                                <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                            </a>
+                            <ul id="@menu.ID" class="nav nav-list secondmenu collapse" style="height: 0px;">
+                                @foreach (Menu sub in @menu.SubMenu)
+                                {
+                                    if ((sub.AuthVal & roleVal) > 0)
+                                    {
+                                    <li><a href="@sub.Url"><i class="glyphicon @sub.Icon"></i>&nbsp;@sub.Title</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md-10" style="margin-top: 20px;">
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="FootBox">
+            <div class="FootContent">
+                <p>&copy; @DateTime.Now.Year - 徽味驿站版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

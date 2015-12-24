@@ -14,8 +14,8 @@ namespace HWYZ
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.pnotify.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js",
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/common.js"));
+                        "~/Scripts/jquery.dcjqaccordion.2.7.js",
+                        "~/Scripts/jquery.nicescroll.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -23,6 +23,11 @@ namespace HWYZ
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                        "~/Scripts/common.js",
+                        "~/Scripts/common-scripts.js",
+                        "~/Scripts/bootstrap.js"));
 
             // 使用 Modernizr 的开发版本进行开发和了解信息。然后，当你做好
             // 生产准备时，请使用 http://modernizr.com 上的生成工具来仅选择所需的测试。
@@ -32,6 +37,7 @@ namespace HWYZ
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/jquery.pnotify.default.css",
                         "~/Content/bootstrap.css",
+                        "~/Content/font-awesome/css/font-awesome.css",
                         "~/Content/base.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

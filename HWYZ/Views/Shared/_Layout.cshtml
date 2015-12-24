@@ -1,70 +1,96 @@
 ﻿<!DOCTYPE html>
-<html lang="zh">
+<html lang="en" style="overflow: hidden;">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <title>徽味驿站云平台</title>
-    <link href="~/Images/logo.jpg" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-</head>
-<body>
-    <div class="navbar navbar-duomi navbar-static-top" role="navigation" style="min-height: 100px;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" style="height: 90px; padding-left: 100px;" href="#" id="logo">徽味驿站云平台<br />
-                    <br />
-                    HUIWEI YIZHAN CLOUD PLATFORM
-                </a>
-            </div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-            <div class="btn-group" style="float: right; margin: 50px 10px 0 0;">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    欢迎您，@UserContext.user.DisplayName <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="Login/LogOff">退出</a></li>
+    <title>徽味驿站云平台</title>
+
+    <!-- Bootstrap core CSS -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/mainstyle.css")
+    @Scripts.Render("~/bundles/jquery")
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .jqstooltip { position: absolute; left: 0px; top: 0px; display: block; visibility: hidden; background: rgb(0, 0, 0) transparent; background-color: rgba(0,0,0,0.6); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; color: white; font: 10px arial, san serif; text-align: left; white-space: nowrap; border: 1px solid white; z-index: 10000; }
+        .jqsfield { color: white; padding: 5px 5px 8px 5px; font: 10px arial, san serif; text-align: left; }
+    </style>
+</head>
+
+<body ryt12721="1" style="zoom: 1;">
+
+    <section id="icontainer">
+        <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="/" class="logo"><b>徽味驿站云平台</b></a>
+            <!--logo end-->
+
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login/logoff">登出</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2" style="padding-left: 0;">
-                <ul id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
+        </header>
+        <!--header end-->
+
+        <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
                     @using HWYZ.Context;
                     @using HWYZ.Models;
                     @{int roleVal = Convert.ToInt32(UserContext.user.Role.RoleVal);}
 
                     @foreach (Menu menu in MenuContext.menus)
                     {
-
                         if ((menu.AuthVal & roleVal) > 0)
                         {
                             if (menu.SubMenu.Count == 0)
                             {
                         <li>
-                            <a href="@menu.Url">
-                                <i class="glyphicon @menu.Icon"></i>
-                                @menu.Title
+                            <a class="dcjq-parent" href="@menu.Url" target="_blank">
+                                <i class="fa fa-@menu.Icon"></i>
+                                <span>@menu.Title</span>
                             </a>
                         </li>
                             }
                             else
                             {
-                        <li>
-                            <a href="#@menu.ID" class="nav-header collapsed" data-toggle="collapse">
-                                <i class="glyphicon @menu.Icon"></i>
-                                @menu.Title
-                                <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
-                            </a>
-                            <ul id="@menu.ID" class="nav nav-list secondmenu collapse" style="height: 0px;">
+                        <li class="sub-menu dcjq-parent-li">
+                            <a href="javascript:void(0);" class="dcjq-parent">
+                                <i class="fa fa-@menu.Icon"></i>
+                                <span>@menu.Title</span></a>
+                            <ul class="sub" style="display: none;">
                                 @foreach (Menu sub in @menu.SubMenu)
                                 {
                                     if ((sub.AuthVal & roleVal) > 0)
                                     {
-                                    <li><a href="@sub.Url"><i class="glyphicon @sub.Icon"></i>&nbsp;@sub.Title</a></li>
+                                    <li>
+                                        <a href="@sub.Url" target="_blank">
+                                            <i class="fa fa-@sub.Icon"></i>
+                                            <span>@sub.Title</span>
+                                        </a>
+                                    </li>
                                     }
                                 }
                             </ul>
@@ -73,20 +99,43 @@
                         }
                     }
                 </ul>
+                <!-- sidebar menu end-->
             </div>
-            <div class="col-md-10" style="margin-top: 20px;">
-                <section class="content-wrapper main-content clear-fix">
-                    @RenderBody()
-                </section>
+        </aside>
+        <!--sidebar end-->
+
+        <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+            </section>
+        </section>
+
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                @DateTime.Now.Year - 徽味驿站版权所有
+             
+                <a href="javascript:void(0)" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
             </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <div id="gritter-notice-wrapper">
+        <div id="gritter-item-1" class="gritter-item-wrapper my-sticky-class">
+            <div class="gritter-top"></div>
+            <div class="gritter-bottom"></div>
         </div>
     </div>
-    <footer>
-        <div class="FootBox">
-            <div class="FootContent">
-                <p>&copy; @DateTime.Now.Year - 徽味驿站版权所有</p>
-            </div>
-        </div>
-    </footer>
+
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/Scripts/jquery.scrollTo.min.js")
 </body>
 </html>

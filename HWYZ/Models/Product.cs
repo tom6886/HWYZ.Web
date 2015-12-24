@@ -7,7 +7,7 @@ namespace HWYZ.Models
     [Table("Product")]
     public class Product : BaseObj
     {
-        [NotMapped, Display(Name = "产品名"), MaxLength(100)]
+        [NotMapped, Display(Name = "商品名"), MaxLength(100)]
         public string Name
         {
             set
@@ -18,19 +18,19 @@ namespace HWYZ.Models
             }
         }
 
-        [Display(Name = "产品名"), MaxLength(0x40), Required]
+        [Display(Name = "商品名"), MaxLength(0x40), Required]
         public string ProductName { get; set; }
 
-        [Display(Name = "产品名全拼"), MaxLength(100)]
+        [Display(Name = "商品名全拼"), MaxLength(100)]
         public string PinYin { get; set; }
 
-        [Display(Name = "产品名首字母"), MaxLength(100)]
+        [Display(Name = "商品名首字母"), MaxLength(100)]
         public string PinYin1 { get; set; }
 
-        [Display(Name = "产品编码"), MaxLength(0x40), Required]
+        [Display(Name = "商品编码"), MaxLength(0x40), Required]
         public string ProductCode { get; set; }
 
-        [Display(Name = "产品类别"), MaxLength(0x40)]
+        [Display(Name = "商品类别"), MaxLength(0x40)]
         public string ProductType { get; set; }
 
         [Display(Name = "条形码"), MaxLength(0x40)]

@@ -7,8 +7,15 @@ $(function () {
         $.post("reportofsell/ListOfNumber", { ProductName: ProductName, StartDate: StartDate, EndDate: EndDate, pi: pi }, function (r) {
             $("#container").html(r);
 
-            $(".table-page a").click(function () {
+            $(".pagination a").click(function () {
                 reportofsell.number($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                return false;
+            });
+
+            $("#goToBtn").click(function () {
+                if (Number($("#pageIndexBox").val()) > Number($("#pageCount").val())) { alert("页索引超出范围"); return false; }
+
+                reportofsell.number($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("#pageIndexBox").val());
                 return false;
             });
         });
@@ -20,8 +27,15 @@ $(function () {
 
             reportofsell.setChart();
 
-            $(".table-page a").click(function () {
+            $(".pagination a").click(function () {
                 reportofsell.pay($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $(this).data("pageindex"));
+                return false;
+            });
+
+            $("#goToBtn").click(function () {
+                if (Number($("#pageIndexBox").val()) > Number($("#pageCount").val())) { alert("页索引超出范围"); return false; }
+
+                reportofsell.pay($("input[name=ProductName]").val(), $("input[name=StartDate]").val(), $("input[name=EndDate]").val(), $("#pageIndexBox").val());
                 return false;
             });
         });
@@ -70,9 +84,10 @@ $(function () {
 
         var date = new Date();
         var start = date.getFullYear() + "/" + (date.getMonth() + 1) + "/01";
+        var end = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
         $("input[name=StartDate]").val(start);
-        $("input[name=EndDate]").val(date.toLocaleDateString());
+        $("input[name=EndDate]").val(end);
 
         $(".export").click(function () {
             var hashStr = location.hash.replace("#", "");

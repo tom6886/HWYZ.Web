@@ -2,50 +2,54 @@
 @using HWYZ.Models;
 @model PagedList<Store>
 
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
-                {
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="key" placeholder="请输入门店名称或编号" aria-describedby="basic-addon2">
-                        <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
+<div class="row mt">
+    <div class="col-lg-12">
+        <div class="content-panel panel panel-default">
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-md-4">
+                        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+                        {
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="key" placeholder="请输入门店名称或编号" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" style="cursor: pointer;" id="basic-addon2">查询</span>
+                            </div>
+                        }
                     </div>
-                }
-            </div>
-            <div class="col-md-7">
-                <button class="btn btn-info" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
-            </div>
-        </div>
-        <div class="row">
-            <div id="container">
-                @Html.Partial("List", Model)
-            </div>
-        </div>
-        <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        </div>
-        <div class="modal fade" id="dlg_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="jumbotron">
-                <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ulqLPebKpPEGLx5VEHYMGY6"></script>
-                <div id="allmap" style="height: 600px; width: 100%;"></div>
-                <script type="text/javascript">
-                    // 百度地图API功能
-                    var map = new BMap.Map("allmap");
+                    <div class="col-md-7">
+                        <button class="btn btn-info" type="button" style="float: right;" data-toggle="modal" data-target="#dlg_edit">添加</button>
+                    </div>
+                </div>
+                <section id="unseen">
+                    <div id="container">
+                        @Html.Partial("List", Model)
+                    </div>
+                </section>
+                <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                </div>
+                <div class="modal fade" id="dlg_map" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="jumbotron">
+                        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=3ulqLPebKpPEGLx5VEHYMGY6"></script>
+                        <div id="allmap" style="height: 600px; width: 100%;"></div>
+                        <script type="text/javascript">
+                            // 百度地图API功能
+                            var map = new BMap.Map("allmap");
 
-                    var point = new BMap.Point(116.331398, 39.897445);
+                            var point = new BMap.Point(116.331398, 39.897445);
 
-                    map.centerAndZoom(point, 13);
+                            map.centerAndZoom(point, 13);
 
-                    map.addEventListener("click", function (e) {
-                        if (!confirm("确定在此开设分店？")) { return false; }
+                            map.addEventListener("click", function (e) {
+                                if (!confirm("确定在此开设分店？")) { return false; }
 
-                        $("input[name=Lng]").val(e.point.lng);
-                        $("input[name=Lat]").val(e.point.lat);
+                                $("input[name=Lng]").val(e.point.lng);
+                                $("input[name=Lat]").val(e.point.lat);
 
-                        $("#dlg_map").modal("hide");
-                    });
-                </script>
+                                $("#dlg_map").modal("hide");
+                            });
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
