@@ -21,5 +21,11 @@ namespace HWYZ.Models
 
         [Display(Name = "商品数量")]
         public int ProductNumber { get; set; }
+
+        [Display(Name = "线上价格")]
+        public decimal OnlinePrice { get; set; }
+
+        [Display(Name = "线下价格")]
+        public decimal OfflinePrice { get; set; }
     }
 }

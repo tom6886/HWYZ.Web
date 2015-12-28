@@ -20,7 +20,7 @@ namespace HWYZ.Filters
                 return;
             }
 
-            string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToLower();
+            string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
 
             Menu menu = MenuContext.menus.Where(q => q.ID.Equals(controllerName)).FirstOrDefault();
 

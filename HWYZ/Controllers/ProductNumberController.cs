@@ -79,6 +79,8 @@ namespace HWYZ.Controllers
                 else
                 {
                     oldOne.ProductNumber = product.ProductNumber;
+                    oldOne.OnlinePrice = product.OnlinePrice;
+                    oldOne.OfflinePrice = product.OfflinePrice;
 
                     db.Entry(oldOne).State = EntityState.Modified;
                 }

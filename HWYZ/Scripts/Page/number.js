@@ -33,16 +33,14 @@ $(function () {
             }
         }).validate({
             rules: {
-                ProductNumber: {
-                    required: true,
-                    digits: true
-                }
+                ProductNumber: { required: true, digits: true },
+                OnlinePrice: { required: true, number: true },
+                OfflinePrice: { required: true, number: true },
             },
             messages: {
-                ProductNumber: {
-                    required: "发货数量是必填项",
-                    digits: "请输入整数"
-                }
+                ProductNumber: { required: "发货数量是必填项", digits: "请输入整数" },
+                OnlinePrice: { required: "线上售价是必填项" },
+                OfflinePrice: { required: "线下售价是必填项" },
             }
         });
 
@@ -65,7 +63,17 @@ $(function () {
             });
         }
 
+        $("input[name=OnlinePrice]", _form).on('input propertychange', function () {
+            $("input[name=OfflinePrice]", _form).val($(this).val());
+        });
+
         $(".save", modal).click(function () {
+            var _price = Number($("input[name=Price]", _form).val()),
+                _online = Number($("input[name=OnlinePrice]", _form).val()),
+                _offline = Number($("input[name=OfflinePrice]", _form).val());
+
+            if ((_online < _price || _offline < _price) && !confirm("您设定的销售价格小于进货价格，确定保存？")) { return false; }
+
             _form.submit();
         });
     }

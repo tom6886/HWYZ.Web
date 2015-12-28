@@ -8,9 +8,24 @@ $(function () {
         speed: 'slow',
         showCount: false,
         autoExpand: true,
-        //        cookie: 'dcjq-accordion-1',
         classExpand: 'dcjq-current-parent'
     });
+
+    var href = window.location.pathname;
+
+    var tagA = $("a[href='" + href + "']");
+
+    if (tagA.parents(".sub-menu").length > 0) {
+        tagA.parent().addClass("active");
+
+        var sub = tagA.parents(".sub");
+
+        sub.show();
+
+        sub.siblings(".dcjq-parent").addClass("active");
+    } else {
+        tagA.addClass("active");
+    }
 });
 
 var Script = function () {

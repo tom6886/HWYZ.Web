@@ -8,7 +8,9 @@
             <tr>
                 <td>商品名称</td>
                 <td>商品编号</td>
-                <td>APP分配数量</td>
+                <td>线上分配数量</td>
+                <td>线上销售价格</td>
+                <td>线下销售价格</td>
                 <td>操作</td>
             </tr>
         </thead>
@@ -20,6 +22,8 @@
                     <td>@item.Product.ProductName</td>
                     <td>@item.Product.ProductCode</td>
                     <td>@item.ProductNumber</td>
+                    <td>@item.OnlinePrice</td>
+                    <td>@item.OfflinePrice</td>
                     <td data-id="@item.ID">
                         <button class="btn btn-primary btn-xs editNumber" data-toggle="modal" data-target="#dlg_edit"><i class="fa fa-pencil"></i></button>
                         <button class="btn btn-danger btn-xs delNumber"><i class="fa fa-trash-o "></i></button>

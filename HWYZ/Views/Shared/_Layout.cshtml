@@ -68,7 +68,7 @@
                             if (menu.SubMenu.Count == 0)
                             {
                         <li>
-                            <a class="dcjq-parent" href="@menu.Url" target="_blank">
+                            <a class="dcjq-parent" href="@menu.Url">
                                 <i class="fa fa-@menu.Icon"></i>
                                 <span>@menu.Title</span>
                             </a>
@@ -86,7 +86,7 @@
                                     if ((sub.AuthVal & roleVal) > 0)
                                     {
                                     <li>
-                                        <a href="@sub.Url" target="_blank">
+                                        <a href="@sub.Url">
                                             <i class="fa fa-@sub.Icon"></i>
                                             <span>@sub.Title</span>
                                         </a>

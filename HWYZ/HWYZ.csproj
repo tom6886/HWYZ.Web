@@ -220,10 +220,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201512211401466_modify.cs" />
-    <Compile Include="Migrations\201512211401466_modify.Designer.cs">
-      <DependentUpon>201512211401466_modify.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -235,6 +231,7 @@
     <Compile Include="Models\PageModels\PSJE.cs" />
     <Compile Include="Models\PageModels\CXSL.cs" />
     <Compile Include="Models\PageModels\CXJE.cs" />
+    <Compile Include="Models\StoreProduct.cs" />
     <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="Models\GuserRole.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -246,7 +243,6 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Courier.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\StoreProduct.cs" />
     <Compile Include="Models\Dictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -501,11 +497,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201512211401466_modify.resx">
-      <DependentUpon>201512211401466_modify.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
