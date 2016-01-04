@@ -56,7 +56,7 @@ namespace HWYZ.Controllers
         {
             try
             {
-                string storeId = UserContext.user.StoreId;
+                string storeId = UserContext.store.ID;
 
                 //随机生成文件名
                 string fileName = StringUtil.UniqueID();

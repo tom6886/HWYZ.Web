@@ -17,9 +17,9 @@ namespace HWYZ.Controllers
             {
                 var query = db.Courier.Include("Store").AsQueryable();
 
-                string storeId = UserContext.user.StoreId;
+                Store store = UserContext.store;
 
-                if (!string.IsNullOrEmpty(storeId)) { query = query.Where(q => q.StoreId.Equals(storeId)); }
+                if (store != null) { query = query.Where(q => q.StoreId.Equals(store.ID)); }
 
                 if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.CourierName.Contains(key) || q.CourierTel.Contains(key)); }
 
@@ -66,9 +66,11 @@ namespace HWYZ.Controllers
                 {
                     Guser user = UserContext.user;
 
+                    Store store = UserContext.store;
+
                     courier.CreatorID = user.ID;
                     courier.Creator = user.DisplayName;
-                    courier.StoreId = user.StoreId;
+                    courier.StoreId = store.ID;
                     courier.Status = Status.enable;
 
                     db.Courier.Add(courier);

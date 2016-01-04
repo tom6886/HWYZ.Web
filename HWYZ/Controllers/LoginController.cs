@@ -1,4 +1,5 @@
 ﻿using HWYZ.Context;
+using HWYZ.Filters;
 using HWYZ.Models;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace HWYZ.Controllers
 
             using (var db = new DBContext())
             {
-                Guser user = db.Guser.Include("Role").Include("Store").Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
+                Guser user = db.Guser.Include("Role").Where(q => q.ID.Equals(cookieAccountId)).FirstOrDefault();
 
                 if (user == null || user.Status == Status.disable || Convert.ToInt32(user.Role.RoleVal) == 0)
                 {
@@ -42,6 +43,19 @@ namespace HWYZ.Controllers
                 }
 
                 UserContext.user = user;
+
+                List<Store> stores = db.Store.Where(q => q.UserId.Equals(user.ID)).OrderBy(q => q.StoreCode).ToList();
+
+                if (stores.Count > 0)
+                {
+                    Store selectStore = stores[0];
+
+                    UserContext.store = selectStore;
+
+                    stores.RemoveAt(0);
+
+                    UserContext.stores = stores;
+                }
 
                 List<Menu> menus = XmlHelper.XmlDeserializeFromFile<List<Menu>>(Server.MapPath("~/route.config"), Encoding.UTF8);
 
@@ -62,7 +76,7 @@ namespace HWYZ.Controllers
             {
                 string _pass = StringUtil.Md5Encrypt(pwd);
 
-                Guser user = db.Guser.Include("Role").Include("Store").Where(q => q.Account.Equals(account) && q.PassWord.Equals(_pass)).FirstOrDefault();
+                Guser user = db.Guser.Include("Role").Where(q => q.Account.Equals(account) && q.PassWord.Equals(_pass)).FirstOrDefault();
 
                 if (user == null) { return Json(new { code = -1, msg = "用户名或密码错误" }); }
 
@@ -73,6 +87,19 @@ namespace HWYZ.Controllers
                 if (roleVal == 0) { return Json(new { code = -3, msg = "此用户角色未分配权限，请联系管理员" }); }
 
                 UserContext.user = user;
+
+                List<Store> stores = db.Store.Where(q => q.UserId.Equals(user.ID)).OrderBy(q => q.StoreCode).ToList();
+
+                if (stores.Count > 0)
+                {
+                    Store selectStore = stores[0];
+
+                    UserContext.store = selectStore;
+
+                    stores.RemoveAt(0);
+
+                    UserContext.stores = stores;
+                }
 
                 List<Menu> menus = XmlHelper.XmlDeserializeFromFile<List<Menu>>(Server.MapPath("~/route.config"), Encoding.UTF8);
 
@@ -127,6 +154,35 @@ namespace HWYZ.Controllers
             System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
 
             return RedirectToAction("Index", "login");
+        }
+
+        public JsonResult LogChange(string storeId)
+        {
+            using (var db = new DBContext())
+            {
+                Guser user = UserContext.user;
+
+                List<Store> stores = db.Store.Where(q => q.UserId.Equals(user.ID)).OrderBy(q => q.StoreCode).ToList();
+
+                if (stores.Count > 0)
+                {
+                    Store selectStore = stores.Where(q => q.ID.Equals(storeId)).FirstOrDefault();
+
+                    if (selectStore == null) { return Json(new { code = -1, msg = "找不到对应分店" }); }
+
+                    UserContext.store = selectStore;
+
+                    stores.Remove(selectStore);
+
+                    UserContext.stores = stores;
+
+                    string returnUrl = GetFirstMenu(MenuContext.menus, Convert.ToInt32(UserContext.user.Role.RoleVal));
+
+                    return Json(new { code = 1, url = returnUrl });
+                }
+
+                return Json(new { code = -2, msg = "账户存在异常，请重新登录" });
+            }
         }
     }
 }

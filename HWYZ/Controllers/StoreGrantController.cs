@@ -21,7 +21,7 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
 
-                PagedList<Store> cards = db.Store.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                PagedList<Store> cards = db.Store.Include("User").Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Store>(new List<Store>(), 10, 0);
@@ -42,11 +42,13 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(storeId))
                 {
-                    Store store = db.Store.Where(q => q.ID.Equals(storeId)).FirstOrDefault();
+                    Store store = db.Store.Include("User").Where(q => q.ID.Equals(storeId)).FirstOrDefault();
 
                     if (store == null) { return Json(new { code = -1, msg = "找不到指定门店" }); }
 
                     ViewBag.store = store;
+
+                    ViewBag.userName = store == null ? null : store.User == null ? null : store.User.DisplayName;
 
                     return PartialView("Edit");
                 }
@@ -95,6 +97,7 @@ namespace HWYZ.Controllers
                 {
                     oldStore.ModifyTime = DateTime.Now;
                     oldStore.Name = store.StoreName;
+                    oldStore.UserId = store.UserId;
                     oldStore.Address = store.Address;
                     oldStore.Lng = store.Lng;
                     oldStore.Lat = store.Lat;

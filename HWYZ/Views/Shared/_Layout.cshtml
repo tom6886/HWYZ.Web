@@ -42,10 +42,31 @@
             <!--logo end-->
 
             <div class="top-menu">
+
                 <ul class="nav pull-right top-menu">
                     <li><a class="logout" href="login/logoff">登出</a></li>
                 </ul>
             </div>
+            @if (UserContext.stores != null && UserContext.stores.Count > 0)
+            {
+                <div class="top-menu dropdown">
+                    <ul class="nav pull-right top-menu">
+                        <li>
+                            <button class="logout btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                切换分店
+    <span class="caret"></span>
+                            </button>
+
+                            <ul id="logChange" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                @foreach (Store item in UserContext.stores)
+                                {
+                                    <li><a href="#" data-id="@item.ID">@item.StoreName</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            }
         </header>
         <!--header end-->
 

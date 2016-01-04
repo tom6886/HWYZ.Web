@@ -19,7 +19,7 @@ namespace HWYZ.Controllers
             {
                 var query = db.StoreProduct.Include("Product").AsQueryable();
 
-                query = query.Where(q => q.StoreID.Contains(UserContext.user.StoreId));
+                query = query.Where(q => q.StoreID.Contains(UserContext.store.ID));
 
                 if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.Product.ProductName.Contains(key) || q.Product.ProductCode.Contains(key)); }
 
@@ -60,10 +60,10 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Guser user = UserContext.user;
+                Store store = UserContext.store;
 
                 //判断是否已存在相同商品
-                StoreProduct sameProduct = db.StoreProduct.Where(q => q.ProductID.Equals(product.ProductID) && q.StoreID.Equals(user.StoreId) && !q.ID.Equals(product.ID)).FirstOrDefault();
+                StoreProduct sameProduct = db.StoreProduct.Where(q => q.ProductID.Equals(product.ProductID) && q.StoreID.Equals(store.ID) && !q.ID.Equals(product.ID)).FirstOrDefault();
 
                 if (sameProduct != null) { return Json(new { code = -1, msg = "已存在相同商品" }); }
 
@@ -72,7 +72,7 @@ namespace HWYZ.Controllers
                 if (oldOne == null)
                 {
                     product.ID = StringUtil.UniqueID();
-                    product.StoreID = user.StoreId;
+                    product.StoreID = store.ID;
 
                     db.StoreProduct.Add(product);
                 }

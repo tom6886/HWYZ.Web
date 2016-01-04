@@ -15,9 +15,9 @@ namespace HWYZ.Controllers
             {
                 var query = db.Location.Include("Store").AsQueryable();
 
-                string storeId = UserContext.user.StoreId;
+                Store store = UserContext.store;
 
-                if (!string.IsNullOrEmpty(storeId)) { query = query.Where(q => q.StoreId.Equals(storeId)); }
+                if (store != null) { query = query.Where(q => q.StoreId.Equals(store.ID)); }
 
                 if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.Customer.Contains(key) || q.CustomerTel.Contains(key)); }
 

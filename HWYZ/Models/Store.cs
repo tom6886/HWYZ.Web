@@ -18,6 +18,12 @@ namespace HWYZ.Models
             }
         }
 
+        [ForeignKey("UserId")]
+        public virtual Guser User { get; set; }
+
+        [MaxLength(200)]
+        public string UserId { get; set; }
+
         [Display(Name = "门店名"), MaxLength(0x40), Required]
         public string StoreName { get; set; }
 

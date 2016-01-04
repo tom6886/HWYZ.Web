@@ -8,6 +8,7 @@
             <tr>
                 <td>门店名称</td>
                 <td>门店编号</td>
+                <td>登录账号</td>
                 <td>所属地市</td>
                 <td>地址</td>
                 <td>门店类型</td>
@@ -24,6 +25,7 @@
                 <tr>
                     <td>@item.StoreName</td>
                     <td>@item.StoreCode</td>
+                    <td>@item.User.DisplayName</td>
                     <td>@item.Province @item.City @item.Country</td>
                     <td>@item.Address</td>
                     @if (@item.StoreType == StoreType.JMD)

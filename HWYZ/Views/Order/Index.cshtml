@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 15px;">
-                        @if (UserContext.user.Store == null)
+                        @if (UserContext.store == null)
                         {
                             <div class="col-md-4">
                                 <div class="input-group">
@@ -56,7 +56,7 @@
                                 <span class="input-group-addon">订单状态</span>
                                 <select name="Status" class="form-control">
                                     <option value="">所有</option>
-                                    @if (UserContext.user.Store != null)
+                                    @if (UserContext.store != null)
                                     { 
                                         <option value="BeforeSubmit">待提交</option>
                                     }
@@ -69,7 +69,7 @@
                     </div>
                 }
                 <div class="row" style="margin: 15px 0 15px 0;">
-                    @if (UserContext.user.Store != null)
+                    @if (UserContext.store != null)
                     {
                         <a class="btn btn-info" style="float: right; margin-left: 20px;" target="_blank" href="order/addOrder">添加</a>
                     }

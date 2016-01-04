@@ -96,6 +96,9 @@
         },
         spr: function (e) {
             priv.select({ elem: e, placeholder: "选择商品", url: "getStoreProduct", dataParam: "name" });
+        },
+        u: function (e) {
+            priv.select({ elem: e, placeholder: "选择登录账号", url: "getUser", dataParam: "id" });
         }
     }
 

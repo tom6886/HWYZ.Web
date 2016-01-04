@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <div class="navbar navbar-duomi navbar-static-top" role="navigation" style="min-height: 100px;">
+    <div class="noprint navbar navbar-duomi navbar-static-top" role="navigation" style="min-height: 100px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" style="height: 90px; padding-left: 100px;" href="#" id="logo">徽味驿站云平台<br />
@@ -26,11 +26,13 @@
         </section>
     </div>
     <footer>
-        <div class="FootBox">
+        <div class="FootBox noprint">
             <div class="FootContent">
                 <p>&copy; @DateTime.Now.Year - 徽味驿站版权所有</p>
             </div>
         </div>
     </footer>
+
+    @Scripts.Render("~/bundles/common")
 </body>
 </html>

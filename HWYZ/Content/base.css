@@ -25,6 +25,10 @@ em { color: #ff6a00; font-style: normal; }
 
 .login-bg { background-position: top; }
 
+@media print {
+    .noprint { display: none; }
+}
+
 /*#container { margin: 25px 10px 0px 15px; }*/
 
 /*alert notice css*/

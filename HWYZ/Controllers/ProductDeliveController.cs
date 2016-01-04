@@ -37,9 +37,9 @@ namespace HWYZ.Controllers
                 //只显示代发货的订单
                 where = where.And(q => q.SubmitTime.CompareTo(start) > 0 && q.SubmitTime.CompareTo(end) < 0 && q.Status == OrderStatus.BeforeSend);
 
-                Guser user = UserContext.user;
+                Store store = UserContext.store;
 
-                if (user.Store == null)
+                if (store == null)
                 {
                     where = where.And(q => q.Status > 0);
 
@@ -47,7 +47,7 @@ namespace HWYZ.Controllers
                 }
                 else
                 {
-                    where = where.And(q => q.StoreId.Equals(user.StoreId));
+                    where = where.And(q => q.StoreId.Equals(store.ID));
                 }
 
                 PagedList<Order> cards = db.Order.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);

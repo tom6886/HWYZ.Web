@@ -35,19 +35,6 @@
                         </select>
                     </div>
                 </div>
-                @if (HWYZ.Context.UserContext.user.Store == null)
-                {
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon">所属门店</span>
-                            <input type="hidden" data-select="s" name="StoreId" class="_select" style="width: 100%;" />
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <input type="hidden" name="StoreId" value="@HWYZ.Context.UserContext.user.StoreId" />
-                }
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon">性别</span>

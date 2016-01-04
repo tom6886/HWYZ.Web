@@ -44,12 +44,6 @@ namespace HWYZ.Models
         [MaxLength(200)]
         public string RoleId { get; set; }
 
-        [ForeignKey("StoreId")]
-        public virtual Store Store { get; set; }
-
-        [MaxLength(200)]
-        public string StoreId { get; set; }
-
         public Sex Sex { get; set; }
 
         public Status Status { get; set; }

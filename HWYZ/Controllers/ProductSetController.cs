@@ -20,9 +20,7 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
-                string storeId = UserContext.user.StoreId;
-
-                if (string.IsNullOrEmpty(storeId))
+                if (UserContext.store == null)
                 {
                     //管理员只维护并查看总店的商品
                     query = query.Where(q => q.StoreId == null);
@@ -30,7 +28,7 @@ namespace HWYZ.Controllers
                 else
                 {
                     //分店可以查看总店在市商品并维护自己添加的商品
-                    query = query.Where(q => ((q.StoreId == null && q.Status == Status.enable) || q.StoreId.Equals(storeId)));
+                    query = query.Where(q => ((q.StoreId == null && q.Status == Status.enable) || q.StoreId.Equals(UserContext.store.ID)));
                 }
 
                 PagedList<Product> cards = query.OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
@@ -100,13 +98,13 @@ namespace HWYZ.Controllers
                     product.Creator = UserContext.user.DisplayName;
                     product.Name = product.ProductName;
                     product.Status = Status.enable;
-                    product.StoreId = UserContext.user.StoreId;
+                    product.StoreId = UserContext.store.ID;
 
                     db.Product.Add(product);
                 }
                 else
                 {
-                    if (UserContext.user.StoreId != oldProduct.StoreId) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
+                    if (UserContext.store.ID != oldProduct.StoreId) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
 
                     if (!string.IsNullOrEmpty(oldProduct.DocId) && !oldProduct.DocId.Equals(product.DocId))
                     {

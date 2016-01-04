@@ -26,6 +26,18 @@ $(function () {
     } else {
         tagA.addClass("active");
     }
+
+    $("#logChange a").click(function () {
+        $.post("login/LogChange", { storeId: $(this).data("id") }, function (r) {
+            if (r.code < 0) {
+                alert(r.msg);
+
+                location.href = "login/LogOff";
+            }
+
+            location.href = r.url;
+        });
+    });
 });
 
 var Script = function () {

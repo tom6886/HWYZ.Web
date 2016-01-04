@@ -10,7 +10,7 @@
                 <td>客户姓名</td>
                 <td>客户电话</td>
                 <td>客户地址</td>
-                @if (UserContext.user.Store == null)
+                @if (UserContext.store == null)
                 {
                     <td>所属门店</td>
                     <td>门店编号</td>
@@ -28,7 +28,7 @@
                     <td>@item.Customer</td>
                     <td>@item.CustomerTel</td>
                     <td>@item.Address</td>
-                    @if (UserContext.user.Store == null)
+                    @if (UserContext.store == null)
                     {
                         <td>@item.Store.StoreName</td>
                         <td>@item.Store.StoreCode</td>

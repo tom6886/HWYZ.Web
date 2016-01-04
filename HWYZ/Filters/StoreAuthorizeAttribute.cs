@@ -12,7 +12,7 @@ namespace HWYZ.Filters
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             //如果UserContext.user为null  或者 MenuContext.menus为 null
-            if (UserContext.user == null || MenuContext.menus == null || UserContext.user.Store == null)
+            if (UserContext.user == null || MenuContext.menus == null || UserContext.store == null)
             {
                 //页面跳转到 登录页面
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));

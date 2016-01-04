@@ -23,6 +23,12 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group">
+                        <span class="input-group-addon">登录账号</span>
+                        <input type="hidden" data-select="u" name="UserId" class="_select" style="width: 100%;" data-value="@ViewBag.userName" data-id="@ViewBag.store.UserId"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
                         <span class="input-group-addon">所在城市</span>
                         <label class="form-control">@ViewBag.store.Province @ViewBag.store.City @ViewBag.store.Country</label>
                         <input type="hidden" name="City" value="@ViewBag.store.City" />

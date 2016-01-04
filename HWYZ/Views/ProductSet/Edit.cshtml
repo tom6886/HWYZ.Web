@@ -49,7 +49,7 @@
                         <input type="hidden" id="ProductType" value="@ViewBag.product.ProductType"/>
                     </div>
                 </div>
-                @if (String.IsNullOrEmpty(UserContext.user.StoreId))
+                @if (UserContext.store == null)
                 {
                     <div class="form-group">
                         <div class="input-group">

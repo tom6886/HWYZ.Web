@@ -18,9 +18,9 @@ namespace HWYZ.Controllers
             {
                 var query = db.Order.AsQueryable();
 
-                Guser user = UserContext.user;
+                Store store = UserContext.store;
 
-                StoreId = user.Store == null ? StoreId : user.StoreId;
+                StoreId = store == null ? StoreId : store.ID;
 
                 query = SetQuery(query, OrderCode, StoreId, Tel, StartDate, EndDate, Status);
 
@@ -42,9 +42,9 @@ namespace HWYZ.Controllers
             {
                 var query = db.Order.AsQueryable();
 
-                Guser user = UserContext.user;
+                Store store = UserContext.store;
 
-                StoreId = user.Store == null ? StoreId : user.StoreId;
+                StoreId = store == null ? StoreId : store.ID;
 
                 query = SetQuery(query, OrderCode, StoreId, Tel, StartDate, EndDate, Status);
 
@@ -126,19 +126,21 @@ namespace HWYZ.Controllers
         {
             Guser user = UserContext.user;
 
-            if (user.Store == null) { return null; }
+            Store store = UserContext.store;
+
+            if (store == null) { return null; }
 
             using (DBContext db = new DBContext())
             {
                 DateTime now = DateTime.Now;
 
-                string code = db.Order.Where(q => q.StoreId.Equals(user.StoreId)).Max(q => q.OrderCode);
+                string code = db.Order.Where(q => q.StoreId.Equals(store.ID)).Max(q => q.OrderCode);
 
-                string start = string.Format("{0}{1}", user.Store.StoreCode, now.ToString("yyMMdd"));
+                string start = string.Format("{0}{1}", store.StoreCode, now.ToString("yyMMdd"));
 
                 if (code == null || !code.StartsWith(start))
                 {
-                    code = string.Format("{0}{1}00", user.Store.StoreCode, now.ToString("yyMMdd"));
+                    code = string.Format("{0}{1}00", store.StoreCode, now.ToString("yyMMdd"));
                 }
                 else
                 {
@@ -156,8 +158,8 @@ namespace HWYZ.Controllers
                     Creator = user.DisplayName,
                     CreatorID = user.ID,
                     OrderCode = code,
-                    StoreId = user.StoreId,
-                    StoreName = user.Store.StoreName,
+                    StoreId = store.ID,
+                    StoreName = store.StoreName,
                     Tel = user.Tel,
                     Status = OrderStatus.BeforeSubmit,
                     SubmitTime = now

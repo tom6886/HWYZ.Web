@@ -35,6 +35,7 @@ $(function () {
             rules: {
                 StoreCode: "required",
                 StoreName: "required",
+                UserId: "required",
                 Address: "required",
                 Presider: "required",
                 Tel: "required",
@@ -52,6 +53,7 @@ $(function () {
             messages: {
                 StoreCode: "门店编号是必填项",
                 StoreName: "门店名是必填项",
+                UserId: "登录账号是必填项",
                 Address: "地址是必填项",
                 Presider: "负责人是必填项",
                 Tel: "联系电话是必填项",

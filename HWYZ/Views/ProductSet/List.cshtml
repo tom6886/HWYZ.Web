@@ -10,7 +10,7 @@
                 <td>商品名称</td>
                 <td>商品编号</td>
                 <td>价格</td>
-                @if (String.IsNullOrEmpty(UserContext.user.StoreId))
+                @if (UserContext.store == null)
                 {
                     <td>允许退换</td>
                 }
@@ -26,7 +26,7 @@
                     <td>@item.ProductName</td>
                     <td>@item.ProductCode</td>
                     <td>@item.Price 元</td>
-                    @if (String.IsNullOrEmpty(UserContext.user.StoreId))
+                    @if (UserContext.store == null)
                     {
                         if (item.AllowReturn)
                         {
@@ -46,7 +46,7 @@
                         <td><span class="label label-danger label-mini">停市</span></td>
                     }
                     <td data-id="@item.ID">
-                        @if (UserContext.user.StoreId == @item.StoreId)
+                        @if ((UserContext.store == null && @item.StoreId == null) || (UserContext.store != null && UserContext.store.ID == @item.StoreId))
                         {
                             <button class="btn btn-primary btn-xs editProduct" data-toggle="modal" data-target="#dlg_edit"><i class="fa fa-pencil"></i></button>
                             <button class="btn btn-danger btn-xs delProduct"><i class="fa fa-trash-o "></i></button>

@@ -72,7 +72,7 @@ namespace HWYZ.Controllers
 
                 if (order == null) { return Json(new { code = -1, msg = "找不到对应订单" }); }
 
-                if (order.Status > OrderStatus.BeforeSubmit && UserContext.user.Store != null) { return Json(new { code = -2, msg = "您没有权限修改已提交过的订单" }); }
+                if (order.Status > OrderStatus.BeforeSubmit && UserContext.store != null) { return Json(new { code = -2, msg = "您没有权限修改已提交过的订单" }); }
 
                 if (order.Status == OrderStatus.Sended) { return Json(new { code = -3, msg = "订单已发货，无法修改" }); }
 

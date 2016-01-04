@@ -9,7 +9,7 @@
             <tr>
                 <td>送餐员姓名</td>
                 <td>送餐员电话</td>
-                @if (UserContext.user.Store == null)
+                @if (UserContext.store == null)
                 {
                     <td>所属门店</td>
                     <td>门店编号</td>
@@ -18,7 +18,7 @@
                 }
                 <td>添加时间</td>
                 <td>状态</td>
-                @if (UserContext.user.Store != null)
+                @if (UserContext.store != null)
                 {
                     <td>操作</td>
                 }
@@ -31,7 +31,7 @@
                 <tr>
                     <td>@item.CourierName</td>
                     <td>@item.CourierTel</td>
-                    @if (UserContext.user.Store == null)
+                    @if (UserContext.store == null)
                     {
                         <td>@item.Store.StoreName</td>
                         <td>@item.Store.StoreCode</td>
@@ -47,7 +47,7 @@
                     {
                         <td><span class="label label-danger label-mini">离职</span></td>
                     }
-                    @if (UserContext.user.Store != null)
+                    @if (UserContext.store != null)
                     {
                         <td data-id="@item.ID">
                             <button class="btn btn-primary btn-xs editCourier" data-toggle="modal" data-target="#dlg_edit"><i class="fa fa-pencil"></i></button>

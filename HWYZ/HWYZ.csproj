@@ -220,6 +220,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512290723174_modify.cs" />
+    <Compile Include="Migrations\201512290723174_modify.Designer.cs">
+      <DependentUpon>201512290723174_modify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512290729407_modify1.cs" />
+    <Compile Include="Migrations\201512290729407_modify1.Designer.cs">
+      <DependentUpon>201512290729407_modify1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601040047016_modify2.cs" />
+    <Compile Include="Migrations\201601040047016_modify2.Designer.cs">
+      <DependentUpon>201601040047016_modify2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
@@ -497,6 +509,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512290723174_modify.resx">
+      <DependentUpon>201512290723174_modify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512290729407_modify1.resx">
+      <DependentUpon>201512290729407_modify1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601040047016_modify2.resx">
+      <DependentUpon>201601040047016_modify2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
