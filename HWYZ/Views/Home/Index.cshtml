@@ -1,3 +1,153 @@
-﻿<div class="jumbotron">
-    <h1>暂无内容 敬请期待</h1>
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@using HWYZ.Context;
+@model PagedList<Notice>
+
+<div class="row mtbox">
+    @if (UserContext.store == null)
+    {
+        <div class="col-md-3 col-sm-3 col-md-offset-1 box0">
+            <div class="box1">
+                <span><a href="javascript:void(0)"><i class="fa fa-home"></i></a></span>
+                <h3>@ViewBag.storeNumber</h3>
+            </div>
+            <p>已有 @ViewBag.storeNumber 家分店啦</p>
+        </div>
+        <div class="col-md-3 col-sm-3 box0">
+            <div class="box1">
+                <span><a href="javascript:void(0)"><i class="fa fa-tv"></i></a></span>
+                <h3>@ViewBag.sale</h3>
+            </div>
+            <p>本月所有分店的营业额已达到 @ViewBag.sale 元</p>
+        </div>
+        <div class="col-md-3 col-sm-3 box0">
+            <div class="box1">
+                <span><a href="javascript:void(0)"><i class="fa fa-cny"></i></a></span>
+                <h3>@ViewBag.income</h3>
+            </div>
+            <p>本月的销售额已达到 @ViewBag.income 元</p>
+        </div>
+
+    }
+    else
+    {
+        <div class="col-md-5 col-sm-5 col-md-offset-1 box0">
+            <div class="box1">
+                <span><a href="javascript:void(0)"><i class="fa fa-home"></i></a></span>
+                <h3>@ViewBag.storeNumber</h3>
+            </div>
+            <p>已有 @ViewBag.storeNumber 家分店啦</p>
+        </div>
+        <div class="col-md-5 col-sm-5 box0">
+            <div class="box1">
+                <span><a href="javascript:void(0)"><i class="fa fa-tv"></i></a></span>
+                <h3>@ViewBag.sale</h3>
+            </div>
+            <p>本月本店的营业额已达到 @ViewBag.sale 元</p>
+        </div>
+    }
 </div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">待处理订单</h3>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <td>订单号</td>
+                        @if (UserContext.store == null)
+                        {
+                            <td>采购单位</td>
+                        }
+                        <td>负责人</td>
+                        <td>联系电话</td>
+                        <td>下单时间</td>
+                        <td>订单金额</td>
+                        <td>订单状态</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (Order item in @ViewBag.order)
+                        {
+                            <tr>
+                                <td>@item.OrderCode</td>
+                                @if (UserContext.store == null)
+                                {
+                                    <td>@item.StoreName</td>
+                                }
+                                <td>@item.Creator</td>
+                                <td>@item.Tel</td>
+                                @if (@item.Status == OrderStatus.BeforeSubmit)
+                                {
+                                    <td>尚未提交</td>
+                                }
+                                else
+                                {
+                                    <td>@item.SubmitTime</td>
+                                }
+                                <td>@item.Paid</td>
+                                @switch (@item.Status)
+                                {
+                                    case OrderStatus.BeforeSubmit:
+                                        <td><span class="label label-warning label-mini">待提交</span></td>; break;
+                                    case OrderStatus.BeforeSend:
+                                    <td><span class="label label-info label-mini">待发货</span></td>; break;
+                                    case OrderStatus.Sended:
+                                    <td><span class="label label-warning label-mini">已发货</span></td>; break;
+                                    case OrderStatus.Reject:
+                                    <td><span class="label label-danger label-mini">驳回</span></td>; break;
+                                }
+                                <td data-id="@item.ID">
+                                    @if (@item.Status == OrderStatus.BeforeSubmit)
+                                    {
+                                        <a href="OrderEdit?orderId=@item.ID" target="_blank" class="btn btn-primary btn-xs editOrder"><i class="fa fa-pencil"></i></a>
+                                        <button class="btn btn-danger btn-xs delOrder"><i class="fa fa-trash-o "></i></button>
+                                    }
+                                    else if (@item.Status == OrderStatus.Sended)
+                                    {
+                                        <a href="OrderView?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="DeliveEdit?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">信息公告</h3>
+    </div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "unseen", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+        {
+            if (UserContext.store == null)
+            {
+                <div style="margin-bottom: 15px;">
+                    <a class="btn btn-info" target="_blank" href="Home/Edit">添加</a>
+                </div>
+            }
+            <section id="unseen">
+                @Html.Partial("Notice", Model)
+            </section>
+        }
+    </div>
+    <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    </div>
+</div>
+
+@{Html.RegisterMvcPagerScriptResource();}
+@Scripts.Render("~/Scripts/Page/home.js")

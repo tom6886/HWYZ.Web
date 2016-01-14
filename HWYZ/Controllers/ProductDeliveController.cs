@@ -41,7 +41,7 @@ namespace HWYZ.Controllers
 
                 if (store == null)
                 {
-                    where = where.And(q => q.Status > 0);
+                    where = where.And(q => q.Status != 0);
 
                     if (!string.IsNullOrEmpty(StoreId)) { where = where.And(q => q.StoreId.Contains(StoreId)); }
                 }

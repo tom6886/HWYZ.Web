@@ -53,5 +53,26 @@ namespace HWYZ.Controllers
 
             return Json(new { code = 1, msg = "已驳回订单，请及时通知分店" });
         }
+
+        [HttpPost]
+        public JsonResult checkOrder(string orderId, string checkremark)
+        {
+            using (DBContext db = new DBContext())
+            {
+                Order order = db.Order.Where(q => q.ID.Equals(orderId)).FirstOrDefault();
+
+                if (order == null) { return Json(new { code = -1, msg = "找不到对应订单" }); }
+
+                if (order.Status != OrderStatus.Sended) { return Json(new { code = -2, msg = "非已发货状态的订单不能驳回" }); }
+
+                order.ModifyTime = DateTime.Now;
+                order.RejectReason = checkremark;
+                order.Status = OrderStatus.Checked;
+
+                db.SaveChanges();
+            }
+
+            return Json(new { code = 1, msg = "对账成功" });
+        }
     }
 }

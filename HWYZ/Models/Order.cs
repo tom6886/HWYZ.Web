@@ -52,6 +52,9 @@ namespace HWYZ.Models
         [Display(Name = "驳回原因")]
         public string RejectReason { get; set; }
 
+        [Display(Name = "对账备注")]
+        public string CheckRemark { get; set; }
+
         public OrderStatus Status { get; set; }
 
         public static decimal RefreshPay(string id)

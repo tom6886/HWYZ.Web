@@ -1,0 +1,88 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using HWYZ.Models;
+@using HWYZ.Context;
+@model PagedList<Notice>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+        <tbody>
+            @{
+                foreach (Notice item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Title (@item.ModifyTime)
+                            <div style="float: right;" data-id="@item.ID">
+                                @if (UserContext.store == null)
+                                {
+                                    if (item.Status == NoticeStatus.Draft)
+                                    {
+                                        <a class="btn btn-primary btn-xs" target="_blank" href="Home/Edit?noticeId=@item.ID"><i class="fa fa-pencil"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="Home/ViewNotice?noticeId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                                    }
+                                    <button class="btn btn-danger btn-xs delNotice"><i class="fa fa-trash-o "></i></button>
+                                }
+                                else
+                                {
+                                    <a href="Home/ViewNotice?noticeId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (Model != null && Model.TotalPageCount > 1)
+{
+    <div style="height: 80px">
+        <div style="float: left;">
+            @Ajax.Pager(Model, new PagerOptions
+       {
+           CssClass = "pagination",
+           ContainerTagName = "ul",
+           PageIndexParameterName = "pi",
+           CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",
+           DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+           PagerItemTemplate = "<li>{0}</li>",
+           PageIndexBoxId = "pageIndexBox",
+           GoToButtonId = "goToBtn"
+       }, new MvcAjaxOptions { UpdateTargetId = "unseen", HttpMethod = "Post", DataFormId = "form_query" })
+        </div>
+        <div class="input-group" style="width: 260px;">
+            <div class="input-group" style="margin: 20px;">
+                <span class="input-group-addon">转到第</span>
+                <input type="text" id="pageIndexBox" class="form-control input-sm" />
+                <span class="input-group-addon">页</span>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary btn-sm" id="goToBtn">跳转</button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $(".delNotice").click(function () {
+            if (!confirm("您确定要删除此通知？")) { return false; }
+
+            var _this = $(this);
+
+            $.post("home/deleteNotice", { noticeId: _this.parent().data('id') }, function (r) {
+                alert(r.msg);
+
+                if (r.code < 0) {
+                    return false;
+                }
+
+                $("#form_query").submit();
+            });
+        });
+    });
+</script>

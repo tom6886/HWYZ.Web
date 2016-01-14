@@ -35,5 +35,11 @@ namespace HWYZ.Context
         public DbSet<Location> Location { get; set; }
 
         public DbSet<Dictionary> Dictionary { get; set; }
+
+        public DbSet<Notice> Notice { get; set; }
+
+        public DbSet<Stock> Stock { get; set; }
+
+        public DbSet<OfflineSell> OfflineSell { get; set; }
     }
 }

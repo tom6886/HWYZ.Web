@@ -8,7 +8,7 @@
             <div class="panel-body">
                 <div class="row" style="margin-bottom: 15px;">
                     <div class="col-md-4">
-                        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+                        @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "unseen", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
                         {
                             <div class="input-group">
                                 <input type="text" class="form-control" name="key" placeholder="请输入商品名称或编号" aria-describedby="basic-addon2">
@@ -21,9 +21,7 @@
                     </div>
                 </div>
                 <section id="unseen">
-                    <div id="container">
-                        @Html.Partial("List", Model)
-                    </div>
+                    @Html.Partial("List", Model)
                 </section>
                 <div class="modal fade" id="dlg_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 </div>

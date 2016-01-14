@@ -26,9 +26,28 @@ namespace HWYZ.Models
 
     public enum OrderStatus
     {
+        Reject = -1,
         BeforeSubmit = 0,
         BeforeSend = 1,
         Sended = 2,
-        Reject = 3
+        Checked = 3
+    }
+
+    public enum NoticeStatus
+    {
+        Draft = 0,
+        Published = 1
+    }
+
+    public enum Flag
+    {
+        YRK = 1,
+        WRK = 0
+    }
+
+    public enum Finish
+    {
+        YJS = 1,
+        WJS = 0
     }
 }

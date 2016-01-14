@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Shared/_OrderLayout.cshtml";
+    ViewBag.Title = "订单详情";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form id="form_edit" action="editNotice" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">标题</span>
+                    <input type="text" class="form-control" name="Title" value="@ViewBag.notice.Title" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">内容</span>
+                    <script id="editor" name="Content" type="text/plain" style="width: 100%; height: 500px;">
+                    </script>
+                </div>
+            </div>
+            <textarea id="content" style="display:none;">@ViewBag.notice.Content</textarea>
+            <input type="hidden" name="Status" value="" />
+            <input type="hidden" name="ID" value="@ViewBag.notice.ID" />
+        </form>
+    </div>
+    <div class="panel-footer" style="text-align:right;">
+        <button type="button" class="btn btn-primary save" data-status="Draft">保存</button>
+
+        <button type="button" class="btn btn-primary save" data-status="Published">保存并发布</button>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"> </script>
+<script type="text/javascript">
+    //实例化编辑器
+    var ue = UE.getEditor('editor');
+
+    ue.addListener('ready', function (editor) {
+        ue.setContent($("#content").val());
+    });
+
+    $("form").ajaxForm({
+        success: function (r) {
+            alert(r.msg);
+        }
+    });
+
+    $(".save").click(function () {
+        if (!$("input[name=Title]").val()) {
+            alert("请填入标题");
+            return false;
+        }
+
+        $("input[name=Status]").val($(this).data("status"));
+
+        $("form").submit();
+    });
+</script>

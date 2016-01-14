@@ -20,13 +20,13 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">采购单位</span>
-                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.StoreName"/>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.StoreName" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">备注</span>
-                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Remark"/>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Remark" />
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">实付金额</span>
-                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Paid"/>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Paid" />
                     </div>
                 </div>
             }
@@ -69,7 +69,7 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">驳回原因</span>
-                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.RejectReason"/>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.RejectReason" />
                     </div>
                 </div>
             }
@@ -81,13 +81,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">快递单号</span>
-                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressCode"/>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressCode" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">快递查询地址</span>
-                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressUrl"/>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.ExpressUrl" />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -97,12 +97,12 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row" style="margin-top: 10px;">
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">发货人电话</span>
-                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.DeliverTel"/>
+                        <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.DeliverTel" />
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon">联系电话</span>
-                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Tel"/>
+                    <input type="text" class="form-control" readonly="readonly" value="@ViewBag.order.Tel" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -154,6 +154,14 @@
             </div>
             <button type="button" class="btn btn-default reject" style="float: right; margin-left: 10px;">驳回</button>
         }
+        else if (@ViewBag.order.Status == OrderStatus.Sended && @UserContext.store != null)
+        {
+            <div class="input-group" style="float: right; width: 25%; margin-left: 10px;">
+                <span class="input-group-addon">对账备注</span>
+                <input type="text" class="form-control" name="checkremark" />
+            </div>
+            <button type="button" class="btn btn-default check" style="float: right; margin-left: 10px;">对账</button>
+        }
         <button type="button" class="btn btn-default" onclick="javascript:window.print();">打印</button>
     </div>
 </div>
@@ -168,6 +176,21 @@
             if (!confirm("确认驳回？驳回后订单将不能再进行任何更改")) { return false; }
 
             $.post("orderview/rejectOrder", { orderId: _orderId, reason: _reason }, function (r) {
+                alert(r.msg);
+
+                if (r.code > 0) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        $(".check").click(function () {
+            var _orderId = $("input[name=orderId]").val(),
+                _checkremark = $("input[name=checkremark]").val();
+
+            if (!confirm("确认对账？对账后订单将不能再进行任何更改")) { return false; }
+
+            $.post("orderview/checkOrder", { orderId: _orderId, checkremark: _checkremark }, function (r) {
                 alert(r.msg);
 
                 if (r.code > 0) {
