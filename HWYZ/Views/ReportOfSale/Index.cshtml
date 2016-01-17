@@ -6,13 +6,33 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="input-group">
-                    <span class="input-group-addon">商品名称</span>
-                    <input type="hidden" data-select="pr" class="_select" style="width: 100%;" name="ProductName" />
+                    <span class="input-group-addon">省</span>
+                    <input type="hidden" data-select="p" class="_select" style="width: 100%;" name="Province" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">市</span>
+                    <input type="hidden" data-select="ci" class="_select" style="width: 100%;" name="City" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">县</span>
+                    <input type="hidden" data-select="co" class="_select" style="width: 100%;" name="Country" />
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:15px;">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">采购单位</span>
+                    <input type="hidden" data-select="s" class="_select" style="width: 100%;" name="StoreId" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="input-group date form_date" data-date="" data-date-format="yyyy/mm/dd">
-                    <span class="input-group-addon">配送时间起</span>
+                    <span class="input-group-addon">营业时间起</span>
                     <input class="form-control" size="16" name="StartDate" type="text" value="" readonly="readonly">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -20,7 +40,7 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group date form_date" data-date="" data-date-format="yyyy/mm/dd">
-                    <span class="input-group-addon">配送时间止</span>
+                    <span class="input-group-addon">营业时间止</span>
                     <input class="form-control" size="16" name="EndDate" type="text" value="" readonly="readonly">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -31,18 +51,12 @@
             <a class="btn btn-info query" style="float: right; margin-left: 20px;" href="javascript:void(0)">查询</a>
             <a class="btn btn-info export" style="float: right;" href="javascript:void(0)">导出</a>
         </div>
-        <div class="row" style="margin-top: 20px;">
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="number active"><a href="#number">按数量</a></li>
-                <li role="presentation" class="pay"><a href="#pay">按金额</a></li>
-            </ul>
-        </div>
-        <div id="container">
+        <div id="container" style="margin-top:15px;">
         </div>
     </div>
 </div>
 
-@Scripts.Render("~/Scripts/Page/reportofsell.js")
+@Scripts.Render("~/Scripts/Page/reportofsale.js")
 @Scripts.Render("~/Scripts/select2/select2.min.js")
 @Scripts.Render("~/Scripts/select.js")
 @Scripts.Render("~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js")

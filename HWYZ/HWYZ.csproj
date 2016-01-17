@@ -193,6 +193,8 @@
     <Compile Include="Context\MenuContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReportOfOrderController.cs" />
+    <Compile Include="Controllers\ReportOfSaleController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -232,12 +234,25 @@
     <Compile Include="Migrations\201601140941376_modify2.Designer.cs">
       <DependentUpon>201601140941376_modify2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601170522208_modify3.cs" />
+    <Compile Include="Migrations\201601170522208_modify3.Designer.cs">
+      <DependentUpon>201601170522208_modify3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601170523459_modify4.cs" />
+    <Compile Include="Migrations\201601170523459_modify4.Designer.cs">
+      <DependentUpon>201601170523459_modify4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601170530019_modify5.cs" />
+    <Compile Include="Migrations\201601170530019_modify5.Designer.cs">
+      <DependentUpon>201601170530019_modify5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Models\BaseObj.cs" />
     <Compile Include="Models\Guser.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\AppOrder.cs" />
     <Compile Include="Models\PageModels\PSMX.cs" />
     <Compile Include="Models\PageModels\Pager.cs" />
     <Compile Include="Models\PageModels\PSJE.cs" />
@@ -349,6 +364,8 @@
     <Content Include="Scripts\Page\couriers.js" />
     <Content Include="Scripts\Page\number.js" />
     <Content Include="Scripts\Page\dictionary.js" />
+    <Content Include="Scripts\Page\reportoforder.js" />
+    <Content Include="Scripts\Page\reportofsale.js" />
     <Content Include="Scripts\Page\reportofsend.js" />
     <Content Include="Scripts\Page\reportofsell.js" />
     <Content Include="Scripts\Page\home.js" />
@@ -778,10 +795,13 @@
     <Content Include="Scripts\ueditor\third-party\video-js\font\vjs.woff" />
     <Content Include="Views\Home\EditNotice.cshtml" />
     <Content Include="Views\Home\ViewNotice.cshtml" />
+    <Content Include="Views\ReportOfSale\Index.cshtml" />
+    <Content Include="Views\ReportOfSale\List.cshtml" />
+    <Content Include="Views\ReportOfOrder\Index.cshtml" />
+    <Content Include="Views\ReportOfOrder\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ReportOfManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -795,6 +815,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601140941376_modify2.resx">
       <DependentUpon>201601140941376_modify2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601170522208_modify3.resx">
+      <DependentUpon>201601170522208_modify3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601170523459_modify4.resx">
+      <DependentUpon>201601170523459_modify4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601170530019_modify5.resx">
+      <DependentUpon>201601170530019_modify5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,30 @@
+﻿@using HWYZ.Models;
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed" id="datatable">
+        <thead>
+            <tr>
+                <td>经营单位</td>
+                <td>金额（单位：元）</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (PSJE item in ViewBag.list)
+                {
+                    <tr>
+                        <td>@item.StoreName</td>
+                        <td>@item.Pay</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-right" style="padding: 10px 15px;">
+    @Html.Partial("~/Views/Shared/_pager.cshtml")
+</div>
+
+<div id="chart">
+</div>

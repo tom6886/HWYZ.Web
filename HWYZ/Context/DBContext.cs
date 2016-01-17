@@ -41,5 +41,7 @@ namespace HWYZ.Context
         public DbSet<Stock> Stock { get; set; }
 
         public DbSet<OfflineSell> OfflineSell { get; set; }
+
+        public DbSet<AppOrder> AppOrder { get; set; }
     }
 }

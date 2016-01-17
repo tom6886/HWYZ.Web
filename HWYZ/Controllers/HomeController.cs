@@ -37,7 +37,12 @@ namespace HWYZ.Controllers
                 {
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable).Count();
 
-                    ViewBag.sale = db.OfflineSell.Where(q => q.XFRQ > nowMonth).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    //统计线下营业额
+                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > nowMonth).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    //统计线上营业额
+                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > nowMonth).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+
+                    ViewBag.sale = offlineSale + onlineSale;
 
                     ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSend).Take(10).ToList();
 
@@ -49,7 +54,12 @@ namespace HWYZ.Controllers
 
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable && q.UserId.Equals(UserContext.user.ID)).Count();
 
-                    ViewBag.sale = db.OfflineSell.Where(q => q.XFRQ > nowMonth && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    //统计线下营业额
+                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > nowMonth && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    //统计线上营业额
+                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > nowMonth && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+
+                    ViewBag.sale = offlineSale + onlineSale;
 
                     ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSubmit || q.Status == OrderStatus.Sended).Take(10).ToList();
                 }
