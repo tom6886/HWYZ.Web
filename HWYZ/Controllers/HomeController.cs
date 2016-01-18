@@ -61,6 +61,17 @@ namespace HWYZ.Controllers
 
                     ViewBag.sale = offlineSale + onlineSale;
 
+                    ViewBag.stocks = (from q in db.Stock
+                                      join off in db.OfflineSell on new { q.StationID, SPBM = q.ProdCode } equals new { off.StationID, off.SPBM } into off_join
+                                      from o in off_join.DefaultIfEmpty()
+                                      join ao in db.AppOrder on q.StationID equals ao.StoreId into ao_join
+                                      from a in ao_join.DefaultIfEmpty()
+                                      join aoi in db.AppOrderItem on new { OrderId = a.ID, ProductCode = q.ProdCode } equals new { aoi.OrderId, aoi.ProductCode } into aoi_join
+                                      from ai in aoi_join.DefaultIfEmpty()
+                                      where q.StationID == store.ID
+                                      group new { q.NameCh, q.ProdCode, q.In, o.SL, ai.OrderNumber } by new { q.NameCh, q.ProdCode } into s
+                                      select new CXSL() { ProductName = s.Key.NameCh, ProductCode = s.Key.ProdCode, ProductNumber = s.Sum(p => p.In) - s.Sum(p => p.SL == null ? 0 : p.SL) - s.Sum(p => p.OrderNumber == null ? 0 : p.OrderNumber) }).OrderBy(q => q.ProductNumber).Take(10).ToList();
+
                     ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSubmit || q.Status == OrderStatus.Sended).Take(10).ToList();
                 }
 

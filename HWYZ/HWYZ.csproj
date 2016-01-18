@@ -222,29 +222,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601080311202_modify.cs" />
-    <Compile Include="Migrations\201601080311202_modify.Designer.cs">
-      <DependentUpon>201601080311202_modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601140531087_modify1.cs" />
-    <Compile Include="Migrations\201601140531087_modify1.Designer.cs">
-      <DependentUpon>201601140531087_modify1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601140941376_modify2.cs" />
-    <Compile Include="Migrations\201601140941376_modify2.Designer.cs">
-      <DependentUpon>201601140941376_modify2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601170522208_modify3.cs" />
-    <Compile Include="Migrations\201601170522208_modify3.Designer.cs">
-      <DependentUpon>201601170522208_modify3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601170523459_modify4.cs" />
-    <Compile Include="Migrations\201601170523459_modify4.Designer.cs">
-      <DependentUpon>201601170523459_modify4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601170530019_modify5.cs" />
-    <Compile Include="Migrations\201601170530019_modify5.Designer.cs">
-      <DependentUpon>201601170530019_modify5.cs</DependentUpon>
+    <Compile Include="Migrations\201601181119117_modify.cs" />
+    <Compile Include="Migrations\201601181119117_modify.Designer.cs">
+      <DependentUpon>201601181119117_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -258,6 +238,7 @@
     <Compile Include="Models\PageModels\PSJE.cs" />
     <Compile Include="Models\PageModels\CXSL.cs" />
     <Compile Include="Models\PageModels\CXJE.cs" />
+    <Compile Include="Models\PageModels\KCSL.cs" />
     <Compile Include="Models\StoreProduct.cs" />
     <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="Models\GuserRole.cs" />
@@ -274,6 +255,7 @@
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\OfflineSell.cs" />
     <Compile Include="Models\Notice.cs" />
+    <Compile Include="Models\AppOrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -807,23 +789,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601080311202_modify.resx">
-      <DependentUpon>201601080311202_modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601140531087_modify1.resx">
-      <DependentUpon>201601140531087_modify1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601140941376_modify2.resx">
-      <DependentUpon>201601140941376_modify2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601170522208_modify3.resx">
-      <DependentUpon>201601170522208_modify3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601170523459_modify4.resx">
-      <DependentUpon>201601170523459_modify4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601170530019_modify5.resx">
-      <DependentUpon>201601170530019_modify5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601181119117_modify.resx">
+      <DependentUpon>201601181119117_modify.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -840,7 +807,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2852</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

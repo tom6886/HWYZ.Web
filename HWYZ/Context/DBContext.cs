@@ -43,5 +43,7 @@ namespace HWYZ.Context
         public DbSet<OfflineSell> OfflineSell { get; set; }
 
         public DbSet<AppOrder> AppOrder { get; set; }
+
+        public DbSet<AppOrderItem> AppOrderItem { get; set; }
     }
 }

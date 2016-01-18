@@ -18,7 +18,7 @@ namespace HWYZ.Models
         public string NameCh { get; set; }
 
         [Display(Name = "入库数量")]
-        public decimal In { get; set; }
+        public int In { get; set; }
 
         [Display(Name = "入库单价")]
         public decimal RKDJ { get; set; }

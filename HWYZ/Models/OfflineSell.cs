@@ -18,7 +18,7 @@ namespace HWYZ.Models
         public string SPMC { get; set; }
 
         [Display(Name = "数量")]
-        public decimal SL { get; set; }
+        public int SL { get; set; }
 
         [Display(Name = "入库单价")]
         public decimal DJ { get; set; }

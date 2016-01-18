@@ -75,50 +75,50 @@
                     @{
                         foreach (Order item in @ViewBag.order)
                         {
-                            <tr>
-                                <td>@item.OrderCode</td>
-                                @if (UserContext.store == null)
-                                {
-                                    <td>@item.StoreName</td>
-                                }
-                                <td>@item.Creator</td>
-                                <td>@item.Tel</td>
+                        <tr>
+                            <td>@item.OrderCode</td>
+                            @if (UserContext.store == null)
+                            {
+                                <td>@item.StoreName</td>
+                            }
+                            <td>@item.Creator</td>
+                            <td>@item.Tel</td>
+                            @if (@item.Status == OrderStatus.BeforeSubmit)
+                            {
+                                <td>尚未提交</td>
+                            }
+                            else
+                            {
+                                <td>@item.SubmitTime</td>
+                            }
+                            <td>@item.Paid</td>
+                            @switch (@item.Status)
+                            {
+                                case OrderStatus.BeforeSubmit:
+                                <td><span class="label label-warning label-mini">待提交</span></td>; break;
+                                case OrderStatus.BeforeSend:
+                                <td><span class="label label-info label-mini">待发货</span></td>; break;
+                                case OrderStatus.Sended:
+                                <td><span class="label label-warning label-mini">已发货</span></td>; break;
+                                case OrderStatus.Reject:
+                                <td><span class="label label-danger label-mini">驳回</span></td>; break;
+                            }
+                            <td data-id="@item.ID">
                                 @if (@item.Status == OrderStatus.BeforeSubmit)
                                 {
-                                    <td>尚未提交</td>
+                                    <a href="OrderEdit?orderId=@item.ID" target="_blank" class="btn btn-primary btn-xs editOrder"><i class="fa fa-pencil"></i></a>
+                                    <button class="btn btn-danger btn-xs delOrder"><i class="fa fa-trash-o "></i></button>
+                                }
+                                else if (@item.Status == OrderStatus.Sended)
+                                {
+                                    <a href="OrderView?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                                 }
                                 else
                                 {
-                                    <td>@item.SubmitTime</td>
+                                    <a href="DeliveEdit?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                                 }
-                                <td>@item.Paid</td>
-                                @switch (@item.Status)
-                                {
-                                    case OrderStatus.BeforeSubmit:
-                                        <td><span class="label label-warning label-mini">待提交</span></td>; break;
-                                    case OrderStatus.BeforeSend:
-                                    <td><span class="label label-info label-mini">待发货</span></td>; break;
-                                    case OrderStatus.Sended:
-                                    <td><span class="label label-warning label-mini">已发货</span></td>; break;
-                                    case OrderStatus.Reject:
-                                    <td><span class="label label-danger label-mini">驳回</span></td>; break;
-                                }
-                                <td data-id="@item.ID">
-                                    @if (@item.Status == OrderStatus.BeforeSubmit)
-                                    {
-                                        <a href="OrderEdit?orderId=@item.ID" target="_blank" class="btn btn-primary btn-xs editOrder"><i class="fa fa-pencil"></i></a>
-                                        <button class="btn btn-danger btn-xs delOrder"><i class="fa fa-trash-o "></i></button>
-                                    }
-                                    else if (@item.Status == OrderStatus.Sended)
-                                    {
-                                        <a href="OrderView?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
-                                    }
-                                    else
-                                    {
-                                        <a href="DeliveEdit?orderId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
-                                    }
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         }
                     }
                 </tbody>
@@ -126,6 +126,38 @@
         </div>
     </div>
 </div>
+
+@if (UserContext.store != null)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">库存预警</h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <td>商品名称</td>
+                            <td>商品编号</td>
+                            <td>库存</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (CXSL item in @ViewBag.stocks)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.ProductCode</td>
+                                <td>@item.ProductNumber</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -136,9 +168,9 @@
         {
             if (UserContext.store == null)
             {
-                <div style="margin-bottom: 15px;">
-                    <a class="btn btn-info" target="_blank" href="Home/Edit">添加</a>
-                </div>
+            <div style="margin-bottom: 15px;">
+                <a class="btn btn-info" target="_blank" href="Home/Edit">添加</a>
+            </div>
             }
             <section id="unseen">
                 @Html.Partial("Notice", Model)
