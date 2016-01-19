@@ -19,6 +19,10 @@ namespace HWYZ.Controllers
 
                 DateTime nowMonth = DateTime.Parse(string.Format("{0}/{1}/{2}", now.Year, now.Month, "01"));
 
+                DateTime zero = DateTime.Parse(string.Format("{0} 00:00:00", now.ToString("yyyy-MM-dd")));
+
+                DateTime yestday = zero.AddDays(-1);
+
                 #region 获取通知公告
                 var query = db.Notice.AsQueryable();
 
@@ -38,9 +42,9 @@ namespace HWYZ.Controllers
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > nowMonth).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > yestday && q.XFRQ < zero).Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > nowMonth).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > yestday && q.CreateTime < zero).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 
@@ -55,9 +59,9 @@ namespace HWYZ.Controllers
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable && q.UserId.Equals(UserContext.user.ID)).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > nowMonth && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > yestday && q.XFRQ < zero && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > nowMonth && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > yestday && q.CreateTime < zero && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 

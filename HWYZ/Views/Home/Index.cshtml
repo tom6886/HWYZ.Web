@@ -6,26 +6,53 @@
 <div class="row mtbox">
     @if (UserContext.store == null)
     {
-        <div class="col-md-3 col-sm-3 col-md-offset-1 box0">
-            <div class="box1">
-                <span><a href="javascript:void(0)"><i class="fa fa-home"></i></a></span>
-                <h3>@ViewBag.storeNumber</h3>
+        <div class="col-md-3 col-sm-3 col-md-offset-1">
+            <div class="panel  panel-default" style="text-align: center;">
+                <div class="panel-body">
+                    <h1>@ViewBag.storeNumber</h1>
+                </div>
+                <div class="panel-footer" style="padding: 0 0 5px 0;">
+                    <span>
+                        <a href="javascript:void(0)">
+                            <h3>
+                                <i class="fa fa-home"></i>&nbsp;&nbsp;加盟数量
+                            </h3>
+                        </a>
+                    </span>
+                </div>
             </div>
-            <p>已有 @ViewBag.storeNumber 家分店啦</p>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <div class="panel  panel-default" style="text-align: center;">
+                <div class="panel-body">
+                    <h1>@ViewBag.sale</h1>
+                </div>
+                <div class="panel-footer" style="padding: 0 0 5px 0;">
+                    <span>
+                        <a href="javascript:void(0)">
+                            <h3>
+                                <i class="fa fa-tv"></i>&nbsp;&nbsp;营业金额
+                            </h3>
+                        </a>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="col-md-3 col-sm-3 box0">
-            <div class="box1">
-                <span><a href="javascript:void(0)"><i class="fa fa-tv"></i></a></span>
-                <h3>@ViewBag.sale</h3>
+            <div class="panel  panel-default" style="text-align: center;">
+                <div class="panel-body">
+                    <h1>@ViewBag.income</h1>
+                </div>
+                <div class="panel-footer" style="padding: 0 0 5px 0;">
+                    <span>
+                        <a href="javascript:void(0)">
+                            <h3>
+                                <i class="fa fa-cny"></i>&nbsp;&nbsp;销售金额
+                            </h3>
+                        </a>
+                    </span>
+                </div>
             </div>
-            <p>本月所有分店的营业额已达到 @ViewBag.sale 元</p>
-        </div>
-        <div class="col-md-3 col-sm-3 box0">
-            <div class="box1">
-                <span><a href="javascript:void(0)"><i class="fa fa-cny"></i></a></span>
-                <h3>@ViewBag.income</h3>
-            </div>
-            <p>本月的销售额已达到 @ViewBag.income 元</p>
         </div>
 
     }

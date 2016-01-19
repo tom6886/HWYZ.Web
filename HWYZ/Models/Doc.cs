@@ -43,7 +43,7 @@ namespace HWYZ.Models
             }
         }
 
-        public static void delete(string id)
+        public static void delete(string id, string basePath)
         {
             using (DBContext db = new DBContext())
             {
@@ -51,7 +51,7 @@ namespace HWYZ.Models
 
                 if (doc == null) { return; }
 
-                DirectoryInfo dir = new DirectoryInfo(doc.DirPath);
+                DirectoryInfo dir = new DirectoryInfo(string.Format("{0}{1}", basePath, doc.DirPath));
                 dir.Delete(true);
 
                 db.Doc.Remove(doc);

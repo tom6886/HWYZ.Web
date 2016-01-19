@@ -104,11 +104,13 @@ namespace HWYZ.Controllers
                 }
                 else
                 {
-                    if (UserContext.store.ID != oldProduct.StoreId) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
+                    if (UserContext.store != null && UserContext.store.ID != oldProduct.StoreId) { return Json(new { code = -2, msg = "抱歉，您没有权限修改本商品" }); }
 
                     if (!string.IsNullOrEmpty(oldProduct.DocId) && !oldProduct.DocId.Equals(product.DocId))
                     {
-                        Doc.delete(oldProduct.DocId);
+                        string basePath = string.Format(@"{0}Upload\", Server.MapPath("/"));
+
+                        Doc.delete(oldProduct.DocId, basePath);
                     }
 
                     oldProduct.ModifyTime = DateTime.Now;
@@ -140,7 +142,9 @@ namespace HWYZ.Controllers
 
                 if (!string.IsNullOrEmpty(product.DocId))
                 {
-                    Doc.delete(product.DocId);
+                    string basePath = string.Format(@"{0}Upload\", Server.MapPath("/"));
+
+                    Doc.delete(product.DocId, basePath);
                 }
 
                 db.Product.Remove(product);

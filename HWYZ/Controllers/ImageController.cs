@@ -56,14 +56,14 @@ namespace HWYZ.Controllers
         {
             try
             {
-                string storeId = UserContext.store.ID;
+                Store store = UserContext.store;
 
                 //随机生成文件名
                 string fileName = StringUtil.UniqueID();
 
                 string basePath = string.Format(@"{0}Upload\", Server.MapPath("/"));
 
-                string detailPath = string.Format(@"{0}\{1}\", string.IsNullOrEmpty(storeId) ? "base" : storeId, fileName);
+                string detailPath = string.Format(@"{0}\{1}\", store == null ? "base" : store.ID, fileName);
 
                 string path = string.Format("{0}{1}", basePath, detailPath);
 
@@ -83,7 +83,7 @@ namespace HWYZ.Controllers
 
                 GetPicThumbnail(fullPath, string.Format("{0}{1}.thumb.jpeg", path, fileName), 960, 480, 50);
 
-                Doc doc = Doc.save(fileName, _suffix, storeId, detailPath);
+                Doc doc = Doc.save(fileName, _suffix, store == null ? null : store.ID, detailPath);
 
                 return Json(new { code = 1, docId = doc.ID });
             }
