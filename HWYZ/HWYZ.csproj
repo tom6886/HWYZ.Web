@@ -193,8 +193,6 @@
     <Compile Include="Context\MenuContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\OrderDetailController.cs" />
-    <Compile Include="Controllers\OrderSetController.cs" />
     <Compile Include="Controllers\ReportOfOrderController.cs" />
     <Compile Include="Controllers\ReportOfSaleController.cs" />
     <Compile Include="Controllers\UsersController.cs" />

@@ -7,7 +7,7 @@ body ::-moz-placeholder { /* Mozilla Firefox 19+ */ font-family: 'Source Sans Pr
 body :-ms-input-placeholder { /* Internet Explorer 10+ */ font-family: 'Source Sans Pro', sans-serif; color: white; font-weight: 300; }
 .wrapper { background: #4E7DB5; background: -webkit-linear-gradient(top left, #153A6F 0%, #4E7DB5 100%); background: linear-gradient(to bottom right, #153A6F 0%, #4E7DB5 100%); opacity: 0.8; position: absolute; top: 50%; left: 0; width: 100%; height: 400px; margin-top: -200px; overflow: hidden; }
 
-.wrapper.form-success .container h1 { -webkit-transform: translateY(85px); -ms-transform: translateY(85px); transform: translateY(85px); }
+/*.wrapper.form-success .container h1 { -webkit-transform: translateY(85px); -ms-transform: translateY(85px); transform: translateY(85px); }*/
 .container { max-width: 600px; margin: 0 auto; padding: 80px 0; height: 400px; text-align: center; }
 .container h1 { font-size: 40px; -webkit-transition-duration: 1s; transition-duration: 1s; -webkit-transition-timing-function: ease-in-put; transition-timing-function: ease-in-put; font-weight: 200; }
 form { padding: 20px 0; position: relative; z-index: 2; }
