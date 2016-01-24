@@ -7,30 +7,22 @@ using System.Web.Mvc;
 
 namespace HWYZ.Controllers
 {
-    public class ReportOfSaleController : BaseController
+    public class ReportOfAppOrderController : BaseController
     {
         public ActionResult Index()
         {
             return View();
         }
 
-        public PartialViewResult List(string Province, string City, string Country, string StoreId, string StartDate, string EndDate, int pi = 1)
+        public PartialViewResult List(string StoreId, string StartDate, string EndDate, int pi = 1)
         {
             using (DBContext db = new DBContext())
             {
                 var storeQuery = db.Store.AsQueryable();
 
-                if (!string.IsNullOrEmpty(Province)) { storeQuery = storeQuery.Where(q => q.Province.Equals(Province)); }
-
-                if (!string.IsNullOrEmpty(City)) { storeQuery = storeQuery.Where(q => q.City.Equals(City)); }
-
-                if (!string.IsNullOrEmpty(Country)) { storeQuery = storeQuery.Where(q => q.Country.Equals(Country)); }
-
                 if (!string.IsNullOrEmpty(StoreId)) { storeQuery = storeQuery.Where(q => q.ID.Equals(StoreId)); }
 
-                var offQuery = db.OfflineSell.AsQueryable();
-
-                var olQuery = db.AppOrder.AsQueryable();
+                var orderQuery = db.AppOrder.AsQueryable();
 
                 DateTime now = DateTime.Now;
                 //不选择开始日期默认为本月1号
@@ -45,17 +37,13 @@ namespace HWYZ.Controllers
                     start = temp;
                 }
 
-                offQuery = offQuery.Where(q => q.XFRQ.CompareTo(start) > 0 && q.XFRQ.CompareTo(end) < 0 && q.bFinish == Finish.YJS);
-
-                olQuery = olQuery.Where(q => q.CreateTime.CompareTo(start) > 0 && q.CreateTime.CompareTo(end) < 0 && q.Status == 5);
+                orderQuery = orderQuery.Where(q => q.CreateTime.CompareTo(start) > 0 && q.CreateTime.CompareTo(end) < 0 && q.Status == 5);
 
                 ViewBag.list = (from q in storeQuery
-                                join off in offQuery on q.ID equals off.StationID into off_join
-                                from o in off_join.DefaultIfEmpty()
-                                join ol in olQuery on q.ID equals ol.StoreId into ol_join
-                                from l in ol_join.DefaultIfEmpty()
-                                group new { q.StoreName, o.JE, l.Payable } by new { q.StoreName } into s
-                                select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => (p.JE == null ? 0 : p.JE) + (p.Payable == null ? 0 : p.Payable)) }).OrderByDescending(q => q.Pay).Skip((pi - 1) * 10).Take(10).ToList();
+                                join o in orderQuery on q.ID equals o.StoreId into o_join
+                                from os in o_join.DefaultIfEmpty()
+                                group new { q.StoreName, os.Payable } by new { q.StoreName } into s
+                                select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => p.Payable == null ? 0 : p.Payable) }).OrderByDescending(q => q.Pay).Skip((pi - 1) * 10).Take(10).ToList();
 
                 ViewBag.pager = new Pager()
                 {
@@ -67,23 +55,15 @@ namespace HWYZ.Controllers
             return PartialView();
         }
 
-        public FileResult Export(string Province, string City, string Country, string StoreId, string StartDate, string EndDate, int pi = 1)
+        public FileResult Export(string StoreId, string StartDate, string EndDate, int pi = 1)
         {
             using (DBContext db = new DBContext())
             {
                 var storeQuery = db.Store.AsQueryable();
 
-                if (!string.IsNullOrEmpty(Province)) { storeQuery = storeQuery.Where(q => q.Province.Equals(Province)); }
-
-                if (!string.IsNullOrEmpty(City)) { storeQuery = storeQuery.Where(q => q.City.Equals(City)); }
-
-                if (!string.IsNullOrEmpty(Country)) { storeQuery = storeQuery.Where(q => q.Country.Equals(Country)); }
-
                 if (!string.IsNullOrEmpty(StoreId)) { storeQuery = storeQuery.Where(q => q.ID.Equals(StoreId)); }
 
-                var offQuery = db.OfflineSell.AsQueryable();
-
-                var olQuery = db.AppOrder.AsQueryable();
+                var orderQuery = db.AppOrder.AsQueryable();
 
                 DateTime now = DateTime.Now;
                 //不选择开始日期默认为本月1号
@@ -98,17 +78,13 @@ namespace HWYZ.Controllers
                     start = temp;
                 }
 
-                offQuery = offQuery.Where(q => q.XFRQ.CompareTo(start) > 0 && q.XFRQ.CompareTo(end) < 0 && q.bFinish == Finish.YJS);
-
-                olQuery = olQuery.Where(q => q.CreateTime.CompareTo(start) > 0 && q.CreateTime.CompareTo(end) < 0 && q.Status == 5);
+                orderQuery = orderQuery.Where(q => q.CreateTime.CompareTo(start) > 0 && q.CreateTime.CompareTo(end) < 0 && q.Status == 5);
 
                 var list = (from q in storeQuery
-                            join off in offQuery on q.ID equals off.StationID into off_join
-                            from o in off_join.DefaultIfEmpty()
-                            join ol in olQuery on q.ID equals ol.StoreId into ol_join
-                            from l in ol_join.DefaultIfEmpty()
-                            group new { q.StoreName, o.JE, l.Payable } by new { q.StoreName } into s
-                            select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => (p.JE == null ? 0 : p.JE) + (p.Payable == null ? 0 : p.Payable)) }).OrderByDescending(q => q.Pay).ToList();
+                            join o in orderQuery on q.ID equals o.StoreId into o_join
+                            from os in o_join.DefaultIfEmpty()
+                            group new { q.StoreName, os.Payable } by new { q.StoreName } into s
+                            select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => p.Payable == null ? 0 : p.Payable) }).OrderByDescending(q => q.Pay).ToList();
 
                 //创建Excel文件的对象
                 NPOI.HSSF.UserModel.HSSFWorkbook book = new NPOI.HSSF.UserModel.HSSFWorkbook();
@@ -117,8 +93,8 @@ namespace HWYZ.Controllers
 
                 //给sheet1添加第一行的头部标题
                 NPOI.SS.UserModel.IRow row1 = sheet1.CreateRow(0);
-                row1.CreateCell(0).SetCellValue("经营单位");
-                row1.CreateCell(1).SetCellValue("金额");
+                row1.CreateCell(0).SetCellValue("采购单位");
+                row1.CreateCell(1).SetCellValue("销售额");
 
                 string status = string.Empty;
                 //将数据逐步写入sheet1各个行

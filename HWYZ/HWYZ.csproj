@@ -215,12 +215,17 @@
     <Compile Include="Controllers\ProductNumberController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\ReportOfSellController.cs" />
+    <Compile Include="Controllers\ReportOfAppOrderController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\UserAuthorizeAttribute.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
     <Compile Include="Filters\StoreAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601181119117_modify.cs" />
+    <Compile Include="Migrations\201601181119117_modify.Designer.cs">
+      <DependentUpon>201601181119117_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -348,6 +353,7 @@
     <Content Include="Scripts\Page\reportofsend.js" />
     <Content Include="Scripts\Page\reportofsell.js" />
     <Content Include="Scripts\Page\home.js" />
+    <Content Include="Scripts\Page\reportofapporder.js" />
     <Content Include="Scripts\ueditor\dialogs\anchor\anchor.html" />
     <Content Include="Scripts\ueditor\dialogs\attachment\attachment.css" />
     <Content Include="Scripts\ueditor\dialogs\attachment\attachment.html" />
@@ -778,12 +784,19 @@
     <Content Include="Views\ReportOfSale\List.cshtml" />
     <Content Include="Views\ReportOfOrder\Index.cshtml" />
     <Content Include="Views\ReportOfOrder\List.cshtml" />
+    <Content Include="Views\ReportOfAppOrder\Index.cshtml" />
+    <Content Include="Views\ReportOfAppOrder\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601181119117_modify.resx">
+      <DependentUpon>201601181119117_modify.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

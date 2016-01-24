@@ -37,14 +37,22 @@ namespace HWYZ.Controllers
                     return PartialView("Notice", cards);
                 #endregion
 
+                var offQuery = db.OfflineSell.AsQueryable();
+
+                var olQuery = db.AppOrder.AsQueryable();
+
+                offQuery = offQuery.Where(q => q.bFinish == Finish.YJS);
+
+                olQuery = olQuery.Where(q => q.Status == 5);
+
                 if (UserContext.store == null)
                 {
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > yestday && q.XFRQ < zero).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = offQuery.Where(q => q.XFRQ > yestday && q.XFRQ < zero).Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > yestday && q.CreateTime < zero).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = olQuery.Where(q => q.CreateTime > yestday && q.CreateTime < zero).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 
@@ -59,16 +67,16 @@ namespace HWYZ.Controllers
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable && q.UserId.Equals(UserContext.user.ID)).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = db.OfflineSell.Where(q => q.XFRQ > yestday && q.XFRQ < zero && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = offQuery.Where(q => q.XFRQ > yestday && q.XFRQ < zero && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = db.AppOrder.Where(q => q.CreateTime > yestday && q.CreateTime < zero && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = olQuery.Where(q => q.CreateTime > yestday && q.CreateTime < zero && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 
                     ViewBag.stocks = (from q in db.Stock
-                                      join off in db.OfflineSell on new { q.StationID, SPBM = q.ProdCode } equals new { off.StationID, off.SPBM } into off_join
+                                      join off in offQuery on new { q.StationID, SPBM = q.ProdCode } equals new { off.StationID, off.SPBM } into off_join
                                       from o in off_join.DefaultIfEmpty()
-                                      join ao in db.AppOrder on q.StationID equals ao.StoreId into ao_join
+                                      join ao in olQuery on q.StationID equals ao.StoreId into ao_join
                                       from a in ao_join.DefaultIfEmpty()
                                       join aoi in db.AppOrderItem on new { OrderId = a.ID, ProductCode = q.ProdCode } equals new { aoi.OrderId, aoi.ProductCode } into aoi_join
                                       from ai in aoi_join.DefaultIfEmpty()

@@ -731,7 +731,7 @@ label { font-weight: 400; }
 .ui-sortable li.list-inverse { border-left: 3px solid #BEC3C7; }
 
 /*footer*/
-.site-footer { background: #68dff0; color: #fff; padding: 10px 0; }
+.site-footer { background: #68dff0; color: #fff; padding: 10px 0; position: fixed; bottom: 0; width: 100%; }
 
 
 .go-top { margin-right: 1%; float: right; background: rgba(255,255,255,.5); width: 20px; height: 20px; border-radius: 50%; -webkit-border-radius: 50%; }

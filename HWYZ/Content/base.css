@@ -1,4 +1,6 @@
 ﻿/*========================Setting============================*/
+html { min-height: 100%; position: relative; }
+
 body { font-size: 14px; font-family: "微软雅黑",Arial, Helvetica, sans-serif; /*background-color: #343c4f;*/ padding: 0px; margin: 0px; color: #333; background-color: #fff; }
 
 label { vertical-align: middle; }
@@ -114,3 +116,5 @@ footer.duomi-page-footer .list-inline a, footer.authenticated-footer .list-inlin
 .collapse.glyphicon-chevron-toggle, .glyphicon-chevron-toggle:before { content: "\e113"; }
 
 .collapsed.glyphicon-chevron-toggle:before { content: "\e114"; }
+
+.menu-icon { width: 25px; text-align: center; }

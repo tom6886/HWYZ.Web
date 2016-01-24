@@ -89,7 +89,7 @@
                             {
                         <li>
                             <a class="dcjq-parent" href="@menu.Url">
-                                <i class="fa fa-@menu.Icon"></i>
+                                <i class="fa fa-@menu.Icon  menu-icon"></i>
                                 <span>@menu.Title</span>
                             </a>
                         </li>
@@ -98,7 +98,7 @@
                             {
                         <li class="sub-menu dcjq-parent-li">
                             <a href="javascript:void(0);" class="dcjq-parent">
-                                <i class="fa fa-@menu.Icon"></i>
+                                <i class="fa fa-@menu.Icon  menu-icon"></i>
                                 <span>@menu.Title</span></a>
                             <ul class="sub" style="display: none;">
                                 @foreach (Menu sub in @menu.SubMenu)
@@ -107,7 +107,7 @@
                                     {
                                     <li>
                                         <a href="@sub.Url">
-                                            <i class="fa fa-@sub.Icon"></i>
+                                            <i class="fa fa-@sub.Icon menu-icon"></i>
                                             <span>@sub.Title</span>
                                         </a>
                                     </li>
