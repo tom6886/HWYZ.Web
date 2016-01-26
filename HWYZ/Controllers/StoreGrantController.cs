@@ -17,11 +17,11 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Store, bool>> where = PredicateExtensions.True<Store>();
+                var query = db.Store.Include("User").AsQueryable();
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
 
-                PagedList<Store> cards = db.Store.Include("User").Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                PagedList<Store> cards = query.OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Store>(new List<Store>(), 10, 0);

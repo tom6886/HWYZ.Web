@@ -188,7 +188,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Context\PredicateExtensions.cs" />
     <Compile Include="Context\UserContext.cs" />
     <Compile Include="Context\MenuContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -222,10 +221,6 @@
     <Compile Include="Filters\StoreAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601181119117_modify.cs" />
-    <Compile Include="Migrations\201601181119117_modify.Designer.cs">
-      <DependentUpon>201601181119117_modify.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LogHelper.cs" />
@@ -792,11 +787,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601181119117_modify.resx">
-      <DependentUpon>201601181119117_modify.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

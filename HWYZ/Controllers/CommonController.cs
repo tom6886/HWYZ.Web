@@ -16,24 +16,24 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Area, bool>> where = PredicateExtensions.True<Area>();
+                var query = db.Area.AsQueryable();
 
-                where = where.And(q => q.LevelType.Equals(levelType));
+                query = query.Where(q => q.LevelType.Equals(levelType));
 
-                if (!string.IsNullOrEmpty(pId)) { where = where.And(q => q.ParentId.Equals(pId)); }
+                if (!string.IsNullOrEmpty(pId)) { query = query.Where(q => q.ParentId.Equals(pId)); }
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.Name.Contains(key) || q.Pinyin.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.Name.Contains(key) || q.Pinyin.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Area> list = db.Area.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+                List<Area> list = query.Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
                     results.Add(new { id = item.ID, name = item.Name, code = item.CityCode });
                 }
 
-                int total = db.Area.Where(where.Compile()).Count();
+                int total = query.Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }
@@ -44,20 +44,20 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Store, bool>> where = PredicateExtensions.True<Store>();
+                var query = db.Store.AsQueryable();
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.StoreName.Contains(key) || q.StoreCode.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Store> list = db.Store.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+                List<Store> list = query.Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
                     results.Add(new { id = item.ID, name = item.StoreName });
                 }
 
-                int total = db.Store.Where(where.Compile()).Count();
+                int total = query.Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }
@@ -68,22 +68,22 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Product, bool>> where = PredicateExtensions.True<Product>();
+                var query = db.Product.AsQueryable();
 
-                where = where.And(q => q.StoreId == null && q.Status == Status.enable);
+                query = query.Where(q => q.StoreId == null && q.Status == Status.enable);
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Product> list = db.Product.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+                List<Product> list = query.Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
                     results.Add(new { id = item.ID, name = item.ProductName, code = item.ProductCode, price = item.Price });
                 }
 
-                int total = db.Product.Where(where.Compile()).Count();
+                int total = query.Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }
@@ -94,22 +94,22 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Product, bool>> where = PredicateExtensions.True<Product>();
+                var query = db.Product.AsQueryable();
 
-                where = where.And(q => q.StoreId == null || q.StoreId.Equals(UserContext.store.ID));
+                query = query.Where(q => q.StoreId == null || q.StoreId.Equals(UserContext.store.ID));
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.ProductName.Contains(key) || q.ProductCode.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Product> list = db.Product.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+                List<Product> list = query.Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
                     results.Add(new { id = item.ID, name = item.ProductName, code = item.ProductCode, price = item.Price });
                 }
 
-                int total = db.Product.Where(where.Compile()).Count();
+                int total = query.Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }
@@ -120,20 +120,20 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Guser, bool>> where = PredicateExtensions.True<Guser>();
+                var query = db.Guser.AsQueryable();
 
-                if (!string.IsNullOrEmpty(key)) { where = where.And(q => q.DisplayName.Contains(key) || q.PinYin.Contains(key) || q.PinYin1.Contains(key)); }
+                if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.DisplayName.Contains(key) || q.PinYin.Contains(key) || q.PinYin1.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Guser> list = db.Guser.Where(where.Compile()).Skip((page - 1) * 10).Take(10).ToList();
+                List<Guser> list = query.Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
                     results.Add(new { id = item.ID, name = item.DisplayName });
                 }
 
-                int total = db.Guser.Where(where.Compile()).Count();
+                int total = query.Count();
 
                 return Json(new { results = results, total = total, pageSize = 10 }, JsonRequestBehavior.AllowGet);
             }

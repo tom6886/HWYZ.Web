@@ -15,11 +15,11 @@ namespace HWYZ.Controllers
         {
             using (DBContext db = new DBContext())
             {
-                Expression<Func<Order, bool>> where = PredicateExtensions.True<Order>();
+                var query = db.Order.AsQueryable();
 
-                if (!string.IsNullOrEmpty(OrderCode)) { where = where.And(q => q.OrderCode.Contains(OrderCode)); }
+                if (!string.IsNullOrEmpty(OrderCode)) { query = query.Where(q => q.OrderCode.Contains(OrderCode)); }
 
-                if (!string.IsNullOrEmpty(Tel)) { where = where.And(q => q.Tel.Contains(Tel)); }
+                if (!string.IsNullOrEmpty(Tel)) { query = query.Where(q => q.Tel.Contains(Tel)); }
 
                 DateTime now = DateTime.Now;
                 //不选择开始日期默认为本月1号
@@ -35,22 +35,22 @@ namespace HWYZ.Controllers
                 }
 
                 //只显示代发货的订单
-                where = where.And(q => q.SubmitTime.CompareTo(start) > 0 && q.SubmitTime.CompareTo(end) < 0 && q.Status == OrderStatus.BeforeSend);
+                query = query.Where(q => q.SubmitTime.CompareTo(start) > 0 && q.SubmitTime.CompareTo(end) < 0 && q.Status == OrderStatus.BeforeSend);
 
                 Store store = UserContext.store;
 
                 if (store == null)
                 {
-                    where = where.And(q => q.Status != 0);
+                    query = query.Where(q => q.Status != 0);
 
-                    if (!string.IsNullOrEmpty(StoreId)) { where = where.And(q => q.StoreId.Contains(StoreId)); }
+                    if (!string.IsNullOrEmpty(StoreId)) { query = query.Where(q => q.StoreId.Contains(StoreId)); }
                 }
                 else
                 {
-                    where = where.And(q => q.StoreId.Equals(store.ID));
+                    query = query.Where(q => q.StoreId.Equals(store.ID));
                 }
 
-                PagedList<Order> cards = db.Order.Where(where.Compile()).OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
+                PagedList<Order> cards = query.OrderByDescending(q => q.ModifyTime).ToPagedList(pi, 10);
 
                 if (null == cards)
                     cards = new PagedList<Order>(new List<Order>(), 10, 0);
