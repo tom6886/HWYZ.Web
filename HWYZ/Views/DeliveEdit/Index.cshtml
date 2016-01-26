@@ -61,19 +61,15 @@
         </div>
 
         <div class="row" style="margin-top: 20px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="panel panel-default">
-                    @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
-                    {
-                        <input type="hidden" name="orderId" value="@ViewBag.order.ID" />
-                        <div class="panel-body" id="container">
-                            @Html.Partial("List", Model)
-                        </div>
-                    }
-                </div>
+            <div class="panel panel-default">
+                @using (Ajax.BeginForm("Index", new RouteValueDictionary { { "id", "" } }, new AjaxOptions { UpdateTargetId = "container", InsertionMode = InsertionMode.Replace }, new { @id = "form_query" }))
+                {
+                    <input type="hidden" name="orderId" value="@ViewBag.order.ID" />
+                    <div class="panel-body" id="container">
+                        @Html.Partial("List", Model)
+                    </div>
+                }
             </div>
-            <div class="col-md-1"></div>
         </div>
 
         <div class="row">
