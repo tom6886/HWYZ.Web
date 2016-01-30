@@ -116,23 +116,28 @@ $(function () {
                 opts = {
                     width: 250,     // 信息窗口宽度
                     height: 80,     // 信息窗口高度
-                    title: "分店地址" // 信息窗口标题
-                };;
+                    title: "分店" // 信息窗口标题
+                },
+                points = [];
 
             for (var i = 0, length = list.length; i < length; i++) {
 
                 var marker = new BMap.Marker(new BMap.Point(list[i].Lng, list[i].Lat));  // 创建标注
 
-                var content = list[i].Address;
+                var content = "名称：{0}<br>地址：{1}".format(list[i].StoreName, list[i].Address);
 
                 map.addOverlay(marker);               // 将标注添加到地图中
 
                 store.addClickHandler(content, marker, opts);
+
+                points[i] = [marker.point, list[i].StoreName];
             }
+
+            map.stores = points;
 
             setTimeout(function () {
                 map.centerAndZoom(city, 13);
-            }, 100);
+            }, 150);
         });
     }
 
@@ -151,6 +156,10 @@ $(function () {
             store.openDialog($(this), button.parent().data('id'));
         }).on('hidden.bs.modal', function () {
             $(".modal-dialog", $(this)).remove();
+        });
+
+        $("#dlg_map").on('hidden.bs.modal', function (event) {
+            map.stores = [];
         });
 
         $("#basic-addon2").click(function () {

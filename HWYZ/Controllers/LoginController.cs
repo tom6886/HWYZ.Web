@@ -106,7 +106,7 @@ namespace HWYZ.Controllers
                 MenuContext.menus = menus;
 
                 //暂时设置为自动保存自动登录
-                remeberMe = "1";
+                remeberMe = "";
                 if (!string.IsNullOrEmpty(remeberMe))
                 {
                     HttpCookie cookie = new HttpCookie("session-cookie-name");

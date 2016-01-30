@@ -26,7 +26,7 @@ namespace HWYZ.Controllers
 
                 ArrayList results = new ArrayList();
 
-                List<Area> list = query.Skip((page - 1) * 10).Take(10).ToList();
+                List<Area> list = query.OrderBy(q => q.CityCode).Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
@@ -50,7 +50,7 @@ namespace HWYZ.Controllers
 
                 ArrayList results = new ArrayList();
 
-                List<Store> list = query.Skip((page - 1) * 10).Take(10).ToList();
+                List<Store> list = query.OrderBy(q => q.StoreCode).Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
@@ -76,7 +76,7 @@ namespace HWYZ.Controllers
 
                 ArrayList results = new ArrayList();
 
-                List<Product> list = query.Skip((page - 1) * 10).Take(10).ToList();
+                List<Product> list = query.OrderBy(q => q.ProductCode).Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
@@ -102,7 +102,7 @@ namespace HWYZ.Controllers
 
                 ArrayList results = new ArrayList();
 
-                List<Product> list = query.Skip((page - 1) * 10).Take(10).ToList();
+                List<Product> list = query.OrderBy(q => q.ProductCode).Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {
@@ -122,11 +122,13 @@ namespace HWYZ.Controllers
             {
                 var query = db.Guser.AsQueryable();
 
+                query = query.Where(q => q.Status == Status.enable);
+
                 if (!string.IsNullOrEmpty(key)) { query = query.Where(q => q.DisplayName.Contains(key) || q.PinYin.Contains(key) || q.PinYin1.Contains(key)); }
 
                 ArrayList results = new ArrayList();
 
-                List<Guser> list = query.Skip((page - 1) * 10).Take(10).ToList();
+                List<Guser> list = query.OrderBy(q => q.CreateTime).Skip((page - 1) * 10).Take(10).ToList();
 
                 foreach (var item in list)
                 {

@@ -38,12 +38,12 @@
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" style="color: #fff;"></div>
             </div>
             <!--logo start-->
-            <a href="/" class="logo">
-                <img src="~/Images/logo.png" width="40" /><b>徽味驿站云平台</b></a>
+            <a href="/" class="logo"><b>徽味驿站云平台</b></a>
             <!--logo end-->
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login/logoff">登出</a></li>
+                    <li><a class="logout" href="PassWord">修改密码</a></li>
+                    <li><a class="logout" href="login/logoff">退出</a></li>
                 </ul>
             </div>
             @if (UserContext.stores != null && UserContext.stores.Count > 0)
@@ -136,7 +136,7 @@
 
         <!--main content end-->
         <!--footer start-->
-        <footer class="site-footer">
+       @* <footer class="site-footer">
             <div class="text-center">
                 @DateTime.Now.Year - 徽味驿站版权所有
              
@@ -144,7 +144,7 @@
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
-        </footer>
+        </footer>*@
         <!--footer end-->
     </section>
 
