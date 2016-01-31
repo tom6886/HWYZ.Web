@@ -31,9 +31,9 @@ em { color: #ff6a00; font-style: normal; }
     .noprint { display: none; }
 }
 
-#main-content table thead tr { background-color: #428BCA; }
+.table-blue table thead tr { background-color: #428BCA; }
 
-#main-content table thead tr td { color: white; }
+.table-blue table thead tr td { color: white; }
 
 /*#container { margin: 25px 10px 0px 15px; }*/
 

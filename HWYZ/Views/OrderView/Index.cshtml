@@ -148,7 +148,7 @@
                 <span class="input-group-addon">驳回原因</span>
                 <input type="text" class="form-control" name="reason" />
             </div>
-            <button type="button" class="btn btn-default reject" style="float: right; margin-left: 10px;">驳回</button>
+            <button type="button" class="btn btn-info reject" style="float: right; margin-left: 10px;">驳回</button>
         }
         else if (@ViewBag.order.Status == OrderStatus.Sended && @UserContext.store != null)
         {
@@ -156,9 +156,9 @@
                 <span class="input-group-addon">对账备注</span>
                 <input type="text" class="form-control" name="checkremark" />
             </div>
-            <button type="button" class="btn btn-default check" style="float: right; margin-left: 10px;">对账</button>
+            <button type="button" class="btn btn-info check" style="float: right; margin-left: 10px;">对账</button>
         }
-        <button type="button" class="btn btn-default" onclick="javascript:window.print();">打印</button>
+        <button type="button" class="btn btn-info" onclick="javascript:window.print();">打印</button>
     </div>
 </div>
 <script type="text/javascript">
