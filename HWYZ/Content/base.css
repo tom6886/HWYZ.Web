@@ -35,6 +35,8 @@ em { color: #ff6a00; font-style: normal; }
 
 .table-blue table thead tr td { color: white; }
 
+.table-blue table .table-serial { font-weight: bold; }
+
 /*#container { margin: 25px 10px 0px 15px; }*/
 
 /*alert notice css*/

@@ -9,19 +9,19 @@
             @{
                 foreach (Notice item in Model)
                 {
-                    <tr>
-                        <td>
-                            @item.Title (@item.ModifyTime)
+                <tr>
+                    <td>
+                        <i class="fa fa-flag" style="color: red; margin-right: 10px;"></i>@item.Title (@item.ModifyTime)
                             <div style="float: right;" data-id="@item.ID">
                                 @if (UserContext.store == null)
                                 {
                                     if (item.Status == NoticeStatus.Draft)
                                     {
-                                        <a class="btn btn-primary btn-xs" target="_blank" href="Home/Edit?noticeId=@item.ID"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-primary btn-xs" target="_blank" href="Home/Edit?noticeId=@item.ID"><i class="fa fa-pencil"></i></a>
                                     }
                                     else
                                     {
-                                        <a href="Home/ViewNotice?noticeId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
+                                    <a href="Home/ViewNotice?noticeId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                                     }
                                     <button class="btn btn-danger btn-xs delNotice"><i class="fa fa-trash-o "></i></button>
                                 }
@@ -30,8 +30,8 @@
                                     <a href="Home/ViewNotice?noticeId=@item.ID" target="_blank" class="btn btn-success btn-xs"><i class="fa fa-eye"></i></a>
                                 }
                             </div>
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 }
             }
         </tbody>

@@ -6,6 +6,7 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
+                <td style="width: 4%;">序号</td>
                 <td>商品编码</td>
                 <td>商品名称</td>
                 <td>发货数量</td>
@@ -16,10 +17,12 @@
             </tr>
         </thead>
         <tbody>
+            @{ int i = 0;}
             @{
                 foreach (OrderItem item in Model)
                 {
                 <tr>
+                    <td class="table-serial">@(Model.StartItemIndex + i++)</td>
                     <td>@item.ProductCode</td>
                     <td>@item.ProductName</td>
                     <td>@item.RealNumber</td>
