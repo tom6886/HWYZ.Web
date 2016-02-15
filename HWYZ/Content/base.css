@@ -118,3 +118,11 @@ footer.duomi-page-footer .list-inline a, footer.authenticated-footer .list-inlin
 .collapsed.glyphicon-chevron-toggle:before { content: "\e114"; }
 
 .menu-icon { width: 25px; text-align: center; }
+
+.top-3 { background: url(../Images/ac_vip_subpage.png) no-repeat; height: 137px; border: 1px solid #d21804; }
+
+.top-no-1 { background-position: -203px -109px; border-bottom: 0; }
+
+.top-no-2 { background-position: -203px -247px; border-bottom: 0; }
+
+.top-no-3 { background-position: -203px -385px; }
