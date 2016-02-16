@@ -43,25 +43,74 @@
             <div class="modal-dialog" role="document">
                 <div class="panel  panel-default">
                     <div class="panel-header">
-                        <h3>昨日营业金额TOP3</h3>
+                        <h3 style="font-weight: bold; text-align: center;"><i class="fa fa-trophy" style="color: gold;"></i>&nbsp;&nbsp;昨日营业金额TOP3</h3>
                     </div>
                     <div class="panel-body">
+                        @{var saleRank = ViewBag.saleRank as List<PSJE>; }
                         <div class="row top-3 top-no-1">
-                            <div class="col-md-3 col-sm-3"></div>
-                            <div class="col-md-9 col-sm-9">
-                                <h3>合肥总店 营业额：10000 元</h3>
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (saleRank.Count > 0)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@saleRank[0].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>营业额：@saleRank[0].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
                             </div>
                         </div>
                         <div class="row top-3 top-no-2">
-                            <div class="col-md-3 col-sm-3"></div>
-                            <div class="col-md-9 col-sm-9">
-                                <h3>合肥总店 营业额：9000 元</h3>
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (saleRank.Count > 1)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@saleRank[1].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>营业额：@saleRank[1].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
                             </div>
                         </div>
                         <div class="row top-3 top-no-3">
-                            <div class="col-md-3 col-sm-3"></div>
-                            <div class="col-md-9 col-sm-9">
-                                <h3>合肥总店 营业额：8000 元</h3>
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (saleRank.Count > 2)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@saleRank[2].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>营业额：@saleRank[2].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
                             </div>
                         </div>
                     </div>
@@ -85,7 +134,6 @@
                 </div>
             </div>
         </div>
-
     }
     else
     {

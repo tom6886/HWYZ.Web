@@ -326,6 +326,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Images\ac_vip_subpage.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\nopic.jpg" />
     <Content Include="Scripts\common-scripts.js" />

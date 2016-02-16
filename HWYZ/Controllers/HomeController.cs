@@ -41,24 +41,33 @@ namespace HWYZ.Controllers
 
                 var olQuery = db.AppOrder.AsQueryable();
 
-                offQuery = offQuery.Where(q => q.bFinish == Finish.YJS);
+                offQuery = offQuery.Where(q => q.bFinish == Finish.YJS && q.XFRQ > yestday && q.XFRQ < zero);
 
-                olQuery = olQuery.Where(q => q.Status == 5);
+                olQuery = olQuery.Where(q => q.Status == 5 && q.CreateTime > yestday && q.CreateTime < zero);
 
                 if (UserContext.store == null)
                 {
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = offQuery.Where(q => q.XFRQ > yestday && q.XFRQ < zero).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = offQuery.Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = olQuery.Where(q => q.CreateTime > yestday && q.CreateTime < zero).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = olQuery.Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 
                     ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSend).Take(10).ToList();
 
                     ViewBag.income = db.Order.Where(q => q.Status == OrderStatus.Checked && q.SubmitTime > nowMonth).Sum(q => (decimal?)q.Paid).GetValueOrDefault();
+
+                    ViewBag.saleRank = (from q in db.Store
+                                        join off in offQuery on q.ID equals off.StationID into off_join
+                                        from o in off_join.DefaultIfEmpty()
+                                        join ol in olQuery on q.ID equals ol.StoreId into ol_join
+                                        from l in ol_join.DefaultIfEmpty()
+                                        group new { q.StoreName, o.JE, l.Payable } by new { q.StoreName } into s
+                                        select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => (p.JE == null ? 0 : p.JE) + (p.Payable == null ? 0 : p.Payable)) }).OrderByDescending(q => q.Pay).Take(3).Where(q => q.Pay > 0).ToList();
+
                 }
                 else
                 {
@@ -67,9 +76,9 @@ namespace HWYZ.Controllers
                     ViewBag.storeNumber = db.Store.Where(q => q.Status == Status.enable && q.UserId.Equals(UserContext.user.ID)).Count();
 
                     //统计线下营业额
-                    decimal offlineSale = offQuery.Where(q => q.XFRQ > yestday && q.XFRQ < zero && q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
+                    decimal offlineSale = offQuery.Where(q => q.StationID.Equals(store.ID)).Sum(q => (decimal?)q.JE).GetValueOrDefault();
                     //统计线上营业额
-                    decimal onlineSale = olQuery.Where(q => q.CreateTime > yestday && q.CreateTime < zero && q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
+                    decimal onlineSale = olQuery.Where(q => q.StoreId.Equals(store.ID)).Sum(q => (decimal?)q.Payable).GetValueOrDefault();
 
                     ViewBag.sale = offlineSale + onlineSale;
 
