@@ -6,6 +6,7 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
+                <td>序号</td>
                 <td>门店名称</td>
                 <td>门店编号</td>
                 <td>登录账号</td>
@@ -19,10 +20,12 @@
             </tr>
         </thead>
         <tbody>
+            @{ int i = 0;}
             @{
                 foreach (Store item in Model)
                 {
                 <tr>
+                    <td class="table-serial">@(Model.StartItemIndex + i++)</td>
                     <td>@item.StoreName</td>
                     <td>@item.StoreCode</td>
                     <td>@item.User.DisplayName</td>

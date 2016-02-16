@@ -7,6 +7,7 @@
     <table class="table table-bordered table-striped table-condensed">
         <thead>
             <tr>
+                <td style="width: 4%;">序号</td>
                 <td>订单号</td>
                 @if (UserContext.store == null)
                 { 
@@ -21,10 +22,12 @@
             </tr>
         </thead>
         <tbody>
+            @{ int i = 0;}
             @{
                 foreach (Order item in Model)
                 {
                 <tr>
+                    <td class="table-serial">@(Model.StartItemIndex + i++)</td>
                     <td>@item.OrderCode</td>
                     @if (UserContext.store == null)
                     { 

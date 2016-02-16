@@ -195,7 +195,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus { border: 1px solid #b6b6
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Chrome */
     .dropdown-menu.extended { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176) !important; }
-    ;
 }
 
 .dropdown-menu.extended li p { background-color: #F1F2F7; color: #666666; margin: 0; padding: 10px; border-radius: 4px 4px 0px 0px; -webkit-border-radius: 4px 4px 0px 0px; }
