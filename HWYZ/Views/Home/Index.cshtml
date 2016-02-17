@@ -12,13 +12,13 @@
                     <h1>@ViewBag.storeNumber</h1>
                 </div>
                 <div class="panel-footer" style="padding: 0 0 5px 0;">
-                    <span>
-                        <a href="javascript:void(0)">
-                            <h3>
-                                <i class="fa fa-home"></i>&nbsp;&nbsp;加盟数量
-                            </h3>
-                        </a>
-                    </span>
+                    <h3>
+                        <span>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-home"></i>&nbsp;&nbsp;加盟数量                            
+                            </a>
+                        </span>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -28,13 +28,13 @@
                     <h1>@ViewBag.sale</h1>
                 </div>
                 <div class="panel-footer" style="padding: 0 0 5px 0;">
-                    <span>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#dlg_sale">
-                            <h3>
+                    <h3>
+                        <span>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#dlg_sale">
                                 <i class="fa fa-tv"></i>&nbsp;&nbsp;营业金额
-                            </h3>
-                        </a>
-                    </span>
+                            </a>
+                        </span>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -124,13 +124,92 @@
                     <h1>@ViewBag.income</h1>
                 </div>
                 <div class="panel-footer" style="padding: 0 0 5px 0;">
-                    <span>
-                        <a href="javascript:void(0)">
-                            <h3>
+                    <h3>
+                        <span>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#dlg_income">
                                 <i class="fa fa-cny"></i>&nbsp;&nbsp;销售金额
-                            </h3>
-                        </a>
-                    </span>
+                            </a>
+                        </span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="dlg_income" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="panel  panel-default">
+                    <div class="panel-header">
+                        <h3 style="font-weight: bold; text-align: center;"><i class="fa fa-trophy" style="color: gold;"></i>&nbsp;&nbsp;本月订单金额TOP3</h3>
+                    </div>
+                    <div class="panel-body">
+                        @{var incomeRank = ViewBag.incomeRank as List<PSJE>; }
+                        <div class="row top-3 top-no-1">
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (incomeRank.Count > 0)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@incomeRank[0].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>订单金额：@incomeRank[0].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
+                            </div>
+                        </div>
+                        <div class="row top-3 top-no-2">
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (incomeRank.Count > 1)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@incomeRank[1].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>订单金额：@incomeRank[1].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
+                            </div>
+                        </div>
+                        <div class="row top-3 top-no-3">
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-11 col-sm-11 top-text">
+                                @if (incomeRank.Count > 2)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>@incomeRank[2].StoreName</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3>订单金额：@incomeRank[2].Pay 元</h3>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <h3 style="margin-top: 53px;">空缺</h3>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -223,7 +302,7 @@
                                 case OrderStatus.BeforeSend:
                                 <td><span class="label label-info label-mini">待发货</span></td>; break;
                                 case OrderStatus.Sended:
-                                <td><span class="label label-warning label-mini">已发货</span></td>; break;
+                                <td><span class="label label-primary label-mini">已发货</span></td>; break;
                                 case OrderStatus.Reject:
                                 <td><span class="label label-danger label-mini">驳回</span></td>; break;
                             }

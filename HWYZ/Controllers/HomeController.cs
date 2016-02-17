@@ -56,10 +56,13 @@ namespace HWYZ.Controllers
 
                     ViewBag.sale = offlineSale + onlineSale;
 
+                    //未处理订单
                     ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSend).Take(10).ToList();
 
+                    //销售金额
                     ViewBag.income = db.Order.Where(q => q.Status == OrderStatus.Checked && q.SubmitTime > nowMonth).Sum(q => (decimal?)q.Paid).GetValueOrDefault();
 
+                    //营业额前三
                     ViewBag.saleRank = (from q in db.Store
                                         join off in offQuery on q.ID equals off.StationID into off_join
                                         from o in off_join.DefaultIfEmpty()
@@ -68,6 +71,15 @@ namespace HWYZ.Controllers
                                         group new { q.StoreName, o.JE, l.Payable } by new { q.StoreName } into s
                                         select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => (p.JE == null ? 0 : p.JE) + (p.Payable == null ? 0 : p.Payable)) }).OrderByDescending(q => q.Pay).Take(3).Where(q => q.Pay > 0).ToList();
 
+                    var orderQuery = db.Order.AsQueryable();
+
+                    orderQuery = orderQuery.Where(q => q.Status == OrderStatus.Checked && q.SubmitTime > nowMonth);
+
+                    //销售额前三
+                    ViewBag.incomeRank = (from q in db.Order
+                                          where q.Status == OrderStatus.Checked && q.SubmitTime > nowMonth
+                                          group q by new { q.StoreName } into s
+                                          select new PSJE() { StoreName = s.Key.StoreName, Pay = s.Sum(p => p.Paid == null ? 0 : p.Paid) }).OrderByDescending(q => q.Pay).Take(3).Where(q => q.Pay > 0).ToList();
                 }
                 else
                 {
@@ -93,7 +105,7 @@ namespace HWYZ.Controllers
                                       group new { q.NameCh, q.ProdCode, q.In, o.SL, ai.OrderNumber } by new { q.NameCh, q.ProdCode } into s
                                       select new CXSL() { ProductName = s.Key.NameCh, ProductCode = s.Key.ProdCode, ProductNumber = s.Sum(p => p.In) - s.Sum(p => p.SL == null ? 0 : p.SL) - s.Sum(p => p.OrderNumber == null ? 0 : p.OrderNumber) }).OrderBy(q => q.ProductNumber).Take(10).ToList();
 
-                    ViewBag.order = db.Order.Where(q => q.Status == OrderStatus.BeforeSubmit || q.Status == OrderStatus.Sended).Take(10).ToList();
+                    ViewBag.order = db.Order.Where(q => q.StoreId.Equals(store.ID) && (q.Status == OrderStatus.BeforeSubmit || q.Status == OrderStatus.Sended)).Take(10).ToList();
                 }
 
                 return View(cards);
