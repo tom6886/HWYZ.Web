@@ -222,13 +222,13 @@
                     <h1>@ViewBag.storeNumber</h1>
                 </div>
                 <div class="panel-footer" style="padding: 0 0 5px 0;">
-                    <span>
-                        <a href="javascript:void(0)">
-                            <h3>
-                                <i class="fa fa-home"></i>&nbsp;&nbsp;加盟数量
-                            </h3>
-                        </a>
-                    </span>
+                    <h3>
+                        <span>
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-home"></i>&nbsp;&nbsp;加盟数量                           
+                            </a>
+                        </span>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -238,13 +238,172 @@
                     <h1>@ViewBag.sale</h1>
                 </div>
                 <div class="panel-footer" style="padding: 0 0 5px 0;">
-                    <span>
-                        <a href="javascript:void(0)">
-                            <h3>
+                    <h3>
+                        <span>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#dlg_cxsp">
                                 <i class="fa fa-tv"></i>&nbsp;&nbsp;营业金额
-                            </h3>
-                        </a>
-                    </span>
+                            </a>
+                        </span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="dlg_cxsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document" style="width: 60%;">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel  panel-default">
+                            <div class="panel-header">
+                                <h3 style="font-weight: bold; text-align: center;"><i class="fa fa-trophy" style="color: gold;"></i>&nbsp;&nbsp;昨日门店畅销商品TOP3</h3>
+                            </div>
+                            <div class="panel-body">
+                                @{var offSaleRank = ViewBag.offSaleRank as List<CXSL>; }
+                                <div class="row top-3 top-no-1">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (offSaleRank.Count > 0)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@offSaleRank[0].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>售出数量：@offSaleRank[0].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row top-3 top-no-2">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (offSaleRank.Count > 1)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@offSaleRank[1].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>营业额：@offSaleRank[1].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row top-3 top-no-3">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (offSaleRank.Count > 2)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@offSaleRank[2].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>营业额：@offSaleRank[2].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="panel  panel-default">
+                            <div class="panel-header">
+                                <h3 style="font-weight: bold; text-align: center;"><i class="fa fa-trophy" style="color: gold;"></i>&nbsp;&nbsp;昨日在线畅销商品TOP3</h3>
+                            </div>
+                            <div class="panel-body">
+                                @{var olSaleRank = ViewBag.olSaleRank as List<CXSL>; }
+                                <div class="row top-3 top-no-1">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (olSaleRank.Count > 0)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@olSaleRank[0].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>售出数量：@olSaleRank[0].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row top-3 top-no-2">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (olSaleRank.Count > 1)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@olSaleRank[1].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>营业额：@olSaleRank[1].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="row top-3 top-no-3">
+                                    <div class="col-md-1 col-sm-1"></div>
+                                    <div class="col-md-11 col-sm-11 top-text">
+                                        @if (olSaleRank.Count > 2)
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>@olSaleRank[2].ProductName</h3>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h3>营业额：@olSaleRank[2].ProductNumber 份</h3>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h3 style="margin-top: 53px;">空缺</h3>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

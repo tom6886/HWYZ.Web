@@ -106,6 +106,17 @@ namespace HWYZ.Controllers
                                       select new CXSL() { ProductName = s.Key.NameCh, ProductCode = s.Key.ProdCode, ProductNumber = s.Sum(p => p.In) - s.Sum(p => p.SL == null ? 0 : p.SL) - s.Sum(p => p.OrderNumber == null ? 0 : p.OrderNumber) }).OrderBy(q => q.ProductNumber).Take(10).ToList();
 
                     ViewBag.order = db.Order.Where(q => q.StoreId.Equals(store.ID) && (q.Status == OrderStatus.BeforeSubmit || q.Status == OrderStatus.Sended)).Take(10).ToList();
+
+                    ViewBag.offSaleRank = (from q in offQuery
+                                           where q.StationID.Equals(store.ID)
+                                           group q by new { q.SPBM, q.SPMC } into s
+                                           select new CXSL() { ProductCode = s.Key.SPBM, ProductName = s.Key.SPMC, ProductNumber = s.Sum(q => q.SL) }).OrderByDescending(q => q.ProductNumber).Take(3).Where(q => q.ProductNumber > 0).ToList();
+
+                    ViewBag.olSaleRank = (from q in olQuery
+                                          join o in db.AppOrderItem on q.ID equals o.OrderId
+                                          where q.StoreId.Equals(store.ID)
+                                          group o by new { o.ProductCode, o.ProductName } into s
+                                          select new CXSL() { ProductCode = s.Key.ProductCode, ProductName = s.Key.ProductName, ProductNumber = s.Sum(q => q.OrderNumber) }).OrderByDescending(q => q.ProductNumber).Take(3).Where(q => q.ProductNumber > 0).ToList();
                 }
 
                 return View(cards);
